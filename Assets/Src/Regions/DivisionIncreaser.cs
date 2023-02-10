@@ -1,5 +1,5 @@
 using System.Collections;
-using Src.Regions.Divisions.Base;
+using Src.Divisions.Base;
 using UnityEngine;
 
 namespace Src.Regions
