@@ -1,39 +1,29 @@
+using Src.Divisions.Number;
 using Src.Regions;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Src.Divisions.Base
 {
     public abstract class Division : MonoBehaviour
     {
-        [Header("Parameters")]
-        [SerializeField] protected float IncreaseSpeed = 1f;
-
         [Header("Components")]
-        [SerializeField] protected Movement.Movement Movement;
+        [SerializeField] private Fraction _fraction;
+        [SerializeField] private Movement.Movement _movement;
+        [SerializeField] private DivisionNumber _number;
+        [SerializeField] private Attack.Base.Attacker _attack;
 
-        protected int Number;
-        protected Region TargetRegion;
+        public UnityEvent OnNumberEqualsZero;
+        public Fraction Fraction => _fraction;
 
-        public void SetBaseDivisions(int number)
+        public void Regenerate()
         {
-            Number = number;
+            _number.Increase();
         }
 
-        public void Increase()
+        public void TakeDamage()
         {
-            Number += 1;
+            _number.Decrease();
         }
-
-        public void Decrease()
-        {
-            Number -= 1;
-        }
-
-        public void Move(Transform point)
-        {
-            Movement.ApplyPoint(point);
-        }
-        
-        protected abstract void Attack(Region region);
     }
 }
