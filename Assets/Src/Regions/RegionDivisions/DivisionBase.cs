@@ -1,17 +1,21 @@
 using System.Collections;
+using Src.Divisions;
 using Src.Divisions.Base;
-using Src.Divisions.Number;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Src.Regions.RegionDivisions
 {
     public class DivisionBase : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private RegionOwner _owner;
         [SerializeField] private Division _divisionPrefab;
         [Header("Parameters")]
         [SerializeField] private float _increaseTimeSpan;
         [SerializeField] private float _freezeTimeSpan;
+
+        [SerializeField] private UnityEvent<Division> OnNewDivisionSpawned;
 
         private Coroutine _increaseRoutine;
         private Division _division;
@@ -32,7 +36,9 @@ namespace Src.Regions.RegionDivisions
         private void CreateNewDivision()
         {
             _division = Instantiate(_divisionPrefab, transform);
+            _division.Fraction = _owner.Fraction;
             StartIncreasing();
+            OnNewDivisionSpawned.Invoke(_division);
         }
 
         private void StartIncreasing()

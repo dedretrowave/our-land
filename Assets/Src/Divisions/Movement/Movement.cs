@@ -23,6 +23,8 @@ namespace Src.Divisions.Movement
 
         private void Update()
         {
+            if (_point == null) return;
+            
             if (Vector3.Distance(transform.position, _point.position) >= _stopDistance)
             {
                 MoveTowards();

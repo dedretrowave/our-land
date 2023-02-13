@@ -1,17 +1,18 @@
+using Src.Divisions;
 using Src.Divisions.Base;
+using Src.Regions.RegionCombat;
 using UnityEngine;
 
 namespace Src.Regions
 {
     public class Region : MonoBehaviour
-    {
-        [SerializeField] private Fraction _fraction;
-        [SerializeField] private RegionDefence.RegionCombatZone _combatZone;
-
+    { 
+        [SerializeField] private RegionOwner _owner;
+        [SerializeField] private RegionCombatZone _combatZone;
+        
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"{other.name} SPOTTED");
-            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _fraction)
+            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
             {
                 _combatZone.SetEnemy(enemy);
             }
@@ -19,7 +20,7 @@ namespace Src.Regions
 
         private void OnTriggerStay(Collider other)
         {
-            _combatZone.EngageCombat();
+            _combatZone.EngageInCombat();
         }
     }
 }

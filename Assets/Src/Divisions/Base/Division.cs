@@ -9,7 +9,6 @@ namespace Src.Divisions.Base
     public class Division : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private Fraction _fraction;
         [SerializeField] private Movement.Movement _movement;
         [SerializeField] private DivisionNumber _number;
         [SerializeField] private Attacker _attack;
@@ -18,9 +17,9 @@ namespace Src.Divisions.Base
         [SerializeField] private UnityEvent<int> OnNumberChange;
         [SerializeField] private UnityEvent OnDamageTaken;
 
-        public Fraction Fraction => _fraction;
-
         public Attacker Attacker => _attack;
+        
+        public Fraction Fraction { get; set; }
 
         public void Regenerate()
         {

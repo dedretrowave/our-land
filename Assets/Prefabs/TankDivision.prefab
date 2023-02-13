@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5938817665109059436}
   - component: {fileID: 5938817665109059439}
   - component: {fileID: 5938817665109059432}
-  - component: {fileID: 5938817665109059433}
   - component: {fileID: 5938817665109059443}
   - component: {fileID: 5938817665109059442}
+  - component: {fileID: 2303460086696210532}
   m_Layer: 0
-  m_Name: Division
+  m_Name: TankDivision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   _fraction: 0
   _movement: {fileID: 5938817665109059439}
   _number: {fileID: 5938817665109059432}
-  _attack: {fileID: 5938817665109059433}
+  _attack: {fileID: 2303460086696210532}
   OnNumberEqualsZero:
     m_PersistentCalls:
       m_Calls: []
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8ddf87b05884b97baf266cd84964bf2, type: 3}
   m_Name: 
@@ -117,21 +117,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnNumberChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5938817665109059433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2882999deb24c0e8e199f085531662c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &5938817665109059443
@@ -163,6 +148,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 21.46, y: 1.59, z: 20.57}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2303460086696210532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938817665109059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2882999deb24c0e8e199f085531662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5938817665136444647
 GameObject:
   m_ObjectHideFlags: 0
