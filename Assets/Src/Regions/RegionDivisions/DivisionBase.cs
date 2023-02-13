@@ -27,7 +27,6 @@ namespace Src.Regions.RegionDivisions
         private void Start()
         {
             CreateNewDivision();
-            _division.OnNumberEqualsZero.AddListener(DestroyDivision);
         }
 
         private void CreateNewDivision()
@@ -41,7 +40,7 @@ namespace Src.Regions.RegionDivisions
             _increaseRoutine = StartCoroutine(IncreaseContinuously());
         }
         
-        private void DestroyDivision()
+        public void DestroyDivision()
         {
             StopCoroutine(_increaseRoutine);
 

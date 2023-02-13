@@ -1,4 +1,3 @@
-using System;
 using Src.Divisions.Base;
 using UnityEngine;
 
@@ -11,10 +10,16 @@ namespace Src.Regions
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<Division>().Fraction != _fraction)
+            Debug.Log($"{other.name} SPOTTED");
+            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _fraction)
             {
-                
+                _combatZone.SetEnemy(enemy);
             }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            _combatZone.EngageCombat();
         }
     }
 }

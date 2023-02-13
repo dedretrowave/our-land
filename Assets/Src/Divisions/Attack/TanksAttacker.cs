@@ -11,6 +11,8 @@ namespace Src.Divisions.Attack
 
         private void Attack(TanksAttacker enemy)
         {
+            if (enemy == null) return;
+            
             enemy.TakeDamage();
         }
     }
