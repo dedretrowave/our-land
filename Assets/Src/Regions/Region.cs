@@ -1,5 +1,6 @@
 using Src.Divisions;
 using Src.Divisions.Base;
+using Src.Divisions.Combat.Base;
 using Src.Regions.RegionCombat;
 using UnityEngine;
 
@@ -14,13 +15,8 @@ namespace Src.Regions
         {
             if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
             {
-                _combatZone.SetEnemy(enemy);
+                _combatZone.EngageInCombat(enemy.GetComponent<Attacker>());
             }
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            _combatZone.EngageInCombat();
         }
     }
 }

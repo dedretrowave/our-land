@@ -14,8 +14,10 @@ namespace Src.Regions.RegionDivisions
         [Header("Parameters")]
         [SerializeField] private float _increaseTimeSpan;
         [SerializeField] private float _freezeTimeSpan;
+        [SerializeField] private int _initialNumber;
 
         [SerializeField] private UnityEvent<Division> OnNewDivisionSpawned;
+        [SerializeField] private UnityEvent<Division> OnDivisionDestroyed;
 
         private Coroutine _increaseRoutine;
         private Division _division;
@@ -36,7 +38,8 @@ namespace Src.Regions.RegionDivisions
         private void CreateNewDivision()
         {
             _division = Instantiate(_divisionPrefab, transform);
-            _division.Fraction = _owner.Fraction;
+            _division.SetInitialParameters(_owner.Fraction, _initialNumber);
+            _division.OnNumberEqualsZero.AddListener(DestroyDivision);
             StartIncreasing();
             OnNewDivisionSpawned.Invoke(_division);
         }
@@ -46,8 +49,13 @@ namespace Src.Regions.RegionDivisions
             _increaseRoutine = StartCoroutine(IncreaseContinuously());
         }
         
-        public void DestroyDivision()
+        private void DestroyDivision()
         {
+            if (_division == null) return;
+            
+            OnDivisionDestroyed.Invoke(_division);
+            Destroy(_division.gameObject);
+            _division = null;
             StopCoroutine(_increaseRoutine);
 
             StartCoroutine(RespawnAfterCooldown());

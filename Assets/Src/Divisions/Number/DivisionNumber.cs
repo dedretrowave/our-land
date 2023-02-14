@@ -5,7 +5,7 @@ namespace Src.Divisions.Number
 {
     public class DivisionNumber : MonoBehaviour
     {
-        private int _number = 50;
+        private int _number;
         private Coroutine _increaseRoutine;
 
         public int Number => _number;

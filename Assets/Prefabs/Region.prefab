@@ -154,6 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fraction: 0
+  OnFractionChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3136169366310538372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,12 +380,13 @@ MonoBehaviour:
   _divisionPrefab: {fileID: 5938817665109059436, guid: 45250df749bf2024ba838ddf8e7280ec, type: 3}
   _increaseTimeSpan: 3
   _freezeTimeSpan: 5
+  _initialNumber: 0
   OnNewDivisionSpawned:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2755722458704323651}
         m_TargetAssemblyTypeName: Src.Regions.RegionCombat.RegionCombatZone, Assembly-CSharp
-        m_MethodName: AddAttacker
+        m_MethodName: AddDivision
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -392,6 +396,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDivisionDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6867258706819496200
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,12 +447,28 @@ MonoBehaviour:
   _divisionPrefab: {fileID: 5938817665109059436, guid: e35fd6464edde8b45825f45b37ea3465, type: 3}
   _increaseTimeSpan: 1
   _freezeTimeSpan: 5
+  _initialNumber: 50
   OnNewDivisionSpawned:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2755722458704323651}
         m_TargetAssemblyTypeName: Src.Regions.RegionCombat.RegionCombatZone, Assembly-CSharp
-        m_MethodName: AddAttacker
+        m_MethodName: AddDivision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDivisionDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2755722458704323651}
+        m_TargetAssemblyTypeName: Src.Regions.RegionCombat.RegionCombatZone, Assembly-CSharp
+        m_MethodName: RemoveDivision
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -500,7 +523,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 339392615060291722}
-  _bases:
-  - {fileID: 8403551057659735358}
-  - {fileID: 158475208842468954}
   _attackers: []

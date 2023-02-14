@@ -1,4 +1,4 @@
-using Src.Divisions.Attack.Base;
+using Src.Divisions.Combat.Base;
 using Src.Divisions.Number;
 using Src.Regions;
 using UnityEngine;
@@ -13,17 +13,26 @@ namespace Src.Divisions.Base
         [SerializeField] private DivisionNumber _number;
         [SerializeField] private Attacker _attack;
 
-        [SerializeField] private UnityEvent OnNumberEqualsZero;
-        [SerializeField] private UnityEvent<int> OnNumberChange;
-        [SerializeField] private UnityEvent OnDamageTaken;
+        [Header("Events")]
+        public UnityEvent OnNumberEqualsZero;
+        public UnityEvent<int> OnNumberChange;
+        public UnityEvent OnDamageTaken;
+
+        private Fraction _fraction;
 
         public Attacker Attacker => _attack;
-        
-        public Fraction Fraction { get; set; }
+
+        public Fraction Fraction => _fraction;
 
         public void Regenerate()
         {
             _number.Increase();
+        }
+
+        public void SetInitialParameters(Fraction fraction = Fraction.Neutral, int number = 0)
+        {
+            _fraction = fraction;
+            _number.Increase(number);
         }
 
         private void Start()
