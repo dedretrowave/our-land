@@ -8,21 +8,20 @@ namespace Src.Divisions.Base
 {
     public class Division : MonoBehaviour
     {
-        [Header("Components")]
+        [Header("Components")] 
+        [SerializeField] private RegionOwner _owner;
         [SerializeField] private Movement.Movement _movement;
         [SerializeField] private DivisionNumber _number;
-        [SerializeField] private Attacker _attack;
+        [SerializeField] private Attacker _attacker;
 
         [Header("Events")]
         public UnityEvent OnNumberEqualsZero;
         public UnityEvent<int> OnNumberChange;
         public UnityEvent OnDamageTaken;
 
-        private Fraction _fraction;
+        public Attacker Attacker => _attacker;
 
-        public Attacker Attacker => _attack;
-
-        public Fraction Fraction => _fraction;
+        public Fraction Fraction => _owner.Fraction;
 
         public void Regenerate()
         {
@@ -31,7 +30,7 @@ namespace Src.Divisions.Base
 
         public void SetInitialParameters(Fraction fraction = Fraction.Neutral, int number = 0)
         {
-            _fraction = fraction;
+            _owner.ChangeFraction(fraction);
             _number.Increase(number);
         }
 
@@ -39,7 +38,7 @@ namespace Src.Divisions.Base
         {
             _number.OnNumberEqualsZero.AddListener(OnNumberEqualsZero.Invoke);
             _number.OnNumberChange.AddListener(OnNumberChange.Invoke);
-            _attack.OnDamageTaken.AddListener(OnDamageTaken.Invoke);
+            _attacker.OnDamageTaken.AddListener(OnDamageTaken.Invoke);
         }
     }
 }

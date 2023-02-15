@@ -10,6 +10,7 @@ namespace Src.Divisions.Combat.Base
     public abstract class Attacker : MonoBehaviour, IDamageable
     {
         [SerializeField] protected float pauseBetweenAttacks = .1f;
+        [SerializeField] protected RegionOwner owner;
         
         [HideInInspector] public UnityEvent OnDamageTaken;
 
@@ -25,7 +26,7 @@ namespace Src.Divisions.Combat.Base
             OnDamageTaken.Invoke();
         }
 
-        public abstract void ProceedAfterEnemiesDefeated(Health health);
+        public abstract void ProceedAfterEnemiesDefeated(Region region);
 
         protected abstract IEnumerator Attack(IDamageable enemy);
         

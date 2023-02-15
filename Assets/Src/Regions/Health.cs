@@ -29,7 +29,7 @@ namespace Src.Regions
         {
             float decreasedHealth = _currentHealth - amount;
 
-            if (amount <= 0)
+            if (decreasedHealth <= 0)
             {
                 _currentHealth = 0;
                 OnOutOfHealth.Invoke();

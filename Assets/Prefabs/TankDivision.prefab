@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5938817665109059438}
+  - component: {fileID: 1258907717548680909}
   - component: {fileID: 5938817665109059436}
   - component: {fileID: 5938817665109059439}
   - component: {fileID: 5938817665109059432}
@@ -38,6 +39,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1258907717548680909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938817665109059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ca7f7a6e97412e9d1fc0ee127b6033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fraction: 2
+  OnFractionChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5938817665109059436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,9 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d1855424374e499b312bb1b484ea8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _owner: {fileID: 1258907717548680909}
   _movement: {fileID: 5938817665109059439}
   _number: {fileID: 5938817665109059432}
-  _attack: {fileID: 2303460086696210532}
+  _attacker: {fileID: 2303460086696210532}
   OnNumberEqualsZero:
     m_PersistentCalls:
       m_Calls: []
@@ -159,7 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2882999deb24c0e8e199f085531662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 0.1
+  pauseBetweenAttacks: 0.1
+  owner: {fileID: 1258907717548680909}
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []

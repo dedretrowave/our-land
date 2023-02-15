@@ -2,24 +2,25 @@ using System.Collections.Generic;
 using Src.Divisions.Base;
 using Src.Divisions.Combat.Base;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Src.Regions.RegionCombat
 {
     public class RegionCombatZone : MonoBehaviour
     {
-        [SerializeField] private Health _health;
-        [SerializeField] private List<Attacker> _attackers;
+        [SerializeField] private Region _region;
+        [SerializeField] private List<Attacker> _defenders;
         
         private List<Attacker> _enemies = new();
 
         public void AddDefenceDivision(Division division)
         {
-            AddDefenceDivision(division.GetComponent<Attacker>());
+            AddDefenceDivision(division.Attacker);
         }
         
         public void AddDefenceDivision(Attacker attacker)
         {
-            _attackers.Add(attacker);
+            _defenders.Add(attacker);
 
             _enemies.ForEach(enemy => 
             {
@@ -29,21 +30,32 @@ namespace Src.Regions.RegionCombat
         
         public void RemoveDefenceDivision(Division division)
         {
-            RemoveDefenceDivision(division.GetComponent<Attacker>());
+            RemoveDefenceDivision(division.Attacker);
         }
 
         public void RemoveDefenceDivision(Attacker attacker)
         {
-            _attackers.Remove(attacker);
+            _defenders.Remove(attacker);
+
+            if (_defenders.Count == 0)
+            {
+                _enemies.ForEach(enemy => enemy.ProceedAfterEnemiesDefeated(_region));
+            }
         }
 
         public void EngageInCombat(Attacker enemy)
         {
             _enemies.Add(enemy);
-
-            _attackers.ForEach(attacker =>
+            
+            if (_defenders.Count == 0)
             {
-                Fight(attacker, enemy);
+                _enemies.ForEach(enemy => enemy.ProceedAfterEnemiesDefeated(_region));
+                return;
+            }
+
+            _defenders.ForEach(defender =>
+            {
+                Fight(defender, enemy);
             });
         }
 

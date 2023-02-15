@@ -6,13 +6,13 @@ namespace Src.Divisions
 {
     public class RegionOwner : MonoBehaviour
     {
-        [SerializeField] private Fraction _fraction;
+        [SerializeField] private Fraction _fraction = Fraction.Neutral;
 
         public Fraction Fraction => _fraction;
 
         public UnityEvent<Fraction> OnFractionChanged;
 
-        public void ChangeOwner(Fraction fraction)
+        public void ChangeFraction(Fraction fraction)
         {
             _fraction = fraction;
             OnFractionChanged.Invoke(_fraction);

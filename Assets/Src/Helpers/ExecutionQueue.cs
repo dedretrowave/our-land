@@ -8,9 +8,6 @@ namespace Src.Helpers
     {
         private Queue<IEnumerator> _queue = new();
         private Coroutine _queueExecution;
-        private IEnumerator _current;
-
-        public IEnumerator Current => _current;
 
         public void Add(IEnumerator func)
         {

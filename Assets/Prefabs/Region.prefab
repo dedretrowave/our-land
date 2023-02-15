@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 6808818981463780838}
   _combatZone: {fileID: 2755722458704323651}
+  _health: {fileID: 339392615060291722}
 --- !u!114 &339392615060291722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +189,19 @@ MonoBehaviour:
   _regenerationTimeout: 20
   OnOutOfHealth:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3136169366310538372}
+        m_TargetAssemblyTypeName: Src.Regions.Region, Assembly-CSharp
+        m_MethodName: ChangeOwner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthIncrease:
     m_PersistentCalls:
       m_Calls: []
@@ -534,5 +547,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ea8c5cab284e9a938af395115cf3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 339392615060291722}
-  _attackers: []
+  _region: {fileID: 3136169366310538372}
+  _defenders: []

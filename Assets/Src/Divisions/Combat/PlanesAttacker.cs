@@ -8,10 +8,10 @@ namespace Src.Divisions.Combat
 {
     public class PlanesAttacker : Attacker
     {
-        public override void ProceedAfterEnemiesDefeated(Health health)
+        public override void ProceedAfterEnemiesDefeated(Region region)
         {
             //CODE TO FLY AWAY
-            throw new System.NotImplementedException();
+            Debug.Log($"{name} FLEW AWAY");
         }
 
         protected override IEnumerator Attack(IDamageable enemy)

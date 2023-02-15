@@ -10,17 +10,30 @@ namespace Src.Regions
     { 
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private RegionCombatZone _combatZone;
+        [SerializeField] private Health _health;
 
-        public void ChangeOwner(Fraction fraction)
+        private Fraction _newClaimerFraction;
+
+        public void SetNewClaimer(Fraction fraction)
         {
-            
+            _newClaimerFraction = fraction;
+        }
+
+        public void TakeDamage()
+        {
+            _health.Decrease();
+        }
+
+        public void ChangeOwner()
+        {
+            _owner.ChangeFraction(_newClaimerFraction);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
             {
-                _combatZone.EngageInCombat(enemy.GetComponent<Attacker>());
+                _combatZone.EngageInCombat(enemy.Attacker);
             }
         }
     }

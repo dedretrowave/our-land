@@ -8,9 +8,10 @@ namespace Src.Divisions.Combat
 {
     public class TanksAttacker : Attacker
     {
-        public override void ProceedAfterEnemiesDefeated(Health health)
+        public override void ProceedAfterEnemiesDefeated(Region region)
         {
-            _targetQueue.Add(Attack(health));
+            region.SetNewClaimer(owner.Fraction);
+            _targetQueue.Add(ConquerRegion(region));
         }
 
         protected override IEnumerator Attack(IDamageable enemy)
@@ -25,6 +26,15 @@ namespace Src.Divisions.Combat
             yield return new WaitForSeconds(pauseBetweenAttacks);
 
             yield return Attack(enemy);
+        }
+
+        private IEnumerator ConquerRegion(Region region)
+        {
+            region.TakeDamage();
+
+            yield return new WaitForSeconds(pauseBetweenAttacks);
+
+            yield return ConquerRegion(region);
         }
     }
 }
