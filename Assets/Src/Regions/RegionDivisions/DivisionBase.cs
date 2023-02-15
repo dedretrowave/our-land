@@ -40,6 +40,7 @@ namespace Src.Regions.RegionDivisions
             _division = Instantiate(_divisionPrefab, transform);
             _division.SetInitialParameters(_owner.Fraction, _initialNumber);
             _division.OnNumberEqualsZero.AddListener(DestroyDivision);
+            _division.name += _owner.Fraction;
             StartIncreasing();
             OnNewDivisionSpawned.Invoke(_division);
         }

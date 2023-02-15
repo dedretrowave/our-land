@@ -407,10 +407,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 158475208842468954, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-      propertyPath: _initialNumber
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 579276566598749474, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -545,27 +541,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
---- !u!1 &2084428045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3136169366310538374, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-  m_PrefabInstance: {fileID: 3136169366156565802}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2084428051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084428045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ca7f7a6e97412e9d1fc0ee127b6033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fraction: 0
-  OnFractionChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &3136169366156565802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -575,7 +550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 158475208842468954, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: _initialNumber
-      value: 500
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1946173937895311253, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_IsActive

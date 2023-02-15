@@ -9,37 +9,48 @@ namespace Src.Regions.RegionCombat
     {
         [SerializeField] private Health _health;
         [SerializeField] private List<Attacker> _attackers;
+        
+        private List<Attacker> _enemies = new();
 
-        private Attacker _enemy;
-
-        public void AddDivision(Attacker attacker)
+        public void AddDefenceDivision(Division division)
         {
-            _attackers.Add(attacker);
-        }
-
-        public void AddDivision(Division division)
-        {
-            _attackers.Add(division.GetComponent<Attacker>());
-        }
-
-        public void RemoveDivision(Attacker attacker)
-        {
-            _attackers.Remove(attacker);
+            AddDefenceDivision(division.GetComponent<Attacker>());
         }
         
-        public void RemoveDivision(Division division)
+        public void AddDefenceDivision(Attacker attacker)
         {
-            _attackers.Remove(division.GetComponent<Attacker>());
+            _attackers.Add(attacker);
+
+            _enemies.ForEach(enemy => 
+            {
+                Fight(attacker, enemy);
+            });
+        }
+        
+        public void RemoveDefenceDivision(Division division)
+        {
+            RemoveDefenceDivision(division.GetComponent<Attacker>());
+        }
+
+        public void RemoveDefenceDivision(Attacker attacker)
+        {
+            _attackers.Remove(attacker);
         }
 
         public void EngageInCombat(Attacker enemy)
         {
+            _enemies.Add(enemy);
+
             _attackers.ForEach(attacker =>
             {
-                attacker.AttackTarget(enemy.GetComponent<Attacker>());
+                Fight(attacker, enemy);
             });
-            //
-            // enemy.AttackTarget(_attackers[0]);
+        }
+
+        private void Fight(Attacker attacker, Attacker enemy)
+        {
+            attacker.AttackTarget(enemy);
+            enemy.AttackTarget(attacker);
         }
     }
 }

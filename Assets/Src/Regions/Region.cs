@@ -10,7 +10,12 @@ namespace Src.Regions
     { 
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private RegionCombatZone _combatZone;
-        
+
+        public void ChangeOwner(Fraction fraction)
+        {
+            
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)

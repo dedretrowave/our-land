@@ -1,6 +1,7 @@
 using System.Collections;
 using Src.Helpers;
 using Src.Interfaces;
+using Src.Regions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,14 +9,15 @@ namespace Src.Divisions.Combat.Base
 {
     public abstract class Attacker : MonoBehaviour, IDamageable
     {
-        [HideInInspector] public UnityEvent OnDamageTaken;
+        [SerializeField] protected float pauseBetweenAttacks = .1f;
         
+        [HideInInspector] public UnityEvent OnDamageTaken;
+
         protected ExecutionQueue _targetQueue;
 
         public void AttackTarget(IDamageable enemy)
         {
-            StartCoroutine(Attack(enemy));
-            // _targetQueue.Add(Attack(enemy));
+            _targetQueue.Add(Attack(enemy));
         }
 
         public void TakeDamage()
@@ -23,9 +25,11 @@ namespace Src.Divisions.Combat.Base
             OnDamageTaken.Invoke();
         }
 
+        public abstract void ProceedAfterEnemiesDefeated(Health health);
+
         protected abstract IEnumerator Attack(IDamageable enemy);
         
-        private void Start()
+        private void Awake()
         {
             _targetQueue = gameObject.AddComponent<ExecutionQueue>();
         }

@@ -1,10 +1,11 @@
 using System.Collections;
+using Src.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Src.Regions
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, IDamageable
     {
         [Header("Parameters")]
         [SerializeField] private float _maxHealth = 50;
@@ -24,7 +25,7 @@ namespace Src.Regions
             _currentHealth = _maxHealth;
         }
 
-        public void Decrease(int amount)
+        public void Decrease(int amount = 1)
         {
             float decreasedHealth = _currentHealth - amount;
 
@@ -39,7 +40,7 @@ namespace Src.Regions
             _currentHealth = decreasedHealth;
         }
 
-        private void Increase(float amount)
+        private void Increase(float amount = 1)
         {
             float increasedHealth = _currentHealth + amount;
 
@@ -87,6 +88,11 @@ namespace Src.Regions
             float frameRate = 60f;
             
             Increase(_regenerationPerSec / frameRate);
+        }
+
+        public void TakeDamage()
+        {
+            Decrease();
         }
     }
 }

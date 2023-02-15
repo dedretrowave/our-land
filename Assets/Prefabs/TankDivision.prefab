@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d1855424374e499b312bb1b484ea8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fraction: 0
   _movement: {fileID: 5938817665109059439}
   _number: {fileID: 5938817665109059432}
   _attack: {fileID: 2303460086696210532}
@@ -160,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2882999deb24c0e8e199f085531662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRate: 0.1
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []

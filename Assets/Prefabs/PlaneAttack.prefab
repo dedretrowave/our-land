@@ -50,13 +50,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d1855424374e499b312bb1b484ea8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fraction: 0
   _movement: {fileID: 5938817665109059439}
   _number: {fileID: 5938817665109059432}
   _attack: {fileID: 6457137593086091897}
   OnNumberEqualsZero:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnNumberChange:
     m_PersistentCalls:
       m_Calls:
@@ -160,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6d00221a0349e78930f3e4c7360acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseBetweenAttacks: 0.1
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []

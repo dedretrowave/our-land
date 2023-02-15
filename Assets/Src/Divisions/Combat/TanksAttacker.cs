@@ -1,29 +1,30 @@
 using System.Collections;
 using Src.Divisions.Combat.Base;
 using Src.Interfaces;
+using Src.Regions;
+using UnityEngine;
 
 namespace Src.Divisions.Combat
 {
     public class TanksAttacker : Attacker
     {
-        protected override IEnumerator Attack(IDamageable enemy)
+        public override void ProceedAfterEnemiesDefeated(Health health)
         {
-            while (true)
-            {
-                if (enemy == null)
-                {
-                    yield return null;
-                }
-                
-                Attack(enemy as TanksAttacker);
-            }
+            _targetQueue.Add(Attack(health));
         }
 
-        private void Attack(TanksAttacker enemy)
+        protected override IEnumerator Attack(IDamageable enemy)
         {
-            if (enemy == null) return;
-            
+            if (enemy.Equals(null) || enemy is PlanesAttacker)
+            {
+                yield break;
+            }
+
             enemy.TakeDamage();
+
+            yield return new WaitForSeconds(pauseBetweenAttacks);
+
+            yield return Attack(enemy);
         }
     }
 }
