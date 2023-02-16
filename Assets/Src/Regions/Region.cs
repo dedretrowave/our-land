@@ -31,9 +31,15 @@ namespace Src.Regions
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
+            if (!other.TryGetComponent(out Division division)) return;
+            
+            if (division.Fraction == _owner.Fraction)
             {
-                _combatZone.EngageInCombat(enemy.Attacker);
+                _combatZone.AddDefence(division);
+            }
+            else
+            {
+                _combatZone.AddOffence(division);
             }
         }
     }

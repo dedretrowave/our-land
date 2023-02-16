@@ -73,7 +73,7 @@ namespace Src.Regions.RegionDivisions
         {
             yield return new WaitForSeconds(_increaseTimeSpan);
             
-            _division.Regenerate();
+            _division.IncreaseNumber();
 
             yield return IncreaseContinuously();
         }

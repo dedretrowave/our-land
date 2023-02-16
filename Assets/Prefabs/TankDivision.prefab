@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5938817665109059443}
   - component: {fileID: 5938817665109059442}
   - component: {fileID: 2303460086696210532}
+  - component: {fileID: 6541355205229605598}
   m_Layer: 0
   m_Name: TankDivision
   m_TagString: Untagged
@@ -178,10 +179,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseBetweenAttacks: 0.1
-  owner: {fileID: 1258907717548680909}
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6541355205229605598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938817665109059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9db95fe6784d639c36ac604fc195d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _owner: {fileID: 1258907717548680909}
+  _captureTickTime: 1
+  _division: {fileID: 5938817665109059432}
 --- !u!1 &5938817665136444647
 GameObject:
   m_ObjectHideFlags: 0

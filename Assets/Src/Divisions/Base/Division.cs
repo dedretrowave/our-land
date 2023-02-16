@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Src.Divisions.Combat.Base;
 using Src.Divisions.Number;
 using Src.Regions;
@@ -8,7 +10,7 @@ namespace Src.Divisions.Base
 {
     public class Division : MonoBehaviour
     {
-        [Header("Components")] 
+        [Header("Components")]
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private Movement.Movement _movement;
         [SerializeField] private DivisionNumber _number;
@@ -19,19 +21,29 @@ namespace Src.Divisions.Base
         public UnityEvent<int> OnNumberChange;
         public UnityEvent OnDamageTaken;
 
-        public Attacker Attacker => _attacker;
-
         public Fraction Fraction => _owner.Fraction;
+        public int Number => _number.Number;
+        public Type AttackerType => _attacker.GetType();
 
-        public void Regenerate()
+        public void IncreaseNumber(int number = 1)
         {
-            _number.Increase();
+            _number.Increase(number);
+        }
+
+        public void AttackEnemy(List<Division> enemies)
+        {
+            enemies.ForEach(AttackEnemy);
         }
 
         public void SetInitialParameters(Fraction fraction = Fraction.Neutral, int number = 0)
         {
             _owner.ChangeFraction(fraction);
             _number.Increase(number);
+        }
+        
+        private void AttackEnemy(Division enemy)
+        {
+            _attacker.AttackTarget(enemy.GetComponent<Attacker>());
         }
 
         private void Start()

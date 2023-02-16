@@ -1,68 +1,87 @@
+using System;
 using System.Collections.Generic;
 using Src.Divisions.Base;
-using Src.Divisions.Combat.Base;
+using Src.Divisions.Conquer;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 namespace Src.Regions.RegionCombat
 {
     public class RegionCombatZone : MonoBehaviour
     {
         [SerializeField] private Region _region;
-        [SerializeField] private List<Attacker> _defenders;
+        [SerializeField] private List<Division> _defenders;
         
-        private List<Attacker> _enemies = new();
+        private List<Division> _offenders = new();
 
-        public void AddDefenceDivision(Division division)
+        [HideInInspector] public UnityEvent OnDefenceDivisionsDefeated;
+        [HideInInspector] public UnityEvent OnDefenceDivisionsRestored;
+
+        public void AddDefence(Division defender)
         {
-            AddDefenceDivision(division.Attacker);
+            IncreaseDivisionAddIfNull(defender, _defenders);
+            defender.OnNumberEqualsZero.AddListener(() => RemoveDefender(defender));
+            OnDefenceDivisionsRestored.Invoke();
+
+            EngageInCombat();
         }
-        
-        public void AddDefenceDivision(Attacker attacker)
-        {
-            _defenders.Add(attacker);
 
-            _enemies.ForEach(enemy => 
+        public void AddOffence(Division offender)
+        {
+            IncreaseDivisionAddIfNull(offender, _offenders);
+            offender.OnNumberEqualsZero.AddListener(() => RemoveOffender(offender));
+
+            if (offender.TryGetComponent(out Conquer conquer))
             {
-                Fight(attacker, enemy);
-            });
-        }
-        
-        public void RemoveDefenceDivision(Division division)
-        {
-            RemoveDefenceDivision(division.Attacker);
+                conquer.SetDependencies(_region, this);
+            }
+
+            EngageInCombat();
         }
 
-        public void RemoveDefenceDivision(Attacker attacker)
+        private void IncreaseDivisionAddIfNull(Division division, List<Division> list)
         {
-            _defenders.Remove(attacker);
+            Type divisionAttackerType = division.AttackerType;
+            Division divisionInListAttacker = list.Find(item => item.AttackerType == divisionAttackerType);
 
-            if (_defenders.Count == 0)
+            if (divisionInListAttacker == null)
             {
-                _enemies.ForEach(enemy => enemy.ProceedAfterEnemiesDefeated(_region));
+                list.Add(division);
+            }
+            else
+            {
+                divisionInListAttacker.IncreaseNumber(division.Number);
             }
         }
 
-        public void EngageInCombat(Attacker enemy)
+        private void RemoveDefender(Division division)
         {
-            _enemies.Add(enemy);
+            _defenders.Remove(division);
             
             if (_defenders.Count == 0)
             {
-                _enemies.ForEach(enemy => enemy.ProceedAfterEnemiesDefeated(_region));
-                return;
+                OnDefenceDivisionsDefeated.Invoke();
             }
-
-            _defenders.ForEach(defender =>
-            {
-                Fight(defender, enemy);
-            });
         }
 
-        private void Fight(Attacker attacker, Attacker enemy)
+        private void RemoveOffender(Division division)
         {
-            attacker.AttackTarget(enemy);
-            enemy.AttackTarget(attacker);
+            _offenders.Remove(division);
+        }
+
+        private void EngageInCombat()
+        {
+            Attack(_offenders, _defenders);
+            Attack(_defenders, _offenders);
+        }
+
+        private void Attack(List<Division> attackers, List<Division> enemies)
+        {
+            attackers.ForEach(attacker =>
+            {
+                Debug.Log($"{attacker} ADDING {enemies.Count} ENEMIES");
+                attacker.AttackEnemy(enemies);
+            });
         }
     }
 }
