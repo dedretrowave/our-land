@@ -39,6 +39,13 @@ namespace Src.Regions.RegionCombat
             EngageInCombat();
         }
 
+        public void RearrangeDivisions()
+        {
+            _defenders.Clear();
+            _defenders.AddRange(_offenders);
+            _offenders.Clear();
+        }
+
         private void IncreaseDivisionAddIfNull(Division division, List<Division> list)
         {
             Type divisionAttackerType = division.AttackerType;
@@ -79,7 +86,6 @@ namespace Src.Regions.RegionCombat
         {
             attackers.ForEach(attacker =>
             {
-                Debug.Log($"{attacker} ADDING {enemies.Count} ENEMIES");
                 attacker.AttackEnemy(enemies);
             });
         }

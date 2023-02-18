@@ -3,6 +3,8 @@ using Src.Divisions.Base;
 using Src.Divisions.Combat.Base;
 using Src.Regions.RegionCombat;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.Regions
 {

@@ -10,7 +10,7 @@ namespace Src.Divisions
 
         public Fraction Fraction => _fraction;
 
-        public UnityEvent<Fraction> OnFractionChanged;
+        [SerializeField] private UnityEvent<Fraction> OnFractionChanged;
 
         public void ChangeFraction(Fraction fraction)
         {

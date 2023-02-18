@@ -514,10 +514,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6808818981463780838, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-      propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7858774888917343663, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: _attack
       value: 
@@ -629,6 +625,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3136169366310538375, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808818981463780838, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: _fraction
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7937319477298655127, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}

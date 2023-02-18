@@ -153,10 +153,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ca7f7a6e97412e9d1fc0ee127b6033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fraction: 0
+  _fraction: 1
   OnFractionChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2755722458704323651}
+        m_TargetAssemblyTypeName: Src.Regions.RegionCombat.RegionCombatZone, Assembly-CSharp
+        m_MethodName: RearrangeDivisions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3136169366310538372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,3 +561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _region: {fileID: 3136169366310538372}
   _defenders: []
+  OnDefenceDivisionsDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDefenceDivisionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
