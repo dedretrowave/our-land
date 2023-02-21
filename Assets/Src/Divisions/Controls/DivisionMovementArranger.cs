@@ -1,5 +1,5 @@
-using Src.Divisions.Base;
 using Src.Regions;
+using Src.Regions.RegionDivisions.Base;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +10,7 @@ namespace Src.Divisions.Controls
         [Header("Parameters")]
         [SerializeField] private LayerMask _regionLayer;
         [Header("Components")]
-        [SerializeField] private Division _division;
+        [SerializeField] private DivisionBase _divisionBase;
         
         private const float Raycastdepth = 1000;
         
@@ -27,20 +27,9 @@ namespace Src.Divisions.Controls
             
             Transform hitTransform = hit.transform;
 
-            if (hitTransform != null)
-            {
-                // _division.MoveToCaptureRegion(hitTransform.GetComponent<Region>(),
-                //     CalculateEndpointPosition(hitTransform));
-                
-                Debug.Log(CalculateEndpointPosition(hitTransform));
-            }
-        }
+            if (hitTransform == null) return;
 
-        private Vector3 CalculateEndpointPosition(Transform hitTransform)
-        {
-            const float distanceFactor = .1f;
-
-            return hitTransform.position - (hitTransform.position - transform.localPosition) * distanceFactor;
+            _divisionBase.SendDivision(hitTransform.GetComponent<Region>());
         }
     }
 }

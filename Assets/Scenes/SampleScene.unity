@@ -516,7 +516,7 @@ MonoBehaviour:
   _regionLayer:
     serializedVersion: 2
     m_Bits: 128
-  _division: {fileID: 0}
+  _divisionBase: {fileID: 0}
 --- !u!1 &1410530584
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4204007652438065845, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: _initialNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5405660425125922398, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -783,5 +787,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2755722458704323651, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}

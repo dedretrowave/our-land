@@ -10,11 +10,11 @@ namespace Src.Divisions
         {
             DivisionBase castedTarget = target as DivisionBase;
 
-            if (target is null || (castedTarget != null && castedTarget.DivisionType == typeof(PlanesDivision)))
+            if (target.Equals(null) || (castedTarget != null && castedTarget.DivisionType == typeof(PlanesDivision)))
             {
                 return;
             }
-            
+
             queue.Add(AttackContinuously(target));
         }
     }

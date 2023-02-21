@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Src.Divisions.Base;
 using Src.Regions.RegionDivisions.Base;
@@ -7,8 +8,8 @@ namespace Src.Regions.RegionCombat
 {
     public class RegionDefence : MonoBehaviour
     {
+        [SerializeField] private RegionOwner _owner;
         [SerializeField] private Region _region;
-        [SerializeField] private Health _health;
         [SerializeField] private List<DivisionBase> _defenders;
 
         private Fraction _currentClaimerFraction;
@@ -18,12 +19,19 @@ namespace Src.Regions.RegionCombat
             _region.ChangeOwner(_currentClaimerFraction);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
+            {
+                Defend(enemy);
+            }
+        }
+
         private void Defend(Division offence)
         {
             SetRegionClaimer(offence.Fraction);
             
             _defenders.ForEach(offence.Attack);
-            offence.Attack(_health);
         }
 
         private void SetRegionClaimer(Fraction fraction)

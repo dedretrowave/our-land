@@ -16,11 +16,6 @@ namespace Src.Divisions.Movement
             transform.LookAt(_point);
         }
 
-        private void Start()
-        {
-            _point = transform.position;
-        } 
-
         private void Update()
         {
             if (Vector3.Distance(transform.position, _point) >= _stopDistance)

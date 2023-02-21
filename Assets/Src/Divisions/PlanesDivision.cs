@@ -8,7 +8,7 @@ namespace Src.Divisions
     {
         public override void Attack(IDamageable target)
         {
-            if (target is null or Health)
+            if (target.Equals(null) || target is Health)
             {
                 return;
             }

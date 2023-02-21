@@ -17,24 +17,52 @@ namespace Src.Regions.RegionDivisions.Base
         [SerializeField] private int _initialNumber;
 
         [SerializeField] private UnityEvent<int> _onNumberChange;
-
-        private int _number;
+        
         private Coroutine _increaseRoutine;
         private Coroutine _spawnRoutine;
+        private int _number;
+        
+        private int Number
+        {
+            get => _number;
+            set
+            {
+                if (value <= 0)
+                {
+                    _number = 0;
+                    _onNumberChange.Invoke(_number);
+                    return;
+                }
+            
+                _number = value;
+                _onNumberChange.Invoke(_number);
+            }
+        }
 
         public Type DivisionType => _divisionPrefab.GetType();
 
         public void SendDivision(Region region)
         {
-            Division division = Instantiate(_divisionPrefab);
+            Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
             
-            division.Initialize(_number, _owner.Fraction);
+            division.Initialize(Number, _owner.Fraction);
+            Number = 0;
             division.Deploy(region);
+        }
+        
+        public void TakeDamage()
+        {
+            Number -= 1;
+        }
+
+        public bool IsDead()
+        {
+            return Number == 0;
         }
 
         private void Start()
         {
-            _number = _initialNumber;
+            Number = _initialNumber;
             StartIncreasing();
         }
 
@@ -47,24 +75,10 @@ namespace Src.Regions.RegionDivisions.Base
         {
             yield return new WaitForSeconds(_increaseTimeSpan);
 
-            _number++;
+            Number++;
+            _onNumberChange.Invoke(Number);
 
             yield return IncreaseContinuously();
-        }
-
-        public void TakeDamage()
-        {
-            int changedNumber = _number - 1;
-
-            if (changedNumber == 0)
-            {
-                _number = 0;
-                _onNumberChange.Invoke(_number);
-                return;
-            }
-            
-            _number = changedNumber;
-            _onNumberChange.Invoke(_number);
         }
     }
 }

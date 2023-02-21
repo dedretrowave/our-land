@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 3136169366310538375}
   - component: {fileID: 6808818981463780838}
   - component: {fileID: 3136169366310538372}
-  - component: {fileID: 339392615060291722}
   - component: {fileID: 4354501972255720247}
   - component: {fileID: 608750389463258499}
   m_Layer: 7
@@ -286,42 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 6808818981463780838}
---- !u!114 &339392615060291722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3136169366310538374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd756a0f63024d34a925ccf75cac4bf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _regenerationPerSec: 1
-  _regenerationTimeout: 20
-  OnOutOfHealth:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8667964680139658029}
-        m_TargetAssemblyTypeName: Src.Regions.RegionCombat.RegionDefence, Assembly-CSharp
-        m_MethodName: GiveUpRegion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHealthIncrease:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthDecrease:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &4354501972255720247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -469,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3276918964396309051}
   - component: {fileID: 158475208842468954}
+  - component: {fileID: 5976678655201424467}
   m_Layer: 0
   m_Name: PlaneDivisionBase
   m_TagString: Untagged
@@ -505,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 6808818981463780838}
-  _divisionPrefab: {fileID: 0}
+  _divisionPrefab: {fileID: 3628966128257081524, guid: 45250df749bf2024ba838ddf8e7280ec, type: 3}
   _increaseTimeSpan: 3
   _initialNumber: 20
   _onNumberChange:
@@ -524,6 +488,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5976678655201424467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360048577848512793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716498b6728b4055972c9e665086282e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regionLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _divisionBase: {fileID: 158475208842468954}
 --- !u!1 &5152831462918620821
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,10 +846,10 @@ RectTransform:
   m_Father: {fileID: 5447667900202211082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5447667901632146102
 CanvasRenderer:
@@ -978,6 +958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346865348849306224}
   - component: {fileID: 4204007652438065845}
+  - component: {fileID: 5167926934372598624}
   m_Layer: 0
   m_Name: TankDivisionBase
   m_TagString: Untagged
@@ -1014,9 +995,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owner: {fileID: 6808818981463780838}
-  _divisionPrefab: {fileID: 0}
+  _divisionPrefab: {fileID: 1901662057926781647, guid: 0cf6aab46ca58444f9e773cad0fcc4b6, type: 3}
   _increaseTimeSpan: 1
-  _initialNumber: 0
+  _initialNumber: 50
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
@@ -1033,6 +1014,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5167926934372598624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867258706819496200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716498b6728b4055972c9e665086282e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regionLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _divisionBase: {fileID: 4204007652438065845}
 --- !u!1 &6940363786754373938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2976226408871049080}
   - component: {fileID: 8667964680139658029}
+  - component: {fileID: 2123257526759248461}
+  - component: {fileID: 5236848030036785901}
   m_Layer: 0
   m_Name: RegionDefence
   m_TagString: Untagged
@@ -1313,6 +1312,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95cb83b72aa74bf6b33ae0d4e9dfb5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _owner: {fileID: 6808818981463780838}
   _region: {fileID: 3136169366310538372}
-  _health: {fileID: 339392615060291722}
-  _defenders: []
+  _health: {fileID: 0}
+  _defenders:
+  - {fileID: 4204007652438065845}
+  - {fileID: 158475208842468954}
+--- !u!54 &2123257526759248461
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738701400334805862}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &5236848030036785901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738701400334805862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 98.58, y: 1, z: 95.54}
+  m_Center: {x: 0, y: 0, z: 0}

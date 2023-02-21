@@ -29,6 +29,7 @@ namespace Src.Divisions.Base
         {
             _fraction = fraction;
             this.number = number;
+            queue = gameObject.AddComponent<ExecutionQueue>();
         }
 
         public void Deploy(Region region)
@@ -56,7 +57,7 @@ namespace Src.Divisions.Base
         
         protected IEnumerator AttackContinuously(IDamageable target)
         {
-            if (target.Equals(null)) yield break;
+            if (target.Equals(null) || target.IsDead()) yield break;
 
             yield return new WaitForSeconds(_gapBetweenAttacksInSeconds);
             
