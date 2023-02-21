@@ -1,0 +1,45 @@
+{
+    "name": "Actions",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "3e8f76f5-f207-4cf1-a69f-4e0762560b00",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "PassThrough",
+                    "id": "70730261-3bae-4408-b3b8-24296dc33470",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f68aebe-6ccf-4946-84ea-8d9ad02dfde6",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a93199a-c596-466a-9547-3e177e47ab9a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

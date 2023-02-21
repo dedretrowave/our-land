@@ -10,14 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5938817665109059438}
   - component: {fileID: 3523749710640832084}
-  - component: {fileID: 5938817665109059436}
   - component: {fileID: 5938817665109059439}
-  - component: {fileID: 5938817665109059432}
-  - component: {fileID: 5938817665109059443}
-  - component: {fileID: 5938817665109059442}
-  - component: {fileID: 6457137593086091897}
-  m_Layer: 0
-  m_Name: PlaneAttack
+  - component: {fileID: 3628966128257081524}
+  m_Layer: 6
+  m_Name: PlanesDivision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,67 +51,6 @@ MonoBehaviour:
   OnFractionChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5938817665109059436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d1855424374e499b312bb1b484ea8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _owner: {fileID: 3523749710640832084}
-  _movement: {fileID: 5938817665109059439}
-  _number: {fileID: 5938817665109059432}
-  _attacker: {fileID: 6457137593086091897}
-  OnNumberEqualsZero:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnNumberChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5938817666240155875}
-        m_TargetAssemblyTypeName: Src.Divisions.UI.DivisionNumberUI, Assembly-CSharp
-        m_MethodName: UpdateNumber
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDamageTaken:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5938817665109059432}
-        m_TargetAssemblyTypeName: Src.Divisions.Number.DivisionNumber, Assembly-CSharp
-        m_MethodName: Decrease
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5938817665109059439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,14 +58,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8ddf87b05884b97baf266cd84964bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
   _stopDistance: 0.3
---- !u!114 &5938817665109059432
+--- !u!114 &3628966128257081524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,59 +74,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5938817665109059434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba715bc38f44d578e354beed60124dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 742295c2eaff4252893810c286c5188a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnNumberEqualsZero:
-    m_PersistentCalls:
-      m_Calls: []
-  OnNumberChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!54 &5938817665109059443
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!65 &5938817665109059442
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 21.46, y: 1.59, z: 20.57}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6457137593086091897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6d00221a0349e78930f3e4c7360acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseBetweenAttacks: 0.1
-  owner: {fileID: 3523749710640832084}
-  OnDamageTaken:
+  _gapBetweenAttacksInSeconds: 0.02
+  _fraction: 0
+  _movement: {fileID: 0}
+  _onNumberChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5938817665136444647
@@ -239,7 +128,7 @@ GameObject:
   - component: {fileID: 5938817665308038244}
   - component: {fileID: 5938817665308038245}
   - component: {fileID: 5938817665308038246}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,14 +226,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5938817666240155868}
-  - component: {fileID: 5938817666240155875}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5938817666240155868
 Transform:
   m_ObjectHideFlags: 0
@@ -361,20 +249,6 @@ Transform:
   m_Father: {fileID: 5938817665136444646}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5938817666240155875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817666240155869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a8f1a6d00174072b8a64013f197cc19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 5938817666680433108}
-  _number: {fileID: 5938817665109059432}
 --- !u!1 &5938817666680433110
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +260,7 @@ GameObject:
   - component: {fileID: 5938817666680433109}
   - component: {fileID: 5938817666680433115}
   - component: {fileID: 5938817666680433108}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +411,7 @@ Transform:
   m_GameObject: {fileID: 5938817667016978794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5938817665136444646}
@@ -550,7 +424,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5938817667016978794}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5938817667016978792
 MeshRenderer:
   m_ObjectHideFlags: 0

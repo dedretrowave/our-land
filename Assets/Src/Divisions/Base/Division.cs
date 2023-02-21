@@ -1,56 +1,74 @@
-using System;
-using System.Collections.Generic;
-using Src.Divisions.Combat.Base;
-using Src.Divisions.Number;
+using System.Collections;
+using Src.Helpers;
+using Src.Interfaces;
 using Src.Regions;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Src.Divisions.Base
 {
-    public class Division : MonoBehaviour
+    public abstract class Division : MonoBehaviour
     {
+        [Header("Parameters")]
+        [SerializeField] private float _gapBetweenAttacksInSeconds = 0.02f;
+        
         [Header("Components")]
-        [SerializeField] private RegionOwner _owner;
         [SerializeField] private Movement.Movement _movement;
-        [SerializeField] private DivisionNumber _number;
-        [SerializeField] private Attacker _attacker;
 
         [Header("Events")]
-        public UnityEvent OnNumberEqualsZero;
-        public UnityEvent<int> OnNumberChange;
-        public UnityEvent OnDamageTaken;
+        [SerializeField] private UnityEvent<int> _onNumberChange;
 
-        public Fraction Fraction => _owner.Fraction;
-        public int Number => _number.Number;
-        public Type AttackerType => _attacker.GetType();
+        public Fraction Fraction => _fraction;
 
-        public void IncreaseNumber(int number = 1)
-        {
-            _number.Increase(number);
-        }
-
-        public void AttackEnemy(List<Division> enemies)
-        {
-            enemies.ForEach(AttackEnemy);
-        }
-
-        public void SetInitialParameters(Fraction fraction = Fraction.Neutral, int number = 0)
-        {
-            _owner.ChangeFraction(fraction);
-            _number.Increase(number);
-        }
+        protected int number;
+        protected ExecutionQueue queue;
         
-        private void AttackEnemy(Division enemy)
+        private Fraction _fraction;
+
+        public void Initialize(int number, Fraction fraction)
         {
-            _attacker.AttackTarget(enemy.GetComponent<Attacker>());
+            _fraction = fraction;
+            this.number = number;
         }
 
-        private void Start()
+        public void Deploy(Region region)
         {
-            _number.OnNumberEqualsZero.AddListener(OnNumberEqualsZero.Invoke);
-            _number.OnNumberChange.AddListener(OnNumberChange.Invoke);
-            _attacker.OnDamageTaken.AddListener(OnDamageTaken.Invoke);
+            _movement.ApplyPoint(region.transform.position);
+        }
+
+        public void TakeDamage()
+        {
+            int changedNumber = number - 1;
+
+            if (changedNumber == 0)
+            {
+                number = 0;
+                _onNumberChange.Invoke(number);
+                Die();
+                return;
+            }
+            
+            number = changedNumber;
+            _onNumberChange.Invoke(number);
+        }
+
+        public abstract void Attack(IDamageable target);
+        
+        protected IEnumerator AttackContinuously(IDamageable target)
+        {
+            if (target.Equals(null)) yield break;
+
+            yield return new WaitForSeconds(_gapBetweenAttacksInSeconds);
+            
+            TakeDamage();
+            target.TakeDamage();
+
+            yield return AttackContinuously(target);
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
         }
     }
 }

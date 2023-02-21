@@ -1,8 +1,7 @@
-using Src.Regions;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Divisions
+namespace Src.Regions
 {
     public class RegionOwner : MonoBehaviour
     {
