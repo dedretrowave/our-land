@@ -1,19 +1,22 @@
+using System.Collections;
 using Src.Divisions.Base;
 using Src.Interfaces;
 using Src.Regions;
+using UnityEngine;
 
 namespace Src.Divisions
 {
     public class PlanesDivision : Division
     {
-        public override void Attack(IDamageable target)
+        protected override IEnumerator AttackContinuously(IDamageable target)
         {
-            if (target.Equals(null) || target is Health)
-            {
-                return;
-            }
+            if (target.Equals(null) || target.IsDead() || target is Health) yield break;
+
+            yield return new WaitForSeconds(GapBetweenAttacksInSeconds);
             
-            queue.Add(AttackContinuously(target));
+            TakeDamage();
+
+            yield return AttackContinuously(target);
         }
     }
 }

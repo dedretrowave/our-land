@@ -10,6 +10,7 @@ namespace Src.Regions.RegionCombat
     {
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private Region _region;
+        [SerializeField] private Health _health;
         [SerializeField] private List<DivisionBase> _defenders;
 
         private Fraction _currentClaimerFraction;

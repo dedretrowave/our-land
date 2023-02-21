@@ -10,7 +10,7 @@ namespace Src.Divisions.Base
     public abstract class Division : MonoBehaviour
     {
         [Header("Parameters")]
-        [SerializeField] private float _gapBetweenAttacksInSeconds = 0.02f;
+        [SerializeField] protected float GapBetweenAttacksInSeconds = 0.02f;
         
         [Header("Components")]
         [SerializeField] private Movement.Movement _movement;
@@ -53,18 +53,11 @@ namespace Src.Divisions.Base
             _onNumberChange.Invoke(number);
         }
 
-        public abstract void Attack(IDamageable target);
+        protected abstract IEnumerator AttackContinuously(IDamageable target);
         
-        protected IEnumerator AttackContinuously(IDamageable target)
+        public void Attack(IDamageable target)
         {
-            if (target.Equals(null) || target.IsDead()) yield break;
-
-            yield return new WaitForSeconds(_gapBetweenAttacksInSeconds);
-            
-            TakeDamage();
-            target.TakeDamage();
-
-            yield return AttackContinuously(target);
+            queue.Add(AttackContinuously(target));
         }
 
         private void Die()

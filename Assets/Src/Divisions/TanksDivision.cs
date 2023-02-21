@@ -1,21 +1,31 @@
+using System.Collections;
 using Src.Divisions.Base;
 using Src.Interfaces;
 using Src.Regions.RegionDivisions.Base;
+using UnityEngine;
 
 namespace Src.Divisions
 {
     public class TanksDivision : Division
     {
-        public override void Attack(IDamageable target)
+        protected override IEnumerator AttackContinuously(IDamageable target)
         {
+            if (target.Equals(null) || target.IsDead()) yield break;
+
+            yield return new WaitForSeconds(GapBetweenAttacksInSeconds);
+            
+            TakeDamage();
+
             DivisionBase castedTarget = target as DivisionBase;
 
-            if (target.Equals(null) || (castedTarget != null && castedTarget.DivisionType == typeof(PlanesDivision)))
+            if (castedTarget != null && castedTarget.DivisionType == typeof(PlanesDivision))
             {
-                return;
+                yield break;
             }
+            
+            target.TakeDamage();
 
-            queue.Add(AttackContinuously(target));
+            yield return AttackContinuously(target);
         }
     }
 }

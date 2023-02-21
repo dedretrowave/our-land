@@ -15,10 +15,12 @@ namespace Src.Regions.RegionDivisions.Base
         [Header("Parameters")]
         [SerializeField] private float _increaseTimeSpan;
         [SerializeField] private int _initialNumber;
+        [SerializeField] private int _freezeTimeout;
 
         [SerializeField] private UnityEvent<int> _onNumberChange;
-        
-        private Coroutine _increaseRoutine;
+        [SerializeField] private UnityEvent _onNumberIncreaseFreeze;
+        [SerializeField] private UnityEvent _onNumberIncreaseUnFreeze;
+
         private Coroutine _spawnRoutine;
         private int _number;
         
@@ -31,6 +33,8 @@ namespace Src.Regions.RegionDivisions.Base
                 {
                     _number = 0;
                     _onNumberChange.Invoke(_number);
+                    _onNumberIncreaseFreeze.Invoke();
+                    StartCoroutine(Freeze());
                     return;
                 }
             
@@ -66,9 +70,25 @@ namespace Src.Regions.RegionDivisions.Base
             StartIncreasing();
         }
 
+        private IEnumerator Freeze()
+        {
+            StopIncrease();
+            
+            yield return new WaitForSeconds(_freezeTimeout);
+            
+            _onNumberIncreaseUnFreeze.Invoke();
+            
+            StartIncreasing();
+        }
+
         private void StartIncreasing()
         {
-            _increaseRoutine = StartCoroutine(IncreaseContinuously());
+            _spawnRoutine = StartCoroutine(IncreaseContinuously());
+        }
+        
+        private void StopIncrease()
+        {
+            StopCoroutine(_spawnRoutine);
         }
 
         private IEnumerator IncreaseContinuously()
