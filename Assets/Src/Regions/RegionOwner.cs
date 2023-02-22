@@ -1,8 +1,8 @@
-using Src.Regions;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Divisions
+namespace Src.Regions
 {
     public class RegionOwner : MonoBehaviour
     {
@@ -11,6 +11,11 @@ namespace Src.Divisions
         public Fraction Fraction => _fraction;
 
         [SerializeField] private UnityEvent<Fraction> OnFractionChanged;
+
+        private void Start()
+        {
+            OnFractionChanged.Invoke(_fraction);
+        }
 
         public void ChangeFraction(Fraction fraction)
         {

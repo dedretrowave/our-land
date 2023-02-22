@@ -1,56 +1,109 @@
-using System;
-using System.Collections.Generic;
-using Src.Divisions.Combat.Base;
-using Src.Divisions.Number;
+using System.Collections;
+using Src.Helpers;
+using Src.Interfaces;
 using Src.Regions;
+using Src.Regions.RegionDivisions.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Src.Divisions.Base
 {
-    public class Division : MonoBehaviour
+    //TODO: Разргрузить ответственности?
+    public abstract class Division : MonoBehaviour
     {
+        [Header("Parameters")]
+        [SerializeField] protected float GapBetweenAttacksInSeconds = 0.02f;
+        
         [Header("Components")]
-        [SerializeField] private RegionOwner _owner;
-        [SerializeField] private Movement.Movement _movement;
-        [SerializeField] private DivisionNumber _number;
-        [SerializeField] private Attacker _attacker;
+        [SerializeField] protected Movement.Movement _movement;
 
         [Header("Events")]
-        public UnityEvent OnNumberEqualsZero;
-        public UnityEvent<int> OnNumberChange;
-        public UnityEvent OnDamageTaken;
+        [SerializeField] private UnityEvent<int> _onNumberChange;
 
-        public Fraction Fraction => _owner.Fraction;
-        public int Number => _number.Number;
-        public Type AttackerType => _attacker.GetType();
+        public Fraction Fraction => _fraction;
+        
+        protected ExecutionQueue queue;
+        protected Health attackedRegionHealth;
+        protected DivisionBase divisionBase;
 
-        public void IncreaseNumber(int number = 1)
+        protected int Number
         {
-            _number.Increase(number);
+            get => _number;
+            set
+            {
+                if (value <= 0)
+                {
+                    _number = 0;
+                    _onNumberChange.Invoke(_number);
+                    Die();
+                    return;
+                }
+
+                _number = value;
+                _onNumberChange.Invoke(_number);
+            }
         }
 
-        public void AttackEnemy(List<Division> enemies)
+        private int _number;
+        private Fraction _fraction;
+
+        public void Initialize(int initialNumber, Fraction fraction, DivisionBase parentBase)
         {
-            enemies.ForEach(AttackEnemy);
+            _fraction = fraction;
+            _number = initialNumber;
+            queue = gameObject.AddComponent<ExecutionQueue>();
+            queue.OnExecutionFinished.AddListener(ProceedAfterSuccessfulAttack);
+            divisionBase = parentBase;
         }
 
-        public void SetInitialParameters(Fraction fraction = Fraction.Neutral, int number = 0)
+        public void AddAttackedRegionHealth(Health health)
         {
-            _owner.ChangeFraction(fraction);
-            _number.Increase(number);
+            attackedRegionHealth = health;
+        }
+
+        public void Deploy(Region region)
+        {
+            _movement.ApplyPoint(region.transform.position);
+        }
+
+        public void TakeDamage()
+        {
+            Number--;
+        }
+
+        protected abstract void ProceedAfterSuccessfulAttack();
+
+        public void Attack(IDamageable target)
+        {
+            if (target.Equals(divisionBase)) return;
+            
+            queue.Add(AttackContinuously(target));
+        }
+
+        public void Supply(DivisionBase targetBase)
+        {
+            if (targetBase.Equals(divisionBase)) return;
+            
+            queue.Add(SupplyContinuously(targetBase));
         }
         
-        private void AttackEnemy(Division enemy)
+        protected abstract IEnumerator AttackContinuously(IDamageable target);
+
+        private IEnumerator SupplyContinuously(DivisionBase targetBase)
         {
-            _attacker.AttackTarget(enemy.GetComponent<Attacker>());
+            if (targetBase.Equals(null) || targetBase.DivisionType != GetType()) yield break;
+
+            targetBase.IncreaseNumber();
+            Number--;
+
+            yield return new WaitForSeconds(GapBetweenAttacksInSeconds);
+
+            yield return SupplyContinuously(targetBase);
         }
 
-        private void Start()
+        private void Die()
         {
-            _number.OnNumberEqualsZero.AddListener(OnNumberEqualsZero.Invoke);
-            _number.OnNumberChange.AddListener(OnNumberChange.Invoke);
-            _attacker.OnDamageTaken.AddListener(OnDamageTaken.Invoke);
+            Destroy(gameObject);
         }
     }
 }

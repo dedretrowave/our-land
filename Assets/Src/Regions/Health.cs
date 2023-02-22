@@ -1,4 +1,3 @@
-using System.Collections;
 using Src.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,24 +8,16 @@ namespace Src.Regions
     {
         [Header("Parameters")]
         [SerializeField] private float _maxHealth = 50;
-        [SerializeField] private float _regenerationPerSec = 1;
-        [SerializeField] private float _regenerationTimeout = 5;
         [Header("Events")]
         [SerializeField] private UnityEvent OnOutOfHealth;
-        [SerializeField] private UnityEvent OnHealthIncrease;
-        [SerializeField] private UnityEvent OnHealthDecrease;
 
         private float _currentHealth;
 
         private Coroutine _regenerationCoroutine;
 
-        private void Start()
-        {
-            _currentHealth = _maxHealth;
-        }
-
         public void Decrease(int amount = 1)
         {
+            Debug.Log("HEALTH DECREASED");
             float decreasedHealth = _currentHealth - amount;
 
             if (decreasedHealth <= 0)
@@ -36,8 +27,23 @@ namespace Src.Regions
                 return;
             }
             
-            OnHealthDecrease.Invoke();
             _currentHealth = decreasedHealth;
+        }
+        
+        public void TakeDamage()
+        {
+            Debug.Log("DAMAGE TAKEN");
+            Decrease();
+        }
+
+        public bool IsDead()
+        {
+            return _currentHealth == 0;
+        }
+        
+        private void Start()
+        {
+            _currentHealth = _maxHealth;
         }
 
         private void Increase(float amount = 1)
@@ -50,49 +56,13 @@ namespace Src.Regions
                 StopRegenerating();
                 return;
             }
-
-            OnHealthIncrease.Invoke();
-            _currentHealth = increasedHealth;
-        }
-
-        private IEnumerator StartRegeneratingAfterTimeout()
-        {
-            yield return new WaitForSeconds(_regenerationTimeout);
             
-            StartRegenerating();
-        }
-
-        private void StartRegenerating()
-        {
-            _regenerationCoroutine = StartCoroutine(RegenerateAfterTimeout());
+            _currentHealth = increasedHealth;
         }
 
         private void StopRegenerating()
         {
             StopCoroutine(_regenerationCoroutine);
-        }
-
-        private IEnumerator RegenerateAfterTimeout()
-        {
-            float frameRate = 60f;
-            
-            yield return new WaitForSeconds(1f / frameRate);
-
-            Regenerate();
-
-            yield return RegenerateAfterTimeout();
-        }
-
-        private void Regenerate()
-        {
-            float frameRate = 60f;
-            
-            Increase(_regenerationPerSec / frameRate);
-        }
-
-        public void TakeDamage()
-        {
-            Decrease();
         }
     }
 }
