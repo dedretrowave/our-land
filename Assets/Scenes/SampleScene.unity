@@ -646,18 +646,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3136169366482471713, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-      propertyPath: m_Color.b
-      value: 0.12941176
-      objectReference: {fileID: 0}
-    - target: {fileID: 3136169366482471713, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-      propertyPath: m_Color.g
-      value: 0.14252628
-      objectReference: {fileID: 0}
-    - target: {fileID: 3136169366482471713, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7921569
-      objectReference: {fileID: 0}
     - target: {fileID: 3136169366520445697, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -672,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360048577848512793, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5405660425125922398, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_Enabled
@@ -728,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8667964680139658029, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: _defenders.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8738701400334805862, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_Layer

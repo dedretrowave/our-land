@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,11 @@ namespace Src.Regions
         public Fraction Fraction => _fraction;
 
         [SerializeField] private UnityEvent<Fraction> OnFractionChanged;
+
+        private void Start()
+        {
+            OnFractionChanged.Invoke(_fraction);
+        }
 
         public void ChangeFraction(Fraction fraction)
         {
