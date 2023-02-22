@@ -8,9 +8,17 @@ namespace Src.Divisions
 {
     public class TanksDivision : Division
     {
+        protected override void ProceedAfterSuccessfulAttack()
+        {
+            Attack(attackedRegionHealth);
+        }
+
         protected override IEnumerator AttackContinuously(IDamageable target)
         {
-            if (target.Equals(null) || target.IsDead()) yield break;
+            if (target.Equals(null) || target.IsDead())
+            {
+                yield break;
+            }
 
             yield return new WaitForSeconds(GapBetweenAttacksInSeconds);
             
@@ -20,7 +28,7 @@ namespace Src.Divisions
 
             if (castedTarget != null && castedTarget.DivisionType == typeof(PlanesDivision))
             {
-                yield break;
+                yield return AttackContinuously(target);
             }
             
             target.TakeDamage();

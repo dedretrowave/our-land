@@ -501,6 +501,7 @@ MonoBehaviour:
   _divisionPrefab: {fileID: 3628966128257081524, guid: 45250df749bf2024ba838ddf8e7280ec, type: 3}
   _increaseTimeSpan: 3
   _initialNumber: 20
+  _freezeTimeout: 0
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
@@ -517,6 +518,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onNumberIncreaseFreeze:
+    m_PersistentCalls:
+      m_Calls: []
+  _onNumberIncreaseUnFreeze:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5976678655201424467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _regionLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   _divisionBase: {fileID: 158475208842468954}
 --- !u!1 &5152831462918620821
 GameObject:
@@ -1027,6 +1034,7 @@ MonoBehaviour:
   _divisionPrefab: {fileID: 1901662057926781647, guid: 0cf6aab46ca58444f9e773cad0fcc4b6, type: 3}
   _increaseTimeSpan: 1
   _initialNumber: 50
+  _freezeTimeout: 0
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
@@ -1043,6 +1051,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onNumberIncreaseFreeze:
+    m_PersistentCalls:
+      m_Calls: []
+  _onNumberIncreaseUnFreeze:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5167926934372598624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _regionLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   _divisionBase: {fileID: 4204007652438065845}
 --- !u!1 &6940363786754373938
 GameObject:

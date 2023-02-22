@@ -17,6 +17,7 @@ namespace Src.Regions
 
         public void Decrease(int amount = 1)
         {
+            Debug.Log("HEALTH DECREASED");
             float decreasedHealth = _currentHealth - amount;
 
             if (decreasedHealth <= 0)
@@ -31,6 +32,7 @@ namespace Src.Regions
         
         public void TakeDamage()
         {
+            Debug.Log("DAMAGE TAKEN");
             Decrease();
         }
 

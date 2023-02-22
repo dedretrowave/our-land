@@ -13,26 +13,41 @@ namespace Src.Regions.RegionCombat
         [SerializeField] private Health _health;
         [SerializeField] private List<DivisionBase> _defenders;
 
+        private readonly List<Division> _offenders = new();
         private Fraction _currentClaimerFraction;
-        
+
         public void GiveUpRegion()
         {
             _region.ChangeOwner(_currentClaimerFraction);
+            _offenders.ForEach(Supply);
+            _offenders.Clear();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Division enemy) && enemy.Fraction != _owner.Fraction)
+            if (!other.TryGetComponent(out Division division)) return;
+
+            if (division.Fraction != _owner.Fraction)
             {
-                Defend(enemy);
+                Defend(division);
             }
+            else
+            {
+                Supply(division);
+            }
+        }
+
+        private void Supply(Division division)
+        {
+            _defenders.ForEach(division.Supply);
         }
 
         private void Defend(Division offence)
         {
+            _offenders.Add(offence);
             SetRegionClaimer(offence.Fraction);
-            
             _defenders.ForEach(offence.Attack);
+            offence.AddAttackedRegionHealth(_health);
         }
 
         private void SetRegionClaimer(Fraction fraction)

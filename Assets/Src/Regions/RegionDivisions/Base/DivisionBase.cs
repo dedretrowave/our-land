@@ -49,7 +49,7 @@ namespace Src.Regions.RegionDivisions.Base
         {
             Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
             
-            division.Initialize(Number, _owner.Fraction);
+            division.Initialize(Number, _owner.Fraction, this);
             Number = 0;
             division.Deploy(region);
         }
@@ -57,6 +57,11 @@ namespace Src.Regions.RegionDivisions.Base
         public void TakeDamage()
         {
             Number -= 1;
+        }
+
+        public void IncreaseNumber()
+        {
+            Number++;
         }
 
         public bool IsDead()
@@ -67,38 +72,39 @@ namespace Src.Regions.RegionDivisions.Base
         private void Start()
         {
             Number = _initialNumber;
-            StartIncreasing();
+            StartIncreasingNumber();
         }
 
         private IEnumerator Freeze()
         {
-            StopIncrease();
+            StopIncreaseNumber();
             
             yield return new WaitForSeconds(_freezeTimeout);
             
             _onNumberIncreaseUnFreeze.Invoke();
             
-            StartIncreasing();
+            StartIncreasingNumber();
         }
 
-        private void StartIncreasing()
+        private void StartIncreasingNumber()
         {
-            _spawnRoutine = StartCoroutine(IncreaseContinuously());
+            _spawnRoutine = StartCoroutine(IncreaseNumberContinuously());
         }
         
-        private void StopIncrease()
+        private void StopIncreaseNumber()
         {
             StopCoroutine(_spawnRoutine);
         }
 
-        private IEnumerator IncreaseContinuously()
+        private IEnumerator IncreaseNumberContinuously()
         {
             yield return new WaitForSeconds(_increaseTimeSpan);
-
-            Number++;
+            
+            IncreaseNumber();
+            
             _onNumberChange.Invoke(Number);
 
-            yield return IncreaseContinuously();
+            yield return IncreaseNumberContinuously();
         }
     }
 }
