@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Divisions
+namespace Src.Regions.Structures
 {
     public class DivisionGarrison : MonoBehaviour
     {

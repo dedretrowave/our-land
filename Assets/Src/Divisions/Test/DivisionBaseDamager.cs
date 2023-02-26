@@ -13,8 +13,8 @@ namespace Src.Divisions.Test
         private void Start()
         {
             Division mock = gameObject.AddComponent<Division>();
-            mock.Init(_fraction, _amount);
-            _target.RegisterDivision(mock);
+            // mock.Init(_fraction, _amount);
+            // _target.RegisterDivision(mock);
         }
     }
 }

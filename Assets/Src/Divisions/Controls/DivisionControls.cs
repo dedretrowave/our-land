@@ -1,5 +1,5 @@
 using Src.Interfaces;
-using Src.Regions;
+using Src.Regions.Structures;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

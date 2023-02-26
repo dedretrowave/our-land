@@ -1,8 +1,9 @@
 using System;
+using Src.Divisions;
 using Src.Regions.Fraction;
 using UnityEngine;
 
-namespace Src.Divisions
+namespace Src.Regions.Structures
 {
     public class DivisionBase : MonoBehaviour
     {
@@ -15,7 +16,7 @@ namespace Src.Divisions
         public void SendDivision(Vector3 target)
         {
             Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
-            division.Init(_owner.Fraction, _garrison.Amount);
+            division.Init(_owner.Fraction, _garrison.Amount, this);
             _garrison.DecreaseToNumber(0);
             division.Deploy(target);
         }

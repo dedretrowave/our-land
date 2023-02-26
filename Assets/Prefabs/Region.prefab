@@ -737,8 +737,9 @@ GameObject:
   - component: {fileID: 346865348849306224}
   - component: {fileID: 2401162446576941827}
   - component: {fileID: 3614752591956158363}
+  - component: {fileID: 1413372750530121828}
   m_Layer: 0
-  m_Name: TankDivisionBase
+  m_Name: DivisionBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,6 +829,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Src.Regions.Structures.DivisionsGenerator, Assembly-CSharp
+        m_MethodName: StopForTimeout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
@@ -843,6 +856,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1413372750530121828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867258706819496200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f954e25d3641369390f07ed4500b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _garrison: {fileID: 3614752591956158363}
+  _generationRate: 2
+  _generationFreezeTimeout: 5
 --- !u!1 &8738701400334805862
 GameObject:
   m_ObjectHideFlags: 0

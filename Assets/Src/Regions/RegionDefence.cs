@@ -1,5 +1,6 @@
 using Src.Divisions;
 using Src.Regions.Fraction;
+using Src.Regions.Structures;
 using UnityEngine;
 
 namespace Src.Regions
@@ -16,12 +17,12 @@ namespace Src.Regions
             _owner.Change(_regionClaimer);
         }
 
-        public void RegisterDivision(Division division)
+        private void RegisterDivision(Division division)
         {
+            if (division.ParentBase.Equals(_base)) return;
+            
             _regionClaimer = division.Fraction;
-            
-            Debug.Log(division.Fraction != _owner.Fraction);
-            
+
             if (division.Fraction != _owner.Fraction)
             {
                 _base.TakeDamage(division.Number);
@@ -30,9 +31,11 @@ namespace Src.Regions
             {
                 _base.TakeSupplies(division.Number);
             }
+            
+            Destroy(division.gameObject);
         }
 
-        private void Start()
+        private void Awake()
         {
             _regionClaimer = _owner.Fraction;
         }
