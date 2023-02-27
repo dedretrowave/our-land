@@ -13,12 +13,12 @@ namespace Src.Regions.Structures
 
         private int _divisionsAfterAttack;
 
-        public void SendDivision(Vector3 target)
+        public Division DeployDivision()
         {
             Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
             division.Init(_owner.Fraction, _garrison.Amount, this);
             _garrison.DecreaseToNumber(0);
-            division.Deploy(target);
+            return division;
         }
 
         public void TakeDamage(int amount)
