@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5938817665109059438}
-  - component: {fileID: 5938817665109059439}
-  - component: {fileID: 1901662057926781647}
   - component: {fileID: 4445813343174873280}
   - component: {fileID: 7952290819443595918}
+  - component: {fileID: 7075973460332429507}
+  - component: {fileID: 3138274083587450208}
   m_Layer: 6
   m_Name: TanksDivision
   m_TagString: Untagged
@@ -36,37 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5938817665109059439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ddf87b05884b97baf266cd84964bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _stopDistance: 0.3
---- !u!114 &1901662057926781647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938817665109059434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f56cdd39e2147cea2f26edd35ada192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gapBetweenAttacksInSeconds: 0.02
-  _movement: {fileID: 5938817665109059439}
-  _onNumberChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &4445813343174873280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +65,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7075973460332429507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938817665109059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c445c6b08c3494ebdb6a5ac0f35b026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: 3138274083587450208}
+--- !u!114 &3138274083587450208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938817665109059434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae795ee5a0b04c4f8393bb49386a4601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 50
+  _stopDistance: 0.1
 --- !u!1 &5938817665136444647
 GameObject:
   m_ObjectHideFlags: 0

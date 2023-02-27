@@ -1,3 +1,6 @@
+using Src.Divisions;
+using Src.Regions.Fraction;
+using Src.Regions.Structures;
 using UnityEngine;
 
 namespace Src.Regions
@@ -5,12 +8,19 @@ namespace Src.Regions
     public class Region : MonoBehaviour
     {
         [SerializeField] private RegionOwner _owner;
+        [SerializeField] private DivisionBase _base;
 
-        private Fraction _newClaimerFraction;
+        public RegionOwner Owner => _owner;
+        public DivisionBase Base => _base;
 
-        public void ChangeOwner(Fraction fraction)
+        public Division DeployDivision()
         {
-            _owner.ChangeFraction(fraction);
+            return _base.DeployDivision();
+        }
+        
+        public Vector3 GetPosition()
+        {
+            return _base.transform.position;
         }
     }
 }
