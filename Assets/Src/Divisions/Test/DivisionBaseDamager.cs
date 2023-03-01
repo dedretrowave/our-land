@@ -1,4 +1,5 @@
 using Src.Regions;
+using Src.Regions.Defence;
 using Src.Regions.Fraction;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Src.Divisions.Test
 {
     public class DivisionBaseDamager : MonoBehaviour
     {
-        [SerializeField] private RegionDefence _target;
+        [SerializeField] private RegionCombatZone _target;
         [SerializeField] private int _amount;
         [SerializeField] private Fraction _fraction = Fraction.Enemy;
 

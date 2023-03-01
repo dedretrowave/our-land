@@ -808,6 +808,7 @@ GameObject:
   - component: {fileID: 1545287515}
   - component: {fileID: 1545287517}
   - component: {fileID: 1545287516}
+  - component: {fileID: 1545287518}
   m_Layer: 5
   m_Name: Input
   m_TagString: Untagged
@@ -850,6 +851,36 @@ MonoBehaviour:
   _regionLayer:
     serializedVersion: 2
     m_Bits: 64
+  _onPointerDownEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1545287518}
+        m_TargetAssemblyTypeName: Src.Divisions.Movement.DivisionMover, Assembly-CSharp
+        m_MethodName: GetRegion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPointerUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1545287518}
+        m_TargetAssemblyTypeName: Src.Divisions.Movement.DivisionMover, Assembly-CSharp
+        m_MethodName: DeployDivision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1545287516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,6 +916,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545287513}
   m_CullTransparentMesh: 1
+--- !u!114 &1545287518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545287513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1805081b01064e108d7f58d92c3c059f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1948393115
 PrefabInstance:
   m_ObjectHideFlags: 0
