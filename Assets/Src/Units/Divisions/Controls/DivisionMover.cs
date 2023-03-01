@@ -1,8 +1,9 @@
+using Src.Divisions;
 using Src.Regions;
 using Src.Regions.Fraction;
 using UnityEngine;
 
-namespace Src.Divisions.Movement
+namespace Src.Units.Divisions.Controls
 {
     public class DivisionMover : MonoBehaviour
     {

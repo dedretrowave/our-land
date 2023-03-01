@@ -1,13 +1,15 @@
 using System;
 using Src.Divisions;
 using Src.Regions.Fraction;
+using Src.Units.Base;
+using Src.Units.Divisions;
 using UnityEngine;
 
 namespace Src.Regions.Structures
 {
     public class DivisionBase : MonoBehaviour
     {
-        [SerializeField] private DivisionGarrison _garrison;
+        [SerializeField] private Garrison _garrison;
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private Division _divisionPrefab;
 

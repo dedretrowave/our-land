@@ -1,13 +1,12 @@
-using Src.Divisions.Movement;
 using Src.Regions.Fraction;
 using Src.Regions.Structures;
 using UnityEngine;
 
-namespace Src.Divisions
+namespace Src.Units.Divisions
 {
     public class Division : MonoBehaviour
     {
-        [SerializeField] private DivisionMovement _movement;
+        [SerializeField] private Units.Movement.Movement _movement;
         
         private Fraction _fraction;
         private int _number;

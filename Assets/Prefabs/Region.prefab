@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 3136169366310538375}
   - component: {fileID: 8291560799260359753}
   - component: {fileID: 923994390792867532}
-  - component: {fileID: 7343441422020021091}
   - component: {fileID: 825421651337453074}
   - component: {fileID: 8173738863651191152}
   m_Layer: 7
@@ -182,19 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 8291560799260359753}
   _base: {fileID: 2401162446576941827}
---- !u!114 &7343441422020021091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3136169366310538374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deac20e3fb9442e08ef20a9536a7d9d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementPoint: {fileID: 346865348849306224}
 --- !u!54 &825421651337453074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -809,8 +795,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3209337543879126899}
-        m_TargetAssemblyTypeName: Src.Divisions.UI.GarrisonUI, Assembly-CSharp
-        m_MethodName: UpdateAmount
+        m_TargetAssemblyTypeName: Src.Units.Divisions.UI.PlainDataDisplay, Assembly-CSharp
+        m_MethodName: UpdateData
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,24 +830,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Src.Regions.Structures.DivisionsGenerator, Assembly-CSharp
-        m_MethodName: StopForTimeout
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3209337543879126899}
         m_TargetAssemblyTypeName: Src.Divisions.UI.GarrisonUI, Assembly-CSharp
-        m_MethodName: UpdateAmount
+        m_MethodName: UpdateData
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,6 +870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2976226408871049080}
   - component: {fileID: 6907974064626062261}
+  - component: {fileID: 4695132402920665189}
   - component: {fileID: 4114566167868690401}
   - component: {fileID: 1381827114424796674}
   m_Layer: 0
@@ -934,6 +909,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 8291560799260359753}
   _base: {fileID: 2401162446576941827}
+  _defence: {fileID: 4695132402920665189}
+--- !u!114 &4695132402920665189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738701400334805862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe46d17fe7164f6484e65e11e492a80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &4114566167868690401
 BoxCollider:
   m_ObjectHideFlags: 0

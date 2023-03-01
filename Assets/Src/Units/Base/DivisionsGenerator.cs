@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Src.Regions.Structures
+namespace Src.Units.Base
 {
     public class DivisionsGenerator : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private DivisionGarrison _garrison;
+        [SerializeField] private Garrison _garrison;
 
         [Header("Parameters")]
         [SerializeField] private float _generationRate = 2f;

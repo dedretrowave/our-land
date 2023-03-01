@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Regions.Structures
+namespace Src.Units.Base
 {
-    public class DivisionGarrison : MonoBehaviour
+    public class Garrison : MonoBehaviour
     {
         public int Amount => _amount;
 

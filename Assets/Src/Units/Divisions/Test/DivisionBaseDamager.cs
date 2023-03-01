@@ -1,6 +1,7 @@
 using Src.Regions;
-using Src.Regions.Defence;
+using Src.Regions.Combat;
 using Src.Regions.Fraction;
+using Src.Units.Divisions;
 using UnityEngine;
 
 namespace Src.Divisions.Test

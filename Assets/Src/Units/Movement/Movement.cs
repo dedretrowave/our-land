@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Src.Divisions.Movement
+namespace Src.Units.Movement
 {
-    public class DivisionMovement : MonoBehaviour
+    public class Movement : MonoBehaviour
     {
         [Header("Parameters")]
         [SerializeField] private float _speed;
