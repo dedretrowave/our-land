@@ -112,10 +112,11 @@ GameObject:
   - component: {fileID: 3136169366310538375}
   - component: {fileID: 8291560799260359753}
   - component: {fileID: 923994390792867532}
-  - component: {fileID: 7343441422020021091}
   - component: {fileID: 825421651337453074}
   - component: {fileID: 8173738863651191152}
-  m_Layer: 7
+  - component: {fileID: 6641692104993019236}
+  - component: {fileID: 3772129395205404661}
+  m_Layer: 6
   m_Name: Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +136,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3136169366587771634}
-  - {fileID: 2976226408871049080}
   - {fileID: 346865348849306224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -182,19 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 8291560799260359753}
   _base: {fileID: 2401162446576941827}
---- !u!114 &7343441422020021091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3136169366310538374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deac20e3fb9442e08ef20a9536a7d9d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementPoint: {fileID: 346865348849306224}
 --- !u!54 &825421651337453074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -224,6 +211,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 102.3, y: 1, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6641692104993019236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3136169366310538374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac47c8daaf924ff2a263b1a3dcfbaf40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _owner: {fileID: 8291560799260359753}
+  _base: {fileID: 2401162446576941827}
+  _defence: {fileID: 3772129395205404661}
+--- !u!114 &3772129395205404661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3136169366310538374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe46d17fe7164f6484e65e11e492a80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _owner: {fileID: 8291560799260359753}
 --- !u!1 &3136169366482471715
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +789,7 @@ Transform:
   m_Children:
   - {fileID: 5447667900089108363}
   m_Father: {fileID: 3136169366310538375}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2401162446576941827
 MonoBehaviour:
@@ -809,8 +824,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3209337543879126899}
-        m_TargetAssemblyTypeName: Src.Divisions.UI.GarrisonUI, Assembly-CSharp
-        m_MethodName: UpdateAmount
+        m_TargetAssemblyTypeName: Src.Units.Divisions.UI.PlainDataDisplay, Assembly-CSharp
+        m_MethodName: UpdateData
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -820,7 +835,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6907974064626062261}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Src.RegionDefence, Assembly-CSharp
         m_MethodName: ChangeOwner
         m_Mode: 1
@@ -844,24 +859,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Src.Regions.Structures.DivisionsGenerator, Assembly-CSharp
-        m_MethodName: StopForTimeout
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _onNumberChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3209337543879126899}
         m_TargetAssemblyTypeName: Src.Divisions.UI.GarrisonUI, Assembly-CSharp
-        m_MethodName: UpdateAmount
+        m_MethodName: UpdateData
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -886,80 +889,3 @@ MonoBehaviour:
   _garrison: {fileID: 3614752591956158363}
   _generationRate: 2
   _generationFreezeTimeout: 5
---- !u!1 &8738701400334805862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2976226408871049080}
-  - component: {fileID: 6907974064626062261}
-  - component: {fileID: 4114566167868690401}
-  - component: {fileID: 1381827114424796674}
-  m_Layer: 0
-  m_Name: RegionDefence
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2976226408871049080
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738701400334805862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3136169366310538375}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6907974064626062261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738701400334805862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac47c8daaf924ff2a263b1a3dcfbaf40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _owner: {fileID: 8291560799260359753}
-  _base: {fileID: 2401162446576941827}
---- !u!65 &4114566167868690401
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738701400334805862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 25, y: 1, z: 25}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1381827114424796674
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738701400334805862}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0

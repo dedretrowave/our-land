@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Regions.Structures
+namespace Src.Units.Base
 {
-    public class DivisionGarrison : MonoBehaviour
+    public class Garrison : MonoBehaviour
     {
         public int Amount => _amount;
 
@@ -18,10 +18,20 @@ namespace Src.Regions.Structures
         [SerializeField] private UnityEvent<int> _onNumberChange;
 
         private int _amount;
+
+        public void IncreaseByOne()
+        {
+            IncreaseToNumber(_amount + 1);
+        }
         
         public void IncreaseToNumber(int number)
         {
             StartCoroutine(ChangeToNumber(number, Increase));
+        }
+        
+        public void DecreaseByOne()
+        {
+            DecreaseToNumber(_amount - 1);
         }
 
         public void DecreaseToNumber(int number)

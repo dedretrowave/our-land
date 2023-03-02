@@ -1,6 +1,7 @@
 using Src.Divisions;
 using Src.Regions.Fraction;
 using Src.Regions.Structures;
+using Src.Units.Divisions;
 using UnityEngine;
 
 namespace Src.Regions
