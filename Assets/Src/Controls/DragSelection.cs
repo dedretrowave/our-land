@@ -4,10 +4,10 @@ using UnityEngine.EventSystems;
 
 namespace Src.Controls
 {
-    public class RegionSelector : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class DragSelection : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [Header("Parameters")]
-        [SerializeField] private LayerMask _regionLayer;
+        [SerializeField] private LayerMask _selectionLayer;
         
         private const float Raycastdepth = 1000;
 
@@ -17,6 +17,8 @@ namespace Src.Controls
         public void OnPointerDown(PointerEventData eventData)
         {
             Transform hitTransform = GetRaycastHit(eventData);
+
+            if (hitTransform == null) return;
             
             _onPointerDownEvent.Invoke(hitTransform);
         }
@@ -24,6 +26,8 @@ namespace Src.Controls
         public void OnPointerUp(PointerEventData eventData)
         {
             Transform hitTransform = GetRaycastHit(eventData);
+
+            if (hitTransform == null) return;
 
             _onPointerUpEvent.Invoke(hitTransform);
         }
@@ -38,7 +42,7 @@ namespace Src.Controls
             Physics.Raycast(Camera.main.ScreenPointToRay(mousePosition),
                 out RaycastHit hit,
                 Raycastdepth,
-                _regionLayer);
+                _selectionLayer);
 
             Transform hitTransform = hit.transform;
 

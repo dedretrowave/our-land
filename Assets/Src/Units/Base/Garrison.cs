@@ -18,10 +18,20 @@ namespace Src.Units.Base
         [SerializeField] private UnityEvent<int> _onNumberChange;
 
         private int _amount;
+
+        public void IncreaseByOne()
+        {
+            IncreaseToNumber(_amount + 1);
+        }
         
         public void IncreaseToNumber(int number)
         {
             StartCoroutine(ChangeToNumber(number, Increase));
+        }
+        
+        public void DecreaseByOne()
+        {
+            DecreaseToNumber(_amount - 1);
         }
 
         public void DecreaseToNumber(int number)

@@ -11,7 +11,7 @@ namespace Src.Regions.Combat
     {
         [SerializeField] private RegionOwner _owner; 
             
-        private List<Defender> _defenders;
+        private List<Defender> _defenders = new();
 
         public Fraction.Fraction Fraction => _owner.Fraction;
 

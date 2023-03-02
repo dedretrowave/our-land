@@ -39,7 +39,7 @@ namespace Src.Units.Base
 
         private void Create()
         {
-            _garrison.IncreaseToNumber(_garrison.Amount + 1);
+            _garrison.IncreaseByOne();
         }
 
         private IEnumerator Freeze()

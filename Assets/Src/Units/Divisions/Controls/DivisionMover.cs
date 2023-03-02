@@ -1,4 +1,3 @@
-using Src.Divisions;
 using Src.Regions;
 using Src.Regions.Fraction;
 using UnityEngine;
@@ -9,9 +8,11 @@ namespace Src.Units.Divisions.Controls
     {
         private Region _region;
         
-        public void GetRegion(Transform directionPoint)
+        public void SetRegion(Transform directionPoint)
         {
             Region region = directionPoint.GetComponent<Region>();
+
+            if (region == null) return;
 
             if (region.Owner.Fraction == Fraction.Player)
             {
