@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bc9a826c7e41b88ee5afe28b5eb1ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fraction: 2
   _defenderPrefab: {fileID: 7680170888511487902, guid: b9a7d2f6128079942b1292971e0580db, type: 3}
   _garrison: {fileID: 606508725}
 --- !u!1 &705507993
@@ -1341,6 +1342,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3772129395205404661, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: _defenders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4204007652438065845, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: _freezeTimeout
       value: 10
@@ -1664,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8173738863651191152, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8738701400334805862, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: m_Layer
@@ -1674,6 +1679,5 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7343441422020021091, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}

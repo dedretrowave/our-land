@@ -20,16 +20,19 @@ namespace Src.Regions.Combat
             _defenders.ForEach(defender => defender.InteractWithEnemy(enemy));
         }
 
-        private void OnTriggerEnter(Collider other)
+        public T GetDefenderOfType<T>()
         {
-            if (!other.TryGetComponent(out Defender defender)) return;
-
-            RegisterDefender(defender);
+            return (T) GetDefenderOfType(typeof(T));
         }
 
-        private void RegisterDefender(Defender defender)
+        public void RegisterDefender(Defender defender)
         {
             _defenders.Add(defender);
+        }
+        
+        private object GetDefenderOfType(Type type)
+        {
+            return _defenders.Find(defender => defender.GetType() == type);
         }
     }
 }
