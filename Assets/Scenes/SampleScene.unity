@@ -1410,6 +1410,22 @@ PrefabInstance:
       propertyPath: _fraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8173738863651191152, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: m_Size.x
+      value: 26.14647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173738863651191152, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: m_Size.z
+      value: 25.875494
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173738863651191152, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: m_Center.x
+      value: 0.5798454
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173738863651191152, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
+      propertyPath: m_Center.z
+      value: -0.12846088
+      objectReference: {fileID: 0}
     - target: {fileID: 8291560799260359753, guid: be4981c6a2a19c54e9719d1505d1d82e, type: 3}
       propertyPath: _fraction
       value: 1

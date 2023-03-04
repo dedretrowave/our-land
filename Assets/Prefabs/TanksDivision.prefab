@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7952290819443595918}
   - component: {fileID: 7075973460332429507}
   - component: {fileID: 3138274083587450208}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TanksDivision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

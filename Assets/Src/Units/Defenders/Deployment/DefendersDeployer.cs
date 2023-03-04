@@ -1,3 +1,4 @@
+using Src.Regions;
 using Src.Regions.Combat;
 using Src.Regions.Fraction;
 using Src.Units.Base;
@@ -17,11 +18,11 @@ namespace Src.Units.Defenders.Deployment
 
         public void Deploy(Transform regionTransform)
         {
-            if (!regionTransform.TryGetComponent(out RegionDefence defence) || _garrison.Amount == 0) return;
+            if (!regionTransform.TryGetComponent(out Region region) || _garrison.Amount == 0) return;
 
             Defender defender = Instantiate(_defenderPrefab, transform.position, Quaternion.identity);
             _garrison.DecreaseByOne();
-            defender.Init(defence, _fraction);
+            defender.Init(region.Defence, _fraction);
         }
     }
 }
