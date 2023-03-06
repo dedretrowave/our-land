@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Units.Base
+namespace Src.Units.Number
 {
     public class Garrison : MonoBehaviour
     {
@@ -11,40 +11,24 @@ namespace Src.Units.Base
 
         [Header("Parameters")]
         [SerializeField] private int _initialNumber;
-        [SerializeField] private float _changeRateInSeconds = 0.02f;
-        
+
         [Header("Events")]
         [SerializeField] private UnityEvent _onNumberEqualsZero;
         [SerializeField] private UnityEvent<int> _onNumberChange;
 
         private int _amount;
 
-        public void IncreaseByOne()
+        public void DecreaseToZero()
         {
-            IncreaseToNumber(_amount + 1);
-        }
-        
-        public void IncreaseToNumber(int number)
-        {
-            StartCoroutine(ChangeToNumber(number, Increase));
-        }
-        
-        public void DecreaseByOne()
-        {
-            DecreaseToNumber(_amount - 1);
+            SetNumber(0);
         }
 
-        public void DecreaseToNumber(int number)
-        {
-            StartCoroutine(ChangeToNumber(number, Decrease));
-        }
-
-        private void Increase()
+        public void Increase()
         {
             SetNumber(_amount + 1);
         }
 
-        private void Decrease()
+        public void Decrease()
         {
             SetNumber(_amount - 1);
         }
@@ -52,17 +36,6 @@ namespace Src.Units.Base
         private void Awake()
         {
             SetNumber(_initialNumber);
-        }
-
-        private IEnumerator ChangeToNumber(int number, Action func)
-        {
-            if (_amount == number) yield break;
-
-            yield return new WaitForSeconds(_changeRateInSeconds);
-
-            func();
-
-            yield return ChangeToNumber(number, func);
         }
 
         private void SetNumber(int value)

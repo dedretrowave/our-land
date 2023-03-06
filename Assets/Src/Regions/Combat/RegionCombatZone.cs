@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using Src.Divisions;
-using Src.Regions.Fraction;
+using System.Collections;
 using Src.Regions.Structures;
-using Src.Units.Defenders.Base;
 using Src.Units.Divisions;
 using UnityEngine;
 
@@ -11,8 +8,8 @@ namespace Src.Regions.Combat
     public class RegionCombatZone : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private RegionOwner _owner;
-        [SerializeField] private DivisionBase _base;
+        [SerializeField] private Region _region;
+        [SerializeField] private GarrisonBase _base;
 
         [Header("Defenders")]
         [SerializeField] private RegionDefence _defence;
@@ -21,30 +18,31 @@ namespace Src.Regions.Combat
 
         public void ChangeOwner()
         {
-            _owner.Change(_regionClaimer);
+            _region.SetOwner(_regionClaimer);
+            _base.SwapOffenceAndSupply();
         }
         
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out Division division)) return;
 
-            RegisterDivision(division);
+            HandleDivision(division);
         }
 
-        private void RegisterDivision(Division division)
+        private void HandleDivision(Division division)
         {
             if (division.ParentBase.Equals(_base)) return;
 
             _regionClaimer = division.Fraction;
 
-            if (division.Fraction != _owner.Fraction)
+            if (division.Fraction != _region.Owner.Fraction)
             {
                 _defence.ApplyDefence(division);
-                _base.TakeDamage(division.Number);
+                _base.AddOffence(division.Amount);
             }
             else
             {
-                _base.TakeSupplies(division.Number);
+                _base.AddSupply(division.Amount);
             }
             
             Destroy(division.gameObject);
@@ -52,7 +50,7 @@ namespace Src.Regions.Combat
 
         private void Awake()
         {
-            _regionClaimer = _owner.Fraction;
+            _regionClaimer = _region.Owner.Fraction;
         }
     }
 }

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac47c8daaf924ff2a263b1a3dcfbaf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 8291560799260359753}
+  _region: {fileID: 923994390792867532}
   _base: {fileID: 2401162446576941827}
   _defence: {fileID: 2979384780864537431}
 --- !u!114 &2979384780864537431
@@ -244,21 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fraction: 2
-  _onFractionChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4344684713696278209}
-        m_TargetAssemblyTypeName: Src.Regions.UI.RegionUI, Assembly-CSharp
-        m_MethodName: UpdateColorByFraction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &923994390792867532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +258,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 8291560799260359753}
   _base: {fileID: 2401162446576941827}
+  _defence: {fileID: 2979384780864537431}
+  _onOwnerChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4344684713696278209}
+        m_TargetAssemblyTypeName: Src.Regions.UI.RegionUI, Assembly-CSharp
+        m_MethodName: UpdateColorByFraction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &825421651337453074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -832,7 +833,7 @@ GameObject:
   - component: {fileID: 3614752591956158363}
   - component: {fileID: 1413372750530121828}
   m_Layer: 0
-  m_Name: DivisionBase
+  m_Name: Garrison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialNumber: 10
-  _changeRateInSeconds: 0.05
   _onNumberEqualsZero:
     m_PersistentCalls:
       m_Calls:
@@ -898,8 +898,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Src.RegionDefence, Assembly-CSharp
+      - m_Target: {fileID: 8091610282217120642}
+        m_TargetAssemblyTypeName: Src.Regions.Combat.RegionCombatZone, Assembly-CSharp
         m_MethodName: ChangeOwner
         m_Mode: 1
         m_Arguments:
@@ -950,5 +950,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _garrison: {fileID: 3614752591956158363}
-  _generationRate: 2
+  _generationRate: 3
   _generationFreezeTimeout: 5

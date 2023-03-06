@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Src.Units.Base
+namespace Src.Units.Number
 {
     public class DivisionsGenerator : MonoBehaviour
     {
@@ -37,11 +37,6 @@ namespace Src.Units.Base
             StartGeneration();
         }
 
-        private void Create()
-        {
-            _garrison.IncreaseByOne();
-        }
-
         private IEnumerator Freeze()
         {
             StopGeneration();
@@ -58,6 +53,11 @@ namespace Src.Units.Base
             Create();
 
             yield return Generate();
+        }
+        
+        private void Create()
+        {
+            _garrison.Increase();
         }
     }
 }
