@@ -1,3 +1,4 @@
+using System;
 using Src.Regions;
 using Src.Regions.Fraction;
 using UnityEngine;
@@ -24,9 +25,20 @@ namespace Src.Units.Divisions.Controls
         {
             if (_region == null || directionPoint.transform.Equals(_region.transform)) return;
 
+            Vector3 deployPosition;
+
+            try
+            {
+                deployPosition = directionPoint.GetComponent<Region>().GetPosition();
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+
             Division division = _region.DeployDivision();
-            
-            division.Deploy(directionPoint.GetComponent<Region>().GetPosition());
+
+            division.Deploy(deployPosition);
             _region = null;
         }
     }

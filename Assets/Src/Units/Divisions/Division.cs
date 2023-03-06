@@ -9,18 +9,18 @@ namespace Src.Units.Divisions
         [SerializeField] private Units.Movement.Movement _movement;
         
         private Fraction _fraction;
-        private int _number;
-        private DivisionBase _parentBase;
+        private int _amount;
+        private GarrisonBase _parentBase;
 
-        public int Number => _number;
+        public int Amount => _amount;
 
         public Fraction Fraction => _fraction;
-        public DivisionBase ParentBase => _parentBase;
+        public GarrisonBase ParentBase => _parentBase;
 
-        public void Init(Fraction fraction, int number, DivisionBase parentBase)
+        public void Init(Fraction fraction, int number, GarrisonBase parentBase)
         {
             _fraction = fraction;
-            _number = number;
+            _amount = number;
             _parentBase = parentBase;
         }
 
