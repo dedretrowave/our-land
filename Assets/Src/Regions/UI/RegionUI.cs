@@ -17,6 +17,11 @@ namespace Src.Regions.UI
 
         private void Start()
         {
+            GetColorsConfig();
+        }
+
+        private void GetColorsConfig()
+        {
             _colorsConfig = DependencyContext.Dependencies.Get<ColorsToFractions>();
         }
     }

@@ -8,7 +8,7 @@ namespace Src.Regions.Containers
 {
     public class RegionDistributor : MonoBehaviour
     {
-        [SerializeField] private List<ContainersByFractions> _containers;
+        [SerializeField] private List<ContainersByFractions> _containers = new();
 
         private void Awake()
         {
@@ -18,7 +18,7 @@ namespace Src.Regions.Containers
         public void DistributeRegion(Region region, Fraction.Fraction newOwner)
         {
             RegionContainer container = _containers.Find(container => container.Fraction == newOwner).Container;
-            
+
             region.SetContainer(container);
         }
     }

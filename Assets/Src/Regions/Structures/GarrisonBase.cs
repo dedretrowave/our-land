@@ -1,8 +1,8 @@
 using System.Collections;
+using Src.Divisions.Divisions;
+using Src.Divisions.Garrison;
 using Src.Global;
 using Src.Regions.Fraction;
-using Src.Units.Divisions;
-using Src.Units.Number;
 using UnityEngine;
 
 namespace Src.Regions.Structures

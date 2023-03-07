@@ -1,6 +1,5 @@
-using System.Collections;
+using Src.Divisions.Divisions;
 using Src.Regions.Structures;
-using Src.Units.Divisions;
 using UnityEngine;
 
 namespace Src.Regions.Combat
@@ -48,7 +47,7 @@ namespace Src.Regions.Combat
             Destroy(division.gameObject);
         }
 
-        private void Awake()
+        private void Start()
         {
             _regionClaimer = _region.Owner.Fraction;
         }

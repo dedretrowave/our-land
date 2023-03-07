@@ -20,6 +20,8 @@ namespace Src.Controls
 
             if (hitTransform == null) return;
             
+            Debug.Log(hitTransform);
+            
             _onPointerDownEvent.Invoke(hitTransform);
         }
 
@@ -28,6 +30,8 @@ namespace Src.Controls
             Transform hitTransform = GetRaycastHit(eventData);
 
             if (hitTransform == null) return;
+            
+            Debug.Log(hitTransform);
 
             _onPointerUpEvent.Invoke(hitTransform);
         }
