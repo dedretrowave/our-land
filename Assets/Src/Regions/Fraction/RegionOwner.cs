@@ -9,7 +9,7 @@ namespace Src.Regions.Fraction
 
         public Fraction Fraction => _fraction;
 
-        public void Change(Fraction newOwner)
+        public void SetFraction(Fraction newOwner)
         {
             _fraction = newOwner;
         }

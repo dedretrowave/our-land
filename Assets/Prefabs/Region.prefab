@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce18cd266984d5b9066e69f99201747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fraction: 2
+  _fraction: 0
 --- !u!114 &923994390792867532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +259,9 @@ MonoBehaviour:
   _owner: {fileID: 8291560799260359753}
   _base: {fileID: 2401162446576941827}
   _defence: {fileID: 2979384780864537431}
+  _generator: {fileID: 1413372750530121828}
+  _image: {fileID: 8148623437547836423}
+  _garrison: {fileID: 3614752591956158363}
   _onOwnerChange:
     m_PersistentCalls:
       m_Calls:
@@ -362,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.525663, b: 0, a: 1}
+  m_Color: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -883,11 +886,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialNumber: 10
-  _onNumberEqualsZero:
+  _onNumberBelowZero:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3209337543879126899}
-        m_TargetAssemblyTypeName: Src.Units.Divisions.UI.PlainDataDisplay, Assembly-CSharp
+        m_TargetAssemblyTypeName: Src.Divisions.Divisions.UI.PlainDataDisplay, Assembly-CSharp
         m_MethodName: UpdateData
         m_Mode: 3
         m_Arguments:
@@ -902,18 +905,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Src.Regions.Combat.RegionCombatZone, Assembly-CSharp
         m_MethodName: ChangeOwner
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2401162446576941827}
-        m_TargetAssemblyTypeName: Src.Divisions.DivisionBase, Assembly-CSharp
-        m_MethodName: TakeSupplies
-        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
