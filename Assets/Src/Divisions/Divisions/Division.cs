@@ -1,13 +1,15 @@
 using Src.Regions.Fraction;
 using Src.Regions.Structures;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Src.Divisions.Divisions
 {
     public class Division : MonoBehaviour
     {
         [SerializeField] private Movement.Movement _movement;
-        
+        [SerializeField] private UnityEvent<Division> _onInit;
+
         private Fraction _fraction;
         private int _amount;
         private GarrisonBase _parentBase;
@@ -22,6 +24,7 @@ namespace Src.Divisions.Divisions
             _fraction = fraction;
             _amount = number;
             _parentBase = parentBase;
+            _onInit.Invoke(this);
         }
 
         public void Deploy(Vector3 point)
