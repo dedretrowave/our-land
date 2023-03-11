@@ -1,7 +1,6 @@
 using Src.Divisions.Divisions;
 using Src.Divisions.Garrison;
 using Src.Global;
-using Src.Models.Region;
 using Src.Regions.Combat;
 using Src.Regions.Containers;
 using Src.Regions.Fraction;
@@ -18,22 +17,14 @@ namespace Src.Regions
         [SerializeField] private GarrisonBase _base;
         [SerializeField] private RegionDefence _defence;
         [SerializeField] private DivisionsGenerator _generator;
-        [SerializeField] private RawImage _image;
-        [SerializeField] private Garrison _garrison;
 
         [SerializeField] private UnityEvent<Fraction.Fraction> _onOwnerChange = new();
 
         private RegionContainer _container;
         private RegionDistributor _distributor;
-        private RegionData _data;
 
         public RegionOwner Owner => _owner;
         public RegionDefence Defence => _defence;
-
-        public void SetData(RegionData data)
-        {
-            _data = data;
-        }
 
         public void SetContainer(RegionContainer container)
         {
@@ -84,17 +75,9 @@ namespace Src.Regions
         private void Start()
         {
             _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
-            Init();
-        }
-        
-        private void Init()
-        {
-            transform.position = _data.Position;
-            _garrison.Init(_data.GarrisonInitialNumber);
-            _generator.Init(_data.GenerationRate);
-            _image.texture = _data.Image.texture;
-            
-            SetOwner(_data.Fraction);
+            _onOwnerChange.Invoke(_owner.Fraction);
+            _distributor.DistributeRegion(this, _owner.Fraction);
+            SwitchDivisionGeneratorByFraction();
         }
     }
 }
