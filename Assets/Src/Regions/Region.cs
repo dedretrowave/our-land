@@ -32,11 +32,6 @@ namespace Src.Regions
             _container = container;
         }
 
-        public Division DeployDivision()
-        {
-            return _base.DeployDivision();
-        }
-        
         public Vector3 GetPosition()
         {
             return _base.transform.position;

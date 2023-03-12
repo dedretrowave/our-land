@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedFlag: {fileID: 21300000, guid: 3967362c1586d2c4d824214f42a6de0e, type: 3}
   _selectedEyes: {fileID: 21300000, guid: 2808cf949579073488694ecbbb52408c, type: 3}
-  _color: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 0}
+  _color: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
   _allowsDivisionGeneration: 0

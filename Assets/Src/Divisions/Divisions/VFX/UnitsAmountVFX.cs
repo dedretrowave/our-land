@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 namespace Src.Divisions.Divisions.VFX
@@ -6,32 +6,29 @@ namespace Src.Divisions.Divisions.VFX
     public class UnitsAmountVFX : MonoBehaviour
     {
         [SerializeField] private GameObject _tankMesh;
-        [SerializeField] private List<Transform> _places;
+
+        [SerializeField] private float _spawnRate = .5f;
+        private float _offset = 2f;
 
         public void Init(Division division)
         {
-            switch (division.Amount)
-            {
-                case <5:
-                    Spawn(1);
-                    break;
-                case <10:
-                    Spawn(3);
-                    break;
-                case <15:
-                    Spawn(6);
-                    break;
-                default:
-                    Spawn(6);
-                    return;
-            }
+            StartCoroutine(SpawnOneByOneWithTimeout(division.Amount));
         }
 
-        private void Spawn(int amount)
+        private IEnumerator SpawnOneByOneWithTimeout(int amount)
         {
-            for (int i = 0; i < amount; i++)
+            int i = 0;
+            while (amount > 0)
             {
-                Instantiate(_tankMesh, _places[i].transform);
+                for (int j = 0; j < Random.Range(1, 4); j++)
+                {
+                    Transform newTank = Instantiate(_tankMesh, transform).transform;
+                    newTank.localPosition = _offset * new Vector3(Random.Range(-1f, 1f), Random.Range(-2f, 2f), i);
+                }
+                i++;
+                amount--;
+            
+                yield return new WaitForSeconds(_spawnRate);
             }
         }
     }

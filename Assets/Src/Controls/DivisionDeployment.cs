@@ -1,39 +1,28 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Src.Controls
 {
-    public class DragSelection : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class DivisionDeployment : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
+        [Header("Components")]
+        [SerializeField] private DivisionMover _mover;
+        
         [Header("Parameters")]
         [SerializeField] private LayerMask _selectionLayer;
+
+        private const float RaycastDepth = 1000;
         
-        private const float Raycastdepth = 1000;
-
-        [SerializeField] private UnityEvent<Transform> _onPointerDownEvent;
-        [SerializeField] private UnityEvent<Transform> _onPointerUpEvent;
-
         public void OnPointerDown(PointerEventData eventData)
-        {
-            Transform hitTransform = GetRaycastHit(eventData);
-
-            if (hitTransform == null) return;
-            
-            Debug.Log(hitTransform);
-
-            _onPointerDownEvent.Invoke(hitTransform);
-        }
+        { }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             Transform hitTransform = GetRaycastHit(eventData);
 
             if (hitTransform == null) return;
-            
-            Debug.Log(hitTransform);
 
-            _onPointerUpEvent.Invoke(hitTransform);
+            _mover.MoveTo(hitTransform);
         }
 
         private Transform GetRaycastHit(PointerEventData eventData)
@@ -45,7 +34,7 @@ namespace Src.Controls
         {
             Physics.Raycast(Camera.main.ScreenPointToRay(mousePosition),
                 out RaycastHit hit,
-                Raycastdepth,
+                RaycastDepth,
                 _selectionLayer);
 
             Transform hitTransform = hit.transform;

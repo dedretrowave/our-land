@@ -43,8 +43,6 @@ namespace Src.Regions.Combat
             {
                 _base.AddSupply(division.Amount);
             }
-            
-            Destroy(division.gameObject);
         }
 
         private void Start()
