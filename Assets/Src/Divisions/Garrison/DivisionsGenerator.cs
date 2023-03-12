@@ -6,7 +6,7 @@ namespace Src.Divisions.Garrison
     public class DivisionsGenerator : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private Src.Divisions.Garrison.Garrison _garrison;
+        [SerializeField] private Garrison _garrison;
 
         [Header("Parameters")]
         [SerializeField] private float _generationRate = 2f;

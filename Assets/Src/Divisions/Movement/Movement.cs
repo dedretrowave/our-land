@@ -26,7 +26,8 @@ namespace Src.Divisions.Movement
         
         private void MoveTowards()
         {
-            transform.position = Vector3.MoveTowards(transform.position, _point, _speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(_point.x, 0f, _point.y),
+                _speed * Time.deltaTime);
         }
     }
 }

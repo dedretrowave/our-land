@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Src.Divisions.Garrison
 {
@@ -17,9 +16,8 @@ namespace Src.Divisions.Garrison
 
         private int _amount;
 
-        public void Init(int number)
+        private void Start()
         {
-            _initialNumber = number;
             SetNumber(_initialNumber);
         }
 
