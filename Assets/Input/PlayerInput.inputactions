@@ -1,5 +1,5 @@
 {
-    "name": "Input",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Pointer",
@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "Tap",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "2ffb8c21-5a2b-4206-bfa5-239700b72d07",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "3e34b9fc-ca0e-4250-8b17-e7cbb27b0275",
-                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

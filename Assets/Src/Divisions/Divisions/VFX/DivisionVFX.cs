@@ -1,4 +1,5 @@
 using Src.Global;
+using Src.Settings;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,11 @@ namespace Src.Divisions.Divisions.VFX
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Transform _uiWrapper;
 
-        private ColorsToFractions _colorsToFractions;
+        private ColorsSettings _colorsToFractions;
 
         public void Init(Division division)
         {
-            _colorsToFractions = DependencyContext.Dependencies.Get<ColorsToFractions>();
+            _colorsToFractions = DependencyContext.Dependencies.Get<ColorsSettings>();
             _labelImage.color = _colorsToFractions.GetColorByFraction(division.Fraction);
             _text.text = division.Amount.ToString();
             // _uiWrapper.transform.LookAt(Camera.main.transform, Vector3.up);

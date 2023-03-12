@@ -1,4 +1,5 @@
 using Src.Global;
+using Src.Settings;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace Src.Regions.UI
     {
         [SerializeField] private RawImage _image;
 
-        private ColorsToFractions _colorsConfig;
+        private ColorsSettings _colorsConfig;
 
         public void UpdateColorByFraction(Fraction.Fraction fraction)
         {
@@ -22,7 +23,7 @@ namespace Src.Regions.UI
 
         private void GetColorsConfig()
         {
-            _colorsConfig = DependencyContext.Dependencies.Get<ColorsToFractions>();
+            _colorsConfig = DependencyContext.Dependencies.Get<ColorsSettings>();
         }
     }
 }

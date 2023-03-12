@@ -3,6 +3,7 @@ using Src.Divisions.Divisions;
 using Src.Divisions.Garrison;
 using Src.Global;
 using Src.Regions.Fraction;
+using Src.Settings;
 using UnityEngine;
 
 namespace Src.Regions.Structures

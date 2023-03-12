@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -8,6 +9,9 @@ namespace Src.Controls
     {
         [SerializeField] private Camera _cam;
 
+        [Header("Parameters")]
+        [SerializeField] private float _speed = 3f;
+
         [Header("Borders")]
         [SerializeField] private float _yBorderValue;
         [SerializeField] private float _xBorderValue;
@@ -17,21 +21,17 @@ namespace Src.Controls
 
         private void Start()
         {
-            EnhancedTouchSupport.Enable();
-            TouchSimulation.Enable();
-            
-            Touch.onFingerMove += OnDrag;
-            Touch.onFingerDown += OnFingerDown;
+            PlayerControls.Instance.OnFingerMove.AddListener(OnDrag);
+            PlayerControls.Instance.OnFingerDown.AddListener(OnFingerDown);
         }
 
         private void OnFingerDown(Finger finger)
         {
-            _touchStart = GetWorldPosition(0);
+            _touchStart = GetWorldPosition(_groundZ);
         }
 
         private void OnDrag(Finger finger)
         {
-            
             Vector3 direction = _touchStart - GetWorldPosition(_groundZ);
             Vector3 newCameraPosition = _cam.transform.position + direction;
             
@@ -43,11 +43,10 @@ namespace Src.Controls
         
         private Vector3 GetWorldPosition(float z)
         {
-            Ray mousePos = _cam.ScreenPointToRay(Input.mousePosition);
-            Plane ground = new(Vector3.up, new Vector3(0,z,0));
-            float distance;
-            ground.Raycast(mousePos, out distance);
-            return mousePos.GetPoint(distance);
+            Ray mousePosition = _cam.ScreenPointToRay(UnityEngine.Input.mousePosition);
+            Plane ground = new(Vector3.forward, new Vector3(0,0,z));
+            ground.Raycast(mousePosition, out float distance);
+            return mousePosition.GetPoint(distance);
         }
     }
 }
