@@ -1,14 +1,16 @@
 using System;
 using Src.Divisions.Divisions;
+using Src.Fraction;
 using Src.Regions;
-using Src.Regions.Fraction;
 using UnityEngine;
 
 namespace Src.Controls
 {
     public class DivisionMover : MonoBehaviour
     {
-        private Region _region;
+        [SerializeField] private Character _character;
+        
+        private Region _originRegion;
         
         public void SetRegion(Transform directionPoint)
         {
@@ -16,15 +18,15 @@ namespace Src.Controls
 
             if (region == null) return;
 
-            if (region.Owner.Fraction == Fraction.Player)
+            if (region.Owner.Fraction.Equals(_character.Fraction))
             {
-                _region = region;
+                _originRegion = region;
             }
         }
 
         public void Deploy(Transform directionPoint)
         {
-            if (_region == null || directionPoint.transform.Equals(_region.transform)) return;
+            if (_originRegion == null || directionPoint.transform.Equals(_originRegion.transform)) return;
 
             Vector3 targetRegion;
 
@@ -37,10 +39,10 @@ namespace Src.Controls
                 return;
             }
 
-            Division division = _region.DeployDivision();
+            Division division = _originRegion.DeployDivision();
 
             division.Deploy(targetRegion);
-            _region = null;
+            _originRegion = null;
         }
     }
 }

@@ -1,7 +1,6 @@
 using Src.Divisions.Defenders.Base;
 using Src.Divisions.Divisions;
 using Src.Regions.Combat;
-using Src.Regions.Fraction;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,9 +15,9 @@ namespace Src.Divisions.Defenders
         [SerializeField] private UnityEvent _onTargetRegionReached;
 
         private RegionDefence _targetRegion;
-        private Fraction _fraction;
+        private Fraction.Fraction _fraction;
 
-        public override void Init(RegionDefence targetRegion, Fraction ownerFraction)
+        public override void Init(RegionDefence targetRegion, Fraction.Fraction ownerFraction)
         {
             _targetRegion = targetRegion;
             _fraction = ownerFraction;

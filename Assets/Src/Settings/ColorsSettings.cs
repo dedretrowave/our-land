@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Src.Global;
 using Src.Levels.Level;
-using Src.Regions.Fraction;
 using UnityEngine;
 
 namespace Src.Settings
@@ -14,7 +13,7 @@ namespace Src.Settings
 
         private static ColorsSettings _instance;
 
-        public Color GetColorByFraction(Fraction fraction)
+        public Color GetColorByFraction(Fraction.Fraction fraction)
         {
             return _colorsToFractions.Find(entity => entity.Fraction == fraction).Color;
         }
@@ -34,7 +33,7 @@ namespace Src.Settings
     internal class ColorToFraction
     { 
         public Color Color; 
-        public Fraction Fraction;
+        public Fraction.Fraction Fraction;
     }
 
     [Serializable]

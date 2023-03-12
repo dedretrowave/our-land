@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Src.Divisions.Defenders.Base;
 using Src.Divisions.Divisions;
-using Src.Regions.Fraction;
 using UnityEngine;
 
 namespace Src.Regions.Combat

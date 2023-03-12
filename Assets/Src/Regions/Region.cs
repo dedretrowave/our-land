@@ -3,11 +3,9 @@ using Src.Divisions.Garrison;
 using Src.Global;
 using Src.Regions.Combat;
 using Src.Regions.Containers;
-using Src.Regions.Fraction;
 using Src.Regions.Structures;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Src.Regions
 {
@@ -51,25 +49,14 @@ namespace Src.Regions
             _owner.SetFraction(newOwner);
             _onOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
-            SwitchDivisionGeneratorByFraction();
         }
-
-        //TODO: убрать это нахуй, тк земля не может стать нейтральной, переделать шобы генератор спавнился как только земля перестаёт быть нейтральной
+        
         private void SwitchDivisionGeneratorByFraction()
         {
-            switch (_owner.Fraction)
-            {
-                case Fraction.Fraction.Neutral:
-                    _generator.StopGeneration();
-                    _generator.enabled = false;
-                    break;
-                case Fraction.Fraction.Player:
-                case Fraction.Fraction.Enemy:
-                default:
-                    _generator.enabled = true;
-                    _generator.StartGeneration();
-                    break;
-            }
+            if (!_owner.Fraction.AllowsDivisionGeneration) return;
+
+            _generator.enabled = true;
+            _generator.StartGeneration();
         }
 
         private void Start()

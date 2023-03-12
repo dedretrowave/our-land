@@ -1,6 +1,5 @@
 using Src.Divisions.Defenders.Base;
 using Src.Regions;
-using Src.Regions.Fraction;
 using UnityEngine;
 
 namespace Src.Divisions.Defenders.Deployment
@@ -8,7 +7,7 @@ namespace Src.Divisions.Defenders.Deployment
     public class DefendersDeployer : MonoBehaviour
     {
         [Header("Parameters")]
-        [SerializeField] private Fraction _fraction;
+        [SerializeField] private Fraction.Fraction _fraction;
         
         [Header("Components")]
         [SerializeField] private Defender _defenderPrefab;

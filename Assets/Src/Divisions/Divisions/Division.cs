@@ -1,4 +1,3 @@
-using Src.Regions.Fraction;
 using Src.Regions.Structures;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,16 +9,16 @@ namespace Src.Divisions.Divisions
         [SerializeField] private Movement.Movement _movement;
         [SerializeField] private UnityEvent<Division> _onInit;
 
-        private Fraction _fraction;
+        private Fraction.Fraction _fraction;
         private int _amount;
         private GarrisonBase _parentBase;
 
         public int Amount => _amount;
 
-        public Fraction Fraction => _fraction;
+        public Fraction.Fraction Fraction => _fraction;
         public GarrisonBase ParentBase => _parentBase;
 
-        public void Init(Fraction fraction, int number, GarrisonBase parentBase)
+        public void Init(Fraction.Fraction fraction, int number, GarrisonBase parentBase)
         {
             _fraction = fraction;
             _amount = number;

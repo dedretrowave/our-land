@@ -318,8 +318,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 3
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
@@ -404,8 +404,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
@@ -490,8 +490,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 2
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
@@ -576,8 +576,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
@@ -666,8 +666,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
@@ -736,8 +736,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
 --- !u!4 &6702053097424545572 stripped
@@ -818,8 +818,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
-      value: 1
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     - target: {fileID: 6005867419495628535, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: m_Texture
       value: 
