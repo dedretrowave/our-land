@@ -1,5 +1,3 @@
-using Src.Global;
-using Src.Settings;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,23 +5,11 @@ namespace Src.Regions.UI
 {
     public class RegionUI : MonoBehaviour
     {
-        [SerializeField] private RawImage _image;
-
-        private ColorsSettings _colorsConfig;
+        [SerializeField] private Image _image;
 
         public void UpdateColorByFraction(Fraction.Fraction fraction)
         {
-            _image.color = _colorsConfig.GetColorByFraction(fraction);
-        }
-
-        private void Start()
-        {
-            GetColorsConfig();
-        }
-
-        private void GetColorsConfig()
-        {
-            _colorsConfig = DependencyContext.Dependencies.Get<ColorsSettings>();
+            _image.color = fraction.Color;
         }
     }
 }

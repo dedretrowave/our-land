@@ -7,15 +7,15 @@ namespace Src.Fraction
     public class Fraction : ScriptableObject
     {
         [Header("Components")]
-        [SerializeField] private Image _selectedFlag;
-        [SerializeField] private Image _selectedEyes;
+        [SerializeField] private Sprite _selectedFlag;
+        [SerializeField] private Sprite _selectedEyes;
         [SerializeField] private Color _color;
 
         [Header("Parameters")]
         [SerializeField] private bool _allowsDivisionGeneration;
 
-        public Image Flag => _selectedFlag;
-        public Image Eyes => _selectedEyes;
+        public Sprite Flag => _selectedFlag;
+        public Sprite Eyes => _selectedEyes;
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
     }

@@ -465,11 +465,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _containers:
-  - Fraction: {fileID: 0}
+  - Fraction: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
     Container: {fileID: 1503614182}
-  - Fraction: {fileID: 0}
+  - Fraction: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
     Container: {fileID: 1347572494}
-  - Fraction: {fileID: 0}
+  - Fraction: {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
     Container: {fileID: 1649411178}
 --- !u!1 &829601852
 GameObject:
