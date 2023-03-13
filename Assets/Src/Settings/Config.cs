@@ -6,7 +6,6 @@ namespace Src.Settings
     public class Config : MonoBehaviour
     {
         public float DivisionChangeRateInSeconds = 0.02f;
-        public float TapDurationInSeconds = 0.1f;
 
         private void Awake()
         {

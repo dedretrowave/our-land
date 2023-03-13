@@ -21,7 +21,7 @@ namespace Src.Divisions.Divisions
             _parentBase = parentBase;
             _onInit.Invoke(this);
             Vector3 transformLocalPosition = transform.localPosition;
-            transformLocalPosition.x += Random.Range(-5f, 5f);
+            transformLocalPosition.x += Random.Range(-20f, 20f);
             transform.localPosition = transformLocalPosition;
         }
 
