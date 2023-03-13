@@ -12,8 +12,10 @@ namespace Src.Divisions.Movement
 
         public void ApplyPoint(Vector3 point)
         {
-            _point = point;
-            transform.LookAt(_point);
+            _point = new Vector3(point.x, 0f, point.z);
+            transform.LookAt(_point, Vector3.back);
+            Debug.Log(transform.eulerAngles);
+            // transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.x);
         }
 
         private void Update()

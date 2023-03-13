@@ -782,14 +782,6 @@ PrefabInstance:
       propertyPath: _fraction
       value: 
       objectReference: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
-    - target: {fileID: 5862864086481589950, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
-      propertyPath: m_Center.x
-      value: -7.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862864086481589950, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
-      propertyPath: m_Center.z
-      value: 20.45
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
 --- !u!4 &6702053097424545572 stripped
