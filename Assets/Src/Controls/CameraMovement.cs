@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace Src.Controls
 {
@@ -9,15 +7,23 @@ namespace Src.Controls
     {
         [SerializeField] private Camera _cam;
 
-        [Header("Parameters")]
-        [SerializeField] private float _speed = 3f;
-
         [Header("Borders")]
         [SerializeField] private float _yBorderValue;
         [SerializeField] private float _xBorderValue;
         
         private Vector3 _touchStart;
-        private int _groundZ;
+        private int _groundZ = -10;
+        private bool _isFrozen;
+
+        public void Freeze()
+        {
+            _isFrozen = true;
+        }
+
+        public void UnFreeze()
+        {
+            _isFrozen = false;
+        }
 
         private void Start()
         {
@@ -32,6 +38,8 @@ namespace Src.Controls
 
         private void OnDrag(Finger finger)
         {
+            if (_isFrozen) return;
+            
             Vector3 direction = _touchStart - GetWorldPosition(_groundZ);
             Vector3 newCameraPosition = _cam.transform.position + direction;
             
@@ -43,7 +51,7 @@ namespace Src.Controls
         
         private Vector3 GetWorldPosition(float z)
         {
-            Ray mousePosition = _cam.ScreenPointToRay(UnityEngine.Input.mousePosition);
+            Ray mousePosition = _cam.ScreenPointToRay(Input.mousePosition);
             Plane ground = new(Vector3.forward, new Vector3(0,0,z));
             ground.Raycast(mousePosition, out float distance);
             return mousePosition.GetPoint(distance);

@@ -14,7 +14,7 @@ namespace Src.Controls
             if (_base == null || directionPoint.transform.Equals(_base.transform)) return;
 
             Vector3 targetRegion;
-
+            
             try
             {
                 targetRegion = directionPoint.GetComponent<Region>().GetPosition();

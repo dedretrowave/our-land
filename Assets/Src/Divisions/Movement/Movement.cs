@@ -12,10 +12,8 @@ namespace Src.Divisions.Movement
 
         public void ApplyPoint(Vector3 point)
         {
-            _point = new Vector3(point.x, 0f, point.z);
+            _point = point;
             transform.LookAt(_point, Vector3.back);
-            Debug.Log(transform.eulerAngles);
-            // transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.x);
         }
 
         private void Update()
@@ -28,7 +26,7 @@ namespace Src.Divisions.Movement
         
         private void MoveTowards()
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(_point.x, 0f, _point.y),
+            transform.position = Vector3.MoveTowards(transform.position, _point,
                 _speed * Time.deltaTime);
         }
     }
