@@ -70,6 +70,7 @@ MonoBehaviour:
   _base: {fileID: 224684972771840499}
   _defence: {fileID: 5862864086481589949}
   _generator: {fileID: 3589885983166200468}
+  _deployment: {fileID: 7842147975248774209}
   _onOwnerChange:
     m_PersistentCalls:
       m_Calls:
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705218112457287286}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1ad62b545b64e2e8e653b3f03e4c0dc, type: 3}
   m_Name: 

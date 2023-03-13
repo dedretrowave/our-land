@@ -33,6 +33,8 @@ namespace Src.Divisions.Garrison
 
         public void StopGeneration()
         {
+            if (_generationRoutine == null) return;
+            
             StopCoroutine(_generationRoutine);
             _generationRoutine = null;
         }

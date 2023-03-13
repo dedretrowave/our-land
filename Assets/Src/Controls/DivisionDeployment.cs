@@ -1,3 +1,4 @@
+using Src.Regions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,6 +25,9 @@ namespace Src.Controls
 
             _mover.MoveTo(hitTransform);
         }
+
+        private void Start()
+        { }
 
         private Transform GetRaycastHit(PointerEventData eventData)
         {

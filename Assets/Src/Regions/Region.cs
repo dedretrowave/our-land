@@ -1,4 +1,4 @@
-using Src.Divisions.Divisions;
+using Src.Controls;
 using Src.Divisions.Garrison;
 using Src.Global;
 using Src.Regions.Combat;
@@ -15,6 +15,7 @@ namespace Src.Regions
         [SerializeField] private GarrisonBase _base;
         [SerializeField] private RegionDefence _defence;
         [SerializeField] private DivisionsGenerator _generator;
+        [SerializeField] private DivisionDeployment _deployment;
 
         [SerializeField] private UnityEvent<Fraction.Fraction> _onOwnerChange = new();
 
@@ -44,11 +45,29 @@ namespace Src.Regions
             _owner.SetFraction(newOwner);
             _onOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
+            SwitchGeneratorByFraction();
+            SwitchDeploymentByFraction();
+        }
+
+        private void SwitchDeploymentByFraction()
+        {
+            if (!_owner.Fraction.IsPlayerControlled)
+            {
+                _deployment.enabled = false;
+                return;
+            }
+
+            _deployment.enabled = true;
         }
         
-        private void SwitchDivisionGeneratorByFraction()
+        private void SwitchGeneratorByFraction()
         {
-            if (!_owner.Fraction.AllowsDivisionGeneration) return;
+            if (!_owner.Fraction.AllowsDivisionGeneration)
+            {
+                _generator.StopGeneration();
+                _generator.enabled = false;
+                return;
+            }
 
             _generator.enabled = true;
             _generator.StartGeneration();
@@ -59,7 +78,8 @@ namespace Src.Regions
             _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
             _onOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
-            SwitchDivisionGeneratorByFraction();
+            SwitchGeneratorByFraction();
+            SwitchDeploymentByFraction();
         }
     }
 }

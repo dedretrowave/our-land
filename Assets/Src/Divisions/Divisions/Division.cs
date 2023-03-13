@@ -10,20 +10,19 @@ namespace Src.Divisions.Divisions
         [SerializeField] private UnityEvent<Division> _onInit;
 
         private Fraction.Fraction _fraction;
-        private int _amount;
         private GarrisonBase _parentBase;
-
-        public int Amount => _amount;
 
         public Fraction.Fraction Fraction => _fraction;
         public GarrisonBase ParentBase => _parentBase;
 
-        public void Init(Fraction.Fraction fraction, int number, GarrisonBase parentBase)
+        public void Init(Fraction.Fraction fraction, GarrisonBase parentBase)
         {
             _fraction = fraction;
-            _amount = number;
             _parentBase = parentBase;
             _onInit.Invoke(this);
+            Vector3 transformLocalPosition = transform.localPosition;
+            transformLocalPosition.x += Random.Range(-5f, 5f);
+            transform.localPosition = transformLocalPosition;
         }
 
         public void Deploy(Vector3 point)
