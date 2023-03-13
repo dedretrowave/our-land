@@ -516,20 +516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a82562ef123488b99c3dea8cff6537d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorsToFractions:
-  - Color: {r: 0, g: 0, b: 0, a: 1}
-    Fraction: {fileID: 0}
-  - Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-    Fraction: {fileID: 0}
-  - Color: {r: 0.9716981, g: 0.19708972, b: 0.19708972, a: 1}
-    Fraction: {fileID: 0}
-  - Color: {r: 0.25516194, g: 0.8867924, b: 0.7978305, a: 1}
-    Fraction: {fileID: 0}
   _colorToLevelStatus:
   - Color: {r: 0.25882354, g: 0.8901961, b: 0.8, a: 1}
     Status: 0
   - Color: {r: 0.972549, g: 0.19607843, b: 0.19607843, a: 1}
-    Status: 0
+    Status: 1
 --- !u!114 &829601855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,7 +1047,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285865885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 45.5}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2134,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e16a9e1ec54300b81c927f0a587cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 1784519294}
+  _image: {fileID: 1531976986}
 --- !u!114 &2006776286
 MonoBehaviour:
   m_ObjectHideFlags: 0

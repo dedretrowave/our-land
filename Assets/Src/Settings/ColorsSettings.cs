@@ -8,15 +8,9 @@ namespace Src.Settings
 {
     public class ColorsSettings : MonoBehaviour
     {
-        [SerializeField] private List<ColorToFraction> _colorsToFractions;
         [SerializeField] private List<ColorToLevelStatus> _colorToLevelStatus;
 
         private static ColorsSettings _instance;
-
-        public Color GetColorByFraction(Fraction.Fraction fraction)
-        {
-            return _colorsToFractions.Find(entity => entity.Fraction == fraction).Color;
-        }
 
         public Color GetColorByLevelStatus(LevelStatus status)
         {
@@ -27,13 +21,6 @@ namespace Src.Settings
         {
             DependencyContext.Dependencies.Add(typeof(ColorsSettings), () => this);
         }
-    }
-
-    [Serializable]
-    internal class ColorToFraction
-    { 
-        public Color Color; 
-        public Fraction.Fraction Fraction;
     }
 
     [Serializable]

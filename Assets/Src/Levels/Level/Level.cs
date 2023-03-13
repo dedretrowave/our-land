@@ -7,7 +7,7 @@ namespace Src.Levels.Level
     {
         [SerializeField] private Transform _levelPrefab;
 
-        [SerializeField] private UnityEvent<LevelStatus> _onStatusChange;
+        [SerializeField] private UnityEvent<LevelStatus> _onStatusChange = new();
 
         private LevelStatus _status = LevelStatus.Uncompleted;
 
@@ -18,6 +18,11 @@ namespace Src.Levels.Level
         {
             _status = newStatus;
             _onStatusChange.Invoke(_status);
+        }
+
+        private void Start()
+        {
+            SetStatus(_status);
         }
     }
 }
