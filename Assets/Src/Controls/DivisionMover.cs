@@ -1,5 +1,4 @@
 using System;
-using Src.Divisions.Divisions;
 using Src.Regions;
 using Src.Regions.Structures;
 using UnityEngine;
@@ -25,9 +24,7 @@ namespace Src.Controls
                 return;
             }
 
-            Division division = _base.DeployDivision();
-
-            division.Deploy(targetRegion);
+            _base.DeployDivisions(targetRegion);
         }
     }
 }

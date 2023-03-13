@@ -16,3 +16,4 @@ MonoBehaviour:
   _selectedEyes: {fileID: 21300000, guid: 27d3dded5f952344daa2726ebfd30af2, type: 3}
   _color: {r: 0.25490198, g: 0.8862745, b: 0.79607844, a: 1}
   _allowsDivisionGeneration: 1
+  _isPlayerControlled: 1

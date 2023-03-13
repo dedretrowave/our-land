@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Src.Fraction
 {
@@ -13,10 +12,12 @@ namespace Src.Fraction
 
         [Header("Parameters")]
         [SerializeField] private bool _allowsDivisionGeneration;
+        [SerializeField] private bool _isPlayerControlled;
 
         public Sprite Flag => _selectedFlag;
         public Sprite Eyes => _selectedEyes;
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
+        public bool IsPlayerControlled => _isPlayerControlled;
     }
 }

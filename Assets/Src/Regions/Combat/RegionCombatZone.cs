@@ -18,7 +18,6 @@ namespace Src.Regions.Combat
         public void ChangeOwner()
         {
             _region.SetOwner(_regionClaimer);
-            _base.SwapOffenceAndSupply();
         }
         
         private void OnTriggerEnter(Collider other)
@@ -37,12 +36,14 @@ namespace Src.Regions.Combat
             if (division.Fraction != _region.Owner.Fraction)
             {
                 _defence.ApplyDefence(division);
-                _base.AddOffence(division.Amount);
+                _base.TakeDamage();
             }
             else
             {
-                _base.AddSupply(division.Amount);
+                _base.TakeSupply();
             }
+            
+            Destroy(division.gameObject);
         }
 
         private void Start()

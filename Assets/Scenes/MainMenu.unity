@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e90030823e4db4b7640650d2be5ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DivisionChangeRateInSeconds: 0.02
+  DivisionChangeRateInSeconds: 0.32
   TapDurationInSeconds: 0.1
 --- !u!1 &860940873
 GameObject:
@@ -791,7 +791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &984455625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1805081b01064e108d7f58d92c3c059f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 1503614183}
+  _base: {fileID: 0}
 --- !u!114 &1503614182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,39 +1552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ff9575cd33499ea0dbaf3c705f3eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _onPointerDownEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1649411177}
-        m_TargetAssemblyTypeName: Src.Units.Divisions.Controls.DivisionMover, Assembly-CSharp
-        m_MethodName: SetRegion
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onPointerUpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1649411177}
-        m_TargetAssemblyTypeName: Src.Units.Divisions.Controls.DivisionMover, Assembly-CSharp
-        m_MethodName: MoveTo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1545287518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1805081b01064e108d7f58d92c3c059f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 1649411179}
+  _base: {fileID: 0}
 --- !u!114 &1649411178
 MonoBehaviour:
   m_ObjectHideFlags: 0
