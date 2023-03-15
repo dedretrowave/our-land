@@ -8,7 +8,7 @@ namespace Src.Regions.Containers
     {
         [SerializeField] private List<Region> _regions;
 
-        [SerializeField] private UnityEvent _onEmpty;
+        public UnityEvent OnEmpty = new();
 
         public void RemoveRegion(Region region)
         {
@@ -16,7 +16,7 @@ namespace Src.Regions.Containers
 
             if (_regions.Count == 0)
             {
-                _onEmpty.Invoke();
+                OnEmpty.Invoke();
             }
         }
 

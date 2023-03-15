@@ -45,7 +45,8 @@ namespace Src.Regions.Structures
             
             while (i < startGarrisonAmount)
             {
-                Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
+                // Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
+                Division division = Instantiate(_divisionPrefab, transform);
                 division.Init(_owner.Fraction, this);
                 division.Deploy(targetPoint);
                 _garrison.Decrease();

@@ -19,7 +19,7 @@ namespace Src.Controls
             {
                 targetRegion = directionPoint.GetComponent<Region>().GetPosition();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return;
             }
