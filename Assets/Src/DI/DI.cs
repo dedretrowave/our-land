@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Src.Global
+namespace Src.DI
 {
     public class DependencyContext
     {

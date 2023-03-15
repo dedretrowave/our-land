@@ -10,6 +10,11 @@ namespace Src.Regions.Containers
 
         public UnityEvent OnEmpty = new();
 
+        public Region GetRandomRegion()
+        {
+            return _regions[Random.Range(0, _regions.Count)];
+        }
+
         public void RemoveRegion(Region region)
         {
             _regions.Remove(region);

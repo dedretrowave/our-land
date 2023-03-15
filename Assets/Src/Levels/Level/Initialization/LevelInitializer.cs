@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Button = UnityEngine.UI.Button;
 
-namespace Src.Levels.Level.Selection
+namespace Src.Levels.Level.Initialization
 {
     public class LevelInitializer : MonoBehaviour, IPointerUpHandler
     {

@@ -1,29 +1,33 @@
 using Src.Controls;
+using Src.DI;
 using Src.Divisions.Garrison;
-using Src.Global;
 using Src.Regions.Combat;
 using Src.Regions.Containers;
 using Src.Regions.Structures;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.Regions
 {
     public class Region : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private RegionOwner _owner;
         [SerializeField] private GarrisonBase _base;
         [SerializeField] private RegionDefence _defence;
         [SerializeField] private DivisionsGenerator _generator;
         [SerializeField] private DivisionDeployment _deployment;
 
-        [SerializeField] private UnityEvent<Fraction.Fraction> _onOwnerChange = new();
+        [Header("Events")]
+        public UnityEvent<Fraction.Fraction> OnOwnerChange = new();
 
         private RegionContainer _container;
         private RegionDistributor _distributor;
 
         public RegionOwner Owner => _owner;
         public RegionDefence Defence => _defence;
+        public GarrisonBase Base => _base;
 
         public void SetContainer(RegionContainer container)
         {
@@ -43,7 +47,7 @@ namespace Src.Regions
             if (newOwner == _owner.Fraction) return;
             
             _owner.SetFraction(newOwner);
-            _onOwnerChange.Invoke(_owner.Fraction);
+            OnOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
             SwitchGeneratorByFraction();
             SwitchDeploymentByFraction();
@@ -76,7 +80,7 @@ namespace Src.Regions
         private void Start()
         {
             _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
-            _onOwnerChange.Invoke(_owner.Fraction);
+            OnOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
             SwitchGeneratorByFraction();
             SwitchDeploymentByFraction();

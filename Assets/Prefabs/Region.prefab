@@ -71,7 +71,7 @@ MonoBehaviour:
   _defence: {fileID: 5862864086481589949}
   _generator: {fileID: 3589885983166200468}
   _deployment: {fileID: 7842147975248774209}
-  _onOwnerChange:
+  OnOwnerChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2163965282148244529}
@@ -89,18 +89,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1982851359095833206}
         m_TargetAssemblyTypeName: Src.Divisions.Divisions.UI.GarrisonUI, Assembly-CSharp
         m_MethodName: UpdateByFraction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2163965282148244529}
-        m_TargetAssemblyTypeName: Src.Regions.UI.RegionUI, Assembly-CSharp
-        m_MethodName: UpdateColorByFraction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

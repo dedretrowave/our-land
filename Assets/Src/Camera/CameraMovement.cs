@@ -1,11 +1,12 @@
+using Src.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
-namespace Src.Controls
+namespace Src.Camera
 {
     public class CameraMovement : MonoBehaviour
     {
-        [SerializeField] private Camera _cam;
+        [SerializeField] private UnityEngine.Camera _cam;
 
         [Header("Borders")]
         [SerializeField] private float _yBorderValue;

@@ -36,7 +36,7 @@ namespace Src.Controls
 
         private Transform Select(Vector2 mousePosition)
         {
-            Physics.Raycast(Camera.main.ScreenPointToRay(mousePosition),
+            Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(mousePosition),
                 out RaycastHit hit,
                 RaycastDepth,
                 _selectionLayer);

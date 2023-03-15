@@ -1,11 +1,10 @@
-using Src.Controls;
 using UnityEngine;
 
-namespace Src.Levels.Level.Selection
+namespace Src.Camera
 {
     public class CameraOnLevelFocus : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
+        [SerializeField] private UnityEngine.Camera _camera;
         [SerializeField] private CameraMovement _movement;
 
         private Vector3 _cameraDefaultPosition;

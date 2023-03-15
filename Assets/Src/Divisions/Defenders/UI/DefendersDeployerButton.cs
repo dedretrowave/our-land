@@ -14,7 +14,7 @@ namespace Src.Divisions.Defenders.UI
         
         public void OnPointerUp(PointerEventData eventData)
         {
-            Physics.Raycast(Camera.main.ScreenPointToRay(eventData.position),
+            Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(eventData.position),
                 out RaycastHit hit,
                 1000,
                 _layer);

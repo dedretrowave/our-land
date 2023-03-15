@@ -1,4 +1,4 @@
-using Src.Global;
+using Src.DI;
 using Src.Settings;
 using UnityEngine;
 using UnityEngine.UI;
