@@ -16,7 +16,7 @@ namespace Src.Levels.Level.UI
             _settings = DependencyContext.Dependencies.Get<ColorsSettings>();
         }
 
-        public void UpdateColorByStatus(LevelStatus status)
+        public void UpdateColorByStatus(LevelCompletionState status)
         {
             _image.color = _settings.GetColorByLevelStatus(status);
         }

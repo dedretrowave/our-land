@@ -12,7 +12,7 @@ namespace Src.Settings
 
         private static ColorsSettings _instance;
 
-        public Color GetColorByLevelStatus(LevelStatus status)
+        public Color GetColorByLevelStatus(LevelCompletionState status)
         {
             return _colorToLevelStatus.Find(color => color.Status == status).Color;
         }
@@ -27,6 +27,6 @@ namespace Src.Settings
     internal class ColorToLevelStatus
     {
         public Color Color;
-        public LevelStatus Status;
+        public LevelCompletionState Status;
     }
 }
