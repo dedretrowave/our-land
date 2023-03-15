@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Src.Regions;
 using Src.Regions.Containers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Src.EnemyAI
 {
@@ -29,10 +31,17 @@ namespace Src.EnemyAI
             _waitTimeBeforeNextAttack = Random.Range(_minPauseBetweenAttacks, _maxPauseBetweenAttacks);
 
             if (_enemyContainers.Count == 0) return;
-            
-            _selectedEnemyRegion = _enemyContainers[Random.Range(0, _enemyContainers.Count)].GetRandomRegion();
 
-            StartCoroutine(WaitAndAttack());
+            try
+            {
+                _selectedEnemyRegion = _enemyContainers[Random.Range(0, _enemyContainers.Count)].GetRandomRegion();
+
+                StartCoroutine(WaitAndAttack());
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
         }
 
         private IEnumerator WaitAndAttack()
@@ -45,17 +54,10 @@ namespace Src.EnemyAI
         private void Attack()
         {
             Region selectedRegion = _container.GetRandomRegion();
-            
-            selectedRegion.Base.DeployDivisions(_selectedEnemyRegion.transform.position);
-            
-            _selectedEnemyRegion.OnOwnerChange.AddListener(UnbindSelectedRegionAndPrepareForAttack);
-        }
 
-        private void UnbindSelectedRegionAndPrepareForAttack(Fraction.Fraction _)
-        {
-            _selectedEnemyRegion.OnOwnerChange.RemoveListener(UnbindSelectedRegionAndPrepareForAttack);
+            selectedRegion.Base.DeployDivisions(_selectedEnemyRegion.transform.position);
+
             _selectedEnemyRegion = null;
-            
             PrepareForAttack();
         }
     }

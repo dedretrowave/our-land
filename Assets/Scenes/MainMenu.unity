@@ -1657,8 +1657,8 @@ MonoBehaviour:
   - {fileID: 1649411178}
   - {fileID: 1347572494}
   _container: {fileID: 1503614182}
-  _minPauseBetweenAttacks: 5
-  _maxPauseBetweenAttacks: 10
+  _minPauseBetweenAttacks: 2
+  _maxPauseBetweenAttacks: 3
 --- !u!1 &1531976983
 GameObject:
   m_ObjectHideFlags: 0
