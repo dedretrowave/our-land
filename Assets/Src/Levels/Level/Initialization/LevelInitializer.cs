@@ -1,14 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using Button = UnityEngine.UI.Button;
 
 namespace Src.Levels.Level.Initialization
 {
-    public class LevelInitializer : MonoBehaviour, IPointerUpHandler
+    public class LevelInitializer : MonoBehaviour, IPointerClickHandler
     {
-        [Header("UIComponent")]
-        [SerializeField] private Button _button;
         
         [Header("Prefab")]
         [SerializeField] private Transform _levelPrefab;
@@ -26,9 +23,9 @@ namespace Src.Levels.Level.Initialization
             _isStarted = true;
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            _button.gameObject.SetActive(true);
+            StartLevel();
         }
     }
 }
