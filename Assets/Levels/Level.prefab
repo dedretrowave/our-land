@@ -548,6 +548,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: _generationRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: _generationFreezeTimeout
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
       value: 
