@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Src.DI;
 using Src.Regions.Containers;
+using Src.Saves;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +9,9 @@ namespace Src.Levels.Level
 {
     public class LevelProgress : MonoBehaviour
     {
+        [Header("Parameters")]
+        [SerializeField] private int _id;
+        
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
         [SerializeField] private List<RegionContainer> _enemyContainers;
@@ -19,6 +24,8 @@ namespace Src.Levels.Level
         private LevelCompletionState _status = LevelCompletionState.Incomplete;
         private Transform _levelInstance;
         private int _defeatedEnemies;
+        
+        private SaveSystem _save;
 
         public void Init(Transform instance)
         {
@@ -32,6 +39,10 @@ namespace Src.Levels.Level
 
         private void Start()
         {
+            _save = DependencyContext.Dependencies.Get<SaveSystem>();
+
+            _status = _save.GetLevelById(_id)?.Status ?? LevelCompletionState.Incomplete;
+
             _onCompletionStatusChange.Invoke(_status);
         }
 
@@ -60,6 +71,8 @@ namespace Src.Levels.Level
         private void FinishLevelWithStatus(LevelCompletionState newStatus)
         {
             _status = newStatus;
+            
+            _save.SaveLevel(new LevelData(_id, _status));
 
             _onCompletionStatusChange.Invoke(_status);
             Destroy(_levelInstance.gameObject);
