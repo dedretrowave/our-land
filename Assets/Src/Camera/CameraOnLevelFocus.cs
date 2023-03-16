@@ -11,7 +11,8 @@ namespace Src.Camera
 
         public void Focus(Transform level)
         {
-            _camera.transform.position = new Vector3(level.localPosition.x, level.localPosition.y, 50f);
+            Debug.Log(level.position);
+            _camera.transform.position = new Vector3(level.position.x, level.position.y, 0f);
             _movement.Freeze();
         }
 

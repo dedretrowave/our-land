@@ -11,13 +11,10 @@ namespace Src.Levels.Level.UI
 
         private ColorsSettings _settings;
 
-        private void Start()
-        {
-            _settings = DependencyContext.Dependencies.Get<ColorsSettings>();
-        }
-
         public void UpdateColorByStatus(LevelCompletionState status)
         {
+            if (_settings == null) _settings = DependencyContext.Dependencies.Get<ColorsSettings>(); 
+            
             _image.color = _settings.GetColorByLevelStatus(status);
         }
     }
