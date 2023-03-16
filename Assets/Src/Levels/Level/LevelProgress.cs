@@ -27,6 +27,8 @@ namespace Src.Levels.Level
         
         private SaveSystem _save;
 
+        public LevelCompletionState Status => _status;
+
         public void Init(Transform instance)
         {
             _levelInstance = instance;

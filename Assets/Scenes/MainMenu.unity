@@ -1812,6 +1812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 8540954253848596795, guid: 2e092398450624546b292808a5fbc80c, type: 3}
+  _progress: {fileID: 0}
   _onLevelStarted:
     m_PersistentCalls:
       m_Calls:
@@ -2008,6 +2009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 8540954253848596795, guid: 1d1d3f3682708fb4580660505e7d26a6, type: 3}
+  _progress: {fileID: 1122490479}
   _onLevelStarted:
     m_PersistentCalls:
       m_Calls:
@@ -3080,6 +3082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 8540954253848596795, guid: 2e092398450624546b292808a5fbc80c, type: 3}
+  _progress: {fileID: 0}
   _onLevelStarted:
     m_PersistentCalls:
       m_Calls:
@@ -4019,6 +4022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 8540954253848596795, guid: 2e092398450624546b292808a5fbc80c, type: 3}
+  _progress: {fileID: 2006776286}
   _onLevelStarted:
     m_PersistentCalls:
       m_Calls:
@@ -4249,6 +4253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPrefab: {fileID: 8540954253848596795, guid: a7a91c5ee6156544a92df3055b341281, type: 3}
+  _progress: {fileID: 2026859437}
   _onLevelStarted:
     m_PersistentCalls:
       m_Calls:
