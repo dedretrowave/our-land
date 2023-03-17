@@ -16,6 +16,11 @@ namespace Src.Levels.Level.Initialization
 
         private bool _isStarted;
 
+        public void EndLevel()
+        {
+            _isStarted = false;
+        }
+
         public void StartLevel()
         {
             if (_isStarted) return;
