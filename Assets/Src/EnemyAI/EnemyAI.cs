@@ -35,12 +35,14 @@ namespace Src.EnemyAI
             try
             {
                 _selectedEnemyRegion = _enemyContainers[Random.Range(0, _enemyContainers.Count)].GetRandomRegion();
-
-                StartCoroutine(WaitAndAttack());
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
+            }
+            finally
+            {
+                StartCoroutine(WaitAndAttack());
             }
         }
 
@@ -53,6 +55,12 @@ namespace Src.EnemyAI
 
         private void Attack()
         {
+            if (_selectedEnemyRegion == null)
+            {
+                PrepareForAttack();
+                return;
+            }
+            
             Region selectedRegion = _container.GetRandomRegion();
 
             selectedRegion.Base.DeployDivisions(_selectedEnemyRegion.transform.position);

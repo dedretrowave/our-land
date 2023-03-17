@@ -11,6 +11,16 @@ namespace Src.Levels.Level.UI
 
         private ColorsSettings _settings;
 
+        public void Hide()
+        {
+            _image.enabled = false;
+        }
+
+        public void Show()
+        {
+            _image.enabled = true;
+        }
+
         public void UpdateColorByStatus(LevelCompletionState status)
         {
             if (_settings == null) _settings = DependencyContext.Dependencies.Get<ColorsSettings>(); 
