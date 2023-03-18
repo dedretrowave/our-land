@@ -222,14 +222,6 @@ PrefabInstance:
       propertyPath: _levelPrefab
       value: 
       objectReference: {fileID: 8540954253848596795, guid: 1d1d3f3682708fb4580660505e7d26a6, type: 3}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2137497562}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InitializeLevel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
 --- !u!4 &42803341 stripped
@@ -471,10 +463,6 @@ PrefabInstance:
       propertyPath: _levelPrefab
       value: 
       objectReference: {fileID: 8540954253848596795, guid: 362a3456e9cbb5148bc438a8a8055f49, type: 3}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2137497562}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
 --- !u!4 &155505294 stripped
@@ -1503,7 +1491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -190}
+  m_LocalPosition: {x: 0, y: 323, z: -190}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1786,6 +1774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level4
       objectReference: {fileID: 0}
+    - target: {fileID: 5116749330017771339, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5116749330017771388, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1834,14 +1826,6 @@ PrefabInstance:
       propertyPath: _levelPrefab
       value: 
       objectReference: {fileID: 8540954253848596795, guid: 15faa607ef9493b4988ddcf09b342ce0, type: 3}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2137497562}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InitializeLevel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
 --- !u!4 &1128177370 stripped
@@ -2883,14 +2867,6 @@ PrefabInstance:
     - target: {fileID: 5116749330017771388, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2137497562}
-    - target: {fileID: 0}
-      propertyPath: _onLevelSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InitializeLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597516d6be8d52548a1f88cd4861c4a9, type: 3}
