@@ -26,6 +26,18 @@ namespace Src.Saves
         {
            return _data.LevelDataList.Find(level => level.Id == id);
         }
+
+        public void SaveMoney(int money)
+        {
+            _data.Money = money;
+
+            Save();
+        }
+
+        public int GetMoney()
+        {
+            return _data.Money;
+        }
         
         private void Awake()
         {
@@ -64,15 +76,18 @@ namespace Src.Saves
     internal class PlayerData
     {
         public List<LevelData> LevelDataList;
+        public int Money;
 
         public PlayerData()
         {
             LevelDataList = new List<LevelData>();
+            Money = 0;
         }
 
-        public PlayerData(List<LevelData> levelData)
+        public PlayerData(List<LevelData> levelData, int money)
         {
             LevelDataList = levelData;
+            Money = money;
         }
     }
 
