@@ -1,44 +1,38 @@
+using Src.DI;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Src.Levels.Level.Initialization
 {
-    public class LevelInitializer : MonoBehaviour, IPointerClickHandler
+    public class LevelInitializer : MonoBehaviour
     {
-        [Header("Prefab")]
-        [SerializeField] private Transform _levelPrefab;
+        [FormerlySerializedAs("_container")]
+        [Header("Containers")]
+        [SerializeField] private Transform _selectedLevelContainer;
+        [SerializeField] private Transform _levelsContainer;
 
-        [Header("Components")]
-        [SerializeField] private LevelProgress _progress;
+        public UnityEvent<Transform> OnLevelStarted;
+        public UnityEvent<LevelCompletionState> OnLevelFinished;
+        
+        private Transform _selectedLevel;
 
-        [SerializeField] private UnityEvent<Transform> _onLevelStarted;
-
-        private bool _isStarted;
-
-        public void EndLevel()
+        public void InitializeLevel(Transform level)
         {
-            _isStarted = false;
+            _selectedLevel = level;
+            _selectedLevel.SetParent(_selectedLevelContainer);
+            OnLevelStarted.Invoke(_selectedLevel);
         }
 
-        public void StartLevel()
+        public void EndLevel(LevelCompletionState state)
         {
-            if (_isStarted) return;
-
-            Transform instance = Instantiate(_levelPrefab, transform);
-            _onLevelStarted.Invoke(instance.transform);
-            _isStarted = true;
+            _selectedLevel.SetParent(_levelsContainer);
+            OnLevelFinished.Invoke(state);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        private void Start()
         {
-            if (_progress.Status == LevelCompletionState.Complete)
-            {
-                enabled = false;
-                return;
-            }
-
-            StartLevel();
+            DependencyContext.Dependencies.Add(typeof(LevelInitializer), () => this);
         }
     }
 }

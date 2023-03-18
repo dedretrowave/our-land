@@ -1,6 +1,6 @@
+using System;
 using Src.Fraction;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Src.Levels.Level.UI
@@ -19,14 +19,29 @@ namespace Src.Levels.Level.UI
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
 
-        public void ShowComplete()
+        public void ShowByStatus(LevelCompletionState status)
+        {
+            switch (status)
+            {
+                case LevelCompletionState.Complete:
+                    ShowComplete();
+                    break;
+                case LevelCompletionState.Incomplete:
+                    ShowFail();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
+            }
+        }
+
+        private void ShowComplete()
         {
             _banner.sprite = _completeFlag;
             _eyes.sprite = _happyEyes;
             Show();
         }
 
-        public void ShowFail()
+        private void ShowFail()
         {
             _banner.sprite = _failFlag;
             _eyes.sprite = _sadEyes;

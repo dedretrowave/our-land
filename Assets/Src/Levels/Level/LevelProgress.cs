@@ -18,20 +18,17 @@ namespace Src.Levels.Level
 
         [Header("Events")]
         [SerializeField] private UnityEvent<LevelCompletionState> _onCompletionStatusChange = new();
-        [SerializeField] private UnityEvent _onComplete = new();
-        [SerializeField] private UnityEvent _onFail = new();
+        [SerializeField] private UnityEvent<LevelCompletionState> _onInitWithStatus = new();
 
         private LevelCompletionState _status = LevelCompletionState.Incomplete;
-        private Transform _levelInstance;
         private int _defeatedEnemies;
         
         private SaveSystem _save;
 
         public LevelCompletionState Status => _status;
 
-        public void Init(Transform instance)
+        public void BindEvents()
         {
-            _levelInstance = instance;
             _playerContainer.OnEmpty.AddListener(Fail);
             _enemyContainers.ForEach(enemy =>
             {
@@ -45,7 +42,7 @@ namespace Src.Levels.Level
 
             _status = _save.GetLevelById(_id)?.Status ?? LevelCompletionState.Incomplete;
 
-            _onCompletionStatusChange.Invoke(_status);
+            _onInitWithStatus.Invoke(_status);
         }
 
         private void ProceedToCompletion()
@@ -61,13 +58,11 @@ namespace Src.Levels.Level
         private void Fail()
         {
             FinishLevelWithStatus(LevelCompletionState.Incomplete);
-            _onFail.Invoke();
         }
 
         private void Complete()
         {
             FinishLevelWithStatus(LevelCompletionState.Complete);
-            _onComplete.Invoke();
         }
 
         private void FinishLevelWithStatus(LevelCompletionState newStatus)
@@ -77,7 +72,6 @@ namespace Src.Levels.Level
             _save.SaveLevel(new LevelData(_id, _status));
 
             _onCompletionStatusChange.Invoke(_status);
-            Destroy(_levelInstance.gameObject);
         }
     }
 }
