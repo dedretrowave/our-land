@@ -19,19 +19,11 @@ namespace Src.Wallet
             {
                 _money = value;
                 _onMoneyChange.Invoke(_money);
+                _save.SaveMoney(_money);
             } 
         }
 
         private SaveSystem _save;
-
-        private void Start()
-        {
-            _save = DependencyContext.Dependencies.Get<SaveSystem>();
-
-            Money = _save.GetMoney();
-            
-            DependencyContext.Dependencies.Add(typeof(Wallet), () => this);
-        }
 
         public void Increase(int amount = 1)
         {
@@ -51,6 +43,15 @@ namespace Src.Wallet
 
             _money = decreasedAmount;
             _onMoneyChange.Invoke(_money);
+        }
+        
+        private void Start()
+        {
+            _save = DependencyContext.Dependencies.Get<SaveSystem>();
+
+            Money = _save.GetMoney();
+            
+            DependencyContext.Dependencies.Add(typeof(Wallet), () => this);
         }
     }
 }
