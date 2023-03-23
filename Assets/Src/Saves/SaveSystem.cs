@@ -12,19 +12,20 @@ namespace Src.Saves
     {
         [SerializeField] private string _localPathToFile = "player.dat";
         
-        private PlayerData _data;
+        private PlayerData _data = new();
         private string _pathToFile;
 
-        public void SaveLevel(LevelData data)
+        public void SaveLevel(int id, LevelData data)
         {
-            _data.LevelDataList.Add(data);
+            _data.LevelData[id] = data;
             
             Save();
         }
 
         public LevelData GetLevelById(int id)
         {
-           return _data.LevelDataList.Find(level => level.Id == id);
+            return !_data.LevelData.ContainsKey(id) 
+                ? new LevelData(LevelCompletionState.Incomplete) : _data.LevelData[id];
         }
 
         public void SaveMoney(int money)
@@ -75,18 +76,18 @@ namespace Src.Saves
     [Serializable]
     internal class PlayerData
     {
-        public List<LevelData> LevelDataList;
+        public Dictionary<int, LevelData> LevelData = new();
         public int Money;
 
         public PlayerData()
         {
-            LevelDataList = new List<LevelData>();
+            LevelData = new();
             Money = 0;
         }
 
-        public PlayerData(List<LevelData> levelData, int money)
+        public PlayerData(Dictionary<int, LevelData> levelData, int money)
         {
-            LevelDataList = levelData;
+            LevelData = levelData;
             Money = money;
         }
     }
@@ -94,12 +95,10 @@ namespace Src.Saves
     [Serializable]
     public class LevelData
     {
-        public int Id;
         public LevelCompletionState Status;
 
-        public LevelData(int id, LevelCompletionState state)
+        public LevelData(LevelCompletionState state)
         {
-            Id = id;
             Status = state;
         }
     }

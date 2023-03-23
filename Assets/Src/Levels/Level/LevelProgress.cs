@@ -69,7 +69,7 @@ namespace Src.Levels.Level
         {
             _status = newStatus;
             
-            _save.SaveLevel(new LevelData(_id, _status));
+            _save.SaveLevel(_id, new LevelData(_status));
 
             _onCompletionStatusChange.Invoke(_status);
         }

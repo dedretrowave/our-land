@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Src.DI;
-using Src.Levels.Level;
 using UnityEngine;
 
 namespace Src.Regions.Containers

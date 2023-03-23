@@ -30,20 +30,16 @@ namespace Src.EnemyAI
         {
             _waitTimeBeforeNextAttack = Random.Range(_minPauseBetweenAttacks, _maxPauseBetweenAttacks);
 
-            if (_enemyContainers.Count == 0) return;
+            RegionContainer enemyContainer = _enemyContainers[Random.Range(0, _enemyContainers.Count)];
 
-            try
-            {
-                _selectedEnemyRegion = _enemyContainers[Random.Range(0, _enemyContainers.Count)].GetRandomRegion();
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.Message);
-            }
-            finally
+            if (enemyContainer == null)
             {
                 StartCoroutine(WaitAndAttack());
+                return;
             }
+
+            _selectedEnemyRegion = enemyContainer.GetRandomRegion();
+            StartCoroutine(WaitAndAttack());
         }
 
         private IEnumerator WaitAndAttack()

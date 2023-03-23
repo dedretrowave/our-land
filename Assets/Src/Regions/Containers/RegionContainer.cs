@@ -12,7 +12,7 @@ namespace Src.Regions.Containers
 
         public Region GetRandomRegion()
         {
-            return _regions[Random.Range(0, _regions.Count)];
+            return _regions.Count == 0 ? null : _regions[Random.Range(0, _regions.Count)];
         }
 
         public void RemoveRegion(Region region)
