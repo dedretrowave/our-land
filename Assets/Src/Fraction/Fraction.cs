@@ -19,7 +19,11 @@ namespace Src.Fraction
             get => _selectedFlag;
             set => _selectedFlag = value;
         }
-        public Sprite Eyes => _selectedEyes;
+        public Sprite Eyes
+        {
+            get => _selectedEyes;
+            set => _selectedEyes = value;
+        }
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
         public bool IsPlayerControlled => _isPlayerControlled;

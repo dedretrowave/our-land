@@ -1,3 +1,4 @@
+using System;
 using Src.DI;
 using Src.Saves;
 using UnityEngine;
@@ -36,12 +37,12 @@ namespace Src.Wallet
 
             if (decreasedAmount <= 0)
             {
-                _money = 0;
+                Money = 0;
                 _onMoneyEqualsZero.Invoke();
-                return;
+                throw new Exception("Out of money");
             }
 
-            _money = decreasedAmount;
+            Money = decreasedAmount;
             _onMoneyChange.Invoke(_money);
         }
         
