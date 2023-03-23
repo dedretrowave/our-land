@@ -33,8 +33,8 @@ namespace Src.Regions
         {
             if (_container != null) _container.RemoveRegion(this);
             
-            container.AddRegion(this);
             _container = container;
+            _container.AddRegion(this);
         }
 
         public Vector3 GetPosition()

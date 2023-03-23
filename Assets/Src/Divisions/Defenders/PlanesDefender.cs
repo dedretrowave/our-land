@@ -1,5 +1,6 @@
 using Src.Divisions.Defenders.Base;
 using Src.Divisions.Divisions;
+using Src.Divisions.Divisions.Movement;
 using Src.Regions.Combat;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,7 @@ namespace Src.Divisions.Defenders
     public class PlanesDefender : Defender
     {
         [Header("Components")]
-        [SerializeField] private Movement.Movement _movement;
+        [SerializeField] private Movement _movement;
         
         [Header("Events")]
         [SerializeField] private UnityEvent _onTargetRegionReached;
