@@ -14,8 +14,16 @@ namespace Src.Fraction
         [SerializeField] private bool _allowsDivisionGeneration;
         [SerializeField] private bool _isPlayerControlled;
 
-        public Sprite Flag => _selectedFlag;
-        public Sprite Eyes => _selectedEyes;
+        public Sprite Flag
+        {
+            get => _selectedFlag;
+            set => _selectedFlag = value;
+        }
+        public Sprite Eyes
+        {
+            get => _selectedEyes;
+            set => _selectedEyes = value;
+        }
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
         public bool IsPlayerControlled => _isPlayerControlled;
