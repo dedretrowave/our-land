@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Src.Divisions.Movement
+namespace Src.Divisions.Divisions.Movement
 {
     public class Movement : MonoBehaviour
     {

@@ -29,7 +29,7 @@ namespace Src.Regions.Combat
 
         private void HandleDivision(Division division)
         {
-            if (division.ParentBase.Equals(_base)) return;
+            if (division.ParentBase.Equals(_base) || !division.TargetRegion.Equals(_region)) return;
 
             _regionClaimer = division.Fraction;
 

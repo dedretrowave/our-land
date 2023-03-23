@@ -1,3 +1,4 @@
+using Src.Regions;
 using Src.Regions.Structures;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,14 +12,17 @@ namespace Src.Divisions.Divisions
 
         private Fraction.Fraction _fraction;
         private GarrisonBase _parentBase;
+        private Region _targetRegion;
 
         public Fraction.Fraction Fraction => _fraction;
         public GarrisonBase ParentBase => _parentBase;
+        public Region TargetRegion => _targetRegion;
 
-        public void Init(Fraction.Fraction fraction, GarrisonBase parentBase)
+        public void Init(Fraction.Fraction fraction, GarrisonBase parentBase, Region targetRegion)
         {
             _fraction = fraction;
             _parentBase = parentBase;
+            _targetRegion = targetRegion;
             _onInit.Invoke(this);
             Vector3 transformLocalPosition = transform.localPosition;
             transformLocalPosition.x += Random.Range(-20f, 20f);

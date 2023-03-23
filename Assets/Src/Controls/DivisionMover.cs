@@ -13,11 +13,11 @@ namespace Src.Controls
         {
             if (_base == null || directionPoint.transform.Equals(_base.transform)) return;
 
-            Vector3 targetRegion;
+            Region targetRegion;
             
             try
             {
-                targetRegion = directionPoint.GetComponent<Region>().GetPosition();
+                targetRegion = directionPoint.GetComponent<Region>();
             }
             catch (Exception)
             {

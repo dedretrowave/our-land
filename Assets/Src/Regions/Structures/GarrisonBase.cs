@@ -18,9 +18,9 @@ namespace Src.Regions.Structures
 
         private float _divisionSpawnRate;
 
-        public void DeployDivisions(Vector3 targetPoint)
+        public void DeployDivisions(Region targetRegion)
         {
-            StartCoroutine(SpawnDivisionsOneByOne(targetPoint));
+            StartCoroutine(SpawnDivisionsOneByOne(targetRegion));
         }
 
         public void TakeDamage()
@@ -38,17 +38,16 @@ namespace Src.Regions.Structures
             _divisionSpawnRate = DependencyContext.Dependencies.Get<Config>().DivisionChangeRateInSeconds;
         }
 
-        private IEnumerator SpawnDivisionsOneByOne(Vector3 targetPoint)
+        private IEnumerator SpawnDivisionsOneByOne(Region targetRegion)
         {
             int i = 0;
             int startGarrisonAmount = _garrison.Amount;
             
             while (i < startGarrisonAmount)
             {
-                // Division division = Instantiate(_divisionPrefab, transform.position, Quaternion.identity);
                 Division division = Instantiate(_divisionPrefab, transform);
-                division.Init(_owner.Fraction, this);
-                division.Deploy(targetPoint);
+                division.Init(_owner.Fraction, this, targetRegion);
+                division.Deploy(targetRegion.GetPosition());
                 _garrison.Decrease();
                 i++;
 

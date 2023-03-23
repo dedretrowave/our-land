@@ -63,7 +63,7 @@ namespace Src.EnemyAI
             
             Region selectedRegion = _container.GetRandomRegion();
 
-            selectedRegion.Base.DeployDivisions(_selectedEnemyRegion.transform.position);
+            selectedRegion.Base.DeployDivisions(_selectedEnemyRegion);
 
             _selectedEnemyRegion = null;
             PrepareForAttack();
