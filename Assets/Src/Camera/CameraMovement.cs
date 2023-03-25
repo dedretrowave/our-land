@@ -8,9 +8,14 @@ namespace Src.Camera
     {
         [SerializeField] private UnityEngine.Camera _cam;
 
+        [Header("Parameters")]
+        [SerializeField] private float _speed = 150f;
+
         [Header("Borders")]
         [SerializeField] private float _yBorderValue;
         [SerializeField] private float _xBorderValue;
+
+        private const float SpeedCorrection = 100f;
         
         private Vector3 _touchStart;
         private int _groundZ = -10;
@@ -55,7 +60,7 @@ namespace Src.Camera
             Ray mousePosition = _cam.ScreenPointToRay(Input.mousePosition);
             Plane ground = new(Vector3.forward, new Vector3(0,0,z));
             ground.Raycast(mousePosition, out float distance);
-            return mousePosition.GetPoint(distance);
+            return mousePosition.GetPoint(distance) * (_speed / SpeedCorrection);
         }
     }
 }

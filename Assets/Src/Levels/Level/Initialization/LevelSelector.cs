@@ -16,7 +16,6 @@ namespace Src.Levels.Level.Initialization
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            
             if (_progress.Status == LevelCompletionState.Complete)
             {
                 enabled = false;
