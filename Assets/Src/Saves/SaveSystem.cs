@@ -42,6 +42,8 @@ namespace Src.Saves
         
         private void Awake()
         {
+            DontDestroyOnLoad(this);
+            
             _pathToFile = $"{Application.persistentDataPath}/{_localPathToFile}";
             
             DependencyContext.Dependencies.Add(typeof(SaveSystem), () => this);

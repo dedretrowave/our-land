@@ -19,6 +19,7 @@ namespace Src.Settings
 
         private void Awake()
         {
+            DontDestroyOnLoad(this);
             DependencyContext.Dependencies.Add(typeof(ColorsSettings), () => this);
         }
     }
