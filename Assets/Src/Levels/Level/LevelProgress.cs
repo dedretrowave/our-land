@@ -4,6 +4,7 @@ using Src.Regions.Containers;
 using Src.Saves;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.Levels.Level
 {
@@ -15,9 +16,9 @@ namespace Src.Levels.Level
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
         [SerializeField] private List<RegionContainer> _enemyContainers;
-
+        
         [Header("Events")]
-        [SerializeField] private UnityEvent<LevelCompletionState> _onCompletionStatusChange = new();
+        [SerializeField] private UnityEvent<LevelCompletionState> _onFinishWithStatus = new();
         [SerializeField] private UnityEvent<LevelCompletionState> _onInitWithStatus = new();
 
         private LevelCompletionState _status = LevelCompletionState.Incomplete;
@@ -34,6 +35,12 @@ namespace Src.Levels.Level
             {
                 enemy.OnEmpty.AddListener(ProceedToCompletion);
             });
+        }
+
+        private void ClearContainers()
+        {
+            _playerContainer.Clear();
+            _enemyContainers.ForEach(container => container.Clear());
         }
 
         private void Start()
@@ -71,7 +78,9 @@ namespace Src.Levels.Level
             
             _save.SaveLevel(_id, new LevelData(_status));
 
-            _onCompletionStatusChange.Invoke(_status);
+            _onFinishWithStatus.Invoke(_status);
+            
+            ClearContainers();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Src.Wallet
             _onMoneyChange.Invoke(_money);
         }
         
-        private void Start()
+        private void Awake()
         {
             _save = DependencyContext.Dependencies.Get<SaveSystem>();
 

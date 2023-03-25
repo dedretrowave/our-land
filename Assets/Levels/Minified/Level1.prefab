@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 5116749330017771390}
   - component: {fileID: 5116749330017771330}
   - component: {fileID: 1452019597346101528}
+  - component: {fileID: 4487813527365004481}
   m_Layer: 0
   m_Name: Level1
   m_TagString: Untagged
@@ -264,12 +265,48 @@ MonoBehaviour:
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onCompletionStatusChange:
+  _onFinishWithStatus:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5116749329663878974}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
         m_MethodName: UpdateColorByStatus
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5116749329663878974}
+        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5116749330017771390}
+        m_TargetAssemblyTypeName: Src.Levels.Level.Initialization.LevelSpawner, Assembly-CSharp
+        m_MethodName: Remove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4487813527365004481}
+        m_TargetAssemblyTypeName: Src.Levels.Level.LevelReward, Assembly-CSharp
+        m_MethodName: ApplyByLevelStatus
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -290,31 +327,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5116749329663878974}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 5116749330017771390}
-        m_TargetAssemblyTypeName: Src.Levels.Level.Initialization.LevelSpawner, Assembly-CSharp
-        m_MethodName: Remove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   _onInitWithStatus:
     m_PersistentCalls:
@@ -396,3 +409,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4487813527365004481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116749330017771339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568f51008c6649758b9a3f20b2ca220c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 1000
