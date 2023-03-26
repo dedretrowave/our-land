@@ -39,6 +39,18 @@ namespace Src.Saves
         {
             return _data.Money;
         }
+
+        public SoundData GetSoundsSettings()
+        {
+            return _data.Sounds;
+        }
+
+        public void SaveSoundsSettings(SoundData data)
+        {
+            _data.Sounds = data;
+            
+            Save();
+        }
         
         private void Awake()
         {
@@ -79,6 +91,7 @@ namespace Src.Saves
     internal class PlayerData
     {
         public Dictionary<int, LevelData> LevelData = new();
+        public SoundData Sounds;
         public int Money;
 
         public PlayerData()
@@ -86,12 +99,14 @@ namespace Src.Saves
             LevelData = new();
             Money = 0;
         }
+    }
 
-        public PlayerData(Dictionary<int, LevelData> levelData, int money)
-        {
-            LevelData = levelData;
-            Money = money;
-        }
+    [Serializable]
+    public class SoundData
+    {
+        public bool IsMusicEnabled;
+
+        public SoundData() { }
     }
 
     [Serializable]
