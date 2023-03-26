@@ -13,6 +13,7 @@ namespace Src.Divisions.Garrison
         [Header("Events")]
         [SerializeField] private UnityEvent _onNumberBelowZero;
         [SerializeField] private UnityEvent<int> _onNumberChange;
+        [SerializeField] private UnityEvent _onDamageTaken;
 
         private int _amount;
 
@@ -21,9 +22,10 @@ namespace Src.Divisions.Garrison
             SetNumber(_initialNumber);
         }
 
-        public void DecreaseToZero()
+        public void TakeDamage()
         {
-            SetNumber(0);
+            _onDamageTaken.Invoke();
+            Decrease();
         }
 
         public void Increase()

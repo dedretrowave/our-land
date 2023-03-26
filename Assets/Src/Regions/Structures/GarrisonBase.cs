@@ -25,7 +25,7 @@ namespace Src.Regions.Structures
 
         public void TakeDamage()
         {
-            _garrison.Decrease();
+            _garrison.TakeDamage();
         }
 
         public void TakeSupply()
