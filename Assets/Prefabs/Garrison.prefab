@@ -402,6 +402,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onDamageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6689217830504710343}
+        m_TargetAssemblyTypeName: Src.Divisions.Garrison.UI.AnimationTrigger, Assembly-CSharp
+        m_MethodName: TriggerHurt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6901165149145185778
 MonoBehaviour:
   m_ObjectHideFlags: 0

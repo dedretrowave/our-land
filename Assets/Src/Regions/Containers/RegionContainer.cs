@@ -27,7 +27,6 @@ namespace Src.Regions.Containers
 
         public void Clear()
         {
-            Debug.Log("Clear");
             _regions.Clear();
         }
 

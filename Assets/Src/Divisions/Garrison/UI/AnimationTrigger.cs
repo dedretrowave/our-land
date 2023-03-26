@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Src.Divisions.Garrison.UI
 {
-    public class RandomAnimationTrigger : MonoBehaviour
+    public class AnimationTrigger : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private Animator _animator;
@@ -14,9 +12,15 @@ namespace Src.Divisions.Garrison.UI
         [SerializeField] private float _minTimeout = 2f;
         [SerializeField] private float _maxTimeout = 5f;
         
-        private static readonly int Trigger = Animator.StringToHash("Trigger");
+        private static readonly int Trigger = Animator.StringToHash("Random");
+        private static readonly int Hurt = Animator.StringToHash("Hurt");
 
         private Coroutine _routine;
+
+        public void TriggerHurt()
+        {
+            _animator.SetTrigger(Hurt);
+        }
 
         private void Start()
         {
