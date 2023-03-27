@@ -3869,8 +3869,8 @@ MonoBehaviour:
   _player: {fileID: 1649411179}
   _completeFlag: {fileID: 21300000, guid: ca3908247f0a2fb42bc8c66db7dbffc5, type: 3}
   _failFlag: {fileID: 21300000, guid: ed1bc13b98823914b86325e0deeb471c, type: 3}
-  _sadEyes: {fileID: 21300000, guid: 142ae1f21c38a81459d6128bfc96b8b5, type: 3}
-  _happyEyes: {fileID: 21300000, guid: 2808cf949579073488694ecbbb52408c, type: 3}
+  _sadEyes: {fileID: 21300000, guid: c8fbae92cd59c3942b20192b90326a44, type: 3}
+  _happyEyes: {fileID: 21300000, guid: 89ff0f5bdb5e8ee48bc28c8eb2966e47, type: 3}
   _banner: {fileID: 317862332}
   _flag: {fileID: 177055213}
   _eyes: {fileID: 1939604244}
@@ -4821,7 +4821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 142ae1f21c38a81459d6128bfc96b8b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89ff0f5bdb5e8ee48bc28c8eb2966e47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -1,4 +1,4 @@
-using Src.Divisions.Divisions;
+using Src.Garrisons.Divisions;
 using Src.Regions.Combat;
 using UnityEngine;
 

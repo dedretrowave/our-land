@@ -5,10 +5,9 @@ using UnityEngine.Events;
 
 namespace Src.Audio
 {
-    public class AudioPlayer : MonoBehaviour
+    public class MusicPlayer : MonoBehaviour
     {
         [SerializeField] private AudioSource _music;
-        [SerializeField] private AudioSource _sounds;
 
         [SerializeField] private UnityEvent<bool> OnIsMusicPlayingChanged;
 

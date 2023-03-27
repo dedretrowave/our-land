@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Src.Divisions.Garrison
+namespace Src.Garrisons
 {
     public class DivisionsGenerator : MonoBehaviour
     {

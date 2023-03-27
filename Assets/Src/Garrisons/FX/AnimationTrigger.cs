@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Src.Divisions.Garrison.UI
+namespace Src.Garrisons.FX
 {
     public class AnimationTrigger : MonoBehaviour
     {

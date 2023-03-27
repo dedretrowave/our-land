@@ -1,6 +1,6 @@
 using Src.Controls;
 using Src.DI;
-using Src.Divisions.Garrison;
+using Src.Garrisons;
 using Src.Regions.Combat;
 using Src.Regions.Containers;
 using Src.Regions.Structures;

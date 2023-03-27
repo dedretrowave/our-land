@@ -11,7 +11,7 @@ namespace Src.Divisions.Defenders.Deployment
         
         [Header("Components")]
         [SerializeField] private Defender _defenderPrefab;
-        [SerializeField] private Garrison.Garrison _garrison;
+        [SerializeField] private Garrisons.Garrison _garrison;
 
         public void Deploy(Transform regionTransform)
         {
