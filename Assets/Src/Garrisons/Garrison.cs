@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Divisions.Garrison
+namespace Src.Garrisons
 {
     public class Garrison : MonoBehaviour
     {

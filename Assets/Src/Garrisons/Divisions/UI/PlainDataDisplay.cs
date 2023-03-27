@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Src.Divisions.Divisions.UI
+namespace Src.Garrisons.Divisions.UI
 {
     public class PlainDataDisplay : MonoBehaviour
     {

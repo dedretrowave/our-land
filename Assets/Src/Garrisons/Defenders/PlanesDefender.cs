@@ -1,6 +1,6 @@
 using Src.Divisions.Defenders.Base;
-using Src.Divisions.Divisions;
-using Src.Divisions.Divisions.Movement;
+using Src.Garrisons.Divisions;
+using Src.Garrisons.Divisions.Movement;
 using Src.Regions.Combat;
 using UnityEngine;
 using UnityEngine.Events;

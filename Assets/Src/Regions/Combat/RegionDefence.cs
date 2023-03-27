@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Src.Divisions.Defenders.Base;
-using Src.Divisions.Divisions;
+using Src.Garrisons.Divisions;
 using UnityEngine;
 
 namespace Src.Regions.Combat

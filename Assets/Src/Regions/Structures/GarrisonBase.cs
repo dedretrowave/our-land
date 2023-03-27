@@ -1,7 +1,7 @@
 using System.Collections;
 using Src.DI;
-using Src.Divisions.Divisions;
-using Src.Divisions.Garrison;
+using Src.Garrisons;
+using Src.Garrisons.Divisions;
 using Src.Settings;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Src.Divisions.Divisions.UI
+namespace Src.Garrisons.Divisions.UI
 {
     public class GarrisonUI : MonoBehaviour
     {
