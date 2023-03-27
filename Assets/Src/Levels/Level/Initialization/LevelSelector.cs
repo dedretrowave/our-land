@@ -1,28 +1,29 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Src.Levels.Level.Initialization
 {
     public class LevelSelector : MonoBehaviour, IPointerClickHandler
     {
         [Header("Components")]
-        [SerializeField] private LevelProgress _progress;
+        [SerializeField] private Level _level;
 
         [Header("Events")]
-        [SerializeField] private UnityEvent<Transform> _onLevelSelected;
+        [SerializeField] private UnityEvent<Level> _onLevelSelected;
 
         private bool _isStarted;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_progress.Status == LevelCompletionState.Complete)
+            if (_level.Status == LevelCompletionState.Complete)
             {
                 enabled = false;
                 return;
             }
             
-            _onLevelSelected.Invoke(transform);
+            _onLevelSelected.Invoke(_level);
         }
     }
 }

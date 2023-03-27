@@ -12,36 +12,22 @@ namespace Src.Levels.Level.Initialization
         [SerializeField] private Transform _selectedLevelContainer;
         [SerializeField] private Transform _levelsContainer;
 
-        public UnityEvent<Transform> OnLevelStarted;
-        public UnityEvent<LevelCompletionState> OnLevelFinished;
-        public UnityEvent OnLevelCompleted;
-        public UnityEvent OnLevelFailed;
+        public UnityEvent<Level> OnLevelStarted;
+        public UnityEvent<Level> OnLevelFinished;
 
         private Transform _selectedLevel;
 
-        public void InitializeLevel(Transform level)
+        public void InitializeLevel(Level level)
         {
-            _selectedLevel = level;
+            _selectedLevel = level.transform;
             _selectedLevel.SetParent(_selectedLevelContainer);
-            OnLevelStarted.Invoke(_selectedLevel);
+            OnLevelStarted.Invoke(level);
         }
 
-        public void EndLevel(LevelCompletionState state)
+        public void EndLevel(Level level)
         {
             _selectedLevel.SetParent(_levelsContainer);
-            OnLevelFinished.Invoke(state);
-
-            switch (state)
-            {
-                case LevelCompletionState.Complete:
-                    OnLevelCompleted.Invoke();
-                    break;
-                case LevelCompletionState.Incomplete:
-                    OnLevelFailed.Invoke();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
-            }
+            OnLevelFinished.Invoke(level);
         }
 
         private void Start()

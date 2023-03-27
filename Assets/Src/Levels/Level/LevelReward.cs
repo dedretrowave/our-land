@@ -11,6 +11,13 @@ namespace Src.Levels.Level
 
         private Wallet.Wallet _wallet;
 
+        public int Amount => _amount;
+
+        public void ApplyByLevelStatus(Level level)
+        {
+            ApplyByLevelStatus(level.Status);
+        }
+
         public void ApplyByLevelStatus(LevelCompletionState status)
         {
             if (status == LevelCompletionState.Complete)

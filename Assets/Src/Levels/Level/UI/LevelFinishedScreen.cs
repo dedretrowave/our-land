@@ -1,5 +1,6 @@
 using System;
 using Src.Fraction;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,26 +19,28 @@ namespace Src.Levels.Level.UI
         [SerializeField] private Image _banner;
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
+        [SerializeField] private TextMeshProUGUI _rewardText;
 
-        public void ShowByStatus(LevelCompletionState status)
+        public void Show(Level level)
         {
-            switch (status)
+            switch (level.Status)
             {
                 case LevelCompletionState.Complete:
-                    ShowComplete();
+                    ShowComplete(level);
                     break;
                 case LevelCompletionState.Incomplete:
                     ShowFail();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
+                    throw new ArgumentOutOfRangeException(nameof(level.Status), level.Status, null);
             }
         }
 
-        private void ShowComplete()
+        private void ShowComplete(Level level)
         {
             _banner.sprite = _completeFlag;
             _eyes.sprite = _happyEyes;
+            _rewardText.text = level.Reward.Amount.ToString();
             Show();
         }
 

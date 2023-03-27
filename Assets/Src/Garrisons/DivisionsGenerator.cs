@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Src.Garrisons
 {
@@ -7,16 +8,16 @@ namespace Src.Garrisons
     {
         [Header("Components")]
         [SerializeField] private Garrison _garrison;
-
+        
         [Header("Parameters")]
-        [SerializeField] private float _generationRate = 2f;
+        [SerializeField] private float _pauseBetweenSpawnsInSeconds = 2f;
         [SerializeField] private float _generationFreezeTimeout = 5f;
 
         private Coroutine _generationRoutine;
 
         public void Init(int generationRate)
         {
-            _generationRate = generationRate;
+            _pauseBetweenSpawnsInSeconds = generationRate;
         }
 
         public void StartGeneration()
@@ -55,7 +56,7 @@ namespace Src.Garrisons
 
         private IEnumerator Generate()
         {
-            yield return new WaitForSeconds(_generationRate);
+            yield return new WaitForSeconds(_pauseBetweenSpawnsInSeconds);
             
             Create();
 

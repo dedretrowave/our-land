@@ -1,3 +1,4 @@
+using Src.Levels.Level;
 using UnityEngine;
 
 namespace Src.Camera
@@ -8,6 +9,11 @@ namespace Src.Camera
         [SerializeField] private CameraMovement _movement;
 
         private Vector3 _cameraDefaultPosition;
+
+        public void Focus(Level level)
+        {
+            Focus(level.transform);
+        }
 
         public void Focus(Transform level)
         {
