@@ -234,7 +234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +2000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
   m_sharedMaterial: {fileID: -2444175379984325031, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
@@ -3264,7 +3264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1215364557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4134,6 +4134,7 @@ MonoBehaviour:
   _flag: {fileID: 177055213}
   _eyes: {fileID: 1939604244}
   _rewardText: {fileID: 125414409}
+  _rewardIcon: {fileID: 1215364558}
 --- !u!1 &1588716837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5891,10 +5892,6 @@ PrefabInstance:
       propertyPath: _onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 8891632734441121456}
-    - target: {fileID: 4352505544609254419, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
-      propertyPath: _onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: EndLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 4981692007443683555, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: _amount
       value: 4000

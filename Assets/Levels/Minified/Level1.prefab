@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reward: {fileID: 0}
+  _reward: {fileID: 4487813527365004481}
   _id: 1
   _playerContainer: {fileID: 0}
   _enemyContainers:

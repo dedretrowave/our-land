@@ -20,6 +20,7 @@ namespace Src.Levels.Level.UI
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
         [SerializeField] private TextMeshProUGUI _rewardText;
+        [SerializeField] private Image _rewardIcon;
 
         public void Show(Level level)
         {
@@ -40,7 +41,8 @@ namespace Src.Levels.Level.UI
         {
             _banner.sprite = _completeFlag;
             _eyes.sprite = _happyEyes;
-            _rewardText.text = level.Reward.Amount.ToString();
+            _rewardText.text =  $"+{level.Reward.Amount.ToString()}";
+            _rewardIcon.enabled = true;
             Show();
         }
 
@@ -48,6 +50,7 @@ namespace Src.Levels.Level.UI
         {
             _banner.sprite = _failFlag;
             _eyes.sprite = _sadEyes;
+            _rewardIcon.enabled = false;
             Show();
         }
 
