@@ -1,6 +1,6 @@
 using System;
-using Src.Regions;
-using Src.Regions.Structures;
+using Src.Map.Regions;
+using Src.Map.Regions.Structures;
 using UnityEngine;
 
 namespace Src.Controls

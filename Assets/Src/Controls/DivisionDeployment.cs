@@ -1,4 +1,3 @@
-using Src.Regions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

@@ -1,10 +1,11 @@
+using Src.Map.Fraction;
 using UnityEngine;
 
 namespace Src.SkinShop
 {
     public class PlayerSkinChanger : MonoBehaviour
     {
-        [SerializeField] private Fraction.Fraction _player;
+        [SerializeField] private Fraction _player;
 
         public void SetFlag(Sprite flag)
         {
