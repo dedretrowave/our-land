@@ -1,5 +1,5 @@
 using System;
-using Src.Fraction;
+using Src.Map.Fraction;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,7 +42,7 @@ namespace Src.Levels.Level.UI
             _banner.sprite = _completeFlag;
             _eyes.sprite = _happyEyes;
             _rewardText.text =  $"+{level.Reward.Amount.ToString()}";
-            _rewardIcon.enabled = true;
+            _rewardIcon.gameObject.SetActive(true);
             Show();
         }
 
@@ -50,7 +50,8 @@ namespace Src.Levels.Level.UI
         {
             _banner.sprite = _failFlag;
             _eyes.sprite = _sadEyes;
-            _rewardIcon.enabled = false;
+            _rewardText.text = "";
+            _rewardIcon.gameObject.SetActive(false);
             Show();
         }
 

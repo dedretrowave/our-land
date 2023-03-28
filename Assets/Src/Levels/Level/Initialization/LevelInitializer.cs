@@ -15,19 +15,25 @@ namespace Src.Levels.Level.Initialization
         public UnityEvent<Level> OnLevelStarted;
         public UnityEvent<Level> OnLevelFinished;
 
-        private Transform _selectedLevel;
+        private Level _selectedLevel;
 
         public void InitializeLevel(Level level)
         {
-            _selectedLevel = level.transform;
-            _selectedLevel.SetParent(_selectedLevelContainer);
+            if (_selectedLevel != null) return;
+            
+            _selectedLevel = level;
+            _selectedLevel.transform.SetParent(_selectedLevelContainer);
+            level.Init();
             OnLevelStarted.Invoke(level);
         }
 
         public void EndLevel(Level level)
         {
-            _selectedLevel.SetParent(_levelsContainer);
+            if (_selectedLevel == null) return;
+            
+            _selectedLevel.transform.SetParent(_levelsContainer);
             OnLevelFinished.Invoke(level);
+            _selectedLevel = null;
         }
 
         private void Start()

@@ -2141,10 +2141,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2198977542723444467, guid: 86ecf48c69d2e234393d76158088e875, type: 3}
-      propertyPath: DivisionChangeRateInSeconds
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ecf48c69d2e234393d76158088e875, type: 3}
 --- !u!1 &1914547257
@@ -2464,28 +2460,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 5
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505543705260029}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &4352505542711728005
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2616,28 +2601,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 3
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505543524457980}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &4352505542901081476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2975,28 +2949,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 2
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505543153322126}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &4352505543272345846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3234,28 +3197,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 7
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505542690699258}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4352505543609765775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,28 +3453,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 4
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505544603476905}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4352505543952833500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,28 +3782,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 8
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505544492698448}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &4352505544120330096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4150,28 +4080,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 6
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505544063005673}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4352505544518601628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,28 +4161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 9
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4352505543978466250}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4352505544602878911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,28 +4393,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 0}
   _id: 1
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8891632734377417708}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &8891632733994165140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4629,12 +4526,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnLevelCompleted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLevelFailed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8891632734113252758
 GameObject:
   m_ObjectHideFlags: 0

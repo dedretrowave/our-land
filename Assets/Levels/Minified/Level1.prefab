@@ -262,6 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 4487813527365004481}
+  _spawner: {fileID: 5116749330017771390}
+  _ui: {fileID: 5116749329663878974}
   _id: 1
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -269,18 +271,6 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5116749329663878974}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5116749329663878974}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
         m_MethodName: Show
@@ -330,7 +320,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5116749329663878974}
@@ -366,42 +356,6 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: InitializeLevel
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5116749330017771330}
-        m_TargetAssemblyTypeName: Src.Levels.Level.LevelProgress, Assembly-CSharp
-        m_MethodName: BindEvents
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5116749330017771390}
-        m_TargetAssemblyTypeName: Src.Levels.Level.Initialization.LevelSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5116749329663878974}
-        m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

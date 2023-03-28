@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Src.DI;
-using Src.Regions.Containers;
+using Src.Levels.Level.Initialization;
+using Src.Levels.Level.UI;
+using Src.Map.Regions.Containers;
 using Src.Saves;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +13,8 @@ namespace Src.Levels.Level
     {
         [Header("Components")]
         [SerializeField] private LevelReward _reward;
+        [SerializeField] private LevelSpawner _spawner;
+        [SerializeField] private LevelUI _ui;
         
         [Header("Parameters")]
         [SerializeField] private int _id;
@@ -18,10 +22,10 @@ namespace Src.Levels.Level
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
         [SerializeField] private List<RegionContainer> _enemyContainers;
-        
+
         [Header("Events")]
         [SerializeField] private UnityEvent<Level> _onFinish = new();
-        [SerializeField] private UnityEvent<Level> _onInit = new();
+        [SerializeField] private UnityEvent<Level> _onStatusChange = new();
 
         private LevelCompletionState _status = LevelCompletionState.Incomplete;
         private int _defeatedEnemies;
@@ -30,6 +34,18 @@ namespace Src.Levels.Level
 
         public LevelCompletionState Status => _status;
         public LevelReward Reward => _reward;
+
+        public void Init()
+        {
+            BindEvents();
+            _spawner.Spawn();
+            _ui.Hide();
+        }
+
+        public void ChangeStatusToIncomplete()
+        {
+            SetStatus(LevelCompletionState.Incomplete);
+        }
 
         public void BindEvents()
         {
@@ -52,7 +68,7 @@ namespace Src.Levels.Level
 
             _status = _save.GetLevelById(_id)?.Status ?? LevelCompletionState.Incomplete;
 
-            _onInit.Invoke(this);
+            _onStatusChange.Invoke(this);
         }
 
         private void ProceedToCompletion()
@@ -77,13 +93,19 @@ namespace Src.Levels.Level
 
         private void FinishLevelWithStatus(LevelCompletionState newStatus)
         {
-            _status = newStatus;
+            SetStatus(newStatus);
             
             _save.SaveLevel(_id, new LevelData(_status));
 
             _onFinish.Invoke(this);
             
             ClearContainers();
+        }
+        
+        private void SetStatus(LevelCompletionState status)
+        {
+            _status = status;
+            _onStatusChange.Invoke(this);
         }
     }
 }

@@ -5,8 +5,12 @@ namespace Src.Camera
 {
     public class CameraOnLevelFocus : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private UnityEngine.Camera _camera;
         [SerializeField] private CameraMovement _movement;
+
+        [Header("Parameters")]
+        [SerializeField] private float _cameraOnFocusZPosition = -25f;
 
         private Vector3 _cameraDefaultPosition;
 
@@ -17,7 +21,7 @@ namespace Src.Camera
 
         public void Focus(Transform level)
         {
-            _camera.transform.position = new Vector3(level.position.x, level.position.y, 0f);
+            _camera.transform.position = new Vector3(level.position.x, level.position.y, _cameraOnFocusZPosition);
             _movement.Freeze();
         }
 
