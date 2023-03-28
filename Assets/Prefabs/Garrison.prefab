@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _garrison: {fileID: 9111552186352011789}
-  _generationRate: 3
+  _pauseBetweenSpawnsInSeconds: 1
   _generationFreezeTimeout: 5
 --- !u!1 &2354344763166018224
 GameObject:
@@ -837,7 +837,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c06b303f771a614986b58b7ce72fb92, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fec6b1fae89b85c40a9cfbbf8f8f3cec, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1

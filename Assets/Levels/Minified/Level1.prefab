@@ -261,11 +261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093ec236cdc54e6ca41acb781e8f4323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reward: {fileID: 4487813527365004481}
   _id: 1
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
-  _onFinishWithStatus:
+  _onFinish:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5116749329663878974}
@@ -292,10 +293,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5116749330017771390}
-        m_TargetAssemblyTypeName: Src.Levels.Level.Initialization.LevelSpawner, Assembly-CSharp
-        m_MethodName: Remove
-        m_Mode: 1
+      - m_Target: {fileID: 4487813527365004481}
+        m_TargetAssemblyTypeName: Src.Levels.Level.LevelReward, Assembly-CSharp
+        m_MethodName: ApplyByLevelStatus
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -304,10 +305,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4487813527365004481}
-        m_TargetAssemblyTypeName: Src.Levels.Level.LevelReward, Assembly-CSharp
-        m_MethodName: ApplyByLevelStatus
-        m_Mode: 0
+      - m_Target: {fileID: 5116749330017771390}
+        m_TargetAssemblyTypeName: Src.Levels.Level.Initialization.LevelSpawner, Assembly-CSharp
+        m_MethodName: Remove
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -329,7 +330,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onInitWithStatus:
+  _onInit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5116749329663878974}
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695fa1b3527f43e2abfa17c7543cb0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _progress: {fileID: 5116749330017771330}
+  _level: {fileID: 5116749330017771330}
   _onLevelSelected:
     m_PersistentCalls:
       m_Calls:

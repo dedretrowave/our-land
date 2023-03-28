@@ -21,6 +21,11 @@ namespace Src.Levels.Level.UI
             _image.enabled = true;
         }
 
+        public void UpdateColorByStatus(Level level)
+        {
+            UpdateColorByStatus(level.Status);
+        }
+
         public void UpdateColorByStatus(LevelCompletionState status)
         {
             if (_settings == null) _settings = DependencyContext.Dependencies.Get<ColorsSettings>(); 
