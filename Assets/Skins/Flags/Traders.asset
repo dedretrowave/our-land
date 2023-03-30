@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d716c372045e5b87738175af0d44b, type: 3}
   m_Name: Traders
   m_EditorClassIdentifier: 
-  _category: 0
+  _type: 0
+  _id: 114
   _sprite: {fileID: 21300000, guid: 1ef4e49c976e00a4e91d2911a52be3de, type: 3}
   _price: 3555
   IsPurchased: 0

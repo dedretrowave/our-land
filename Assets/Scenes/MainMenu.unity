@@ -2461,6 +2461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505543705260029}
   _id: 5
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -2468,7 +2470,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!222 &4352505542711728005
@@ -2602,6 +2604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505543524457980}
   _id: 3
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -2609,7 +2613,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!222 &4352505542901081476
@@ -2950,6 +2954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505543153322126}
   _id: 2
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -2957,7 +2963,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!222 &4352505543272345846
@@ -3198,6 +3204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505542690699258}
   _id: 7
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -3205,7 +3213,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4352505543609765775
@@ -3454,6 +3462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 0}
   _id: 4
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -3461,7 +3471,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4352505543952833500
@@ -3783,6 +3793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505544492698448}
   _id: 8
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -3790,7 +3802,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!224 &4352505544120330096
@@ -4081,6 +4093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505544063005673}
   _id: 6
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -4088,7 +4102,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4352505544518601628
@@ -4162,6 +4176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 4352505543978466250}
   _id: 9
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -4169,7 +4185,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4352505544602878911
@@ -4394,6 +4410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reward: {fileID: 0}
+  _spawner: {fileID: 0}
+  _ui: {fileID: 8891632734377417708}
   _id: 1
   _playerContainer: {fileID: 0}
   _enemyContainers:
@@ -4401,7 +4419,7 @@ MonoBehaviour:
   _onFinish:
     m_PersistentCalls:
       m_Calls: []
-  _onInit:
+  _onStatusChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!222 &8891632733994165140

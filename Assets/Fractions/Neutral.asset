@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c4ad34718548179ebe35a6438f57d2, type: 3}
   m_Name: Neutral
   m_EditorClassIdentifier: 
-  _selectedFlag: {fileID: 21300000, guid: 3967362c1586d2c4d824214f42a6de0e, type: 3}
-  _selectedEyes: {fileID: 21300000, guid: 2808cf949579073488694ecbbb52408c, type: 3}
+  _skin:
+    _items:
+    - {fileID: 11400000, guid: d4a37b5a34c2fdd42a109df793490cbf, type: 2}
+    - {fileID: 11400000, guid: 688bb03b94a6bcc46b1f56d7ec4ba8be, type: 2}
   _color: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
   _allowsDivisionGeneration: 0
+  _isPlayerControlled: 0

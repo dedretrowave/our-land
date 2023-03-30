@@ -11,13 +11,13 @@ namespace Src.Audio
 
         [SerializeField] private UnityEvent<bool> OnIsMusicPlayingChanged;
 
-        private SaveSystem _saves;
+        private PlayerDataSaveSystem _saves;
         private SoundData _data;
         
         private void Start()
         {
             DontDestroyOnLoad(this);
-            _saves = DependencyContext.Dependencies.Get<SaveSystem>();
+            _saves = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
             _data = _saves.GetSoundsSettings() ?? new SoundData();
             
             SetMusicPlaying(_data.IsMusicEnabled);

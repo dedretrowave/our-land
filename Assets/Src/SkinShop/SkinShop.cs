@@ -1,6 +1,8 @@
 using System;
-using System.Collections.Generic;
+using Src.DI;
+using Src.Saves;
 using Src.SkinShop.Items;
+using Src.SkinShop.Items.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,80 +11,60 @@ namespace Src.SkinShop
     public class SkinShop : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private Wallet.Wallet _wallet;
-        [SerializeField] private PlayerSkinChanger _skinChanger;
-        
+        [SerializeField] private Wallet.Wallet _wallet; 
+        [SerializeField] private PlayerSkin _playerSkin;
+
         [Header("Events")]
-        [SerializeField] private UnityEvent<int> _onTotalPriceChange;
+        [SerializeField] private UnityEvent<int> _onTotalPriceChange; 
+        [SerializeField] private UnityEvent<Skin> _onSkinChanged;
         [SerializeField] private UnityEvent _onItemPurchased;
 
-        private Dictionary<SkinShopItemCategory, SkinShopItem> _itemsToCategory = new();
-
+        private Skin _purchasableSkin;
+        private SkinSaveSystem _skinSaveSystem;
         private int _totalPrice;
 
-        public void SetItem(SkinShopItem item)
+        public void SetSkinItem(SkinItem item)
         {
-            _itemsToCategory[item.Category] = item;
-
+            _purchasableSkin.SetItem(item);
+            _onSkinChanged.Invoke(_purchasableSkin);
             RecalculatePrice();
         }
 
         public void PurchaseItems()
         {
-            foreach (var item in _itemsToCategory)
+            _wallet.Decrease(_totalPrice);
+            _totalPrice = 0;
+            
+            _purchasableSkin.Items.ForEach(item =>
             {
-                try
-                {
-                    _wallet.Decrease(item.Value.Price);
-                    
-                    item.Value.IsPurchased = true;
-                    
-                    _onItemPurchased.Invoke();
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e.Message);
-                }
-            }
+                item.IsPurchased = true;
+                _skinSaveSystem.SaveItemPurchase(item);
+            });
+            _onItemPurchased.Invoke();
         }
 
         public void SelectSkin()
         {
-            foreach (var item in _itemsToCategory)
+            _playerSkin.Skin = _purchasableSkin;
+        }
+
+        private void OnEnable()
+        {
+            _skinSaveSystem = DependencyContext.Dependencies.Get<SkinSaveSystem>();
+
+            Skin playerSkin = new(_playerSkin.Skin);
+
+            _purchasableSkin = new(playerSkin);
+
+            foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
-                switch (item.Value.Category)
-                {
-                    case SkinShopItemCategory.Flag:
-                        _skinChanger.SetFlag(item.Value.Sprite);
-                        break;
-                    case SkinShopItemCategory.Eyes:
-                        _skinChanger.SetEyes(item.Value.Sprite);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                SetSkinItem(_purchasableSkin.GetItemByType(type));
             }
         }
 
         private void RecalculatePrice()
         {
-            _totalPrice = 0;
-
-            foreach (var skinShopItem in _itemsToCategory)
-            {
-                if (skinShopItem.Value.IsPurchased)
-                {
-                    AddToTotalPrice(0);
-                    continue;
-                }
-                
-                AddToTotalPrice(skinShopItem.Value.Price);
-            }
-        }
-
-        private void AddToTotalPrice(int amount)
-        {
-            _totalPrice += amount;
+            _totalPrice = _purchasableSkin.GetTotalCost();
             _onTotalPriceChange.Invoke(_totalPrice);
         }
     }
