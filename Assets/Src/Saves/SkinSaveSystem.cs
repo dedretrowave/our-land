@@ -40,7 +40,16 @@ namespace Src.Saves
             else
             {
                 PurchasedSkinItemData neededItem = _data.SkinItems[item.Type].Find(skinItem => skinItem.Id == item.Id);
-                neededItem.IsPurchased = true;
+
+                if (neededItem == null)
+                {
+                    item.IsPurchased = true;
+                    _data.SkinItems[item.Type].Add(new PurchasedSkinItemData(item));
+                }
+                else
+                {
+                    neededItem.IsPurchased = true;
+                }
             }
             
             _handler.Save(_data);

@@ -1,5 +1,7 @@
 using System;
 using Src.Map.Fraction;
+using Src.SkinShop;
+using Src.SkinShop.Items.Base;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +11,7 @@ namespace Src.Levels.Level.UI
     public class LevelFinishedScreen : MonoBehaviour
     {
         [Header("Resources")]
-        [SerializeField] private Character _player;
+        [SerializeField] private PlayerSkin _player;
         [SerializeField] private Sprite _completeFlag;
         [SerializeField] private Sprite _failFlag;
         [SerializeField] private Sprite _sadEyes;
@@ -67,7 +69,7 @@ namespace Src.Levels.Level.UI
 
         private void Start()
         {
-            _flag.sprite = _player.Fraction.Flag;
+            _flag.sprite = _player.Skin.GetItemByType(SkinItemType.Flag).Sprite;
         }
     }
 }

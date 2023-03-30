@@ -42,12 +42,16 @@ namespace Src.SkinShop
             if (savedSkinData.SkinItemIds.Count == 0)
             {
                 _skin = new(_player.Skin);
+                Debug.Log(_player.Skin.GetItemByType(SkinItemType.Flag));
             }
             else
             {
                 foreach (var item in savedSkinData.SkinItemIds)
                 {
-                    _skin.SetItem(_skinItemContainers[item.Key].GetSkinItemById(item.Value));
+                    Debug.Log(item.Key);
+                    Debug.Log(item.Value);
+                    Debug.Log(_skinItemContainers[item.Key].GetSkinItemById(item.Value));
+                    newSkin.SetItem(_skinItemContainers[item.Key].GetSkinItemById(item.Value));
                 }
                 
                 Skin = newSkin;
