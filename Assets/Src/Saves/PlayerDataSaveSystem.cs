@@ -8,18 +8,18 @@ using UnityEngine;
 
 namespace Src.Saves
 {
-    public class SaveSystem : MonoBehaviour
+    public class PlayerDataSaveSystem : MonoBehaviour
     {
         [SerializeField] private string _localPathToFile = "player.dat";
         
         private PlayerData _data = new();
-        private string _pathToFile;
+        private SaveFileHandler _handler;
 
         public void SaveLevel(int id, LevelData data)
         {
             _data.LevelData[id] = data;
             
-            Save();
+            _handler.Save(_data);
         }
 
         public LevelData GetLevelById(int id)
@@ -32,7 +32,7 @@ namespace Src.Saves
         {
             _data.Money = money;
 
-            Save();
+            _handler.Save(_data);
         }
 
         public int GetMoney()
@@ -49,41 +49,18 @@ namespace Src.Saves
         {
             _data.Sounds = data;
             
-            Save();
+            _handler.Save(_data);
         }
         
         private void Awake()
         {
             DontDestroyOnLoad(this);
             
-            _pathToFile = $"{Application.persistentDataPath}/{_localPathToFile}";
+            DependencyContext.Dependencies.Add(typeof(PlayerDataSaveSystem), () => this);
+
+            _handler = new SaveFileHandler(_localPathToFile);
             
-            DependencyContext.Dependencies.Add(typeof(SaveSystem), () => this);
-            
-            LoadInternal();
-        }
-
-        private void SaveInternal(string data)
-        {
-            File.WriteAllText(_pathToFile, data);
-        }
-
-        private void LoadInternal()
-        {
-            if (!File.Exists(_pathToFile))
-            {
-                File.Create(_pathToFile);
-            }
-
-            string serializedData = File.ReadAllText(_pathToFile);
-            PlayerData deserializedData = JsonConvert.DeserializeObject<PlayerData>(serializedData);
-            _data = deserializedData ?? new PlayerData();
-        }
-
-        private void Save()
-        {
-            string json = JsonConvert.SerializeObject(_data);
-            SaveInternal(json);
+            _data = _handler.Load<PlayerData>() ?? new PlayerData();
         }
     }
 

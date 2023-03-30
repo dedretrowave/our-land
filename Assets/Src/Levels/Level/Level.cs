@@ -30,7 +30,7 @@ namespace Src.Levels.Level
         private LevelCompletionState _status = LevelCompletionState.Incomplete;
         private int _defeatedEnemies;
         
-        private SaveSystem _save;
+        private PlayerDataSaveSystem _save;
 
         public LevelCompletionState Status => _status;
         public LevelReward Reward => _reward;
@@ -64,7 +64,7 @@ namespace Src.Levels.Level
 
         private void Start()
         {
-            _save = DependencyContext.Dependencies.Get<SaveSystem>();
+            _save = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
 
             _status = _save.GetLevelById(_id)?.Status ?? LevelCompletionState.Incomplete;
 

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d716c372045e5b87738175af0d44b, type: 3}
   m_Name: Akeria
   m_EditorClassIdentifier: 
-  _category: 0
+  _type: 0
+  _id: 10
   _sprite: {fileID: 21300000, guid: 3cae2e718d589974fa2a4c5166436406, type: 3}
   _price: 5000
   IsPurchased: 0

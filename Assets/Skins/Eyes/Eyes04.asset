@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d716c372045e5b87738175af0d44b, type: 3}
   m_Name: Eyes04
   m_EditorClassIdentifier: 
-  _category: 1
+  _type: 1
+  _id: 4
   _sprite: {fileID: 21300000, guid: ac56a0eb9196779488fd821eb0b756dd, type: 3}
   _price: 0
   IsPurchased: 1

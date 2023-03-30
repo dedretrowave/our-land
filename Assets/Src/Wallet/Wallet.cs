@@ -24,7 +24,7 @@ namespace Src.Wallet
             } 
         }
 
-        private SaveSystem _save;
+        private PlayerDataSaveSystem _save;
 
         public void Increase(int amount = 1)
         {
@@ -48,7 +48,7 @@ namespace Src.Wallet
         
         private void Awake()
         {
-            _save = DependencyContext.Dependencies.Get<SaveSystem>();
+            _save = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
 
             Money = _save.GetMoney();
             

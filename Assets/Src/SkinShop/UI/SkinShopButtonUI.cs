@@ -9,7 +9,7 @@ namespace Src.SkinShop.UI
         [SerializeField] private Button _selectButton;
         [SerializeField] private Button _purchaseButton;
 
-        public void SwitchButtons(int price = 0)
+        public void ChangeButtonByPrice(int price = 0)
         {
             if (price > 0)
             {

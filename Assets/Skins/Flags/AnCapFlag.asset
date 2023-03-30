@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d716c372045e5b87738175af0d44b, type: 3}
   m_Name: AnCapFlag
   m_EditorClassIdentifier: 
-  _category: 0
+  _type: 0
+  _id: 12
   _sprite: {fileID: 21300000, guid: d2e4028b6fe320a49a5c3e09f5afb5f7, type: 3}
   _price: 2000
   IsPurchased: 0

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d716c372045e5b87738175af0d44b, type: 3}
   m_Name: Firisits
   m_EditorClassIdentifier: 
-  _category: 0
+  _type: 0
+  _id: 16
   _sprite: {fileID: 21300000, guid: 43275ee8d13fd9a47b67db53406db109, type: 3}
   _price: 3750
   IsPurchased: 0
