@@ -1,6 +1,5 @@
 using System.IO;
 using Newtonsoft.Json;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 
 namespace Src.Saves
@@ -19,6 +18,7 @@ namespace Src.Saves
             if (!File.Exists(_pathToFile))
             {
                 File.Create(_pathToFile);
+                return JsonConvert.DeserializeObject<T>("");
             }
 
             string serializedData = File.ReadAllText(_pathToFile);

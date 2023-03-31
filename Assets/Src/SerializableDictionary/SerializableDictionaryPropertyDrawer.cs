@@ -4,8 +4,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace SimpleFolderIcon.SerializableDictionary.Editor
+namespace Src.SerializableDictionary.Editor
 {
+#if UNITY_EDITOR
 	public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 	{
 		const string KeysFieldName = "m_keys";
@@ -564,4 +565,5 @@ namespace SimpleFolderIcon.SerializableDictionary.Editor
 			return EditorGUI.GetPropertyHeight(property);
 		}
 	}
+#endif
 }

@@ -35,12 +35,12 @@ namespace Src.Wallet
         {
             int decreasedAmount = _money - amount;
 
-            if (decreasedAmount <= 0)
+            Money = decreasedAmount switch
             {
-                Money = 0;
-                _onMoneyEqualsZero.Invoke();
-                throw new Exception("Out of money");
-            }
+                0 => 0,
+                < 0 => throw new Exception("Not enough money"),
+                _ => Money,
+            };
 
             Money = decreasedAmount;
             _onMoneyChange.Invoke(_money);

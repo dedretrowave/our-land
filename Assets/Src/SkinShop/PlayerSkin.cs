@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using SimpleFolderIcon.SerializableDictionary.Editor;
 using Src.DI;
 using Src.Map.Fraction;
 using Src.Saves;
+using Src.SerializableDictionary.Editor;
 using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using UnityEditor;
@@ -58,6 +58,8 @@ namespace Src.SkinShop
     [Serializable]
     internal class SkinShopItemContainerToType : SerializableDictionary<SkinItemType, SkinShopItemContainer> {}
     
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(SkinShopItemContainerToType))]
     internal class Drawer : SerializableDictionaryPropertyDrawer {}
+#endif
 }

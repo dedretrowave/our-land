@@ -16,7 +16,8 @@ namespace Src.Saves
 
         public PlayerSelectedSkinData GetPlayerSelectedSkin()
         {
-            return _data.SelectedSkin;
+            Debug.Log(_data);
+            return _data.SelectedSkin ?? new PlayerSelectedSkinData();
         }
 
         public List<PurchasedSkinItemData> GetItemsByType(SkinItemType type)

@@ -1,5 +1,6 @@
 using System;
-using SimpleFolderIcon.SerializableDictionary.Editor;
+using Src.SerializableDictionary;
+using Src.SerializableDictionary.Editor;
 using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using UnityEditor;
@@ -24,7 +25,9 @@ namespace Src.SkinShop.UI
     [Serializable]
     internal class SkinUIComponent : SerializableDictionary<SkinItemType, Image> {}
     
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(SkinUIComponent))]
     internal class UIDrawer : SerializableDictionaryPropertyDrawer
     {}
+#endif
 }
