@@ -13,7 +13,7 @@ namespace Src.SkinShop.UI
     {
         [SerializeField] private SkinUIComponent _items;
 
-        public void SetSkin(Skin skin)
+        public void SetSkin(Items.Skin skin)
         {
             foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
