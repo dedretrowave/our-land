@@ -94,8 +94,6 @@ namespace Src.Levels.Level
         private void FinishLevelWithStatus(LevelCompletionState newStatus)
         {
             SetStatus(newStatus);
-            
-            _save.SaveLevel(_id, new LevelData(_status));
 
             _onFinish.Invoke(this);
             
@@ -105,6 +103,7 @@ namespace Src.Levels.Level
         private void SetStatus(LevelCompletionState status)
         {
             _status = status;
+            _save.SaveLevel(_id, new LevelData(_status));
             _onStatusChange.Invoke(this);
         }
     }

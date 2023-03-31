@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Src.Levels;
 using Src.Levels.Level;
@@ -10,30 +11,59 @@ namespace Src.Enemy
     public class RandomLevelCapture : MonoBehaviour
     {
         [SerializeField] private LevelContainer _container;
+        
+        [Header("Parameter")]
+        [SerializeField] private float _chanceOfRandomCaptureInPercent = 45f;
+        [SerializeField] private float _timeGapBetweenCaptureProc = 60f;
 
         private List<Level> _levels;
+        private Coroutine _captureRoutine;
 
-        public void RandomlyCapture(Level bypassLevel)
+        public void RandomlyCaptureByPassingJustCompleteLevel(Level bypassLevel)
         {
-            SortLevelsByCompletion();
+            SortCompleteLevels();
 
             _levels.Remove(bypassLevel);
+            
+            RandomlyCapture();
+        }
 
-            int randomNumber = Random.Range(0, 2);
+        private void RandomlyCapture()
+        {
+            float randomNumber = Random.Range(0f, 1f);
 
-            if (randomNumber != 1) return;
+            if (randomNumber < _chanceOfRandomCaptureInPercent / 100f) return;
 
             Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
-            
+
             selectedLevel.ChangeStatusToIncomplete();
-        }
             
-        private void Start()
-        {
-            SortLevelsByCompletion();
+            LaunchRoutine();
         }
 
-        private void SortLevelsByCompletion()
+        private void Start()
+        {
+            SortCompleteLevels();
+            LaunchRoutine();
+        }
+        
+        private void LaunchRoutine()
+        {
+            if (_captureRoutine != null) StopCoroutine(_captureRoutine);
+            
+            _captureRoutine = StartCoroutine(RandomCaptureAfterTimeout());
+        }
+
+        private IEnumerator RandomCaptureAfterTimeout()
+        {
+            yield return new WaitForSeconds(_timeGapBetweenCaptureProc);
+            
+            RandomlyCapture();
+            
+            LaunchRoutine();
+        }
+
+        private void SortCompleteLevels()
         {
             _levels = _container.Levels;
             

@@ -784,7 +784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.00013, y: 0}
+  m_AnchoredPosition: {x: 118.00012, y: 0}
   m_SizeDelta: {x: 1021, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &170750564
@@ -4044,8 +4044,8 @@ MonoBehaviour:
   - {fileID: 1649411178}
   - {fileID: 1347572494}
   _container: {fileID: 1503614182}
-  _minPauseBetweenAttacks: 8
-  _maxPauseBetweenAttacks: 20
+  _minPauseBetweenAttacks: 6
+  _maxPauseBetweenAttacks: 12
 --- !u!114 &1503614185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4059,6 +4059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1369889386}
+  _chanceOfRandomCaptureInPercent: 55
+  _timeGapBetweenCaptureProc: 60
 --- !u!1 &1549138720
 GameObject:
   m_ObjectHideFlags: 0
@@ -4113,7 +4115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9919fbc6cfec49f69bc1692659ef5907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1649411179}
+  _player: {fileID: 1649411181}
   _completeFlag: {fileID: 21300000, guid: ca3908247f0a2fb42bc8c66db7dbffc5, type: 3}
   _failFlag: {fileID: 21300000, guid: ed1bc13b98823914b86325e0deeb471c, type: 3}
   _sadEyes: {fileID: 21300000, guid: c8fbae92cd59c3942b20192b90326a44, type: 3}
@@ -6197,7 +6199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: RandomlyCapture
+      value: RandomlyCaptureByPassingJustCompleteLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
