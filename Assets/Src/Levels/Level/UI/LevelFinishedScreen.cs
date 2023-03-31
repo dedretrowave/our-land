@@ -2,6 +2,7 @@ using System;
 using Src.Map.Fraction;
 using Src.SkinShop;
 using Src.SkinShop.Items.Base;
+using Src.SkinShop.Skin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace Src.Levels.Level.UI
     public class LevelFinishedScreen : MonoBehaviour
     {
         [Header("Resources")]
-        [SerializeField] private PlayerSkin _player;
+        [SerializeField] private FractionSkin _player;
         [SerializeField] private Sprite _completeFlag;
         [SerializeField] private Sprite _failFlag;
         [SerializeField] private Sprite _sadEyes;

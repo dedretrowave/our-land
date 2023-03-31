@@ -16,7 +16,6 @@ namespace Src.Saves
 
         public PlayerSelectedSkinData GetPlayerSelectedSkin()
         {
-            Debug.Log(_data);
             return _data.SelectedSkin ?? new PlayerSelectedSkinData();
         }
 
