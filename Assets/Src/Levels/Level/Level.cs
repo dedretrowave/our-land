@@ -75,7 +75,7 @@ namespace Src.Levels.Level
         {
             _defeatedEnemies++;
 
-            if (_defeatedEnemies == _enemyContainers.Count)
+            if (_defeatedEnemies >= _enemyContainers.Count)
             {
                 Complete();
             }
