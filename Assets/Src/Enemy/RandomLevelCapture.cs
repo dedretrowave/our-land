@@ -34,6 +34,12 @@ namespace Src.Enemy
 
             if (randomNumber < _chanceOfRandomCaptureInPercent / 100f) return;
 
+            if (_levels.Count == 0)
+            { 
+                LaunchRoutine();
+                return;
+            }
+
             Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
 
             selectedLevel.ChangeStatusToIncomplete();
