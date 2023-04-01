@@ -1,7 +1,6 @@
 using System;
 using Src.DI;
 using Src.Saves;
-using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using UnityEngine;
@@ -14,6 +13,7 @@ namespace Src.SkinShop
         [Header("Components")]
         [SerializeField] private Wallet.Wallet _wallet; 
         [SerializeField] private FractionSkin _playerSkin;
+        [SerializeField] private Ads.Ads _ads;
 
         [Header("Events")]
         [SerializeField] private UnityEvent<int> _onTotalPriceChange; 
@@ -31,11 +31,26 @@ namespace Src.SkinShop
             RecalculatePrice();
         }
 
-        public void PurchaseItems()
+        public void BuyItems()
         {
             _wallet.Decrease(_totalPrice);
             _totalPrice = 0;
             
+            PurchaseItems();
+        }
+
+        public void GetForAd()
+        {
+            _ads.ShowRewarded();
+        }
+
+        public void SelectSkin()
+        {
+            _playerSkin.SetSkin(_purchasableSkin);
+        }
+
+        private void PurchaseItems()
+        {
             _purchasableSkin.Items.ForEach(item =>
             {
                 item.IsPurchased = true;
@@ -44,9 +59,9 @@ namespace Src.SkinShop
             _onItemPurchased.Invoke();
         }
 
-        public void SelectSkin()
+        private void Start()
         {
-            _playerSkin.SetSkin(_purchasableSkin);
+            _ads.OnRewardedAdWatched.AddListener(PurchaseItems);
         }
 
         private void OnEnable()
