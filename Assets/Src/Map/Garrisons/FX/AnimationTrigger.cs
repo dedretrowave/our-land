@@ -12,14 +12,20 @@ namespace Src.Map.Garrisons.FX
         [SerializeField] private float _minTimeout = 2f;
         [SerializeField] private float _maxTimeout = 5f;
         
-        private static readonly int Trigger = Animator.StringToHash("Random");
-        private static readonly int Hurt = Animator.StringToHash("Hurt");
+        private readonly int _trigger = Animator.StringToHash("Random");
+        private readonly int _hurt = Animator.StringToHash("Hurt");
+        private readonly int _win = Animator.StringToHash("Win");
 
         private Coroutine _routine;
 
+        public void TriggerWin()
+        {
+            _animator.SetTrigger(_win);
+        }
+
         public void TriggerHurt()
         {
-            _animator.SetTrigger(Hurt);
+            _animator.SetTrigger(_hurt);
         }
 
         private void Start()
@@ -38,7 +44,7 @@ namespace Src.Map.Garrisons.FX
 
             yield return new WaitForSeconds(timeout);
             
-            _animator.SetTrigger(Trigger);
+            _animator.SetTrigger(_trigger);
 
             yield return TriggerAfterTimeoutContinuously();
         }

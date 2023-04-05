@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Newtonsoft.Json;
 using Src.DI;
-using Src.Levels.Level;
+using Src.Map.Fraction;
 using UnityEngine;
 
 namespace Src.Saves
@@ -15,17 +14,16 @@ namespace Src.Saves
         private PlayerData _data = new();
         private SaveFileHandler _handler;
 
-        public void SaveLevel(int id, LevelData data)
+        public void SaveLevel(LevelData data)
         {
-            _data.LevelData[id] = data;
+            _data.LevelData.Add(new LevelData(data));;
             
             _handler.Save(_data);
         }
 
         public LevelData GetLevelById(int id)
         {
-            return !_data.LevelData.ContainsKey(id) 
-                ? new LevelData(LevelCompletionState.Incomplete) : _data.LevelData[id];
+            return _data.LevelData.Find(item => item.Id == id);
         }
 
         public void SaveMoney(int money)
@@ -65,9 +63,9 @@ namespace Src.Saves
     }
 
     [Serializable]
-    internal class PlayerData
+    public class PlayerData
     {
-        public Dictionary<int, LevelData> LevelData = new();
+        public List<LevelData> LevelData = new();
         public SoundData Sounds;
         public int Money;
 
@@ -89,11 +87,21 @@ namespace Src.Saves
     [Serializable]
     public class LevelData
     {
-        public LevelCompletionState Status;
+        public int Id;
+        public int OwnerId;
+        
+        public LevelData() {}
 
-        public LevelData(LevelCompletionState state)
+        public LevelData(int id, int ownerId)
         {
-            Status = state;
+            Id = id;
+            OwnerId = ownerId;
+        }
+
+        public LevelData(LevelData data)
+        {
+            Id = data.Id;
+            OwnerId = data.OwnerId;
         }
     }
 }

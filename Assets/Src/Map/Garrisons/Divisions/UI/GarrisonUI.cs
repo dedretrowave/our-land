@@ -1,7 +1,9 @@
 using Src.DI;
-using Src.SkinShop;
+using Src.Levels.Level;
+using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
+using Src.SkinShop.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,26 +11,36 @@ namespace Src.Map.Garrisons.Divisions.UI
 {
     public class GarrisonUI : MonoBehaviour
     {
-        [SerializeField] private Image _flag;
-        [SerializeField] private Image _eyes;
+        [SerializeField] private SkinUI _skinUI;
 
-        private FractionSkinContainer _fractionSkinContainer;
+        private FractionContainer _fractionSkinContainer;
+
+        public void UpdateByLevel(Level level)
+        {
+            FractionSkinHolder skinHolder = _fractionSkinContainer.GetSkinByFraction(level.Owner);
+            UpdateByFraction(skinHolder);
+        }
 
         public void UpdateByFraction(Fraction.Fraction fraction)
         {
-            FractionSkin skin = _fractionSkinContainer.GetSkinByFraction(fraction);
-            UpdateByFraction(skin);
+            FractionSkinHolder skinHolder = _fractionSkinContainer.GetSkinByFraction(fraction);
+            UpdateByFraction(skinHolder);
         }
 
-        public void UpdateByFraction(FractionSkin skin)
+        public void UpdateByFraction(FractionSkinHolder skinHolder)
         {
-            _flag.sprite = skin.Skin.GetItemByType(SkinItemType.Flag).Sprite;
-            _eyes.sprite = skin.Skin.GetItemByType(SkinItemType.Eyes).Sprite;
+            skinHolder.OnSkinChanged.AddListener(UpdateSkin);
+            UpdateSkin(skinHolder.Skin);
+        }
+
+        private void UpdateSkin(Skin skin)
+        {
+            _skinUI.SetSkin(skin);
         }
 
         private void Start()
         {
-            _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionSkinContainer>();
+            _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionContainer>();
         }
     }
 }
