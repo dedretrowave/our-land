@@ -5,7 +5,6 @@ using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Src.SkinShop
 {
@@ -13,7 +12,7 @@ namespace Src.SkinShop
     {
         [Header("Components")]
         [SerializeField] private Wallet.Wallet _wallet; 
-        [SerializeField] private FractionSkinHolder _playerSkin;
+        [SerializeField] private PlayerSkinHolder _playerSkin;
         [SerializeField] private Ads.Ads _ads;
 
         [Header("Events")]

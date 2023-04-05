@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Src.SkinShop.Skin
 {
-    public class PlayerSkin : FractionSkinHolder
+    public class PlayerSkinHolder : FractionSkinHolder
     {
         [SerializeField] private SkinShopItemContainerToType skinItemContainers;
 
