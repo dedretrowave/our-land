@@ -27,14 +27,14 @@ namespace Src.Helpers
             
             DependencyContext.Dependencies.Add(typeof(Pauser), () => this);
             
-            GameDistribution.OnResumeGame += Resume;
-            GameDistribution.OnPauseGame += Pause;
+            // GameDistribution.OnResumeGame += Resume;
+            // GameDistribution.OnPauseGame += Pause;
         }
 
         private void OnDisable()
         {
-            GameDistribution.OnResumeGame -= Resume;
-            GameDistribution.OnPauseGame -= Pause;
+            // GameDistribution.OnResumeGame -= Resume;
+            // GameDistribution.OnPauseGame -= Pause;
         }
     }
 }
