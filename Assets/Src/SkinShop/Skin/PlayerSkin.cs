@@ -1,13 +1,14 @@
 using Src.DI;
 using Src.Saves;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Src.SkinShop.Skin
 {
-    public class PlayerSkin : FractionSkin
+    public class PlayerSkin : FractionSkinHolder
     {
         [SerializeField] private SkinShopItemContainerToType skinItemContainers;
-        
+
         private SkinSaveSystem _skinSave;
 
         public void SetSkin(Items.Skin newSkin)
@@ -26,7 +27,7 @@ namespace Src.SkinShop.Skin
             
             if (savedSkinData.SkinItemIds.Count == 0)
             {
-                base.Awake();
+                SetSkin(character.Fraction.Skin);
             }
             else
             {

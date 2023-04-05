@@ -1,8 +1,8 @@
 using System;
-using Src.Map.Fraction;
-using Src.SkinShop;
+using Src.Map.Garrisons.FX;
 using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
+using Src.SkinShop.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,50 +12,43 @@ namespace Src.Levels.Level.UI
     public class LevelFinishedScreen : MonoBehaviour
     {
         [Header("Resources")]
-        [SerializeField] private FractionSkin _player;
         [SerializeField] private Sprite _completeFlag;
         [SerializeField] private Sprite _failFlag;
-        [SerializeField] private Sprite _sadEyes;
-        [SerializeField] private Sprite _happyEyes;
         
         [Header("Components")]
         [SerializeField] private Image _banner;
-        [SerializeField] private Image _flag;
-        [SerializeField] private Image _eyes;
+        [SerializeField] private AnimationTrigger _animationTrigger;
         [SerializeField] private TextMeshProUGUI _rewardText;
         [SerializeField] private Image _rewardIcon;
 
         public void Show(Level level)
         {
-            switch (level.Status)
+            if (level.IsControlledByPlayer)
             {
-                case LevelCompletionState.Complete:
-                    ShowComplete(level);
-                    break;
-                case LevelCompletionState.Incomplete:
-                    ShowFail();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(level.Status), level.Status, null);
+                ShowComplete(level);
+            }
+            else
+            {
+                ShowFail();
             }
         }
 
         private void ShowComplete(Level level)
         {
             _banner.sprite = _completeFlag;
-            _eyes.sprite = _happyEyes;
             _rewardText.text =  $"+{level.Reward.Amount.ToString()}";
             _rewardIcon.gameObject.SetActive(true);
             Show();
+            _animationTrigger.TriggerWin();
         }
 
         private void ShowFail()
         {
             _banner.sprite = _failFlag;
-            _eyes.sprite = _sadEyes;
             _rewardText.text = "";
             _rewardIcon.gameObject.SetActive(false);
             Show();
+            _animationTrigger.TriggerHurt();
         }
 
         private void Show()
@@ -66,11 +59,6 @@ namespace Src.Levels.Level.UI
         public void Hide()
         {
             gameObject.SetActive(false);
-        }
-
-        private void Start()
-        {
-            _flag.sprite = _player.Skin.GetItemByType(SkinItemType.Flag).Sprite;
         }
     }
 }

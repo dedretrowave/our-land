@@ -5,6 +5,7 @@ using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.SkinShop
 {
@@ -12,12 +13,12 @@ namespace Src.SkinShop
     {
         [Header("Components")]
         [SerializeField] private Wallet.Wallet _wallet; 
-        [SerializeField] private FractionSkin _playerSkin;
+        [SerializeField] private FractionSkinHolder _playerSkin;
         [SerializeField] private Ads.Ads _ads;
 
         [Header("Events")]
         [SerializeField] private UnityEvent<int> _onTotalPriceChange; 
-        [SerializeField] private UnityEvent<Items.Skin> _onSkinChanged;
+        [SerializeField] private UnityEvent<Items.Skin> _onPurchasableSkinChanged;
         [SerializeField] private UnityEvent _onItemPurchased;
 
         private Items.Skin _purchasableSkin;
@@ -27,7 +28,7 @@ namespace Src.SkinShop
         public void SetSkinItem(SkinItem item)
         {
             _purchasableSkin.SetItem(item);
-            _onSkinChanged.Invoke(_purchasableSkin);
+            _onPurchasableSkinChanged.Invoke(_purchasableSkin);
             RecalculatePrice();
         }
 

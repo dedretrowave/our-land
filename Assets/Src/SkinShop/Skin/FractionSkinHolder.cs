@@ -4,13 +4,16 @@ using Src.SerializableDictionary.Editor;
 using Src.SkinShop.Items.Base;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Src.SkinShop.Skin
 {
-    public class FractionSkin : MonoBehaviour
+    public class FractionSkinHolder : MonoBehaviour
     {
         [SerializeField] protected Character character;
+
+        public UnityEvent<Items.Skin> OnSkinChanged;
 
         protected Items.Skin skin = new ();
 
@@ -20,6 +23,7 @@ namespace Src.SkinShop.Skin
         {
             skin = newSkin;
             character.Fraction.SetSkin(newSkin);
+            OnSkinChanged.Invoke(skin);
         }
 
         protected void Awake()

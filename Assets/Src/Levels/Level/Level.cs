@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using Src.DI;
 using Src.Levels.Level.Initialization;
 using Src.Levels.Level.UI;
+using Src.Map.Fraction;
 using Src.Map.Regions.Containers;
 using Src.Saves;
+using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +20,7 @@ namespace Src.Levels.Level
         
         [Header("Parameters")]
         [SerializeField] private int _id;
+        [SerializeField] private Fraction _owner;
         
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
@@ -27,13 +30,23 @@ namespace Src.Levels.Level
         [SerializeField] private UnityEvent<Level> _onFinish = new();
         [SerializeField] private UnityEvent<Level> _onStatusChange = new();
 
-        private LevelCompletionState _status = LevelCompletionState.Incomplete;
+        private Fraction _originalOwner;
         private int _defeatedEnemies;
         
         private PlayerDataSaveSystem _save;
-
-        public LevelCompletionState Status => _status;
+        
         public LevelReward Reward => _reward;
+        public Fraction Owner => _owner;
+
+        public bool IsControlledByPlayer
+        {
+            get
+            {
+                if (_playerContainer.Owner == null) return false;
+
+                return _owner.Equals(_playerContainer.Owner.Fraction);
+            }
+        }
 
         public void Init()
         {
@@ -42,9 +55,10 @@ namespace Src.Levels.Level
             _ui.Hide();
         }
 
-        public void ChangeStatusToIncomplete()
+        public void SetRandomOwnerBesidesPlayer()
         {
-            SetStatus(LevelCompletionState.Incomplete);
+            Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
+            SetOwner(newOwner);
         }
 
         public void BindEvents()
@@ -64,9 +78,18 @@ namespace Src.Levels.Level
 
         private void Start()
         {
+            _originalOwner = _owner;
+            
             _save = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
 
-            _status = _save.GetLevelById(_id)?.Status ?? LevelCompletionState.Incomplete;
+            LevelData data = _save.GetLevelById(_id);
+            
+            if (data != null)
+            {
+                FractionContainer fractionContainer = DependencyContext.Dependencies.Get<FractionContainer>();
+
+                _owner = fractionContainer.GetFractionById(data.OwnerId);
+            }
 
             _onStatusChange.Invoke(this);
         }
@@ -83,27 +106,27 @@ namespace Src.Levels.Level
 
         private void Fail()
         {
-            FinishLevelWithStatus(LevelCompletionState.Incomplete);
+            Finish(_originalOwner);
         }
 
         private void Complete()
         {
-            FinishLevelWithStatus(LevelCompletionState.Complete);
+            Finish(_playerContainer.Owner.Fraction);
         }
 
-        private void FinishLevelWithStatus(LevelCompletionState newStatus)
+        private void Finish(Fraction newOwner)
         {
-            SetStatus(newStatus);
+            SetOwner(newOwner);
 
             _onFinish.Invoke(this);
             
             ClearContainers();
         }
-        
-        private void SetStatus(LevelCompletionState status)
+
+        private void SetOwner(Fraction newOwner)
         {
-            _status = status;
-            _save.SaveLevel(_id, new LevelData(_status));
+            _owner = newOwner;
+            _save.SaveLevel(_id, new LevelData(_owner));
             _onStatusChange.Invoke(this);
         }
     }

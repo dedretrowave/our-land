@@ -341,8 +341,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1982851359095833206}
-        m_TargetAssemblyTypeName: Src.Divisions.Divisions.UI.GarrisonUI, Assembly-CSharp
+      - m_Target: {fileID: 3507899017268029797}
+        m_TargetAssemblyTypeName: Src.Map.Garrisons.Divisions.UI.GarrisonUI, Assembly-CSharp
         m_MethodName: UpdateByFraction
         m_Mode: 0
         m_Arguments:
@@ -528,9 +528,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac0b68361d460bbb7e78c071ec47a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1982851359095833206 stripped
+--- !u!4 &2782320209847443584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5226640771444385766, guid: 699ef8686173b69439150dcd9686cc1b, type: 3}
+  m_PrefabInstance: {fileID: 7931977401013946214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3507899017268029797 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8471424442228147472, guid: 699ef8686173b69439150dcd9686cc1b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6825914393066155523, guid: 699ef8686173b69439150dcd9686cc1b, type: 3}
   m_PrefabInstance: {fileID: 7931977401013946214}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -539,11 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e956785f66854b5ea8ce151d147f35ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2782320209847443584 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5226640771444385766, guid: 699ef8686173b69439150dcd9686cc1b, type: 3}
-  m_PrefabInstance: {fileID: 7931977401013946214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3589885983166200468 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6901165149145185778, guid: 699ef8686173b69439150dcd9686cc1b, type: 3}

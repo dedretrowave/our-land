@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Src.Map.Fraction;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,8 +7,10 @@ namespace Src.Map.Regions.Containers
 {
     public class RegionContainer : MonoBehaviour
     {
+        [SerializeField] private Character _owner;
         [SerializeField] private List<Region> _regions;
 
+        public Character Owner => _owner;
         public UnityEvent OnEmpty = new();
 
         public Region GetRandomRegion()

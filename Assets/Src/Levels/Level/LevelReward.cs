@@ -13,14 +13,9 @@ namespace Src.Levels.Level
 
         public int Amount => _amount;
 
-        public void ApplyByLevelStatus(Level level)
+        public void Apply(Level level)
         {
-            ApplyByLevelStatus(level.Status);
-        }
-
-        public void ApplyByLevelStatus(LevelCompletionState status)
-        {
-            if (status == LevelCompletionState.Complete)
+            if (level.IsControlledByPlayer)
             {
                 _wallet.Increase(_amount);
             }

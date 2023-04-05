@@ -1,4 +1,4 @@
-using Src.DI;
+using Src.Map.Fraction;
 using Src.Settings;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,24 +13,22 @@ namespace Src.Levels.Level.UI
 
         public void Hide()
         {
-            _image.enabled = false;
+            _image.gameObject.SetActive(false);
         }
 
         public void Show()
         {
-            _image.enabled = true;
+            _image.gameObject.SetActive(true);
         }
 
-        public void UpdateColorByStatus(Level level)
+        public void UpdateColorByLevel(Level level)
         {
-            UpdateColorByStatus(level.Status);
+            UpdateColor(level.Owner.Color);
         }
 
-        public void UpdateColorByStatus(LevelCompletionState status)
+        private void UpdateColor(Color color)
         {
-            if (_settings == null) _settings = DependencyContext.Dependencies.Get<ColorsSettings>(); 
-            
-            _image.color = _settings.GetColorByLevelStatus(status);
+            _image.color = color;
         }
     }
 }

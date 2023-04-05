@@ -1,8 +1,6 @@
-using System;
 using Src.DI;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Src.Levels.Level.Initialization
 {

@@ -42,7 +42,7 @@ namespace Src.Enemy
 
             Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
 
-            selectedLevel.ChangeStatusToIncomplete();
+            selectedLevel.SetRandomOwnerBesidesPlayer();
             
             LaunchRoutine();
         }
@@ -77,7 +77,7 @@ namespace Src.Enemy
             
             _levels.ForEach(level =>
             {
-                if (level.Status == LevelCompletionState.Complete)
+                if (level.IsControlledByPlayer)
                 {
                     sortedLevels.Add(level);
                 }

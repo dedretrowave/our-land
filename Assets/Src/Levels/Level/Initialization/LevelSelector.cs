@@ -17,7 +17,7 @@ namespace Src.Levels.Level.Initialization
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_level.Status == LevelCompletionState.Complete)
+            if (_level.IsControlledByPlayer)
             {
                 enabled = false;
                 return;

@@ -2537,6 +2537,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505543705260029}
   _id: 5
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -2548,7 +2549,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505543705260029}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2692,6 +2693,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505543524457980}
   _id: 3
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -2703,7 +2705,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505543524457980}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3054,6 +3056,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505543153322126}
   _id: 2
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -3065,7 +3068,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505543153322126}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3316,6 +3319,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505542690699258}
   _id: 7
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -3327,7 +3331,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505542690699258}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3850,6 +3854,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505544492698448}
   _id: 8
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -3861,7 +3866,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505544492698448}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4086,6 +4091,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505544063005673}
   _id: 6
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -4097,7 +4103,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505544063005673}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4181,6 +4187,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 4352505543978466250}
   _id: 9
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -4192,7 +4199,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4352505543978466250}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4312,6 +4319,7 @@ MonoBehaviour:
   _spawner: {fileID: 0}
   _ui: {fileID: 8891632734377417708}
   _id: 1
+  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   _playerContainer: {fileID: 0}
   _enemyContainers:
   - {fileID: 0}
@@ -4323,7 +4331,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8891632734377417708}
         m_TargetAssemblyTypeName: Src.Levels.Level.UI.LevelUI, Assembly-CSharp
-        m_MethodName: UpdateColorByStatus
+        m_MethodName: UpdateColorByLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

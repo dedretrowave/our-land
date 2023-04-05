@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
 using Src.DI;
-using Src.Levels.Level;
+using Src.Map.Fraction;
 using UnityEngine;
 
 namespace Src.Saves
@@ -25,7 +23,7 @@ namespace Src.Saves
         public LevelData GetLevelById(int id)
         {
             return !_data.LevelData.ContainsKey(id) 
-                ? new LevelData(LevelCompletionState.Incomplete) : _data.LevelData[id];
+                ? null : _data.LevelData[id];
         }
 
         public void SaveMoney(int money)
@@ -89,11 +87,11 @@ namespace Src.Saves
     [Serializable]
     public class LevelData
     {
-        public LevelCompletionState Status;
+        public int OwnerId;
 
-        public LevelData(LevelCompletionState state)
+        public LevelData(Fraction owner)
         {
-            Status = state;
+            OwnerId = owner.Id;
         }
     }
 }
