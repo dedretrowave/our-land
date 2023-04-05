@@ -1,7 +1,7 @@
 using Src.DI;
-using Src.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
+using CrazyGames;
 
 namespace Src.Ads
 {
@@ -12,7 +12,7 @@ namespace Src.Ads
 
         public void ShowRewarded()
         {
-            // _gameDistribution.ShowRewardedAd();
+            CrazyAds.Instance.beginAdBreakRewarded(InvokeRewardedWatched, InvokeRewardedSkipped);
         }
 
         public void ShowAdWithChance(float chance = 50f)
@@ -28,20 +28,11 @@ namespace Src.Ads
             DontDestroyOnLoad(this);
 
             DependencyContext.Dependencies.Add(typeof(Ads), () => this);
-
-            // GameDistribution.OnRewardedVideoSuccess += InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure += InvokeRewardedSkipped;
-        }
-
-        private void OnDestroy()
-        {
-            // GameDistribution.OnRewardedVideoSuccess -= InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure -= InvokeRewardedSkipped;
         }
 
         private void ShowAd()
         {
-            // _gameDistribution.ShowAd();
+            CrazyAds.Instance.beginAdBreak();
         }
 
         private void InvokeRewardedWatched()
