@@ -26,6 +26,11 @@ namespace Src.Levels.Level.UI
             UpdateColor(level.Owner.Color);
         }
 
+        public void UpdateColorByFraction(Fraction fraction)
+        {
+            UpdateColor(fraction.Color);
+        }
+
         private void UpdateColor(Color color)
         {
             _image.color = color;

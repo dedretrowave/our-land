@@ -57,8 +57,8 @@ namespace Src.Levels.Level
 
         public void SetRandomOwnerBesidesPlayer()
         {
-            Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
-            SetOwner(newOwner);
+            // Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
+            // SetOwner(newOwner);
         }
 
         public void BindEvents()
@@ -126,7 +126,7 @@ namespace Src.Levels.Level
         private void SetOwner(Fraction newOwner)
         {
             _owner = newOwner;
-            _save.SaveLevel(_id, new LevelData(_owner));
+            _save.SaveLevel(new LevelData(_id, _owner.Id));
             _onStatusChange.Invoke(this);
         }
     }

@@ -24,7 +24,7 @@ namespace Src.SkinShop.Skin
             PlayerSelectedSkinData savedSkinData = _skinSave.GetPlayerSelectedSkin();
 
             Items.Skin newSkin = new();
-            
+
             if (savedSkinData.SkinItemIds.Count == 0)
             {
                 SetSkin(character.Fraction.Skin);
