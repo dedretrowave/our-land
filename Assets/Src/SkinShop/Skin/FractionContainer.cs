@@ -20,7 +20,7 @@ namespace Src.SkinShop.Skin
 
         public Fraction GetFractionById(int id)
         {
-            return _fractions.Find(item => item.Id == id).Fraction;
+            return _fractions.Find(item => item.Fraction.Id == id).Fraction;
         }
 
         private void Awake()
@@ -33,7 +33,6 @@ namespace Src.SkinShop.Skin
     internal class FractionData
     {
         public FractionSkinHolder SkinHolder;
-        public int Id;
         public Fraction Fraction;
     }
 }
