@@ -6,6 +6,10 @@ namespace Src.Map.Fraction
     {
         [SerializeField] private Fraction _fraction;
 
-        public Fraction Fraction => _fraction;
+        public Fraction Fraction
+        {
+            get => _fraction;
+            set => _fraction = value;
+        }
     }
 }

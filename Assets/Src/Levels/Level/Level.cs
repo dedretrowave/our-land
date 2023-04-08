@@ -8,6 +8,7 @@ using Src.Saves;
 using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.Levels.Level
 {
@@ -28,7 +29,7 @@ namespace Src.Levels.Level
 
         [Header("Events")]
         [SerializeField] private UnityEvent<Level> _onFinish = new();
-        [SerializeField] private UnityEvent<Level> _onStatusChange = new();
+        [FormerlySerializedAs("_onStatusChange")] [SerializeField] private UnityEvent<Level> _onOwnerChange = new();
 
         private Fraction _originalOwner;
         private int _defeatedEnemies;
@@ -91,7 +92,7 @@ namespace Src.Levels.Level
                 _owner = fractionContainer.GetFractionById(data.OwnerId);
             }
 
-            _onStatusChange.Invoke(this);
+            _onOwnerChange.Invoke(this);
         }
 
         private void ProceedToCompletion()
@@ -127,7 +128,7 @@ namespace Src.Levels.Level
         {
             _owner = newOwner;
             _save.SaveLevel(new LevelData(_id, _owner.Id));
-            _onStatusChange.Invoke(this);
+            _onOwnerChange.Invoke(this);
         }
     }
 }

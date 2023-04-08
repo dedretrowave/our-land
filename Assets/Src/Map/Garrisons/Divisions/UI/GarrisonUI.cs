@@ -1,11 +1,9 @@
 using Src.DI;
 using Src.Levels.Level;
 using Src.SkinShop.Items;
-using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using Src.SkinShop.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Src.Map.Garrisons.Divisions.UI
 {

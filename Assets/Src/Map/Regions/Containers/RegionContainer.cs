@@ -10,7 +10,11 @@ namespace Src.Map.Regions.Containers
         [SerializeField] private Character _owner;
         [SerializeField] private List<Region> _regions;
 
-        public Character Owner => _owner;
+        public Character Owner
+        {
+            get => _owner;
+            set => _owner = value;
+        }
         public UnityEvent OnEmpty = new();
 
         public Region GetRandomRegion()
