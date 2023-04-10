@@ -32,17 +32,12 @@ namespace Src.Map.Regions
         
         public void Init(Fraction.Fraction enemy)
         {
-            _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
             _owner.SetFraction(enemy);
-            OnOwnerChange.Invoke(enemy);
-            _distributor.DistributeRegion(this, enemy);
-            SwitchGeneratorByFraction();
-            SwitchDeploymentByFraction();
         }
 
         public void SetContainer(RegionContainer container)
-        {
-            
+        { 
+            if (_container != null) _container.RemoveRegion(this);
             
             _container = container;
             _container.AddRegion(this);
@@ -66,7 +61,12 @@ namespace Src.Map.Regions
 
         private void Start()
         {
-            Init(_owner.Fraction);
+            _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
+            _owner.SetFraction(_owner.Fraction);
+            OnOwnerChange.Invoke(_owner.Fraction);
+            _distributor.DistributeRegion(this, _owner.Fraction);
+            SwitchGeneratorByFraction();
+            SwitchDeploymentByFraction();
         }
 
         private void SwitchDeploymentByFraction()
