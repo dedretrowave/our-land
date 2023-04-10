@@ -17,6 +17,11 @@ namespace Src.Map.Regions.Containers
         }
         public UnityEvent OnEmpty = new();
 
+        public bool HasRegion(Region region)
+        {
+            return _regions.Contains(region);
+        }
+
         public Region GetRandomRegion()
         {
             return _regions.Count == 0 ? null : _regions[Random.Range(0, _regions.Count)];
@@ -24,6 +29,7 @@ namespace Src.Map.Regions.Containers
 
         public void RemoveRegion(Region region)
         {
+            Debug.Log($"REMOVE {region.GetComponentInParent<Transform>().name}");
             _regions.Remove(region);
 
             if (_regions.Count == 0)
@@ -39,7 +45,16 @@ namespace Src.Map.Regions.Containers
 
         public void AddRegion(Region region)
         {
+            Debug.Log($"ADD {region.GetComponentInParent<Transform>().name}");
             _regions.Add(region);
+            
+            _regions.ForEach(region =>
+            {
+                if (region == null)
+                {
+                    _regions.Remove(region);
+                }
+            });
         }
     }
 }

@@ -6,9 +6,9 @@ using Src.Map.Fraction;
 using Src.Map.Regions;
 using Src.Map.Regions.Containers;
 using Src.SerializableDictionary.Editor;
-using Src.SkinShop.Skin;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Src.Enemy
@@ -25,6 +25,8 @@ namespace Src.Enemy
         [SerializeField] private float _minPauseBetweenAttacks = 5f;
         [SerializeField] private float _maxPauseBetweenAttacks = 10f;
 
+        public UnityEvent OnGiveUp;
+
         private Region _selectedEnemyRegion;
         private float _waitTimeBeforeNextAttack;
 
@@ -33,12 +35,19 @@ namespace Src.Enemy
         public void InitializeWithLevel(Level level)
         {
             _container = _containers[level.Owner];
+            _container.OnEmpty.AddListener(GiveUp);
             PrepareForAttack();
         }
 
         public void Disable()
         {
             StopCoroutine(_routine);
+        }
+
+        private void GiveUp()
+        {
+            _container.Clear();
+            OnGiveUp.Invoke();
         }
 
         private void Awake()

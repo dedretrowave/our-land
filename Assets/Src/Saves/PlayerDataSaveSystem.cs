@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Src.DI;
 using Src.Map.Fraction;
@@ -16,8 +17,18 @@ namespace Src.Saves
 
         public void SaveLevel(LevelData data)
         {
-            _data.LevelData.Add(new LevelData(data));;
-            
+            LevelData existingLevel = _data.LevelData.FirstOrDefault(level => level.Id == data.Id);
+
+            if (existingLevel != null)
+            {
+                existingLevel.Id = data.Id;
+                existingLevel.OwnerId = data.OwnerId;
+            }
+            else
+            {
+                _data.LevelData.Add(data);
+            }
+
             _handler.Save(_data);
         }
 
