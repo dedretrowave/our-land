@@ -1461,14 +1461,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fractions:
   - SkinHolder: {fileID: 0}
-    Id: 0
     Fraction: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
   - SkinHolder: {fileID: 0}
-    Id: 1
     Fraction: {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
   - SkinHolder: {fileID: 0}
-    Id: 2
     Fraction: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
+  - SkinHolder: {fileID: 0}
+    Fraction: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
+  - SkinHolder: {fileID: 0}
+    Fraction: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
+  - SkinHolder: {fileID: 0}
+    Fraction: {fileID: 11400000, guid: f9bf4bebcc807ba4f83d307b9fb1f4a2, type: 2}
 --- !u!4 &1371273434
 Transform:
   m_ObjectHideFlags: 0
@@ -2636,7 +2639,7 @@ MonoBehaviour:
   _id: 5
   _ui: {fileID: 4352505543705260029}
   _fractionContainer: {fileID: 1371273433}
-  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  _owner: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
 --- !u!224 &4352505542798103604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3344,7 +3347,7 @@ MonoBehaviour:
   _id: 7
   _ui: {fileID: 4352505542690699258}
   _fractionContainer: {fileID: 1371273433}
-  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  _owner: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
 --- !u!114 &4352505543705259968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3823,7 +3826,7 @@ MonoBehaviour:
   _id: 8
   _ui: {fileID: 4352505544492698448}
   _fractionContainer: {fileID: 1371273433}
-  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  _owner: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
 --- !u!224 &4352505544120330096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4072,7 +4075,7 @@ MonoBehaviour:
   _id: 6
   _ui: {fileID: 4352505544063005673}
   _fractionContainer: {fileID: 1371273433}
-  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  _owner: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
 --- !u!4 &4352505544602878856
 Transform:
   m_ObjectHideFlags: 0
@@ -4130,7 +4133,7 @@ MonoBehaviour:
   _id: 9
   _ui: {fileID: 4352505543978466250}
   _fractionContainer: {fileID: 1371273433}
-  _owner: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  _owner: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
 --- !u!1 &4352505544680085477
 GameObject:
   m_ObjectHideFlags: 0

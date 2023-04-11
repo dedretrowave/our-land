@@ -4,23 +4,27 @@ namespace Src.Levels.Level.Initialization
 {
     public class LevelSpawner : MonoBehaviour
     {
+        [Header("Level")]
+        [SerializeField] private Level _level;
+        
         [Header("Prefab")]
-        [SerializeField] private Transform _levelPrefab;
+        [SerializeField] private RegionOwnerInitializer _levelPrefab;
 
-        private Transform _level;
+        private RegionOwnerInitializer _regionInitializer;
 
         public void Spawn()
         {
-            if (_level != null) return;
+            if (_regionInitializer != null) return;
             
-            _level = Instantiate(_levelPrefab, transform);
+            _regionInitializer = Instantiate(_levelPrefab, transform);
+            _regionInitializer.Init(_level.Owner.Id);
         }
 
         public void Remove()
         {
-            if (_level == null) return;
+            if (_regionInitializer == null) return;
             
-            Destroy(_level.gameObject);
+            Destroy(_regionInitializer.gameObject);
         }
     }
 }

@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using Src.DI;
+using Src.Enemy;
 using Src.Levels.Level.Initialization;
 using Src.Levels.Level.UI;
 using Src.Map.Fraction;
+using Src.Map.Regions;
 using Src.Map.Regions.Containers;
 using Src.Saves;
 using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Src.Levels.Level
 {
@@ -24,15 +27,15 @@ namespace Src.Levels.Level
         
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
+        [SerializeField] private EnemyAI _enemy;
         [SerializeField] private List<RegionContainer> _enemyContainers;
 
         [Header("Events")]
         [SerializeField] private UnityEvent<Level> _onFinish = new();
-        [SerializeField] private UnityEvent<Level> _onStatusChange = new();
+        [SerializeField] private UnityEvent<Level> _onOwnerChange = new();
 
         private Fraction _originalOwner;
-        private int _defeatedEnemies;
-        
+
         private PlayerDataSaveSystem _save;
         
         public LevelReward Reward => _reward;
@@ -42,6 +45,8 @@ namespace Src.Levels.Level
         {
             get
             {
+                Debug.Log(_owner);
+                Debug.Log(_playerContainer.Owner.Fraction);
                 if (_playerContainer.Owner == null) return false;
 
                 return _owner.Equals(_playerContainer.Owner.Fraction);
@@ -57,23 +62,14 @@ namespace Src.Levels.Level
 
         public void SetRandomOwnerBesidesPlayer()
         {
-            // Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
-            // SetOwner(newOwner);
+            Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
+            SetOwner(newOwner);
         }
 
         public void BindEvents()
         {
             _playerContainer.OnEmpty.AddListener(Fail);
-            _enemyContainers.ForEach(enemy =>
-            {
-                enemy.OnEmpty.AddListener(ProceedToCompletion);
-            });
-        }
-
-        private void ClearContainers()
-        {
-            _playerContainer.Clear();
-            _enemyContainers.ForEach(container => container.Clear());
+            _enemy.OnGiveUp.AddListener(Complete);
         }
 
         private void Start()
@@ -91,17 +87,7 @@ namespace Src.Levels.Level
                 _owner = fractionContainer.GetFractionById(data.OwnerId);
             }
 
-            _onStatusChange.Invoke(this);
-        }
-
-        private void ProceedToCompletion()
-        {
-            _defeatedEnemies++;
-
-            if (_defeatedEnemies >= _enemyContainers.Count)
-            {
-                Complete();
-            }
+            _onOwnerChange.Invoke(this);
         }
 
         private void Fail()
@@ -120,14 +106,15 @@ namespace Src.Levels.Level
 
             _onFinish.Invoke(this);
             
-            ClearContainers();
+            _playerContainer.Clear();
+            _enemy.OnGiveUp.RemoveListener(Complete);
         }
 
         private void SetOwner(Fraction newOwner)
         {
             _owner = newOwner;
             _save.SaveLevel(new LevelData(_id, _owner.Id));
-            _onStatusChange.Invoke(this);
+            _onOwnerChange.Invoke(this);
         }
     }
 }

@@ -10,8 +10,17 @@ namespace Src.Map.Regions.Containers
         [SerializeField] private Character _owner;
         [SerializeField] private List<Region> _regions;
 
-        public Character Owner => _owner;
+        public Character Owner
+        {
+            get => _owner;
+            set => _owner = value;
+        }
         public UnityEvent OnEmpty = new();
+
+        public bool HasRegion(Region region)
+        {
+            return _regions.Contains(region);
+        }
 
         public Region GetRandomRegion()
         {
@@ -36,6 +45,8 @@ namespace Src.Map.Regions.Containers
         public void AddRegion(Region region)
         {
             _regions.Add(region);
+
+            _regions.RemoveAll(item => item == null);
         }
     }
 }

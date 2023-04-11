@@ -1,9 +1,11 @@
 using Src.Controls;
 using Src.DI;
+using Src.Levels.Level;
 using Src.Map.Garrisons;
 using Src.Map.Regions.Combat;
 using Src.Map.Regions.Containers;
 using Src.Map.Regions.Structures;
+using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,9 +29,14 @@ namespace Src.Map.Regions
         public RegionOwner Owner => _owner;
         public RegionDefence Defence => _defence;
         public GarrisonBase Base => _base;
+        
+        public void Init(Fraction.Fraction enemy)
+        {
+            _owner.SetFraction(enemy);
+        }
 
         public void SetContainer(RegionContainer container)
-        {
+        { 
             if (_container != null) _container.RemoveRegion(this);
             
             _container = container;
@@ -46,6 +53,16 @@ namespace Src.Map.Regions
             if (newOwner == _owner.Fraction) return;
             
             _owner.SetFraction(newOwner);
+            OnOwnerChange.Invoke(_owner.Fraction);
+            _distributor.DistributeRegion(this, _owner.Fraction);
+            SwitchGeneratorByFraction();
+            SwitchDeploymentByFraction();
+        }
+
+        private void Start()
+        {
+            _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
+            _owner.SetFraction(_owner.Fraction);
             OnOwnerChange.Invoke(_owner.Fraction);
             _distributor.DistributeRegion(this, _owner.Fraction);
             SwitchGeneratorByFraction();
@@ -74,15 +91,6 @@ namespace Src.Map.Regions
 
             _generator.enabled = true;
             _generator.StartGeneration();
-        }
-
-        private void Start()
-        {
-            _distributor = DependencyContext.Dependencies.Get<RegionDistributor>();
-            OnOwnerChange.Invoke(_owner.Fraction);
-            _distributor.DistributeRegion(this, _owner.Fraction);
-            SwitchGeneratorByFraction();
-            SwitchDeploymentByFraction();
         }
     }
 }

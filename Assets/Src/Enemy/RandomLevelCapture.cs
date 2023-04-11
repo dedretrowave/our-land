@@ -32,7 +32,7 @@ namespace Src.Enemy
         {
             float randomNumber = Random.Range(0f, 1f);
 
-            if (randomNumber < _chanceOfRandomCaptureInPercent / 100f) return;
+            if (randomNumber > _chanceOfRandomCaptureInPercent / 100f) return;
 
             if (_levels.Count == 0)
             { 
@@ -41,6 +41,8 @@ namespace Src.Enemy
             }
 
             Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
+            
+            Debug.Log($"{selectedLevel} SELECTED");
 
             selectedLevel.SetRandomOwnerBesidesPlayer();
             

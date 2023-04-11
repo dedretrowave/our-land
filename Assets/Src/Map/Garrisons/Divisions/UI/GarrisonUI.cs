@@ -1,11 +1,9 @@
 using Src.DI;
 using Src.Levels.Level;
 using Src.SkinShop.Items;
-using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using Src.SkinShop.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Src.Map.Garrisons.Divisions.UI
 {
@@ -17,12 +15,16 @@ namespace Src.Map.Garrisons.Divisions.UI
 
         public void UpdateByLevel(Level level)
         {
+            if (_fractionSkinContainer == null) _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionContainer>();
+
             FractionSkinHolder skinHolder = _fractionSkinContainer.GetSkinByFraction(level.Owner);
             UpdateByFraction(skinHolder);
         }
 
         public void UpdateByFraction(Fraction.Fraction fraction)
         {
+            if (_fractionSkinContainer == null) _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionContainer>(); 
+            
             FractionSkinHolder skinHolder = _fractionSkinContainer.GetSkinByFraction(fraction);
             UpdateByFraction(skinHolder);
         }

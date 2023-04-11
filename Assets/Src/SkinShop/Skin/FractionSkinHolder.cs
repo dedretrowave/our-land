@@ -5,7 +5,6 @@ using Src.SkinShop.Items.Base;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Src.SkinShop.Skin
 {
