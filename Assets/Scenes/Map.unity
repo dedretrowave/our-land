@@ -4657,7 +4657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1369889386}
   _chanceOfRandomCaptureInPercent: 75
-  _timeGapBetweenCaptureProc: 60
+  _timeGapBetweenCaptureProc: 20
 --- !u!1 &1549138720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,7 +6920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7001,7 +7001,7 @@ PrefabInstance:
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503614185}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
@@ -7164,7 +7164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_FloatArgument
-      value: 75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8891632734934317429, guid: efee3618bfdf5564eab31aef7e54db77, type: 3}
       propertyPath: OnLevelFinished.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_FloatArgument
