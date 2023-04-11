@@ -17,7 +17,6 @@ namespace Src.Levels.Level.Initialization
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log($"IsControlledByPlayer?: {_level.IsControlledByPlayer}");
             if (_level.IsControlledByPlayer)
             {
                 enabled = false;

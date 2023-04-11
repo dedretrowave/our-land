@@ -45,8 +45,6 @@ namespace Src.Levels.Level
         {
             get
             {
-                Debug.Log(_owner);
-                Debug.Log(_playerContainer.Owner.Fraction);
                 if (_playerContainer.Owner == null) return false;
 
                 return _owner.Equals(_playerContainer.Owner.Fraction);

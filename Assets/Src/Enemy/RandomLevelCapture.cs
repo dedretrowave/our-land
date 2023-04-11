@@ -41,8 +41,6 @@ namespace Src.Enemy
             }
 
             Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
-            
-            Debug.Log($"{selectedLevel} SELECTED");
 
             selectedLevel.SetRandomOwnerBesidesPlayer();
             
