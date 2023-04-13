@@ -978,7 +978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183305952}
-  - component: {fileID: 183305951}
+  - component: {fileID: 183305953}
   m_Layer: 0
   m_Name: FractionContainer
   m_TagString: Untagged
@@ -986,31 +986,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &183305951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183305950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8d15ad35f04e3fbccb9ab55517f716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fractions:
-  - SkinHolder: {fileID: 1248185169}
-    Fraction: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
-  - SkinHolder: {fileID: 1649411181}
-    Fraction: {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
-  - SkinHolder: {fileID: 1347572496}
-    Fraction: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
-  - SkinHolder: {fileID: 389378415}
-    Fraction: {fileID: 11400000, guid: f9bf4bebcc807ba4f83d307b9fb1f4a2, type: 2}
-  - SkinHolder: {fileID: 1055018796}
-    Fraction: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
-  - SkinHolder: {fileID: 2039479239}
-    Fraction: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
 --- !u!4 &183305952
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,6 +1001,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183305953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183305950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8d15ad35f04e3fbccb9ab55517f716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fractions:
+  - SkinHolder: {fileID: 1649411181}
+    Fraction: {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
+  - SkinHolder: {fileID: 1248185169}
+    Fraction: {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
+  - SkinHolder: {fileID: 389378415}
+    Fraction: {fileID: 11400000, guid: f9bf4bebcc807ba4f83d307b9fb1f4a2, type: 2}
+  - SkinHolder: {fileID: 1055018796}
+    Fraction: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
+  - SkinHolder: {fileID: 2039479239}
+    Fraction: {fileID: 11400000, guid: a7ec83547785eae4da74d89890182e53, type: 2}
+  - SkinHolder: {fileID: 1347572496}
+    Fraction: {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
 --- !u!1 &202511389
 GameObject:
   m_ObjectHideFlags: 0
