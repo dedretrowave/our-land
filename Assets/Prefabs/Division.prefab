@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7075973460332429507}
   - component: {fileID: 3138274083587450208}
   m_Layer: 0
-  m_Name: TanksDivision
+  m_Name: Division
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae795ee5a0b04c4f8393bb49386a4601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 400
+  _speed: 300
   _stopDistance: 0.1
 --- !u!1 &5938817665136444647
 GameObject:
@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalRotation.z
@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8578790651803593968, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 8578790651803593974, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 3a28fd0844891c045b835cd04d4b2c2a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec21964af26758449c1b54b3d7f9aaa, type: 3}
 --- !u!4 &7498354227794329060 stripped
