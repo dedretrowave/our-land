@@ -90,7 +90,7 @@ namespace Src.Saves
     [Serializable]
     public class SoundData
     {
-        public bool IsMusicEnabled;
+        public bool IsMusicEnabled = true;
 
         public SoundData() { }
     }

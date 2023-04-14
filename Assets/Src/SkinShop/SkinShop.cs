@@ -24,6 +24,12 @@ namespace Src.SkinShop
         private SkinSaveSystem _skinSaveSystem;
         private int _totalPrice;
 
+        public void Open()
+        {
+            _purchasableSkin = new(_playerSkin.Skin);
+            gameObject.SetActive(true);
+        }
+
         public void SetSkinItem(SkinItem item)
         {
             _purchasableSkin.SetItem(item);

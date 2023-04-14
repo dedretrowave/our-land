@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace Src.Levels.Level.UI
     {
         [SerializeField] private Ads.Ads _ads;
         [SerializeField] private Button _button;
+        [SerializeField] private TextMeshProUGUI _rewardText;
 
         private Level _completedLevel;
 
@@ -41,6 +43,7 @@ namespace Src.Levels.Level.UI
         private void Apply()
         {
             _completedLevel.Reward.Apply(_completedLevel);
+            _rewardText.text = (_completedLevel.Reward.Amount * 2).ToString();
         }
     }
 }
