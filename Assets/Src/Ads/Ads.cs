@@ -1,5 +1,4 @@
 using Src.DI;
-using Src.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,12 +6,14 @@ namespace Src.Ads
 {
     public class Ads : MonoBehaviour
     {
+        [SerializeField] private GameDistribution _gameDistribution;
+        
         public UnityEvent OnRewardedAdWatched;
         public UnityEvent OnRewardedAdSkipped;
 
         public void ShowRewarded()
         {
-            // _gameDistribution.ShowRewardedAd();
+            _gameDistribution.ShowRewardedAd();
         }
 
         public void ShowAdWithChance(float chance = 50f)
@@ -29,19 +30,19 @@ namespace Src.Ads
 
             DependencyContext.Dependencies.Add(typeof(Ads), () => this);
 
-            // GameDistribution.OnRewardedVideoSuccess += InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure += InvokeRewardedSkipped;
+            GameDistribution.OnRewardedVideoSuccess += InvokeRewardedWatched;
+            GameDistribution.OnRewardedVideoFailure += InvokeRewardedSkipped;
         }
 
         private void OnDestroy()
         {
-            // GameDistribution.OnRewardedVideoSuccess -= InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure -= InvokeRewardedSkipped;
+            GameDistribution.OnRewardedVideoSuccess -= InvokeRewardedWatched;
+            GameDistribution.OnRewardedVideoFailure -= InvokeRewardedSkipped;
         }
 
         private void ShowAd()
         {
-            // _gameDistribution.ShowAd();
+            _gameDistribution.ShowAd();
         }
 
         private void InvokeRewardedWatched()
