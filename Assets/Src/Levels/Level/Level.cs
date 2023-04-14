@@ -37,6 +37,8 @@ namespace Src.Levels.Level
         private Fraction _originalOwner;
 
         private PlayerDataSaveSystem _save;
+
+        private bool _isControlledByPlayer;
         
         public LevelReward Reward => _reward;
         public Fraction Owner => _owner;
@@ -46,8 +48,10 @@ namespace Src.Levels.Level
             get
             {
                 if (_playerContainer.Owner == null) return false;
+                
+                _isControlledByPlayer = _owner.Equals(_playerContainer.Owner.Fraction);
 
-                return _owner.Equals(_playerContainer.Owner.Fraction);
+                return _isControlledByPlayer;
             }
         }
 

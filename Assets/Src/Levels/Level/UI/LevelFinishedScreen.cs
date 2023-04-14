@@ -20,6 +20,7 @@ namespace Src.Levels.Level.UI
         [SerializeField] private AnimationTrigger _animationTrigger;
         [SerializeField] private TextMeshProUGUI _rewardText;
         [SerializeField] private Image _rewardIcon;
+        [SerializeField] private DoubleRewardButton _doubleReward;
 
         public void Show(Level level)
         {
@@ -40,6 +41,8 @@ namespace Src.Levels.Level.UI
             _rewardIcon.gameObject.SetActive(true);
             Show();
             _animationTrigger.TriggerWin();
+            _doubleReward.gameObject.SetActive(true);
+            _doubleReward.BindLevelToRewardApplier(level);
         }
 
         private void ShowFail()
@@ -49,6 +52,7 @@ namespace Src.Levels.Level.UI
             _rewardIcon.gameObject.SetActive(false);
             Show();
             _animationTrigger.TriggerHurt();
+            _doubleReward.gameObject.SetActive(false);
         }
 
         private void Show()
