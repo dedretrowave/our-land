@@ -12,6 +12,7 @@ namespace Src.Map.Garrisons.Divisions.UI
         [SerializeField] private SkinUI _skinUI;
 
         private FractionContainer _fractionSkinContainer;
+        private FractionSkinHolder _skinHolder;
 
         public void UpdateByLevel(Level level)
         {
@@ -31,7 +32,10 @@ namespace Src.Map.Garrisons.Divisions.UI
 
         public void UpdateByFraction(FractionSkinHolder skinHolder)
         {
-            skinHolder.OnSkinChanged.AddListener(UpdateSkin);
+            if (_skinHolder != null) _skinHolder.OnSkinChanged.RemoveListener(UpdateSkin);
+                
+            _skinHolder = skinHolder;
+            _skinHolder.OnSkinChanged.AddListener(UpdateSkin);
             UpdateSkin(skinHolder.Skin);
         }
 

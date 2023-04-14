@@ -7,7 +7,6 @@ namespace Src.Ads
 {
     public class Ads : MonoBehaviour
     {
-       
         public UnityEvent OnRewardedAdWatched;
         public UnityEvent OnRewardedAdSkipped;
 
