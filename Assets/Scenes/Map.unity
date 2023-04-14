@@ -5435,6 +5435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ads: {fileID: 1873743925}
   _button: {fileID: 1424860793}
+  _rewardText: {fileID: 125414409}
 --- !u!1 &1503614179
 GameObject:
   m_ObjectHideFlags: 0

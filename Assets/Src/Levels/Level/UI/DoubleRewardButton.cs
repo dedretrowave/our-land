@@ -43,7 +43,7 @@ namespace Src.Levels.Level.UI
         private void Apply()
         {
             _completedLevel.Reward.Apply(_completedLevel);
-            _rewardText.text = (_completedLevel.Reward.Amount * 2).ToString();
+            _rewardText.text = $"+{(_completedLevel.Reward.Amount * 2).ToString()}";
         }
     }
 }
