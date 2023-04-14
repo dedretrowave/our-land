@@ -3120,8 +3120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cam: {fileID: 963194227}
   _speed: 50
-  _yBorderValue: 400
-  _xBorderValue: 400
+  _yBorderValue: 450
+  _xBorderValue: 550
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,7 +3136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
   _movement: {fileID: 963194231}
-  _cameraOnFocusZPosition: -25
+  _cameraOnFocusZPosition: -40
 --- !u!1 &964678280
 GameObject:
   m_ObjectHideFlags: 0
