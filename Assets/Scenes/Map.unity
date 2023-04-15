@@ -5568,8 +5568,8 @@ MonoBehaviour:
   - {fileID: 1649411178}
   - {fileID: 1347572494}
   _container: {fileID: 0}
-  _minPauseBetweenAttacks: 6
-  _maxPauseBetweenAttacks: 10
+  _minPauseBetweenAttacks: 4
+  _maxPauseBetweenAttacks: 7
   OnGiveUp:
     m_PersistentCalls:
       m_Calls: []
@@ -5586,8 +5586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1369889386}
-  _chanceOfRandomCaptureInPercent: 75
-  _timeGapBetweenCaptureProc: 60
+  _chanceOfRandomCaptureInPercent: 35
+  _timeGapBetweenCaptureProc: 90
 --- !u!1 &1549138720
 GameObject:
   m_ObjectHideFlags: 0
