@@ -6,14 +6,15 @@ namespace Src.Ads
 {
     public class Ads : MonoBehaviour
     {
-        [SerializeField] private GameDistribution _gameDistribution;
+        [SerializeField] private GameMonetize _gameMonetize;
         
         public UnityEvent OnRewardedAdWatched;
         public UnityEvent OnRewardedAdSkipped;
 
         public void ShowRewarded()
         {
-            _gameDistribution.ShowRewardedAd();
+            _gameMonetize.ShowAd();
+            InvokeRewardedWatched();
         }
 
         public void ShowAdWithChance(float chance = 50f)
@@ -29,20 +30,12 @@ namespace Src.Ads
             DontDestroyOnLoad(this);
 
             DependencyContext.Dependencies.Add(typeof(Ads), () => this);
-
-            GameDistribution.OnRewardedVideoSuccess += InvokeRewardedWatched;
-            GameDistribution.OnRewardedVideoFailure += InvokeRewardedSkipped;
         }
 
-        private void OnDestroy()
-        {
-            GameDistribution.OnRewardedVideoSuccess -= InvokeRewardedWatched;
-            GameDistribution.OnRewardedVideoFailure -= InvokeRewardedSkipped;
-        }
 
         private void ShowAd()
         {
-            _gameDistribution.ShowAd();
+            _gameMonetize.ShowAd();
         }
 
         private void InvokeRewardedWatched()
