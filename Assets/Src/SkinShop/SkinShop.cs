@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Src.DI;
 using Src.Saves;
 using Src.SkinShop.Items.Base;
@@ -26,7 +27,8 @@ namespace Src.SkinShop
 
         public void Open()
         {
-            _playerSkin.Skin.Items.ForEach(SetSkinItem);
+            List<SkinItem> playerSkinItems = new (_playerSkin.Skin.Items);
+            playerSkinItems.ForEach(SetSkinItem);
             gameObject.SetActive(true);
         }
 

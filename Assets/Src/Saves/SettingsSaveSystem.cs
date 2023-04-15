@@ -27,7 +27,7 @@ namespace Src.Saves
         {
             DontDestroyOnLoad(this);
 
-            _data = new(_handler.Load<SettingsData>(_localPath));
+            _data = _handler.Load<SettingsData>(_localPath) ?? new();
             
             DependencyContext.Dependencies.Add(typeof(SettingsSaveSystem), () => this);
         }

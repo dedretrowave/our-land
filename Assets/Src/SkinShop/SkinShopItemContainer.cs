@@ -40,7 +40,7 @@ namespace Src.SkinShop
             SelectItem(_items[_index]);
         }
 
-        private void Start()
+        private void Awake()
         {
             SkinSaveSystem skinSaveSystem = DependencyContext.Dependencies.Get<SkinSaveSystem>();
             List<PurchasedSkinItemData> savedItems = skinSaveSystem.GetItemsByType(_containedType);
