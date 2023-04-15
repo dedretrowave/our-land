@@ -20,13 +20,13 @@ namespace Src.SkinShop
         [SerializeField] private UnityEvent<Items.Skin> _onPurchasableSkinChanged;
         [SerializeField] private UnityEvent _onItemPurchased;
 
-        private Items.Skin _purchasableSkin;
+        private Items.Skin _purchasableSkin = new();
         private SkinSaveSystem _skinSaveSystem;
         private int _totalPrice;
 
         public void Open()
         {
-            _purchasableSkin = new(_playerSkin.Skin);
+            _playerSkin.Skin.Items.ForEach(SetSkinItem);
             gameObject.SetActive(true);
         }
 

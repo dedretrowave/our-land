@@ -10,7 +10,7 @@ namespace Src.Saves
         [SerializeField] private string _localPath = "settings";
         [SerializeField] private SaveFileHandler _handler;
         
-        private SettingsData _data = new();
+        private SettingsData _data;
 
         public void SaveSoundsSettings(SoundData data)
         {
@@ -27,7 +27,7 @@ namespace Src.Saves
         {
             DontDestroyOnLoad(this);
 
-            _data = _handler.Load<SettingsData>(_localPath);
+            _data = new(_handler.Load<SettingsData>(_localPath));
             
             DependencyContext.Dependencies.Add(typeof(SettingsSaveSystem), () => this);
         }
@@ -36,16 +36,26 @@ namespace Src.Saves
     [Serializable]
     public class SettingsData
     {
-        public SoundData Sounds = new();
-        
-        public SettingsData() {}
+        public SoundData Sounds;
+
+        public SettingsData() { }
+
+        public SettingsData(SettingsData data)
+        {
+            Sounds = new(data.Sounds);
+        }
     }
     
     [Serializable]
     public class SoundData
     {
         public bool IsMusicEnabled = true;
+        
+        public SoundData() {}
 
-        public SoundData() { }
+        public SoundData(SoundData data)
+        {
+            IsMusicEnabled = data.IsMusicEnabled;
+        }
     }
 }

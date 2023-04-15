@@ -11,13 +11,17 @@ namespace Src.SkinShop.UI
 {
     public class SkinUI : MonoBehaviour
     {
-        [SerializeField] private SkinUIComponent _items;
+        [SerializeField] private SkinUIComponent _items = new();
 
         public void SetSkin(Items.Skin skin)
         {
             foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
-                _items[type].sprite = skin.GetItemByType(type).Sprite;
+                SkinItem skinItem = skin.GetItemByType(type);
+                
+                if (skinItem == null) continue;
+                
+                _items[type].sprite = skinItem.Sprite;
             }
         }
     }

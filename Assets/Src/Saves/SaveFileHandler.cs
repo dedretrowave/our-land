@@ -41,7 +41,9 @@ namespace Src.Saves
 
         private void SaveInternal(string path, string json)
         {
-            File.WriteAllText(path, json);
+            string filePath = $"{Application.persistentDataPath}/{path}.dat";
+            
+            File.WriteAllText(filePath, json);
         }
 
         [DllImport("__Internal")]
@@ -49,13 +51,15 @@ namespace Src.Saves
 
         private string GetSerializedInternal(string path)
         {
-            if (!File.Exists(path))
+            string filePath = $"{Application.persistentDataPath}/{path}.dat";
+            
+            if (!File.Exists(filePath))
             {
-                File.Create(path);
+                File.Create(filePath);
                 return "";
             }
             
-            return File.ReadAllText(path);
+            return File.ReadAllText(filePath);
         }
 
         [DllImport("__Internal")]
