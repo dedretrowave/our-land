@@ -10,10 +10,10 @@ namespace Src.Saves
 {
     public class PlayerDataSaveSystem : MonoBehaviour
     {
-        [SerializeField] private string _localPathToFile = "player.dat";
+        [SerializeField] private string _localPath = "player";
+        [SerializeField] private SaveFileHandler _handler;
         
         private PlayerData _data = new();
-        private SaveFileHandler _handler;
 
         public void SaveLevel(LevelData data)
         {
@@ -28,8 +28,8 @@ namespace Src.Saves
             {
                 _data.LevelData.Add(data);
             }
-
-            _handler.Save(_data);
+            
+            _handler.Save(_localPath, _data);
         }
 
         public LevelData GetLevelById(int id)
@@ -40,8 +40,8 @@ namespace Src.Saves
         public void SaveMoney(int money)
         {
             _data.Money = money;
-
-            _handler.Save(_data);
+            
+            _handler.Save(_localPath, _data);
         }
 
         public int GetMoney()
@@ -49,27 +49,13 @@ namespace Src.Saves
             return _data.Money;
         }
 
-        public SoundData GetSoundsSettings()
-        {
-            return _data.Sounds;
-        }
-
-        public void SaveSoundsSettings(SoundData data)
-        {
-            _data.Sounds = data;
-            
-            _handler.Save(_data);
-        }
-        
         private void Awake()
         {
             DontDestroyOnLoad(this);
             
             DependencyContext.Dependencies.Add(typeof(PlayerDataSaveSystem), () => this);
 
-            _handler = new SaveFileHandler(_localPathToFile);
-            
-            _data = _handler.Load<PlayerData>() ?? new PlayerData();
+            _data = _handler.Load<PlayerData>(_localPath) ?? new PlayerData();
         }
     }
 
@@ -77,7 +63,6 @@ namespace Src.Saves
     public class PlayerData
     {
         public List<LevelData> LevelData = new();
-        public SoundData Sounds;
         public int Money;
 
         public PlayerData()
@@ -85,14 +70,6 @@ namespace Src.Saves
             LevelData = new();
             Money = 0;
         }
-    }
-
-    [Serializable]
-    public class SoundData
-    {
-        public bool IsMusicEnabled = true;
-
-        public SoundData() { }
     }
 
     [Serializable]

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2247596739458705415}
   - component: {fileID: 2247596739458705414}
   - component: {fileID: 9086532322850526734}
+  - component: {fileID: 3978726836731547297}
+  - component: {fileID: 2195754523131367253}
   m_Layer: 0
   m_Name: Save
   m_TagString: Untagged
@@ -45,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fe7347b4624632aaa4ecc4b21c59f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localPathToFile: player.dat
+  _localPath: player
+  _handler: {fileID: 2195754523131367253}
 --- !u!114 &9086532322850526734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,4 +61,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01f0c5a5bf4454876960231cda92e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localPathToFile: skins.dat
+  _localPath: skins
+  _handler: {fileID: 2195754523131367253}
+--- !u!114 &3978726836731547297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247596739458705413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbda8d9af30d497b9f1646fab6756056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localPath: settings
+  _handler: {fileID: 2195754523131367253}
+--- !u!114 &2195754523131367253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247596739458705413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe503b7dedad4f48b6e18ea6ad4b88e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

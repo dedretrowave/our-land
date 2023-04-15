@@ -50,7 +50,8 @@ namespace Src.Wallet
         {
             _save = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
 
-            Money = _save.GetMoney();
+            _money = _save.GetMoney();
+            _onMoneyChange.Invoke(_money);
             
             DependencyContext.Dependencies.Add(typeof(Wallet), () => this);
         }

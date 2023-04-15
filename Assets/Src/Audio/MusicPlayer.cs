@@ -20,7 +20,7 @@ namespace Src.Audio
 
         private AudioSource _currentlyPlaying;
 
-        private PlayerDataSaveSystem _saves;
+        private SettingsSaveSystem _saves;
         private SoundData _data;
         
         public void EnableLevelTrack()
@@ -64,6 +64,11 @@ namespace Src.Audio
             }
             _saves.SaveSoundsSettings(_data);
             OnIsMusicPlayingChanged.Invoke(isPlaying);
+
+            if (_data.IsMusicEnabled)
+            {
+                _currentlyPlaying.Play();
+            }
         }
 
         private void SetTrackByType(TrackType type)
@@ -76,11 +81,15 @@ namespace Src.Audio
         
         private void Start()
         {
-            _saves = DependencyContext.Dependencies.Get<PlayerDataSaveSystem>();
+            _saves = DependencyContext.Dependencies.Get<SettingsSaveSystem>();
             _data = _saves.GetSoundsSettings() ?? new SoundData();
-
+            
             _currentlyPlaying = _tracks[_trackTypeByDefault];
-            _currentlyPlaying.Play();
+
+            if (_data.IsMusicEnabled)
+            {
+                _currentlyPlaying.Play();
+            }
             
             SetMusicPlaying(_data.IsMusicEnabled);
         }

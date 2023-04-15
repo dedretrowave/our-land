@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 1
   _skin:
     _items:
-    - {fileID: 11400000, guid: 7fba1d327a7c14e40a21761de28b1733, type: 2}
+    - {fileID: 11400000, guid: 5131e25f1a670fc41b75f5347bd20602, type: 2}
     - {fileID: 11400000, guid: 688bb03b94a6bcc46b1f56d7ec4ba8be, type: 2}
   _color: {r: 0.25490198, g: 0.8862745, b: 0.79607844, a: 1}
   _allowsDivisionGeneration: 1

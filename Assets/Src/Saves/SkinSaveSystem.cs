@@ -4,14 +4,15 @@ using Src.DI;
 using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Src.Saves
 {
     public class SkinSaveSystem : MonoBehaviour
     {
-        [SerializeField] private string _localPathToFile = "skins.dat";
-
-        private SaveFileHandler _handler;
+        [SerializeField] private string _localPath = "skins.dat";
+        [SerializeField] private SaveFileHandler _handler;
+        
         private CompiledSkinData _data;
 
         public PlayerSelectedSkinData GetPlayerSelectedSkin()
@@ -27,7 +28,7 @@ namespace Src.Saves
         public void SaveSkin(Skin skin)
         {
             _data.SelectedSkin = new PlayerSelectedSkinData(skin);
-            _handler.Save(_data);
+            _handler.Save(_localPath, _data);
         }
 
         public void SaveItemPurchase(SkinItem item)
@@ -52,7 +53,7 @@ namespace Src.Saves
                 }
             }
             
-            _handler.Save(_data);
+            _handler.Save(_localPath, _data);
         }
         
         private void Awake()
@@ -61,9 +62,7 @@ namespace Src.Saves
             
             DependencyContext.Dependencies.Add(typeof(SkinSaveSystem), () => this);
 
-            _handler = new SaveFileHandler(_localPathToFile);
-
-            _data = _handler.Load<CompiledSkinData>() ?? new CompiledSkinData();
+            _data = _handler.Load<CompiledSkinData>(_localPath) ?? new CompiledSkinData();
         }
     }
 

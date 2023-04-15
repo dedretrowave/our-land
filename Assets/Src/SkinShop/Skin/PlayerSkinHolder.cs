@@ -1,5 +1,6 @@
 using Src.DI;
 using Src.Saves;
+using Src.SkinShop.Items.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,12 +21,12 @@ namespace Src.SkinShop.Skin
         private void Awake()
         {
             _skinSave = DependencyContext.Dependencies.Get<SkinSaveSystem>();
-
+         
             PlayerSelectedSkinData savedSkinData = _skinSave.GetPlayerSelectedSkin();
-
+         
             Items.Skin newSkin = new();
-
-            if (savedSkinData.SkinItemIds.Count == 0)
+            
+            if (savedSkinData == null || savedSkinData.SkinItemIds.Count == 0)
             {
                 SetSkin(character.Fraction.Skin);
             }
