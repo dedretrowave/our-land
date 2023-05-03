@@ -998,7 +998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a4c293a8b337e740842c846d6e9cb83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94b64ca2e620b9b4d8dfc9461b16761b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: "\u041C\u0443\u0437\u044B\u043A\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
   m_sharedMaterial: {fileID: -2444175379984325031, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 641347b0d460b2c40b705d6f0faa815f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd5eafb1710786f41b60057d4c70b99a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

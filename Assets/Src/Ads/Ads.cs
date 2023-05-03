@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Src.DI;
 using Src.Helpers;
 using UnityEngine;
@@ -10,9 +11,15 @@ namespace Src.Ads
         public UnityEvent OnRewardedAdWatched;
         public UnityEvent OnRewardedAdSkipped;
 
+        [DllImport("__Internal")]
+        private static extern void ShowAdExternal();
+
+        [DllImport("__Internal")]
+        private static extern void ShowRewardedExternal();
+
         public void ShowRewarded()
         {
-            // _gameDistribution.ShowRewardedAd();
+            ShowRewardedExternal();
         }
 
         public void ShowAdWithChance(float chance = 50f)
@@ -28,20 +35,11 @@ namespace Src.Ads
             DontDestroyOnLoad(this);
 
             DependencyContext.Dependencies.Add(typeof(Ads), () => this);
-
-            // GameDistribution.OnRewardedVideoSuccess += InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure += InvokeRewardedSkipped;
-        }
-
-        private void OnDestroy()
-        {
-            // GameDistribution.OnRewardedVideoSuccess -= InvokeRewardedWatched;
-            // GameDistribution.OnRewardedVideoFailure -= InvokeRewardedSkipped;
         }
 
         private void ShowAd()
         {
-            // _gameDistribution.ShowAd();
+            ShowAdExternal();
         }
 
         private void InvokeRewardedWatched()
