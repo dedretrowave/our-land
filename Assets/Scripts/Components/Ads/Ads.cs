@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using EventBus;
 using UnityEngine;
 
@@ -8,6 +9,12 @@ namespace Components.Ads
         [SerializeField] private float _randomChanceOfAd;
         
         private EventBus.EventBus _eventBus;
+
+        [DllImport("__Internal")]
+        private static extern void ShowAdExternal();
+
+        [DllImport("__Internal")]
+        private static extern void ShowRewardedExternal();
 
         private void Start()
         {
@@ -21,7 +28,7 @@ namespace Components.Ads
 
         public void ShowRewarded()
         {
-            // _gameDistribution.ShowRewardedAd();
+            ShowRewardedExternal();
         }
 
         private void ShowAdWithChance()
@@ -40,7 +47,7 @@ namespace Components.Ads
 
         private void ShowAd()
         {
-            // _gameDistribution.ShowAd();
+            ShowAdExternal();
         }
 
         private void InvokeRewardedWatched()
