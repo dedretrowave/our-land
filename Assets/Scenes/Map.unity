@@ -508,7 +508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0430\u0437\u0430\u0434"
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
   m_sharedMaterial: {fileID: -2444175379984325031, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u044B\u0431\u0440\u0430\u0442\u044C"
+  m_text: Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
   m_sharedMaterial: {fileID: -2444175379984325031, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430"
+  m_text: ADS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
   m_sharedMaterial: {fileID: -2444175379984325031, guid: 83d04f8202f6e954082fc4f731bc6350, type: 2}
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b3342662fdcec74bb1eb5f5fdd2b94e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca3908247f0a2fb42bc8c66db7dbffc5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4316,7 +4316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1203079538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5642,8 +5642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9919fbc6cfec49f69bc1692659ef5907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _completeFlag: {fileID: 21300000, guid: 5b3342662fdcec74bb1eb5f5fdd2b94e, type: 3}
-  _failFlag: {fileID: 21300000, guid: 1a822290c3b15cb41bed355942285606, type: 3}
+  _completeFlag: {fileID: 21300000, guid: ca3908247f0a2fb42bc8c66db7dbffc5, type: 3}
+  _failFlag: {fileID: 21300000, guid: ed1bc13b98823914b86325e0deeb471c, type: 3}
   _banner: {fileID: 317862332}
   _animationTrigger: {fileID: 959277451}
   _rewardText: {fileID: 125414409}
