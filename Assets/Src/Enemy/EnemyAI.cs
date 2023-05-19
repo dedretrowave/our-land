@@ -15,7 +15,7 @@ namespace Src.Enemy
 {
     public class EnemyAI : MonoBehaviour
     {
-        private Dictionary<Fraction, RegionContainer> _containers = new();
+        private Dictionary<Map.Fraction.Fraction, RegionContainer> _containers = new();
         
         [Header("Containers")]
         [SerializeField] private List<RegionContainer> _enemyContainers;
@@ -32,7 +32,7 @@ namespace Src.Enemy
 
         private Coroutine _routine;
 
-        public void InitializeWithLevel(Level level)
+        public void InitializeWithLevel(Levels.Level.Level level)
         {
             _container = _containers[level.Owner];
             _container.OnEmpty.AddListener(GiveUp);

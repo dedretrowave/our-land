@@ -1,5 +1,5 @@
 using System;
-using Src.DI;
+using DI;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -14,7 +14,7 @@ namespace Src.Camera
 
         private Vector3 _cameraDefaultPosition;
 
-        public void Focus(Level level)
+        public void Focus(Levels.Level.Level level)
         {
             Focus(level.transform);
         }

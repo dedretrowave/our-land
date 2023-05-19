@@ -1,4 +1,4 @@
-using Src.DI;
+using DI;
 using UnityEngine;
 
 namespace Src.Settings

@@ -2,10 +2,10 @@ using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using UnityEngine;
 
-namespace Src.Map.Fraction
+namespace Characters.SO
 {
-    [CreateAssetMenu(menuName = "Game Entities/Fraction", fileName = "Fraction", order = 0)]
-    public class Fraction : ScriptableObject
+    [CreateAssetMenu(menuName = "Game Entities/Character", fileName = "Character", order = 0)]
+    public class CharacterSO : ScriptableObject
     {
         [SerializeField] private int _id;
         
@@ -24,15 +24,5 @@ namespace Src.Map.Fraction
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
         public bool IsPlayerControlled => _isPlayerControlled;
-
-        public void SetSkin(Skin skin)
-        {
-            if (skin.Items.Count != _skin.Items.Count)
-            {
-                return;
-            }
-            
-            _skin = new Skin(skin);
-        }
     }
 }

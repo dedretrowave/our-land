@@ -1,4 +1,4 @@
-using Src.DI;
+using DI;
 using Src.Map.Fraction;
 using Src.Saves;
 using Src.SkinShop.Skin;
@@ -11,7 +11,7 @@ namespace Src.Levels.Level.UI
         [SerializeField] private int _id;
         [SerializeField] private LevelUI _ui;
         [SerializeField] private FractionContainer _fractionContainer;
-        [SerializeField] private Fraction _owner;
+        [SerializeField] private Map.Fraction.Fraction _owner;
         
         private PlayerDataSaveSystem _save;
 

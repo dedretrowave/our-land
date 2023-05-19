@@ -1,4 +1,4 @@
-using Src.DI;
+using DI;
 using Src.Saves;
 using Src.SkinShop.Items.Base;
 using UnityEngine;

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DI;
 using Newtonsoft.Json;
-using Src.DI;
 using Src.Map.Fraction;
 using UnityEngine;
 

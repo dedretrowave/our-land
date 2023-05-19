@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Src.DI;
+using DI;
 using Src.SkinShop.Items;
 using Src.SkinShop.Items.Base;
 using UnityEngine;

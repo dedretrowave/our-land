@@ -1,5 +1,5 @@
 using System.Collections;
-using Src.DI;
+using DI;
 using Src.Map.Garrisons;
 using Src.Map.Garrisons.Divisions;
 using Src.Settings;

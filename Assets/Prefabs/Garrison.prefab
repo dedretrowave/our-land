@@ -110,7 +110,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559171151244700189}
-  - component: {fileID: 7287359276132862180}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -134,19 +133,6 @@ Transform:
   m_Father: {fileID: 5226640771444385766}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7287359276132862180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559171151244700188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a476a3f3b3e9403ba0d6896f16291626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 559171152788768559}
 --- !u!1 &559171152788768557
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +277,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226640771444385766}
-  - component: {fileID: 7857152566859388565}
-  - component: {fileID: 9111552186352011789}
-  - component: {fileID: 6901165149145185778}
   m_Layer: 0
   m_Name: Garrison
   m_TagString: Untagged
@@ -318,106 +301,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7857152566859388565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375274969090823326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bac0b68361d460bbb7e78c071ec47a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _garrison: {fileID: 9111552186352011789}
-  _owner: {fileID: 0}
-  _divisionPrefab: {fileID: 7075973460332429507, guid: 0cf6aab46ca58444f9e773cad0fcc4b6, type: 3}
---- !u!114 &9111552186352011789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375274969090823326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2fa378f8a6408586f92a320fca4206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialNumber: 10
-  _onNumberBelowZero:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7287359276132862180}
-        m_TargetAssemblyTypeName: Src.Divisions.Divisions.UI.PlainDataDisplay, Assembly-CSharp
-        m_MethodName: UpdateData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onNumberChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7287359276132862180}
-        m_TargetAssemblyTypeName: Src.Divisions.Divisions.UI.PlainDataDisplay, Assembly-CSharp
-        m_MethodName: UpdateData
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onDamageTaken:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2360722157272209549}
-        m_TargetAssemblyTypeName: Src.Map.Garrisons.FX.SoundTrigger, Assembly-CSharp
-        m_MethodName: TriggerHurt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7344121806904825022}
-        m_TargetAssemblyTypeName: Src.Map.Garrisons.FX.AnimationTrigger, Assembly-CSharp
-        m_MethodName: TriggerHurt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6901165149145185778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375274969090823326}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f954e25d3641369390f07ed4500b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _garrison: {fileID: 9111552186352011789}
-  _pauseBetweenSpawnsInSeconds: 1
-  _generationFreezeTimeout: 5
 --- !u!1 &5766053277696508681
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,14 +615,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3032718204059663578, guid: af2594b3ad61fed4886f1aaaa02915e1, type: 3}
   m_PrefabInstance: {fileID: 1980022480906979470}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7344121806904825022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9120347986084011056, guid: af2594b3ad61fed4886f1aaaa02915e1, type: 3}
-  m_PrefabInstance: {fileID: 1980022480906979470}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ad8ca30c4d488cb3ba784bea7861d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

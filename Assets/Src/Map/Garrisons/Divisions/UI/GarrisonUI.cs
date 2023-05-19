@@ -1,4 +1,4 @@
-using Src.DI;
+using DI;
 using Src.Levels.Level;
 using Src.SkinShop.Items;
 using Src.SkinShop.Skin;
@@ -14,7 +14,7 @@ namespace Src.Map.Garrisons.Divisions.UI
         private FractionContainer _fractionSkinContainer;
         private FractionSkinHolder _skinHolder;
 
-        public void UpdateByLevel(Level level)
+        public void UpdateByLevel(Levels.Level.Level level)
         {
             if (_fractionSkinContainer == null) _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionContainer>();
 

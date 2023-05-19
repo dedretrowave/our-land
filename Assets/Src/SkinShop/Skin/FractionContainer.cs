@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Src.DI;
+using DI;
 using Src.Map.Fraction;
 using UnityEngine;
 
@@ -10,12 +10,12 @@ namespace Src.SkinShop.Skin
     {
         [SerializeField] private List<FractionData> _fractions;
 
-        public FractionSkinHolder GetSkinByFraction(Fraction fraction)
+        public FractionSkinHolder GetSkinByFraction(Map.Fraction.Fraction fraction)
         {
             return _fractions.Find(item => item.Fraction.Equals(fraction)).SkinHolder;
         }
 
-        public Fraction GetFractionById(int id)
+        public Map.Fraction.Fraction GetFractionById(int id)
         {
             return _fractions.Find(item => item.Fraction.Id == id).Fraction;
         }
@@ -30,6 +30,6 @@ namespace Src.SkinShop.Skin
     internal class FractionData
     {
         public FractionSkinHolder SkinHolder;
-        public Fraction Fraction;
+        public Map.Fraction.Fraction Fraction;
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Src.DI;
+using DI;
 using Src.Levels.Level;
 using Src.Saves;
 using Src.SerializableDictionary.Editor;
@@ -33,17 +33,17 @@ namespace Src.Audio
             SetTrackByType(TrackType.Map);
         }
 
-        public void EnableLevelFinishedTrack(Level level)
-        {
-            if (level.IsControlledByPlayer)
-            {
-                EnableSuccessTrack();
-            }
-            else
-            {
-                EnableFailureTrack();
-            }
-        }
+        // public void EnableLevelFinishedTrack(Level level)
+        // {
+        //     if (level.IsControlledByPlayer)
+        //     {
+        //         EnableSuccessTrack();
+        //     }
+        //     else
+        //     {
+        //         EnableFailureTrack();
+        //     }
+        // }
 
         private void EnableSuccessTrack()
         {

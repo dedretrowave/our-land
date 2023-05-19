@@ -26,7 +26,7 @@ namespace Src.Levels.Level.UI
             UpdateColor(level.Owner.Color);
         }
 
-        public void UpdateColorByFraction(Fraction fraction)
+        public void UpdateColorByFraction(Map.Fraction.Fraction fraction)
         {
             UpdateColor(fraction.Color);
         }

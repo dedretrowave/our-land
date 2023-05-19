@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Src.DI;
+using DI;
 using Src.Map.Fraction;
 using Src.Map.Regions;
 using Src.SkinShop.Skin;
@@ -16,7 +16,7 @@ namespace Src.Levels
 
         public void Init(int enemyId)
         {
-            Fraction enemy = DependencyContext.Dependencies.Get<FractionContainer>().GetFractionById(enemyId);
+            Map.Fraction.Fraction enemy = DependencyContext.Dependencies.Get<FractionContainer>().GetFractionById(enemyId);
 
             _enemyRegions.ForEach(region =>
             {

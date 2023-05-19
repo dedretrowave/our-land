@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Src.DI;
+using DI;
 using UnityEngine;
 
 namespace Src.Map.Regions.Containers

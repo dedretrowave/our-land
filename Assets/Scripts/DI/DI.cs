@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Src.DI
+namespace DI
 {
     public class DependencyContext
     {

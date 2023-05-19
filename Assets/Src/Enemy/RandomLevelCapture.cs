@@ -16,10 +16,10 @@ namespace Src.Enemy
         [SerializeField] private float _chanceOfRandomCaptureInPercent = 45f;
         [SerializeField] private float _timeGapBetweenCaptureProc = 60f;
 
-        private List<Level> _levels;
+        private List<Levels.Level.Level> _levels;
         private Coroutine _captureRoutine;
 
-        public void RandomlyCaptureByPassingJustCompleteLevel(Level bypassLevel)
+        public void RandomlyCaptureByPassingJustCompleteLevel(Levels.Level.Level bypassLevel)
         {
             SortCompleteLevels();
 
@@ -40,7 +40,7 @@ namespace Src.Enemy
                 return;
             }
 
-            Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
+            Levels.Level.Level selectedLevel = _levels[Random.Range(0, _levels.Count)];
 
             selectedLevel.SetRandomOwnerBesidesPlayer();
             
@@ -73,7 +73,7 @@ namespace Src.Enemy
         {
             _levels = _container.Levels;
             
-            List<Level> sortedLevels = new();
+            List<Levels.Level.Level> sortedLevels = new();
             
             _levels.ForEach(level =>
             {
