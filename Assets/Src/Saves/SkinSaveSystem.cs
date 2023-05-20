@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Characters.Skins;
 using DI;
-using Src.SkinShop.Items;
-using Src.SkinShop.Items.Base;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -31,7 +30,7 @@ namespace Src.Saves
             _handler.Save(_localPath, _data);
         }
 
-        public void SaveItemPurchase(SkinItem item)
+        public void SaveItemPurchase(SkinItemSO item)
         {
             if (!_data.SkinItems.ContainsKey(item.Type))
             {
@@ -78,7 +77,7 @@ namespace Src.Saves
             SkinItems = new ();
         }
 
-        public CompiledSkinData(SkinItemType type, List<SkinItem> items)
+        public CompiledSkinData(SkinItemType type, List<SkinItemSO> items)
         {
             List<PurchasedSkinItemData> data = new();
             items.ForEach(item =>
@@ -114,7 +113,7 @@ namespace Src.Saves
         
         public PurchasedSkinItemData() {}
 
-        public PurchasedSkinItemData(SkinItem item)
+        public PurchasedSkinItemData(SkinItemSO item)
         {
             Id = item.Id;
             IsPurchased = item.IsPurchased;

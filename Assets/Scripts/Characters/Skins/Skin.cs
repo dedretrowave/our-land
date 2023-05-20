@@ -1,16 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Src.SkinShop.Items.Base;
-using UnityEngine;
 
-namespace Src.SkinShop.Items
+namespace Characters.Skins
 {
     [Serializable]
     public class Skin
     {
-        [SerializeField] private List<SkinItem> _items;
-
-        public List<SkinItem> Items => _items;
+        private List<SkinItem> _items;
 
         public SkinItem GetItemByType(SkinItemType type)
         {
@@ -19,7 +15,7 @@ namespace Src.SkinShop.Items
 
         public void MarkItemsAsPurchased()
         {
-            _items.ForEach(item => item.IsPurchased = true);
+            
         }
 
         public void SetItem(SkinItem item)
@@ -50,11 +46,6 @@ namespace Src.SkinShop.Items
             });
 
             return totalCost;
-        }
-
-        public Skin(Skin skin)
-        {
-            _items = new(skin.Items);
         }
 
         public Skin()

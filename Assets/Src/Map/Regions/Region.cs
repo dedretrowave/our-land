@@ -1,6 +1,7 @@
 using DI;
 using Src.Controls;
 using Src.Levels.Level;
+using Src.Map.Fraction;
 using Src.Map.Garrisons;
 using Src.Map.Regions.Combat;
 using Src.Map.Regions.Containers;
@@ -21,7 +22,7 @@ namespace Src.Map.Regions
         [SerializeField] private DivisionDeployment _deployment;
 
         [Header("Events")]
-        public UnityEvent<Fraction.Fraction> OnOwnerChange = new();
+        public UnityEvent<Character> OnOwnerChange = new();
 
         private RegionContainer _container;
         private RegionDistributor _distributor;
@@ -30,7 +31,7 @@ namespace Src.Map.Regions
         public RegionDefence Defence => _defence;
         public GarrisonBase Base => _base;
         
-        public void Init(Fraction.Fraction enemy)
+        public void Init(Character enemy)
         {
             _owner.SetFraction(enemy);
         }
@@ -48,7 +49,7 @@ namespace Src.Map.Regions
             return _base.transform.position;
         }
 
-        public void SetOwner(Fraction.Fraction newOwner)
+        public void SetOwner(Character newOwner)
         {
             if (newOwner == _owner.Fraction) return;
             
@@ -71,7 +72,7 @@ namespace Src.Map.Regions
 
         private void SwitchDeploymentByFraction()
         {
-            if (!_owner.Fraction.IsPlayerControlled)
+            // if (!_owner.Fraction.IsPlayerControlled)
             {
                 _deployment.enabled = false;
                 return;
@@ -82,7 +83,7 @@ namespace Src.Map.Regions
         
         private void SwitchGeneratorByFraction()
         {
-            if (!_owner.Fraction.AllowsDivisionGeneration)
+            // if (!_owner.Fraction.AllowsDivisionGeneration)
             {
                 _generator.StopGeneration();
                 _generator.enabled = false;

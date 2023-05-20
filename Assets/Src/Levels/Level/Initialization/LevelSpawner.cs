@@ -17,7 +17,7 @@ namespace Src.Levels.Level.Initialization
             if (_regionInitializer != null) return;
             
             _regionInitializer = Instantiate(_levelPrefab, transform);
-            _regionInitializer.Init(_level.Owner.Id);
+            // _regionInitializer.Init(_level.Owner.Id);
         }
 
         public void Remove()

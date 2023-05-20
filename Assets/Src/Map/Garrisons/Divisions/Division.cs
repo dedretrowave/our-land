@@ -1,3 +1,4 @@
+using Src.Map.Fraction;
 using Src.Map.Regions;
 using Src.Map.Regions.Structures;
 using UnityEngine;
@@ -10,15 +11,15 @@ namespace Src.Map.Garrisons.Divisions
         [SerializeField] private Movement.Movement _movement;
         [SerializeField] private UnityEvent<Division> _onInit;
 
-        private Fraction.Fraction _fraction;
+        private Character _fraction;
         private GarrisonBase _parentBase;
         private Region _targetRegion;
 
-        public Fraction.Fraction Fraction => _fraction;
+        public Character Fraction => _fraction;
         public GarrisonBase ParentBase => _parentBase;
         public Region TargetRegion => _targetRegion;
 
-        public void Init(Fraction.Fraction fraction, GarrisonBase parentBase, Region targetRegion)
+        public void Init(Character fraction, GarrisonBase parentBase, Region targetRegion)
         {
             _fraction = fraction;
             _parentBase = parentBase;

@@ -4,9 +4,9 @@ namespace Src.Map.Fraction
 {
     public class Character : MonoBehaviour
     {
-        [SerializeField] private Fraction _fraction;
+        [SerializeField] private Character _fraction;
 
-        public Fraction Fraction
+        public Character Fraction
         {
             get => _fraction;
             set => _fraction = value;

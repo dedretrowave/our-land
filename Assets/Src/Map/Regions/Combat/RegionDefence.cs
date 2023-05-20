@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Src.Map.Fraction;
 using Src.Map.Garrisons.Defenders.Base;
 using Src.Map.Garrisons.Divisions;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Src.Map.Regions.Combat
             
         private List<Defender> _defenders = new();
 
-        public Fraction.Fraction Fraction => _owner.Fraction;
+        public Character Fraction => _owner.Fraction;
 
         public void ApplyDefence(Division enemy)
         {

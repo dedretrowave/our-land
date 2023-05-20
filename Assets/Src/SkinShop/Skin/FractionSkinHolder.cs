@@ -1,7 +1,7 @@
 using System;
+using Characters.Skins;
 using Src.Map.Fraction;
 using Src.SerializableDictionary.Editor;
-using Src.SkinShop.Items.Base;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,22 +12,22 @@ namespace Src.SkinShop.Skin
     {
         [SerializeField] protected Character character;
 
-        public UnityEvent<Items.Skin> OnSkinChanged;
+        public UnityEvent<Characters.Skins.Skin> OnSkinChanged;
 
-        protected Items.Skin skin = new ();
+        protected Characters.Skins.Skin skin = new ();
 
-        public Items.Skin Skin => skin;
+        public Characters.Skins.Skin Skin => skin;
 
-        public void SetSkin(Items.Skin newSkin)
+        public void SetSkin(Characters.Skins.Skin newSkin)
         {
             skin = newSkin;
-            character.Fraction.SetSkin(newSkin);
+            // character.Fraction.SetSkin(newSkin);
             OnSkinChanged.Invoke(skin);
         }
 
         protected void Awake()
         {
-            skin = new(character.Fraction.Skin);
+            // skin = new(character.Fraction.Skin);
         }
     }
     

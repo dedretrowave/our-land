@@ -1,3 +1,4 @@
+using Characters.Base;
 using DI;
 using Level.Region.Models;
 using Level.Region.Presenters;
@@ -9,23 +10,22 @@ namespace Level.Region
     public class RegionInstaller : MonoBehaviour
     {
         private Fraction.Fraction _fraction;
-        private GarrisonView _garrisonView;
+        private RegionView _garrisonView;
 
-        private GarrisonPresenter _garrisonPresenter;
+        private RegionPresenter _garrisonPresenter;
 
-        private GarrisonModel _garrisonModel;
+        private RegionModel _garrisonModel;
 
         private Coroutine _garrisonIncreaseRoutine;
         private Coroutine _garrisonDecreaseRoutine;
 
-        public void Construct(Fraction.Fraction fraction)
+        public void Construct(Character character)
         {
-            _fraction = fraction;
-            _garrisonView = DependencyContext.Dependencies.Get<GarrisonView>();
+            _garrisonView = DependencyContext.Dependencies.Get<RegionView>();
 
             _garrisonModel = new(_garrisonView.GarrisonInitialCount, _garrisonView.GarrisonIncreaseRate);
 
-            _garrisonPresenter = new(fraction, _garrisonView, _garrisonModel);
+            _garrisonPresenter = new(character, _garrisonView, _garrisonModel);
 
             _garrisonIncreaseRoutine = StartCoroutine(_garrisonPresenter.IncreaseContinuously());
 

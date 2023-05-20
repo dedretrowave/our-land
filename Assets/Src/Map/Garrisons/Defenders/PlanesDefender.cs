@@ -1,3 +1,4 @@
+using Src.Map.Fraction;
 using Src.Map.Garrisons.Defenders.Base;
 using Src.Map.Garrisons.Divisions;
 using Src.Map.Garrisons.Divisions.Movement;
@@ -16,9 +17,9 @@ namespace Src.Map.Garrisons.Defenders
         [SerializeField] private UnityEvent _onTargetRegionReached;
 
         private RegionDefence _targetRegion;
-        private Fraction.Fraction _fraction;
+        private Character _fraction;
 
-        public override void Init(RegionDefence targetRegion, Fraction.Fraction ownerFraction)
+        public override void Init(RegionDefence targetRegion, Character ownerFraction)
         {
             _targetRegion = targetRegion;
             _fraction = ownerFraction;

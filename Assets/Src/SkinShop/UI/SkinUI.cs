@@ -1,8 +1,7 @@
 using System;
+using Characters.Skins;
 using Src.SerializableDictionary;
 using Src.SerializableDictionary.Editor;
-using Src.SkinShop.Items;
-using Src.SkinShop.Items.Base;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +12,11 @@ namespace Src.SkinShop.UI
     {
         [SerializeField] private SkinUIComponent _items = new();
 
-        public void SetSkin(Items.Skin skin)
+        public void SetSkin(Characters.Skins.Skin skin)
         {
             foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
-                SkinItem skinItem = skin.GetItemByType(type);
+                SkinItemSO skinItem = skin.GetItemByType(type);
                 
                 if (skinItem == null) continue;
                 

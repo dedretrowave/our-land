@@ -15,7 +15,7 @@ namespace Src.Enemy
 {
     public class EnemyAI : MonoBehaviour
     {
-        private Dictionary<Map.Fraction.Fraction, RegionContainer> _containers = new();
+        private Dictionary<Character, RegionContainer> _containers = new();
         
         [Header("Containers")]
         [SerializeField] private List<RegionContainer> _enemyContainers;

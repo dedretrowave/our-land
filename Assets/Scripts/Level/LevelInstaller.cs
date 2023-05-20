@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Characters.SO;
 using Level.Region;
 using Src.SerializableDictionary.Editor;
 using UnityEditor;
@@ -9,25 +10,25 @@ namespace Level
 {
     public class LevelInstaller : MonoBehaviour
     {
-        [SerializeField] private FractionRegionDictionary _fractionRegions;
+        [SerializeField] private CharacterSORegionDictionary _characterRegions;
 
         public void Construct()
         {
-            foreach (var fractionRegion in _fractionRegions)
+            foreach (var fractionRegion in _characterRegions)
             {
-                Fraction.Fraction fraction = fractionRegion.Key;
+                CharacterSO characterSO = fractionRegion.Key;
                 List<RegionInstaller> regions = fractionRegion.Value;
 
                 regions.ForEach(region =>
                 {
-                    region.Construct(fraction);
+                    region.Construct(new (characterSO));
                 });
             }
         }
     }
     
     [Serializable]
-    internal class FractionRegionDictionary : SerializableDictionary<Fraction.Fraction, List<RegionInstaller>> {}
-    [CustomPropertyDrawer(typeof(FractionRegionDictionary))]
-    internal class FractionRegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
+    internal class CharacterSORegionDictionary : SerializableDictionary<CharacterSO, List<RegionInstaller>> {}
+    [CustomPropertyDrawer(typeof(CharacterSORegionDictionary))]
+    internal class CharacterSORegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using Characters.Skins;
 using DI;
 using Src.Saves;
-using Src.SkinShop.Items.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,14 +10,14 @@ namespace Src.SkinShop
     public class SkinShopItemContainer : MonoBehaviour
     {
         [SerializeField] private SkinItemType _containedType;
-        [SerializeField] private List<SkinItem> _items;
+        [SerializeField] private List<SkinItemSO> _items;
 
         [Header("Events")]
-        [SerializeField] private UnityEvent<SkinItem> _onItemSelected;
+        [SerializeField] private UnityEvent<SkinItemSO> _onItemSelected;
 
         private int _index;
 
-        public SkinItem GetSkinItemById(int id)
+        public SkinItemSO GetSkinItemById(int id)
         {
             return _items.Find(item => item.Id == id);
         }
@@ -52,7 +52,7 @@ namespace Src.SkinShop
             });
         }
 
-        private void SelectItem(SkinItem item)
+        private void SelectItem(SkinItemSO item)
         {
             _onItemSelected.Invoke(item);
         }

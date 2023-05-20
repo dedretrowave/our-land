@@ -16,7 +16,7 @@ namespace Src.Levels
 
         public void Init(int enemyId)
         {
-            Map.Fraction.Fraction enemy = DependencyContext.Dependencies.Get<FractionContainer>().GetFractionById(enemyId);
+            Character enemy = DependencyContext.Dependencies.Get<FractionContainer>().GetFractionById(enemyId);
 
             _enemyRegions.ForEach(region =>
             {

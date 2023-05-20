@@ -1,3 +1,4 @@
+using Characters.Skins;
 using Characters.SO;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ namespace Characters.Base
     {
         private int _id;
 
+        private Skin _skin;
         private Color _color;
 
         private bool _allowsDivisionGeneration;
         private bool _isPlayerControlled;
 
         public int Id => _id;
+        public Skin Skin => _skin;
         public Color Color => _color;
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
         public bool IsPlayerControlled => _isPlayerControlled;

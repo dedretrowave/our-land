@@ -1,3 +1,4 @@
+using Src.Map.Fraction;
 using Src.Map.Garrisons.Defenders.Base;
 using Src.Map.Regions;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Src.Map.Garrisons.Defenders.Deployment
     public class DefendersDeployer : MonoBehaviour
     {
         [Header("Parameters")]
-        [SerializeField] private Fraction.Fraction _fraction;
+        [SerializeField] private Character _fraction;
         
         [Header("Components")]
         [SerializeField] private Defender _defenderPrefab;

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Characters.Skins;
 using DI;
 using Src.Saves;
-using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,21 +18,21 @@ namespace Src.SkinShop
 
         [Header("Events")]
         [SerializeField] private UnityEvent<int> _onTotalPriceChange; 
-        [SerializeField] private UnityEvent<Items.Skin> _onPurchasableSkinChanged;
+        [SerializeField] private UnityEvent<Characters.Skins.Skin> _onPurchasableSkinChanged;
         [SerializeField] private UnityEvent _onItemPurchased;
 
-        private Items.Skin _purchasableSkin = new();
+        private Characters.Skins.Skin _purchasableSkin = new();
         private SkinSaveSystem _skinSaveSystem;
         private int _totalPrice;
 
         public void Open()
         {
-            List<SkinItem> playerSkinItems = new (_playerSkin.Skin.Items);
+            List<SkinItemSO> playerSkinItems = new (_playerSkin.Skin.Items);
             playerSkinItems.ForEach(SetSkinItem);
             gameObject.SetActive(true);
         }
 
-        public void SetSkinItem(SkinItem item)
+        public void SetSkinItem(SkinItemSO item)
         {
             _purchasableSkin.SetItem(item);
             _onPurchasableSkinChanged.Invoke(_purchasableSkin);
@@ -76,7 +76,7 @@ namespace Src.SkinShop
         {
             _skinSaveSystem = DependencyContext.Dependencies.Get<SkinSaveSystem>();
 
-            Items.Skin playerSkin = new(_playerSkin.Skin);
+            Characters.Skins.Skin playerSkin = new(_playerSkin.Skin);
 
             _purchasableSkin = new(playerSkin);
 

@@ -1,5 +1,4 @@
-using Src.SkinShop.Items;
-using Src.SkinShop.Items.Base;
+using Characters.Skins;
 using UnityEngine;
 
 namespace Characters.SO
@@ -8,6 +7,9 @@ namespace Characters.SO
     public class CharacterSO : ScriptableObject
     {
         [SerializeField] private int _id;
+
+        [Header("Fraction")]
+        [SerializeField] private Fraction.Fraction _fraction;
         
         [Header("Components")]
         [SerializeField] private Skin _skin;
@@ -18,6 +20,7 @@ namespace Characters.SO
         [SerializeField] private bool _isPlayerControlled;
 
         public int Id => _id;
+        public Fraction.Fraction Fraction => _fraction;
         public Skin Skin => _skin;
         public Sprite Flag => _skin.GetItemByType(SkinItemType.Flag).Sprite;
         public Sprite Eyes => _skin.GetItemByType(SkinItemType.Eyes).Sprite;

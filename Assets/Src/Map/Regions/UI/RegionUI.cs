@@ -1,3 +1,4 @@
+using Src.Map.Fraction;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,9 @@ namespace Src.Map.Regions.UI
     {
         [SerializeField] private Image _image;
 
-        public void UpdateColorByFraction(Fraction.Fraction fraction)
+        public void UpdateColorByFraction(Character fraction)
         {
-            _image.color = fraction.Color;
+            // _image.color = fraction.Color;
         }
     }
 }

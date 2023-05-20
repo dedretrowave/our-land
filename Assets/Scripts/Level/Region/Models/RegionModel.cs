@@ -1,19 +1,27 @@
 using System;
+using Characters.Base;
 
 namespace Level.Region.Models
 {
-    public class GarrisonModel
+    public class RegionModel
     {
         private int _count;
         private float _increaseRate;
+        private Character _currentOwner;
 
         public int Count => _count;
         public float IncreaseRate => _increaseRate;
+        public Character CurrentOwner => CurrentOwner;
 
-        public GarrisonModel(int initialCount, float increaseRate)
+        public RegionModel(int initialCount, float increaseRate)
         {
             _count = initialCount;
             _increaseRate = increaseRate;
+        }
+
+        public void SetOwner(Character newOwner)
+        {
+            _currentOwner = newOwner;
         }
 
         public void ChangeCount(int count = 1)

@@ -10,14 +10,16 @@ namespace Src.SkinShop.Skin
     {
         [SerializeField] private List<FractionData> _fractions;
 
-        public FractionSkinHolder GetSkinByFraction(Map.Fraction.Fraction fraction)
+        public FractionSkinHolder GetSkinByFraction(Character fraction)
         {
-            return _fractions.Find(item => item.Fraction.Equals(fraction)).SkinHolder;
+            return null;
+            // _fractions.Find(item => item.Fraction.Equals(fraction)).SkinHolder;
         }
 
-        public Map.Fraction.Fraction GetFractionById(int id)
+        public Character GetFractionById(int id)
         {
-            return _fractions.Find(item => item.Fraction.Id == id).Fraction;
+            return null;
+            // _fractions.Find(item => item.Fraction.Id == id).Fraction;
         }
 
         private void Awake()
@@ -30,6 +32,6 @@ namespace Src.SkinShop.Skin
     internal class FractionData
     {
         public FractionSkinHolder SkinHolder;
-        public Map.Fraction.Fraction Fraction;
+        // public Map.Fraction.Fraction Fraction;
     }
 }

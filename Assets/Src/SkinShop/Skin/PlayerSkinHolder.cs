@@ -1,6 +1,5 @@
 using DI;
 using Src.Saves;
-using Src.SkinShop.Items.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +11,7 @@ namespace Src.SkinShop.Skin
 
         private SkinSaveSystem _skinSave;
 
-        public void SetSkin(Items.Skin newSkin)
+        public void SetSkin(Characters.Skins.Skin newSkin)
         {
             base.SetSkin(newSkin);
             _skinSave.SaveSkin(skin);
@@ -24,11 +23,11 @@ namespace Src.SkinShop.Skin
          
             PlayerSelectedSkinData savedSkinData = _skinSave.GetPlayerSelectedSkin();
          
-            Items.Skin newSkin = new();
+            Characters.Skins.Skin newSkin = new();
             
             if (savedSkinData == null || savedSkinData.SkinItemIds.Count == 0)
             {
-                SetSkin(character.Fraction.Skin);
+                // SetSkin(character.Fraction.Skin);
             }
             else
             {

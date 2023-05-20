@@ -1,3 +1,4 @@
+using Src.Map.Fraction;
 using Src.Map.Garrisons.Divisions;
 using Src.Map.Regions.Structures;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Src.Map.Regions.Combat
         [Header("Defenders")]
         [SerializeField] private RegionDefence _defence;
 
-        private Fraction.Fraction _regionClaimer;
+        private Character _regionClaimer;
 
         public void ChangeOwner()
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DI;
+using Src.Map.Fraction;
 using UnityEngine;
 
 namespace Src.Map.Regions.Containers
@@ -14,7 +15,7 @@ namespace Src.Map.Regions.Containers
             DependencyContext.Dependencies.Add(new Dependency(typeof(RegionDistributor), () => this));
         }
 
-        public void DistributeRegion(Region region, Fraction.Fraction newOwner)
+        public void DistributeRegion(Region region, Character newOwner)
         {
             RegionContainer container = _containers.Find(container => container.Fraction == newOwner).Container;
 
@@ -25,7 +26,7 @@ namespace Src.Map.Regions.Containers
     [Serializable]
     internal class ContainersByFractions
     {
-        public Fraction.Fraction Fraction;
+        public Character Fraction;
         public RegionContainer Container;
     }
 }

@@ -11,7 +11,7 @@ namespace Src.Levels.Level.UI
         [SerializeField] private int _id;
         [SerializeField] private LevelUI _ui;
         [SerializeField] private FractionContainer _fractionContainer;
-        [SerializeField] private Map.Fraction.Fraction _owner;
+        [SerializeField] private Character _owner;
         
         private PlayerDataSaveSystem _save;
 
@@ -26,7 +26,7 @@ namespace Src.Levels.Level.UI
                 _owner = _fractionContainer.GetFractionById(data.OwnerId);
             }
             
-            _ui.UpdateColorByFraction(_owner);
+            // _ui.UpdateColorByFraction(_owner);
         }
     }
 }

@@ -23,12 +23,12 @@ namespace Src.Levels.Level.UI
 
         public void UpdateColorByLevel(Level level)
         {
-            UpdateColor(level.Owner.Color);
+            // UpdateColor(level.Owner.Color);
         }
 
-        public void UpdateColorByFraction(Map.Fraction.Fraction fraction)
+        public void UpdateColorByFraction(Character fraction)
         {
-            UpdateColor(fraction.Color);
+            // UpdateColor(fraction.Color);
         }
 
         private void UpdateColor(Color color)

@@ -1,6 +1,7 @@
+using Characters.Skins;
 using DI;
 using Src.Levels.Level;
-using Src.SkinShop.Items;
+using Src.Map.Fraction;
 using Src.SkinShop.Skin;
 using Src.SkinShop.UI;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Src.Map.Garrisons.Divisions.UI
             UpdateByFraction(skinHolder);
         }
 
-        public void UpdateByFraction(Fraction.Fraction fraction)
+        public void UpdateByFraction(Character fraction)
         {
             if (_fractionSkinContainer == null) _fractionSkinContainer = DependencyContext.Dependencies.Get<FractionContainer>(); 
             

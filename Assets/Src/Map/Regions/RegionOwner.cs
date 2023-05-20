@@ -1,14 +1,15 @@
+using Src.Map.Fraction;
 using UnityEngine;
 
 namespace Src.Map.Regions
 {
     public class RegionOwner : MonoBehaviour
     {
-        [SerializeField] private Fraction.Fraction _fraction;
+        [SerializeField] private Character _fraction;
 
-        public Fraction.Fraction Fraction => _fraction;
+        public Character Fraction => _fraction;
 
-        public void SetFraction(Fraction.Fraction newOwner)
+        public void SetFraction(Character newOwner)
         {
             _fraction = newOwner;
         }

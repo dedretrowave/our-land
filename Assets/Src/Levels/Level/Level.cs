@@ -23,7 +23,7 @@ namespace Src.Levels.Level
         
         [Header("Parameters")]
         [SerializeField] private int _id;
-        [SerializeField] private Map.Fraction.Fraction _owner;
+        [SerializeField] private Character _owner;
         
         [Header("Containers")]
         [SerializeField] private RegionContainer _playerContainer;
@@ -34,14 +34,14 @@ namespace Src.Levels.Level
         [SerializeField] private UnityEvent<Level> _onFinish = new();
         [SerializeField] private UnityEvent<Level> _onOwnerChange = new();
 
-        private Map.Fraction.Fraction _originalOwner;
+        private Character _originalOwner;
 
         private PlayerDataSaveSystem _save;
 
         private bool _isControlledByPlayer;
         
         public LevelReward Reward => _reward;
-        public Map.Fraction.Fraction Owner => _owner;
+        public Character Owner => _owner;
 
         public bool IsControlledByPlayer
         {
@@ -64,7 +64,7 @@ namespace Src.Levels.Level
 
         public void SetRandomOwnerBesidesPlayer()
         {
-            Map.Fraction.Fraction newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
+            Character newOwner = _enemyContainers[Random.Range(0, _enemyContainers.Count)].Owner.Fraction;
             SetOwner(newOwner);
         }
 
@@ -99,12 +99,12 @@ namespace Src.Levels.Level
 
         private void Complete()
         {
-            Finish(_playerContainer.Owner.Fraction);
+            // Finish(_playerContainer.Owner.Fraction);
         }
 
-        private void Finish(Map.Fraction.Fraction newOwner)
+        private void Finish(Character newOwner)
         {
-            SetOwner(newOwner);
+            // SetOwner(newOwner);
 
             _onFinish.Invoke(this);
             
@@ -112,10 +112,10 @@ namespace Src.Levels.Level
             _enemy.OnGiveUp.RemoveListener(Complete);
         }
 
-        private void SetOwner(Map.Fraction.Fraction newOwner)
+        private void SetOwner(Character newOwner)
         {
             _owner = newOwner;
-            _save.SaveLevel(new LevelData(_id, _owner.Id));
+            // _save.SaveLevel(new LevelData(_id, _owner.Id));
             _onOwnerChange.Invoke(this);
         }
     }

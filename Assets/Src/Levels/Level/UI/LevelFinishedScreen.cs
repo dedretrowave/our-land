@@ -1,6 +1,5 @@
 using System;
 using Src.Map.Garrisons.FX;
-using Src.SkinShop.Items.Base;
 using Src.SkinShop.Skin;
 using Src.SkinShop.UI;
 using TMPro;
