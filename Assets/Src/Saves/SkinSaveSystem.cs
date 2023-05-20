@@ -43,7 +43,7 @@ namespace Src.Saves
 
                 if (neededItem == null)
                 {
-                    item.IsPurchased = true;
+                    // item.IsPurchased = true;
                     _data.SkinItems[item.Type].Add(new PurchasedSkinItemData(item));
                 }
                 else
@@ -99,10 +99,10 @@ namespace Src.Saves
 
         public PlayerSelectedSkinData(Skin skin)
         {
-            skin.Items.ForEach(item =>
-            {
-                SkinItemIds[item.Type] = item.Id;
-            });
+            // skin.Items.ForEach(item =>
+            // {
+            //     SkinItemIds[item.Type] = item.Id;
+            // });
         }
     }
 
@@ -116,7 +116,7 @@ namespace Src.Saves
         public PurchasedSkinItemData(SkinItemSO item)
         {
             Id = item.Id;
-            IsPurchased = item.IsPurchased;
+            // IsPurchased = item.IsPurchased;
         }
     }
 }

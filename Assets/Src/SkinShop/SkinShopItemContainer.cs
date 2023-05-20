@@ -48,7 +48,7 @@ namespace Src.SkinShop
             savedItems.ForEach(savedItem =>
             {
                 int index = _items.FindIndex(item => item.Id == savedItem.Id);
-                _items[index].IsPurchased = savedItem.IsPurchased;
+                // _items[index].IsPurchased = savedItem.IsPurchased;
             });
         }
 

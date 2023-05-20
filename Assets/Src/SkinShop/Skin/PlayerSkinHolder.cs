@@ -33,7 +33,7 @@ namespace Src.SkinShop.Skin
             {
                 foreach (var item in savedSkinData.SkinItemIds)
                 {
-                    newSkin.SetItem(skinItemContainers[item.Key].GetSkinItemById(item.Value));
+                    // newSkin.SetItem(skinItemContainers[item.Key].GetSkinItemById(item.Value));
                 }
                 
                 SetSkin(newSkin);

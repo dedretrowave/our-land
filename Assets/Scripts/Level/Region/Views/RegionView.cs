@@ -34,7 +34,7 @@ namespace Level.Region.Views
         public void SetSkin(Skin skin)
         {
             _flag.sprite = skin.GetItemByType(SkinItemType.Flag).Sprite;
-            _eyes.sprite = skin.GetItemByType(SkinItemType.Eyes).Sprite; 
+            _eyes.sprite = skin.GetItemByType(SkinItemType.Eyes).Sprite;
         }
 
         public void Release()

@@ -16,11 +16,11 @@ namespace Src.SkinShop.UI
         {
             foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
-                SkinItemSO skinItem = skin.GetItemByType(type);
+                // SkinItemSO skinItem = skin.GetItemByType(type);
                 
-                if (skinItem == null) continue;
+                // if (skinItem == null) continue;
                 
-                _items[type].sprite = skinItem.Sprite;
+                // _items[type].sprite = skinItem.Sprite;
             }
         }
     }

@@ -27,14 +27,14 @@ namespace Src.SkinShop
 
         public void Open()
         {
-            List<SkinItemSO> playerSkinItems = new (_playerSkin.Skin.Items);
-            playerSkinItems.ForEach(SetSkinItem);
+            // List<SkinItemSO> playerSkinItems = new (_playerSkin.Skin.Items);
+            // playerSkinItems.ForEach(SetSkinItem);
             gameObject.SetActive(true);
         }
 
         public void SetSkinItem(SkinItemSO item)
         {
-            _purchasableSkin.SetItem(item);
+            // _purchasableSkin.SetItem(item);
             _onPurchasableSkinChanged.Invoke(_purchasableSkin);
             RecalculatePrice();
         }
@@ -59,11 +59,11 @@ namespace Src.SkinShop
 
         private void PurchaseItems()
         {
-            _purchasableSkin.Items.ForEach(item =>
-            {
-                item.IsPurchased = true;
-                _skinSaveSystem.SaveItemPurchase(item);
-            });
+            // _purchasableSkin.Items.ForEach(item =>
+            // {
+            //     item.IsPurchased = true;
+            //     _skinSaveSystem.SaveItemPurchase(item);
+            // });
             _onItemPurchased.Invoke();
         }
 
@@ -76,13 +76,13 @@ namespace Src.SkinShop
         {
             _skinSaveSystem = DependencyContext.Dependencies.Get<SkinSaveSystem>();
 
-            Characters.Skins.Skin playerSkin = new(_playerSkin.Skin);
+            // Characters.Skins.Skin playerSkin = new(_playerSkin.Skin);
 
-            _purchasableSkin = new(playerSkin);
+            // _purchasableSkin = new(playerSkin);
 
             foreach (SkinItemType type in Enum.GetValues(typeof(SkinItemType)))
             {
-                SetSkinItem(_purchasableSkin.GetItemByType(type));
+                // SetSkinItem(_purchasableSkin.GetItemByType(type));
             }
         }
 
