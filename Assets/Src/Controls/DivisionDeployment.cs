@@ -1,3 +1,4 @@
+using Level.Region.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,16 +6,17 @@ namespace Src.Controls
 {
     public class DivisionDeployment : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        [Header("Components")]
-        [SerializeField] private DivisionMover _mover;
+        private RegionView _view;
         
         [Header("Parameters")]
         [SerializeField] private LayerMask _selectionLayer;
 
         private const float RaycastDepth = 1000;
-        
+
         public void OnPointerDown(PointerEventData eventData)
-        { }
+        {
+            Debug.Log("dfstgdsgs");
+        }
 
         public void OnPointerUp(PointerEventData eventData)
         {
@@ -22,11 +24,13 @@ namespace Src.Controls
 
             if (hitTransform == null) return;
 
-            _mover.MoveTo(hitTransform);
+            _view.Release(hitTransform);
         }
 
-        private void Start()
-        { }
+        private void Awake()
+        {
+            _view = GetComponent<RegionView>();
+        }
 
         private Transform GetRaycastHit(PointerEventData eventData)
         {
@@ -39,6 +43,8 @@ namespace Src.Controls
                 out RaycastHit hit,
                 RaycastDepth,
                 _selectionLayer);
+            
+            Debug.Log(hit);
 
             Transform hitTransform = hit.transform;
 

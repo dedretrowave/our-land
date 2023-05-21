@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Characters.Base;
 using DI;
 using Level.Region.Models;
@@ -25,31 +26,30 @@ namespace Level.Region
         {
             _regionView = GetComponentInChildren<RegionView>();
 
-            _regionModel = new(_regionView.GarrisonInitialCount, _regionView.GarrisonIncreaseRate);
+            _regionModel = new(
+                _regionView.GarrisonInitialCount,
+                _regionView.GarrisonIncreaseRate,
+                _regionView.DivisionSpawnRate);
 
             _regionPresenter = new(character, _regionView, _regionModel);
 
             _garrisonIncreaseRoutine = StartCoroutine(_regionPresenter.IncreaseContinuously());
-
-            _regionPresenter.OnGarrisonRelease += ResetGarrisonCount;
+            
             _regionView.OnDamageTaken += _regionPresenter.TakeDamage;
-            _regionView.OnGarrisonRelease += _regionPresenter.Release;
+            _regionView.OnGarrisonRelease += _regionPresenter.TryTargetRegion;
+            _regionPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
         }
 
-        private void ResetGarrisonCount()
+        private void ReleaseGarrison(RegionView targetPoint)
         {
-            StopCoroutine(_garrisonIncreaseRoutine);
-
-            StartCoroutine(_regionPresenter.DecreaseContinuously());
-
-            _garrisonIncreaseRoutine = StartCoroutine(_regionPresenter.IncreaseContinuously());
+            StartCoroutine(_regionPresenter.ReleaseGarrison(targetPoint));
         }
 
         private void OnDisable()
         {
-            _regionPresenter.OnGarrisonRelease -= ResetGarrisonCount;
             _regionView.OnDamageTaken -= _regionPresenter.TakeDamage;
-            _regionView.OnGarrisonRelease -= _regionPresenter.Release;
+            _regionView.OnGarrisonRelease -= _regionPresenter.TryTargetRegion;
+            _regionPresenter.OnSuccessfulRegionTarget -= ReleaseGarrison;
         }
     }
 }

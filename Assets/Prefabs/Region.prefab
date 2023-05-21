@@ -592,6 +592,7 @@ GameObject:
   - component: {fileID: 3491418167154815524}
   - component: {fileID: 4087307055592394141}
   - component: {fileID: 5083238142405413488}
+  - component: {fileID: 903143258908827300}
   m_Layer: 6
   m_Name: Core
   m_TagString: Untagged
@@ -662,8 +663,25 @@ MonoBehaviour:
   _region: {fileID: 2691288676079614666}
   _flag: {fileID: 6827281129481494879}
   _eyes: {fileID: 7738460669884571675}
+  _division: {fileID: 8762790705502886650, guid: 45888e9e3d8cfc643802bf604603cf4f, type: 3}
   _garrisonIncreaseRate: 2
   _garrisonInitialCount: 10
+  _divisionSpawnRate: 1
+--- !u!114 &903143258908827300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083238142405413489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ad62b545b64e2e8e653b3f03e4c0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5356600271046579919
 GameObject:
   m_ObjectHideFlags: 0

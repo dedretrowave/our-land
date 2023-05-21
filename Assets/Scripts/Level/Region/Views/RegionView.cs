@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Characters.Base;
 using Characters.Skins;
 using Components;
@@ -11,20 +12,25 @@ namespace Level.Region.Views
     public class RegionView : MonoBehaviour
     {
         [Header("Components")]
+        [Header("UI")]
         [SerializeField] private TextMeshProUGUI _countText;
         [SerializeField] private Image _region;
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
+        [Header("Prefabs")]
+        [SerializeField] private Division _division;
 
         [Header("Parameters")]
         [SerializeField] private float _garrisonIncreaseRate;
         [SerializeField] private int _garrisonInitialCount;
+        [SerializeField] private float _divisionSpawnRate;
 
+        public float DivisionSpawnRate => _divisionSpawnRate;
         public float GarrisonIncreaseRate => _garrisonIncreaseRate;
         public int GarrisonInitialCount => _garrisonInitialCount;
 
         public event Action<Character> OnDamageTaken;
-        public event Action OnGarrisonRelease;
+        public event Action<Transform> OnGarrisonRelease;
 
         public void SetCount(int count)
         {
@@ -42,9 +48,15 @@ namespace Level.Region.Views
             _eyes.sprite = skin.GetItemByType(SkinItemType.Eyes).Sprite;
         }
 
-        public void Release()
+        public void Release(Transform point)
         {
-            OnGarrisonRelease?.Invoke();
+            OnGarrisonRelease?.Invoke(point);
+        }
+
+        public void SendDivision(RegionView target, Character owner)
+        {
+            Division division = Instantiate(_division, transform);
+            division.Construct(owner, target);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -52,6 +64,7 @@ namespace Level.Region.Views
             if (other.TryGetComponent(out Division division))
             {
                 OnDamageTaken?.Invoke(division.Owner);
+                Destroy(division);
             }
         }
     }
