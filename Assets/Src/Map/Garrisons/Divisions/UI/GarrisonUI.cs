@@ -37,7 +37,7 @@ namespace Src.Map.Garrisons.Divisions.UI
                 
             _skinHolder = skinHolder;
             _skinHolder.OnSkinChanged.AddListener(UpdateSkin);
-            UpdateSkin(skinHolder.Skin);
+            // UpdateSkin(skinHolder.Skin);
         }
 
         private void UpdateSkin(Skin skin)

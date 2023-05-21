@@ -2,7 +2,6 @@ using System;
 using Characters.Base;
 using Characters.Skins;
 using Components;
-using DI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +12,7 @@ namespace Level.Region.Views
     {
         [Header("Components")]
         [SerializeField] private TextMeshProUGUI _countText;
+        [SerializeField] private Image _region;
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
 
@@ -29,6 +29,11 @@ namespace Level.Region.Views
         public void SetCount(int count)
         {
             _countText.text = count.ToString();
+        }
+
+        public void SetColor(Color color)
+        {
+            _region.color = color;
         }
 
         public void SetSkin(Skin skin)

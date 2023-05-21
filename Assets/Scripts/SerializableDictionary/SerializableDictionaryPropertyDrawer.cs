@@ -4,9 +4,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Src.SerializableDictionary.Editor
-{
-#if UNITY_EDITOR
+
 	public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 	{
 		const string KeysFieldName = "m_keys";
@@ -565,5 +563,3 @@ namespace Src.SerializableDictionary.Editor
 			return EditorGUI.GetPropertyHeight(property);
 		}
 	}
-#endif
-}

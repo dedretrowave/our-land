@@ -1,3 +1,4 @@
+using System;
 using Characters.Base;
 using DI;
 using Level.Region.Models;
@@ -7,47 +8,48 @@ using UnityEngine;
 
 namespace Level.Region
 {
+    [Serializable]
     public class RegionInstaller : MonoBehaviour
     {
         private Fraction.Fraction _fraction;
-        private RegionView _garrisonView;
+        private RegionView _regionView;
 
-        private RegionPresenter _garrisonPresenter;
+        private RegionPresenter _regionPresenter;
 
-        private RegionModel _garrisonModel;
+        private RegionModel _regionModel;
 
         private Coroutine _garrisonIncreaseRoutine;
         private Coroutine _garrisonDecreaseRoutine;
 
         public void Construct(Character character)
         {
-            _garrisonView = DependencyContext.Dependencies.Get<RegionView>();
+            _regionView = GetComponentInChildren<RegionView>();
 
-            _garrisonModel = new(_garrisonView.GarrisonInitialCount, _garrisonView.GarrisonIncreaseRate);
+            _regionModel = new(_regionView.GarrisonInitialCount, _regionView.GarrisonIncreaseRate);
 
-            _garrisonPresenter = new(character, _garrisonView, _garrisonModel);
+            _regionPresenter = new(character, _regionView, _regionModel);
 
-            _garrisonIncreaseRoutine = StartCoroutine(_garrisonPresenter.IncreaseContinuously());
+            _garrisonIncreaseRoutine = StartCoroutine(_regionPresenter.IncreaseContinuously());
 
-            _garrisonPresenter.OnGarrisonRelease += ResetGarrisonCount;
-            _garrisonView.OnDamageTaken += _garrisonPresenter.TakeDamage;
-            _garrisonView.OnGarrisonRelease += _garrisonPresenter.Release;
+            _regionPresenter.OnGarrisonRelease += ResetGarrisonCount;
+            _regionView.OnDamageTaken += _regionPresenter.TakeDamage;
+            _regionView.OnGarrisonRelease += _regionPresenter.Release;
         }
 
         private void ResetGarrisonCount()
         {
             StopCoroutine(_garrisonIncreaseRoutine);
 
-            StartCoroutine(_garrisonPresenter.DecreaseContinuously());
+            StartCoroutine(_regionPresenter.DecreaseContinuously());
 
-            _garrisonIncreaseRoutine = StartCoroutine(_garrisonPresenter.IncreaseContinuously());
+            _garrisonIncreaseRoutine = StartCoroutine(_regionPresenter.IncreaseContinuously());
         }
 
         private void OnDisable()
         {
-            _garrisonPresenter.OnGarrisonRelease -= ResetGarrisonCount;
-            _garrisonView.OnDamageTaken -= _garrisonPresenter.TakeDamage;
-            _garrisonView.OnGarrisonRelease -= _garrisonPresenter.Release;
+            _regionPresenter.OnGarrisonRelease -= ResetGarrisonCount;
+            _regionView.OnDamageTaken -= _regionPresenter.TakeDamage;
+            _regionView.OnGarrisonRelease -= _regionPresenter.Release;
         }
     }
 }

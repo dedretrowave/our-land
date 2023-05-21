@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Enemy 3
   m_EditorClassIdentifier: 
   _id: 4
+  _fraction: 2
   _skin:
     _items:
-    - {fileID: 11400000, guid: e942356de096f064db476d244b782e19, type: 2}
     - {fileID: 11400000, guid: 688bb03b94a6bcc46b1f56d7ec4ba8be, type: 2}
+    - {fileID: 11400000, guid: e942356de096f064db476d244b782e19, type: 2}
   _color: {r: 0.972549, g: 0.9062133, b: 0.19607842, a: 1}
   _allowsDivisionGeneration: 1
   _isPlayerControlled: 0

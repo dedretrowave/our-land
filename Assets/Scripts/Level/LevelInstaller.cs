@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Characters.SO;
+using DI;
 using Level.Region;
-using Src.SerializableDictionary.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level
 {
@@ -17,7 +18,7 @@ namespace Level
             foreach (var fractionRegion in _characterRegions)
             {
                 CharacterSO characterSO = fractionRegion.Key;
-                List<RegionInstaller> regions = fractionRegion.Value;
+                List<RegionInstaller> regions = fractionRegion.Value.List;
 
                 regions.ForEach(region =>
                 {
@@ -25,10 +26,23 @@ namespace Level
                 });
             }
         }
+
+        private void Awake()
+        {
+            DependencyContext.Dependencies.Add(new(typeof(LevelInstaller), () => this));
+        }
+    }
+
+    [Serializable]
+    internal class Regions
+    { 
+        public List<RegionInstaller> List;
     }
     
+#if UNITY_EDITOR
     [Serializable]
-    internal class CharacterSORegionDictionary : SerializableDictionary<CharacterSO, List<RegionInstaller>> {}
+    internal class CharacterSORegionDictionary : SerializableDictionary<CharacterSO, Regions> {}
     [CustomPropertyDrawer(typeof(CharacterSORegionDictionary))]
     internal class CharacterSORegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
+#endif
 }

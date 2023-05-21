@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Neutral
   m_EditorClassIdentifier: 
   _id: 2
+  _fraction: 0
   _skin:
     _items:
-    - {fileID: 11400000, guid: d4a37b5a34c2fdd42a109df793490cbf, type: 2}
     - {fileID: 11400000, guid: 688bb03b94a6bcc46b1f56d7ec4ba8be, type: 2}
+    - {fileID: 11400000, guid: d4a37b5a34c2fdd42a109df793490cbf, type: 2}
   _color: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
   _allowsDivisionGeneration: 0
   _isPlayerControlled: 0

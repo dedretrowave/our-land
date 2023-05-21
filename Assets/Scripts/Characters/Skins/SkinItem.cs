@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Characters.Skins
 {
+    [Serializable]
     public class SkinItem
     {
         private SkinItemType _type;

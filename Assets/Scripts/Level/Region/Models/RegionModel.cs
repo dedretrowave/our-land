@@ -11,7 +11,7 @@ namespace Level.Region.Models
 
         public int Count => _count;
         public float IncreaseRate => _increaseRate;
-        public Character CurrentOwner => CurrentOwner;
+        public Character CurrentOwner => _currentOwner;
 
         public RegionModel(int initialCount, float increaseRate)
         {

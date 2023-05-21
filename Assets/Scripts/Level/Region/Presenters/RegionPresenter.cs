@@ -19,7 +19,7 @@ namespace Level.Region.Presenters
         {
             _view = view;
             _model = model;
-            _model.SetOwner(defaultOwner);
+            ChangeOwner(defaultOwner);
         }
 
         public void Release()
@@ -66,6 +66,7 @@ namespace Level.Region.Presenters
         {
             _model.SetOwner(newOwner);
             _view.SetSkin(_model.CurrentOwner.Skin);
+            _view.SetColor(_model.CurrentOwner.Color);
         }
 
         private void UpdateCount(int count)

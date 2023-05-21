@@ -21,7 +21,7 @@ namespace Src.SkinShop
         [SerializeField] private UnityEvent<Characters.Skins.Skin> _onPurchasableSkinChanged;
         [SerializeField] private UnityEvent _onItemPurchased;
 
-        private Characters.Skins.Skin _purchasableSkin = new();
+        // private Characters.Skins.Skin _purchasableSkin = new();
         private SkinSaveSystem _skinSaveSystem;
         private int _totalPrice;
 
@@ -35,7 +35,7 @@ namespace Src.SkinShop
         public void SetSkinItem(SkinItemSO item)
         {
             // _purchasableSkin.SetItem(item);
-            _onPurchasableSkinChanged.Invoke(_purchasableSkin);
+            // _onPurchasableSkinChanged.Invoke(_purchasableSkin);
             RecalculatePrice();
         }
 
@@ -54,7 +54,7 @@ namespace Src.SkinShop
 
         public void SelectSkin()
         {
-            _playerSkin.SetSkin(_purchasableSkin);
+            // _playerSkin.SetSkin(_purchasableSkin);
         }
 
         private void PurchaseItems()
@@ -88,7 +88,7 @@ namespace Src.SkinShop
 
         private void RecalculatePrice()
         {
-            _totalPrice = _purchasableSkin.GetTotalCost();
+            // _totalPrice = _purchasableSkin.GetTotalCost();
             _onTotalPriceChange.Invoke(_totalPrice);
         }
     }

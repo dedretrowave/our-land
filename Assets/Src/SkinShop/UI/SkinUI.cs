@@ -1,7 +1,5 @@
 using System;
 using Characters.Skins;
-using Src.SerializableDictionary;
-using Src.SerializableDictionary.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,8 +27,8 @@ namespace Src.SkinShop.UI
     internal class SkinUIComponent : SerializableDictionary<SkinItemType, Image> {}
     
 #if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(SkinUIComponent))]
-    internal class UIDrawer : SerializableDictionaryPropertyDrawer
-    {}
+    // [CustomPropertyDrawer(typeof(SkinUIComponent))]
+    // internal class UIDrawer : SerializableDictionaryPropertyDrawer
+    // {}
 #endif
 }

@@ -23,6 +23,7 @@ namespace Characters.Base
         public Character(CharacterSO so)
         {
             _id = so.Id;
+            _skin = so.Skin;
             _color = so.Color;
             _allowsDivisionGeneration = so.AllowsDivisionGeneration;
             _isPlayerControlled = so.IsPlayerControlled;

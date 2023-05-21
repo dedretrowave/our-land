@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Src.Levels.Level;
 using Src.Map.Fraction;
 using Src.Map.Regions;
 using Src.Map.Regions.Containers;
-using Src.SerializableDictionary.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;

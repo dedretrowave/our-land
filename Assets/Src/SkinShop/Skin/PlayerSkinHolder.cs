@@ -14,7 +14,7 @@ namespace Src.SkinShop.Skin
         public void SetSkin(Characters.Skins.Skin newSkin)
         {
             base.SetSkin(newSkin);
-            _skinSave.SaveSkin(skin);
+            // _skinSave.SaveSkin(skin);
         }
         
         private void Awake()
@@ -23,7 +23,7 @@ namespace Src.SkinShop.Skin
          
             PlayerSelectedSkinData savedSkinData = _skinSave.GetPlayerSelectedSkin();
          
-            Characters.Skins.Skin newSkin = new();
+            // Characters.Skins.Skin newSkin = new();
             
             if (savedSkinData == null || savedSkinData.SkinItemIds.Count == 0)
             {
@@ -36,7 +36,7 @@ namespace Src.SkinShop.Skin
                     // newSkin.SetItem(skinItemContainers[item.Key].GetSkinItemById(item.Value));
                 }
                 
-                SetSkin(newSkin);
+                // SetSkin(newSkin);
             }
         }
     }

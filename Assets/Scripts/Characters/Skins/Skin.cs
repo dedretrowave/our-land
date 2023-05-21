@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Characters.Skins
 {
     [Serializable]
     public class Skin
     {
-        private List<SkinItem> _items;
+        private List<SkinItem> _items = new();
 
         public SkinItem GetItemByType(SkinItemType type)
         {
@@ -15,7 +16,7 @@ namespace Characters.Skins
 
         public void MarkItemsAsPurchased()
         {
-            
+            //
         }
 
         public void SetItem(SkinItem item)
@@ -48,9 +49,9 @@ namespace Characters.Skins
             return totalCost;
         }
 
-        public Skin()
+        public Skin(SkinData data)
         {
-            _items = new();
+            data.ItemsCopy.ForEach(item => _items.Add(new(item)));
         }
     }
 }

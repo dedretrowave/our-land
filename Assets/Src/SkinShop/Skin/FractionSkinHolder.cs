@@ -1,7 +1,6 @@
 using System;
 using Characters.Skins;
 using Src.Map.Fraction;
-using Src.SerializableDictionary.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,15 +13,15 @@ namespace Src.SkinShop.Skin
 
         public UnityEvent<Characters.Skins.Skin> OnSkinChanged;
 
-        protected Characters.Skins.Skin skin = new ();
+        // protected Characters.Skins.Skin skin = new ();
 
-        public Characters.Skins.Skin Skin => skin;
+        // public Characters.Skins.Skin Skin => skin;
 
         public void SetSkin(Characters.Skins.Skin newSkin)
         {
-            skin = newSkin;
+            // skin = newSkin;
             // character.Fraction.SetSkin(newSkin);
-            OnSkinChanged.Invoke(skin);
+            // OnSkinChanged.Invoke(skin);
         }
 
         protected void Awake()

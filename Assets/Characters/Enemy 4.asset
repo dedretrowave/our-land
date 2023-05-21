@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8c4ad34718548179ebe35a6438f57d2, type: 3}
-  m_Name: Enemy
+  m_Name: Enemy 4
   m_EditorClassIdentifier: 
+  _id: 3
+  _fraction: 2
   _skin:
     _items:
-    - {fileID: 11400000, guid: ccf84a705602c5d4bb00b69b61d6a0c1, type: 2}
     - {fileID: 11400000, guid: 688bb03b94a6bcc46b1f56d7ec4ba8be, type: 2}
-  _color: {r: 0.972549, g: 0.19607843, b: 0.19607843, a: 1}
+    - {fileID: 11400000, guid: 4dff5d7fa6fbb2443a75a73d42521e2e, type: 2}
+  _color: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
   _allowsDivisionGeneration: 1
   _isPlayerControlled: 0
