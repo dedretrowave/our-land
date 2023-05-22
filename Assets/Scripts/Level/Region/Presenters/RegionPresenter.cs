@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using Characters.Base;
+using Components;
+using Components.Division;
 using Level.Region.Models;
 using Level.Region.Views;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Level.Region.Presenters
 {
@@ -39,7 +42,8 @@ namespace Level.Region.Presenters
 
         public void TryTargetRegion(Transform point)
         {
-            if (point.Equals(_view.transform)) return;
+            if (point.Equals(_view.transform) 
+                || !_model.CurrentOwner.IsPlayerControlled) return;
 
             if (point.TryGetComponent(out RegionView target))
             {
@@ -54,17 +58,27 @@ namespace Level.Region.Presenters
             yield return IncreaseContinuously();
         }
 
-        public void TakeDamage(Character attacker)
+        public void TakeDamage(Division attacker)
         {
-            if (attacker.Equals(_model.CurrentOwner)) return;
+            if (!attacker.Target.Equals(_view)) return;
             
-            try
+            Object.Destroy(attacker.gameObject);
+            
+            if (attacker.Owner.Equals(_model.CurrentOwner))
             {
-                DecreaseCount();
+                IncreaseCount();
             }
-            catch (Exception)
+            else
             {
-                ChangeOwner(attacker);
+                try
+                {
+                    DecreaseCount();
+                    _view.PlayHurt();
+                }
+                catch (Exception)
+                {
+                    ChangeOwner(attacker.Owner);
+                }
             }
         }
 

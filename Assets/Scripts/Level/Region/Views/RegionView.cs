@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using Animations;
 using Characters.Base;
 using Characters.Skins;
 using Components;
+using Components.Division;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +13,8 @@ namespace Level.Region.Views
 {
     public class RegionView : MonoBehaviour
     {
+        private CharacterAnimations _animations;
+        
         [Header("Components")]
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI _countText;
@@ -29,7 +33,7 @@ namespace Level.Region.Views
         public float GarrisonIncreaseRate => _garrisonIncreaseRate;
         public int GarrisonInitialCount => _garrisonInitialCount;
 
-        public event Action<Character> OnDamageTaken;
+        public event Action<Division> OnDamageTaken;
         public event Action<Transform> OnGarrisonRelease;
 
         public void SetCount(int count)
@@ -59,13 +63,22 @@ namespace Level.Region.Views
             division.Construct(owner, target);
         }
 
+        public void PlayHurt()
+        {
+            _animations.PlayHurt();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Division division))
             {
-                OnDamageTaken?.Invoke(division.Owner);
-                Destroy(division);
+                OnDamageTaken?.Invoke(division);
             }
+        }
+
+        private void Awake()
+        {
+            _animations = GetComponentInChildren<CharacterAnimations>();
         }
     }
 }

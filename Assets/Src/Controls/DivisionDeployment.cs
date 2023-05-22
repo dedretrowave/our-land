@@ -14,9 +14,7 @@ namespace Src.Controls
         private const float RaycastDepth = 1000;
 
         public void OnPointerDown(PointerEventData eventData)
-        {
-            Debug.Log("dfstgdsgs");
-        }
+        { }
 
         public void OnPointerUp(PointerEventData eventData)
         {
@@ -43,8 +41,6 @@ namespace Src.Controls
                 out RaycastHit hit,
                 RaycastDepth,
                 _selectionLayer);
-            
-            Debug.Log(hit);
 
             Transform hitTransform = hit.transform;
 
