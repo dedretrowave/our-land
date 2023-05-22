@@ -1,30 +1,71 @@
 using System;
 using System.Collections.Generic;
+using Characters.Base;
 using Characters.SO;
 using DI;
+using Level.Presenters;
 using Level.Region;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Level
 {
     public class LevelInstaller : MonoBehaviour
     {
-        [SerializeField] private CharacterSORegionDictionary _characterRegions;
+        [SerializeField] private CharacterSORegionDictionary _characterSORegions;
+
+        private CharacterRegionContainer _characterRegionContainer;
+        private LevelProgress _levelProgress;
 
         public void Construct()
         {
-            foreach (var fractionRegion in _characterRegions)
+            _levelProgress = new();
+            _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
+            
+            int numberOfEnemies = 0;
+            
+            foreach (var characterSoRegion in _characterSORegions)
             {
-                CharacterSO characterSO = fractionRegion.Key;
-                List<RegionInstaller> regions = fractionRegion.Value.List;
+                Character characterFromSO = new(characterSoRegion.Key);
 
-                regions.ForEach(region =>
+                if (characterFromSO.Fraction == Fraction.Fraction.Enemy)
                 {
-                    region.Construct(new (characterSO));
+                    numberOfEnemies++;
+                }
+
+                characterSoRegion.Value.List.ForEach(region =>
+                {
+                    region.Construct(characterFromSO);
+                    _characterRegionContainer.Add(characterFromSO, region);
                 });
             }
+            
+            _levelProgress.SetNumberOfEnemies(numberOfEnemies);
+            _characterRegionContainer.OnCharacterLost += _levelProgress.ChangeStatusAfterCharacterLost;
+            _levelProgress.OnStatusChange += TryFinishWithStatus;
+        }
+
+        private void TryFinishWithStatus(LevelStatus status)
+        {
+            if (status == LevelStatus.InProgress) return;
+
+            switch (status)
+            {
+                case LevelStatus.Win:
+                    Debug.Log("WIN!!!!");
+                    break;
+                case LevelStatus.Lose:
+                    Debug.Log("LOSE((((");
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void OnDisable()
+        {
+            _characterRegionContainer.OnCharacterLost -= _levelProgress.ChangeStatusAfterCharacterLost;
+            _levelProgress.OnStatusChange -= TryFinishWithStatus;
         }
 
         private void Awake()

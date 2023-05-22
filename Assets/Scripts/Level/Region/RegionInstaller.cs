@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using Characters.Base;
-using DI;
 using Level.Region.Models;
 using Level.Region.Presenters;
 using Level.Region.Views;
@@ -12,15 +10,13 @@ namespace Level.Region
     [Serializable]
     public class RegionInstaller : MonoBehaviour
     {
-        private Fraction.Fraction _fraction;
         private RegionView _regionView;
 
         private RegionPresenter _regionPresenter;
 
         private RegionModel _regionModel;
 
-        private Coroutine _garrisonIncreaseRoutine;
-        private Coroutine _garrisonDecreaseRoutine;
+        public event Action<RegionInstaller, Character, Character> OnOwnerChange; 
 
         public void Construct(Character character)
         {
@@ -33,11 +29,17 @@ namespace Level.Region
 
             _regionPresenter = new(character, _regionView, _regionModel);
 
-            _garrisonIncreaseRoutine = StartCoroutine(_regionPresenter.IncreaseContinuously());
+            StartCoroutine(_regionPresenter.IncreaseContinuously());
             
             _regionView.OnDamageTaken += _regionPresenter.TakeDamage;
             _regionView.OnGarrisonRelease += _regionPresenter.TryTargetRegion;
             _regionPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
+            _regionPresenter.OnOwnerChange += ChangeOwner;
+        }
+
+        private void ChangeOwner(Character oldOwner, Character newOwner)
+        {
+            OnOwnerChange?.Invoke(this, oldOwner, newOwner);
         }
 
         private void ReleaseGarrison(RegionView targetPoint)

@@ -15,7 +15,8 @@ namespace Level.Region.Presenters
         private RegionView _view;
         private RegionModel _model;
 
-        public event Action<RegionView> OnSuccessfulRegionTarget; 
+        public event Action<RegionView> OnSuccessfulRegionTarget;
+        public event Action<Character, Character> OnOwnerChange;
 
         public RegionPresenter(Character defaultOwner, RegionView view, RegionModel model)
         {
@@ -49,6 +50,15 @@ namespace Level.Region.Presenters
             {
                 OnSuccessfulRegionTarget?.Invoke(target);
             }
+        }
+        
+        private void ChangeOwner(Character newOwner)
+        {
+            Character oldOwner = _model.CurrentOwner;
+            _model.SetOwner(newOwner);
+            _view.SetSkin(_model.CurrentOwner.Skin);
+            _view.SetColor(_model.CurrentOwner.Color);
+            OnOwnerChange?.Invoke(oldOwner, _model.CurrentOwner);
         }
 
         public IEnumerator IncreaseContinuously()
@@ -90,13 +100,6 @@ namespace Level.Region.Presenters
         public void IncreaseCount()
         {
             UpdateCount(1);
-        }
-
-        private void ChangeOwner(Character newOwner)
-        {
-            _model.SetOwner(newOwner);
-            _view.SetSkin(_model.CurrentOwner.Skin);
-            _view.SetColor(_model.CurrentOwner.Color);
         }
 
         private void UpdateCount(int count)
