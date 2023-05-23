@@ -27,6 +27,11 @@ namespace Level
             regionPresenter.OnOwnerChange += MoveRegionToCharacter;
         }
 
+        public List<RegionInstaller> GetRegionsByCharacter(Character character)
+        {
+            return _characterRegions[character];
+        }
+
         private void MoveRegionToCharacter(RegionInstaller region, Character oldOwner, Character newOwner)
         {
             _characterRegions[oldOwner].Remove(region);

@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Characters.Base;
 using Characters.SO;
 using DI;
+using Level.Enemy;
+using Level.Models;
 using Level.Presenters;
 using Level.Region;
 using UnityEditor;
@@ -14,24 +17,25 @@ namespace Level
     {
         [SerializeField] private CharacterSORegionDictionary _characterSORegions;
 
+        private LevelModel _levelModel;
+        
         private CharacterRegionContainer _characterRegionContainer;
+        
         private LevelProgress _levelProgress;
-
+        private List<EnemyAI> _enemyAis = new();
+        
+        // TODO: Check if can refactor
         public void Construct()
         {
-            _levelProgress = new();
+            List<Character> characters = new();
+            
             _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
-            
-            int numberOfEnemies = 0;
-            
+
             foreach (var characterSoRegion in _characterSORegions)
             {
                 Character characterFromSO = new(characterSoRegion.Key);
 
-                if (characterFromSO.Fraction == Fraction.Fraction.Enemy)
-                {
-                    numberOfEnemies++;
-                }
+                characters.Add(characterFromSO);
 
                 characterSoRegion.Value.List.ForEach(region =>
                 {
@@ -40,7 +44,17 @@ namespace Level
                 });
             }
             
-            _levelProgress.SetNumberOfEnemies(numberOfEnemies);
+            _levelModel = new LevelModel(characters);
+            
+            _levelModel.CharactersOnLevel.ForEach(character =>
+            {
+                if (character.Fraction != Fraction.Fraction.Enemy) return;
+                
+                _enemyAis.Add(new (character, _levelModel));
+            });
+            
+            _levelProgress = new(_levelModel);
+
             _characterRegionContainer.OnCharacterLost += _levelProgress.ChangeStatusAfterCharacterLost;
             _levelProgress.OnStatusChange += TryFinishWithStatus;
         }

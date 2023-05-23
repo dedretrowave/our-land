@@ -1,5 +1,6 @@
 using System;
 using Characters.Base;
+using Level.Models;
 
 namespace Level.Presenters
 {
@@ -9,11 +10,11 @@ namespace Level.Presenters
 
         private int _numberOfEnemies;
 
-        public event Action<LevelStatus> OnStatusChange; 
+        public event Action<LevelStatus> OnStatusChange;
 
-        public void SetNumberOfEnemies(int number)
+        public LevelProgress(LevelModel model)
         {
-            _numberOfEnemies = number;
+            _numberOfEnemies = model.NumberOfPlayerEnemies;
         }
 
         public void ChangeStatusAfterCharacterLost(Character character)
