@@ -7,14 +7,12 @@ namespace Src.Controls
     public class DivisionDeployment : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         private RegionView _view;
-        
-        [Header("Parameters")]
-        [SerializeField] private LayerMask _selectionLayer;
 
         private const float RaycastDepth = 1000;
 
         public void OnPointerDown(PointerEventData eventData)
-        { }
+        {
+        }
 
         public void OnPointerUp(PointerEventData eventData)
         {
@@ -39,8 +37,7 @@ namespace Src.Controls
         {
             Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(mousePosition),
                 out RaycastHit hit,
-                RaycastDepth,
-                _selectionLayer);
+                RaycastDepth);
 
             Transform hitTransform = hit.transform;
 

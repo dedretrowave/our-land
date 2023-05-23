@@ -1,46 +1,89 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Characters.Base;
 using DI;
 using Level.Models;
-using Level.Region;
+using Level.Region.Views;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Level.Enemy
 {
     public class EnemyAI
     {
         private Character _character;
-
-        private List<RegionInstaller> _ownedRegions;
-        private Dictionary<Character, List<RegionInstaller>> _enemyRegions = new();
-
+        private CharacterRegionContainer _characterRegionContainer;
         private LevelModel _levelModel;
+
+        private float _minAttackDelay = 6f;
+        private float _maxAttackDelay = 12f;
+
+        private RegionView _targetRegion;
+        private RegionView _attackStartRegion;
 
         public EnemyAI(Character character, LevelModel model)
         {
             _levelModel = model;
-            
             _character = character;
 
-            CharacterRegionContainer characterRegionContainer =
+            _characterRegionContainer =
                 DependencyContext.Dependencies.Get<CharacterRegionContainer>();
-            
-            Debug.Log($"{_character.Id} IS HERE");
-            Debug.Log($"AND MY ENEMIES ARE");
+        }
 
-            _ownedRegions = characterRegionContainer.GetRegionsByCharacter(_character);
+        public IEnumerator StartAttacking()
+        {
+            float waitTime = Random.Range(_minAttackDelay, _maxAttackDelay);
+
+            yield return new WaitForSeconds(waitTime);
             
-            _levelModel.CharactersOnLevel.ForEach(character =>
+            PickTargetRegion();
+            PickAttackStartRegion();
+            
+            _attackStartRegion.Release(_targetRegion.transform);
+
+            yield return StartAttacking();
+        }
+
+        private void PickTargetRegion()
+        {
+            Character enemy = PickRandomEnemy();
+
+            _targetRegion = PickRandomRegion(enemy);
+        }
+
+        private void PickAttackStartRegion()
+        {
+            _attackStartRegion = PickRandomRegion(_character);
+        }
+
+        private RegionView PickRandomRegion(Character character)
+        {
+            List<RegionView> regions = _characterRegionContainer.GetRegionsByCharacter(character);
+
+            RegionView region = null;
+
+            try
             {
-                if (!character.Equals(_character))
-                {
-                    _enemyRegions[character] = 
-                        characterRegionContainer.GetRegionsByCharacter(character);
-                    Debug.Log($"{character.Id}");
-                }
-            });
-            
-            Debug.Log("==============");
+                region = regions[Random.Range(0, regions.Count - 1)];
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                PickRandomRegion(character);
+            }
+
+            return region;
+        }
+
+        private Character PickRandomEnemy()
+        {
+            Character randomEnemy =
+                _levelModel.CharactersOnLevel[Random.Range(0, _levelModel.CharactersOnLevel.Count - 1)];
+
+            if (randomEnemy.Equals(_character))
+                PickRandomEnemy();
+
+            return randomEnemy;
         }
     }
 }

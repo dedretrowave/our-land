@@ -43,8 +43,7 @@ namespace Level.Region.Presenters
 
         public void TryTargetRegion(Transform point)
         {
-            if (point.Equals(_view.transform) 
-                || !_model.CurrentOwner.IsPlayerControlled) return;
+            if (point.Equals(_view.transform)) return;
 
             if (point.TryGetComponent(out RegionView target))
             {

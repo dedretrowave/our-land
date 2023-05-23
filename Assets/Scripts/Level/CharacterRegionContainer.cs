@@ -2,18 +2,18 @@ using System;
 using System.Collections.Generic;
 using Characters.Base;
 using DI;
-using Level.Region;
+using Level.Region.Views;
 using UnityEngine;
 
 namespace Level
 {
     public class CharacterRegionContainer : MonoBehaviour
     {
-        private Dictionary<Character, List<RegionInstaller>> _characterRegions = new();
+        private Dictionary<Character, List<RegionView>> _characterRegions = new();
 
         public event Action<Character> OnCharacterLost; 
 
-        public void Add(Character character, RegionInstaller regionPresenter)
+        public void Add(Character character, RegionView regionPresenter)
         {
             if (_characterRegions.ContainsKey(character))
             {
@@ -27,12 +27,12 @@ namespace Level
             regionPresenter.OnOwnerChange += MoveRegionToCharacter;
         }
 
-        public List<RegionInstaller> GetRegionsByCharacter(Character character)
+        public List<RegionView> GetRegionsByCharacter(Character character)
         {
             return _characterRegions[character];
         }
 
-        private void MoveRegionToCharacter(RegionInstaller region, Character oldOwner, Character newOwner)
+        private void MoveRegionToCharacter(RegionView region, Character oldOwner, Character newOwner)
         {
             _characterRegions[oldOwner].Remove(region);
 

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Characters.Base;
 using Characters.SO;
 using DI;
@@ -23,7 +22,9 @@ namespace Level
         
         private LevelProgress _levelProgress;
         private List<EnemyAI> _enemyAis = new();
-        
+
+        private List<Coroutine> _enemyAIsCoroutines = new();
+
         // TODO: Check if can refactor
         public void Construct()
         {
@@ -40,7 +41,7 @@ namespace Level
                 characterSoRegion.Value.List.ForEach(region =>
                 {
                     region.Construct(characterFromSO);
-                    _characterRegionContainer.Add(characterFromSO, region);
+                    _characterRegionContainer.Add(characterFromSO, region.View);
                 });
             }
             
@@ -53,6 +54,8 @@ namespace Level
                 _enemyAis.Add(new (character, _levelModel));
             });
             
+            _enemyAis.ForEach(ai => _enemyAIsCoroutines.Add(StartCoroutine(ai.StartAttacking())));
+
             _levelProgress = new(_levelModel);
 
             _characterRegionContainer.OnCharacterLost += _levelProgress.ChangeStatusAfterCharacterLost;
@@ -80,6 +83,8 @@ namespace Level
         {
             _characterRegionContainer.OnCharacterLost -= _levelProgress.ChangeStatusAfterCharacterLost;
             _levelProgress.OnStatusChange -= TryFinishWithStatus;
+            
+            _enemyAIsCoroutines.ForEach(ai => StopCoroutine(ai));
         }
 
         private void Awake()

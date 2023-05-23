@@ -35,6 +35,7 @@ namespace Level.Region.Views
 
         public event Action<Division> OnDamageTaken;
         public event Action<Transform> OnGarrisonRelease;
+        public event Action<RegionView, Character, Character> OnOwnerChange;
 
         public void SetCount(int count)
         {
@@ -50,6 +51,11 @@ namespace Level.Region.Views
         {
             _flag.sprite = skin.GetItemByType(SkinItemType.Flag).Sprite;
             _eyes.sprite = skin.GetItemByType(SkinItemType.Eyes).Sprite;
+        }
+
+        public void NotifyOwnerChange(Character oldOwner, Character newOwner)
+        {
+            OnOwnerChange?.Invoke(this, oldOwner, newOwner);
         }
 
         public void Release(Transform point)
