@@ -11,7 +11,7 @@ namespace Level
     {
         private Dictionary<Character, List<RegionView>> _characterRegions = new();
 
-        public event Action<Character> OnCharacterLost; 
+        public event Action<Character> OnCharacterLost;
 
         public void Add(Character character, RegionView regionPresenter)
         {

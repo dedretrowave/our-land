@@ -2,7 +2,7 @@ using DI;
 using Level;
 using UnityEngine;
 
-namespace Test
+namespace Entries
 {
     public class LevelEntryPoint : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace Test
         {
             _levelInstaller = DependencyContext.Dependencies.Get<LevelInstaller>();
             
-            _levelInstaller.Construct();
+            // _levelInstaller.Construct();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Src.Controls
 {
     public class DivisionDeployment : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        private RegionView _view;
+        private GarrisonView _view;
 
         private const float RaycastDepth = 1000;
 
@@ -25,7 +25,7 @@ namespace Src.Controls
 
         private void Awake()
         {
-            _view = GetComponent<RegionView>();
+            _view = GetComponent<GarrisonView>();
         }
 
         private Transform GetRaycastHit(PointerEventData eventData)

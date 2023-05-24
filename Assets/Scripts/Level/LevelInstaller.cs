@@ -14,7 +14,7 @@ namespace Level
 {
     public class LevelInstaller : MonoBehaviour
     {
-        [SerializeField] private CharacterSORegionDictionary _characterSORegions;
+        [SerializeField] private FractionRegionDictionary _characterSORegions;
 
         private LevelModel _levelModel;
         
@@ -26,7 +26,7 @@ namespace Level
         private List<Coroutine> _enemyAIsCoroutines = new();
 
         // TODO: Check if can refactor
-        public void Construct()
+        public void Construct(Character enemy)
         {
             List<Character> characters = new();
             
@@ -34,14 +34,12 @@ namespace Level
 
             foreach (var characterSoRegion in _characterSORegions)
             {
-                Character characterFromSO = new(characterSoRegion.Key);
-
-                characters.Add(characterFromSO);
+                characters.Add(enemy);
 
                 characterSoRegion.Value.List.ForEach(region =>
                 {
-                    region.Construct(characterFromSO);
-                    _characterRegionContainer.Add(characterFromSO, region.View);
+                    region.Construct(enemy);
+                    _characterRegionContainer.Add(enemy, region.View);
                 });
             }
             
@@ -99,10 +97,10 @@ namespace Level
         public List<RegionInstaller> List;
     }
     
-#if UNITY_EDITOR
     [Serializable]
-    internal class CharacterSORegionDictionary : SerializableDictionary<CharacterSO, Regions> {}
-    [CustomPropertyDrawer(typeof(CharacterSORegionDictionary))]
-    internal class CharacterSORegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
+    internal class FractionRegionDictionary : SerializableDictionary<Fraction.Fraction, Regions> {}
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(FractionRegionDictionary))]
+    internal class FractionRegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
 #endif
 }

@@ -19,8 +19,8 @@ namespace Level.Enemy
         private float _minAttackDelay = 6f;
         private float _maxAttackDelay = 12f;
 
-        private RegionView _targetRegion;
-        private RegionView _attackStartRegion;
+        private GarrisonView _targetRegion;
+        private GarrisonView _attackStartRegion;
 
         public EnemyAI(Character character, LevelModel model)
         {
@@ -57,19 +57,19 @@ namespace Level.Enemy
             _attackStartRegion = PickRandomRegion(_character);
         }
 
-        private RegionView PickRandomRegion(Character character)
+        private GarrisonView PickRandomRegion(Character character)
         {
             List<RegionView> regions = _characterRegionContainer.GetRegionsByCharacter(character);
 
-            RegionView region = null;
+            GarrisonView region = null;
 
             try
             {
-                region = regions[Random.Range(0, regions.Count - 1)];
+                region = regions[Random.Range(0, regions.Count - 1)].GetComponent<GarrisonView>();
             }
             catch (ArgumentOutOfRangeException)
             {
-                PickRandomRegion(character);
+                PickRandomRegion(PickRandomEnemy());
             }
 
             return region;

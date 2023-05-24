@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Characters.Base;
-using Components;
 using Components.Division;
 using Level.Region.Models;
 using Level.Region.Views;
@@ -12,21 +11,23 @@ namespace Level.Region.Presenters
 {
     public class RegionPresenter
     {
-        private RegionView _view;
+        private GarrisonView _garrisonView;
+        private RegionView _regionView;
         private RegionModel _model;
 
-        public event Action<RegionView> OnSuccessfulRegionTarget;
+        public event Action<GarrisonView> OnSuccessfulRegionTarget;
         public event Action<Character, Character> OnOwnerChange;
 
-        public RegionPresenter(Character defaultOwner, RegionView view, RegionModel model)
+        public RegionPresenter(Character defaultOwner, RegionView regionView, GarrisonView garrisonView, RegionModel model)
         {
-            _view = view;
+            _garrisonView = garrisonView;
+            _regionView = regionView;
             _model = model;
             ChangeOwner(defaultOwner);
-            _view.SetCount(_model.Count);
+            _garrisonView.SetCount(_model.Count);
         }
 
-        public IEnumerator ReleaseGarrison(RegionView target)
+        public IEnumerator ReleaseGarrison(GarrisonView target)
         {
             int i = 0;
 
@@ -34,7 +35,7 @@ namespace Level.Region.Presenters
 
             while (i < initialCount)
             {
-                _view.SendDivision(target, _model.CurrentOwner);
+                _garrisonView.SendDivision(target, _model.CurrentOwner);
                 DecreaseCount();
                 i++;
                 yield return new WaitForSeconds(_model.DivisionSpawnRate);
@@ -43,9 +44,9 @@ namespace Level.Region.Presenters
 
         public void TryTargetRegion(Transform point)
         {
-            if (point.Equals(_view.transform)) return;
+            if (point.Equals(_garrisonView.transform)) return;
 
-            if (point.TryGetComponent(out RegionView target))
+            if (point.TryGetComponent(out GarrisonView target))
             {
                 OnSuccessfulRegionTarget?.Invoke(target);
             }
@@ -55,8 +56,8 @@ namespace Level.Region.Presenters
         {
             Character oldOwner = _model.CurrentOwner;
             _model.SetOwner(newOwner);
-            _view.SetSkin(_model.CurrentOwner.Skin);
-            _view.SetColor(_model.CurrentOwner.Color);
+            _regionView.SetSkin(_model.CurrentOwner.Skin);
+            _regionView.SetColor(_model.CurrentOwner.Color);
             OnOwnerChange?.Invoke(oldOwner, _model.CurrentOwner);
         }
 
@@ -69,7 +70,7 @@ namespace Level.Region.Presenters
 
         public void TakeDamage(Division attacker)
         {
-            if (!attacker.Target.Equals(_view)) return;
+            if (!attacker.Target.Equals(_garrisonView)) return;
             
             Object.Destroy(attacker.gameObject);
             
@@ -82,7 +83,7 @@ namespace Level.Region.Presenters
                 try
                 {
                     DecreaseCount();
-                    _view.PlayHurt();
+                    _regionView.PlayHurt();
                 }
                 catch (Exception)
                 {
@@ -111,7 +112,7 @@ namespace Level.Region.Presenters
             }
             
             _model.ChangeCount(count);
-            _view.SetCount(_model.Count);
+            _garrisonView.SetCount(_model.Count);
         }
     }
 }

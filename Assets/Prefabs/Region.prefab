@@ -591,7 +591,8 @@ GameObject:
   - component: {fileID: 1289385540690642585}
   - component: {fileID: 3491418167154815524}
   - component: {fileID: 4087307055592394141}
-  - component: {fileID: 5083238142405413488}
+  - component: {fileID: 1783952403519481566}
+  - component: {fileID: 262906237355445655}
   m_Layer: 6
   m_Name: Core
   m_TagString: Untagged
@@ -646,7 +647,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &5083238142405413488
+--- !u!114 &1783952403519481566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,13 +660,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countText: {fileID: 7498571871458846914}
+  _division: {fileID: 8762790705502886650, guid: 45888e9e3d8cfc643802bf604603cf4f, type: 3}
+  _garrisonIncreaseRate: 1
+  _garrisonInitialCount: 15
+  _divisionSpawnRate: 0.1
+--- !u!114 &262906237355445655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083238142405413489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b283efe4ccf04960b5ed9e85e6adee0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _region: {fileID: 2691288676079614666}
   _flag: {fileID: 6827281129481494879}
   _eyes: {fileID: 7738460669884571675}
-  _division: {fileID: 8762790705502886650, guid: 45888e9e3d8cfc643802bf604603cf4f, type: 3}
-  _garrisonIncreaseRate: 2
-  _garrisonInitialCount: 10
-  _divisionSpawnRate: 0.1
 --- !u!1 &5356600271046579919
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace Level.Region
     [Serializable]
     public class RegionInstaller : MonoBehaviour
     {
+        private GarrisonView _garrisonView;
         private RegionView _regionView;
 
         private RegionPresenter _regionPresenter;
@@ -22,22 +23,23 @@ namespace Level.Region
 
         public void Construct(Character character)
         {
+            _garrisonView = GetComponentInChildren<GarrisonView>();
             _regionView = GetComponentInChildren<RegionView>();
 
             _regionModel = new(
-                _regionView.GarrisonInitialCount,
-                _regionView.GarrisonIncreaseRate,
-                _regionView.DivisionSpawnRate);
+                _garrisonView.GarrisonInitialCount,
+                _garrisonView.GarrisonIncreaseRate,
+                _garrisonView.DivisionSpawnRate);
 
-            _regionPresenter = new(character, _regionView, _regionModel);
+            _regionPresenter = new(character, _regionView, _garrisonView, _regionModel);
 
             if (_regionModel.CurrentOwner.AllowsDivisionGeneration)
             {
                 StartCoroutine(_regionPresenter.IncreaseContinuously());
             }
 
-            _regionView.OnDamageTaken += _regionPresenter.TakeDamage;
-            _regionView.OnGarrisonRelease += _regionPresenter.TryTargetRegion;
+            _garrisonView.OnDamageTaken += _regionPresenter.TakeDamage;
+            _garrisonView.OnGarrisonRelease += _regionPresenter.TryTargetRegion;
             _regionPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
             _regionPresenter.OnOwnerChange += ChangeOwner;
             
@@ -53,25 +55,25 @@ namespace Level.Region
             
             if (newOwner.Fraction == Fraction.Fraction.Player)
             {
-                _regionView.gameObject.AddComponent<DivisionDeployment>();
+                _garrisonView.gameObject.AddComponent<DivisionDeployment>();
             }
             else
             {
-                Destroy(_regionView.GetComponent<DivisionDeployment>());
+                Destroy(_garrisonView.GetComponent<DivisionDeployment>());
             }
             
             _regionView.NotifyOwnerChange(oldOwner, newOwner);
         }
 
-        private void ReleaseGarrison(RegionView targetPoint)
+        private void ReleaseGarrison(GarrisonView targetPoint)
         {
             StartCoroutine(_regionPresenter.ReleaseGarrison(targetPoint));
         }
 
         private void OnDisable()
         {
-            _regionView.OnDamageTaken -= _regionPresenter.TakeDamage;
-            _regionView.OnGarrisonRelease -= _regionPresenter.TryTargetRegion;
+            _garrisonView.OnDamageTaken -= _regionPresenter.TakeDamage;
+            _garrisonView.OnGarrisonRelease -= _regionPresenter.TryTargetRegion;
             _regionPresenter.OnSuccessfulRegionTarget -= ReleaseGarrison;
         }
     }

@@ -16,12 +16,12 @@ namespace Components.Division
         [SerializeField] private float _stopDistance = 0.1f;
         
         private Character _character;
-        private RegionView _target;
+        private GarrisonView _target;
 
         public Character Owner => _character;
-        public RegionView Target => _target;
+        public GarrisonView Target => _target;
 
-        public void Construct(Character owner, RegionView target)
+        public void Construct(Character owner, GarrisonView target)
         {
             _view = GetComponent<DivisionView>();
             _character = owner;
