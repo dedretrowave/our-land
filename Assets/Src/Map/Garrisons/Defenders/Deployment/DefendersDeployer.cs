@@ -16,7 +16,7 @@ namespace Src.Map.Garrisons.Defenders.Deployment
 
         public void Deploy(Transform regionTransform)
         {
-            if (!regionTransform.TryGetComponent(out Region region) || _garrison.Amount == 0) return;
+            if (!regionTransform.TryGetComponent(out Regions.Region region) || _garrison.Amount == 0) return;
 
             Defender defender = Instantiate(_defenderPrefab, transform.position, Quaternion.identity);
             _garrison.Decrease();

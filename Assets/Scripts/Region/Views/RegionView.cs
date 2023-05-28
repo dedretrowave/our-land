@@ -2,11 +2,10 @@ using System;
 using Animations;
 using Characters.Base;
 using Characters.Skins;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Level.Region.Views
+namespace Region.Views
 {
     public class RegionView : MonoBehaviour
     {
@@ -23,6 +22,12 @@ namespace Level.Region.Views
         public void NotifyOwnerChange(Character oldOwner, Character newOwner)
         {
             OnOwnerChange?.Invoke(this, oldOwner, newOwner);
+        }
+
+        public void SetVFXByCharacter(Character owner)
+        {
+            SetColor(owner.Color);
+            SetSkin(owner.Skin);
         }
 
         public void SetColor(Color color)

@@ -23,15 +23,5 @@ namespace Level.Models
                 }
             });
         }
-
-        public void AddCharacter(Character character)
-        {
-            _charactersOnLevel.Add(character);
-
-            if (character.Fraction == Fraction.Fraction.Enemy)
-            {
-                _numberOfPlayerEnemies++;
-            }
-        }
     }
 }

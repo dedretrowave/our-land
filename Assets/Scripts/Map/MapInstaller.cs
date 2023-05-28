@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using Characters.Base;
 using Characters.SO;
+using DI;
 using Level;
-using Level.Region.Views;
+using Region.Models;
+using Region.Views;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,28 +13,24 @@ namespace Map
 {
     public class MapInstaller : MonoBehaviour
     {
-        [SerializeField] private RegionCharacterSODictionary _characterSORegions;
+        [SerializeField] private List<RegionView> _regions;
         
         private CharacterRegionContainer _characterRegionContainer;
 
-        public void Construct()
+        public void Construct(List<RegionModel> models)
         {
-            foreach (var regionCharacterSO in _characterSORegions)
+            for (var i = 0; i < models.Count; i++)
             {
-                Character characterFromSO = new(regionCharacterSO.Value);
-
-                RegionView region = regionCharacterSO.Key;
+                RegionView region = _regions[i];
+                Character regionOwner = models[i].CurrentOwner;
                 
-                region.SetColor(characterFromSO.Color);
-                region.SetSkin(characterFromSO.Skin);
+                region.SetVFXByCharacter(regionOwner);
             }
         }
+
+        private void Awake()
+        {
+            DependencyContext.Dependencies.Add(new(typeof(MapInstaller), () => this));
+        }
     }
-    
-    [Serializable]
-    internal class RegionCharacterSODictionary : SerializableDictionary<RegionView, CharacterSO> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(RegionCharacterSODictionary))]
-    internal class RegionCharacterSODictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
 }

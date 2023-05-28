@@ -1,12 +1,12 @@
 using System;
 using Characters.Base;
-using Level.Region.Models;
-using Level.Region.Presenters;
-using Level.Region.Views;
+using Region.Models;
+using Region.Presenters;
+using Region.Views;
 using Src.Controls;
 using UnityEngine;
 
-namespace Level.Region
+namespace Region
 {
     [Serializable]
     public class RegionInstaller : MonoBehaviour
@@ -17,21 +17,22 @@ namespace Level.Region
         private RegionPresenter _regionPresenter;
 
         private RegionModel _regionModel;
+        private GarrisonModel _garrisonModel;
 
         public RegionView View => _regionView;
-        public RegionModel Model => _regionModel;
 
         public void Construct(Character character)
         {
             _garrisonView = GetComponentInChildren<GarrisonView>();
             _regionView = GetComponentInChildren<RegionView>();
 
-            _regionModel = new(
+            _garrisonModel = new(
                 _garrisonView.GarrisonInitialCount,
                 _garrisonView.GarrisonIncreaseRate,
                 _garrisonView.DivisionSpawnRate);
+            _regionModel = new();
 
-            _regionPresenter = new(character, _regionView, _garrisonView, _regionModel);
+            _regionPresenter = new(character, _regionView, _garrisonView, _regionModel, _garrisonModel);
 
             if (_regionModel.CurrentOwner.AllowsDivisionGeneration)
             {

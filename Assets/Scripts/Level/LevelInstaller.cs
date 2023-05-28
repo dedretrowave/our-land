@@ -6,7 +6,7 @@ using DI;
 using Level.Enemy;
 using Level.Models;
 using Level.Presenters;
-using Level.Region;
+using Region;
 using UnityEditor;
 using UnityEngine;
 

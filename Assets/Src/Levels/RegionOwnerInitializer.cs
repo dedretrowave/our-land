@@ -12,7 +12,7 @@ namespace Src.Levels
 {
     public class RegionOwnerInitializer : MonoBehaviour
     {
-        [SerializeField] private List<Region> _enemyRegions;
+        [SerializeField] private List<Map.Regions.Region> _enemyRegions;
 
         public void Init(int enemyId)
         {

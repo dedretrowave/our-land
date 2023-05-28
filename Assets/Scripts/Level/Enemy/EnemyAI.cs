@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Characters.Base;
 using DI;
 using Level.Models;
-using Level.Region.Views;
+using Region.Views;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

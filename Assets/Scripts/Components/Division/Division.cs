@@ -1,7 +1,7 @@
 using Characters.Base;
 using Characters.Skins;
 using Components.Division.UI;
-using Level.Region.Views;
+using Region.Views;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

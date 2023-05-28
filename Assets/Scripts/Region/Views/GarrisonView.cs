@@ -4,7 +4,7 @@ using Components.Division;
 using TMPro;
 using UnityEngine;
 
-namespace Level.Region.Views
+namespace Region.Views
 {
     public class GarrisonView : MonoBehaviour
     {

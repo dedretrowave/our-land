@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Src.Map.Fraction;
-using Src.Map.Regions;
 using Src.Map.Regions.Containers;
 using UnityEditor;
 using UnityEngine;
@@ -24,8 +23,8 @@ namespace Src.Enemy
         [SerializeField] private float _maxPauseBetweenAttacks = 10f;
 
         public UnityEvent OnGiveUp;
-
-        private Region _selectedEnemyRegion;
+        
+        private Map.Regions.Region _selectedEnemyRegion;
         private float _waitTimeBeforeNextAttack;
 
         private Coroutine _routine;
@@ -89,7 +88,7 @@ namespace Src.Enemy
                 return;
             }
             
-            Region selectedRegion = _container.GetRandomRegion();
+            Map.Regions.Region selectedRegion = _container.GetRandomRegion();
 
             selectedRegion.Base.DeployDivisions(_selectedEnemyRegion);
 

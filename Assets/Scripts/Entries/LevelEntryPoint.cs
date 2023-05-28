@@ -8,11 +8,9 @@ namespace Entries
     {
         private LevelInstaller _levelInstaller;
 
-        private void Start()
+        public void InitLevel()
         {
-            _levelInstaller = DependencyContext.Dependencies.Get<LevelInstaller>();
             
-            // _levelInstaller.Construct();
         }
     }
 }

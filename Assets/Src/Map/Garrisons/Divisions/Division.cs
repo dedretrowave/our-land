@@ -13,13 +13,13 @@ namespace Src.Map.Garrisons.Divisions
 
         private Character _fraction;
         private GarrisonBase _parentBase;
-        private Region _targetRegion;
+        private Regions.Region _targetRegion;
 
         public Character Fraction => _fraction;
         public GarrisonBase ParentBase => _parentBase;
-        public Region TargetRegion => _targetRegion;
+        public Regions.Region TargetRegion => _targetRegion;
 
-        public void Init(Character fraction, GarrisonBase parentBase, Region targetRegion)
+        public void Init(Character fraction, GarrisonBase parentBase, Regions.Region targetRegion)
         {
             _fraction = fraction;
             _parentBase = parentBase;

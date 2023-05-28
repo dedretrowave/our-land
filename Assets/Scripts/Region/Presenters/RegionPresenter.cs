@@ -2,43 +2,50 @@ using System;
 using System.Collections;
 using Characters.Base;
 using Components.Division;
-using Level.Region.Models;
-using Level.Region.Views;
+using Region.Models;
+using Region.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Level.Region.Presenters
+namespace Region.Presenters
 {
     public class RegionPresenter
     {
         private GarrisonView _garrisonView;
         private RegionView _regionView;
-        private RegionModel _model;
+        private GarrisonModel _garrisonModel;
+        private RegionModel _regionModel;
 
         public event Action<GarrisonView> OnSuccessfulRegionTarget;
         public event Action<Character, Character> OnOwnerChange;
 
-        public RegionPresenter(Character defaultOwner, RegionView regionView, GarrisonView garrisonView, RegionModel model)
+        public RegionPresenter(
+            Character defaultOwner,
+            RegionView regionView,
+            GarrisonView garrisonView,
+            RegionModel regionModel,
+            GarrisonModel garrisonModel)
         {
             _garrisonView = garrisonView;
+            _garrisonModel = garrisonModel;
             _regionView = regionView;
-            _model = model;
+            _regionModel = regionModel;
             ChangeOwner(defaultOwner);
-            _garrisonView.SetCount(_model.Count);
+            _garrisonView.SetCount(_garrisonModel.Count);
         }
 
         public IEnumerator ReleaseGarrison(GarrisonView target)
         {
             int i = 0;
 
-            int initialCount = _model.Count;
+            int initialCount = _garrisonModel.Count;
 
             while (i < initialCount)
             {
-                _garrisonView.SendDivision(target, _model.CurrentOwner);
+                _garrisonView.SendDivision(target, _regionModel.CurrentOwner);
                 DecreaseCount();
                 i++;
-                yield return new WaitForSeconds(_model.DivisionSpawnRate);
+                yield return new WaitForSeconds(_garrisonModel.DivisionSpawnRate);
             }
         }
 
@@ -54,16 +61,16 @@ namespace Level.Region.Presenters
         
         private void ChangeOwner(Character newOwner)
         {
-            Character oldOwner = _model.CurrentOwner;
-            _model.SetOwner(newOwner);
-            _regionView.SetSkin(_model.CurrentOwner.Skin);
-            _regionView.SetColor(_model.CurrentOwner.Color);
-            OnOwnerChange?.Invoke(oldOwner, _model.CurrentOwner);
+            Character oldOwner = _regionModel.CurrentOwner;
+            _regionModel.SetOwner(newOwner);
+            _regionView.SetSkin(_regionModel.CurrentOwner.Skin);
+            _regionView.SetColor(_regionModel.CurrentOwner.Color);
+            OnOwnerChange?.Invoke(oldOwner, _regionModel.CurrentOwner);
         }
 
         public IEnumerator IncreaseContinuously()
         {
-            yield return new WaitForSeconds(_model.IncreaseRate);
+            yield return new WaitForSeconds(_garrisonModel.IncreaseRate);
             IncreaseCount();
             yield return IncreaseContinuously();
         }
@@ -74,7 +81,7 @@ namespace Level.Region.Presenters
             
             Object.Destroy(attacker.gameObject);
             
-            if (attacker.Owner.Equals(_model.CurrentOwner))
+            if (attacker.Owner.Equals(_regionModel.CurrentOwner))
             {
                 IncreaseCount();
             }
@@ -104,15 +111,15 @@ namespace Level.Region.Presenters
 
         private void UpdateCount(int count)
         {
-            int changedCount = _model.Count + count;
+            int changedCount = _garrisonModel.Count + count;
 
             if (changedCount < 0)
             {
                 throw new Exception("Count is zero");
             }
             
-            _model.ChangeCount(count);
-            _garrisonView.SetCount(_model.Count);
+            _garrisonModel.ChangeCount(count);
+            _garrisonView.SetCount(_garrisonModel.Count);
         }
     }
 }
