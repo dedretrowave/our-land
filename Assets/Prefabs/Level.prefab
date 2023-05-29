@@ -188,24 +188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f040e60c941045d1be372acd4e753624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterSORegions:
-    m_keys:
-    - {fileID: 11400000, guid: 6bd2637c48049814caa2220f0a8b700c, type: 2}
-    - {fileID: 11400000, guid: a508fc1fd2047e6419a5c6fd67b65124, type: 2}
-    - {fileID: 11400000, guid: 344b12cad465d2147a2e77e4d64a823c, type: 2}
-    - {fileID: 11400000, guid: f9bf4bebcc807ba4f83d307b9fb1f4a2, type: 2}
+  _fractionRegions:
+    m_keys: 000000000100000002000000
     m_values:
-    - List:
-      - {fileID: 4917840514781971082}
-    - List:
-      - {fileID: 4917840514510572446}
-      - {fileID: 4917840513511552203}
-    - List:
-      - {fileID: 5801056996964494250}
-      - {fileID: 4917840514990806197}
     - List:
       - {fileID: 4917840513762811437}
       - {fileID: 4917840514417354903}
+      - {fileID: 4917840514510572446}
+      - {fileID: 4917840513511552203}
+    - List:
+      - {fileID: 4917840514781971082}
+    - List:
+      - {fileID: 5801056996964494250}
+      - {fileID: 4917840514990806197}
 --- !u!114 &9005245549221386580
 MonoBehaviour:
   m_ObjectHideFlags: 0

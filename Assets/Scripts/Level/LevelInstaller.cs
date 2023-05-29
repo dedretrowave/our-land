@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Characters;
 using Characters.Base;
 using Characters.SO;
 using DI;
@@ -9,12 +10,13 @@ using Level.Presenters;
 using Region;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level
 {
     public class LevelInstaller : MonoBehaviour
     {
-        [SerializeField] private FractionRegionDictionary _characterSORegions;
+        [SerializeField] private FractionRegionDictionary _fractionRegions;
 
         private LevelModel _levelModel;
         
@@ -31,14 +33,25 @@ namespace Level
             List<Character> characters = new();
             
             _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
+            CharacterFactory characterFactory = DependencyContext.Dependencies.Get<CharacterFactory>();
 
-            foreach (var characterSoRegion in _characterSORegions)
+            foreach (var fractionRegion in _fractionRegions)
             {
-                characters.Add(enemy);
-
-                characterSoRegion.Value.List.ForEach(region =>
+                fractionRegion.Value.List.ForEach(region =>
                 {
-                    region.Construct(enemy);
+                    Character regionOwner;
+                    
+                    if (fractionRegion.Key == Fraction.Fraction.Enemy)
+                    {
+                        regionOwner = enemy;
+                    }
+                    else
+                    {
+                        regionOwner = characterFactory.Get(fractionRegion.Key);
+                    }
+                    
+                    region.Construct(regionOwner);
+                    
                     _characterRegionContainer.Add(enemy, region.View);
                 });
             }

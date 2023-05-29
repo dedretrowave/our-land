@@ -13,18 +13,18 @@ namespace Level
 
         public event Action<Character> OnCharacterLost;
 
-        public void Add(Character character, RegionView regionPresenter)
+        public void Add(Character character, RegionView regionView)
         {
             if (_characterRegions.ContainsKey(character))
             {
-                _characterRegions[character].Add(regionPresenter);
+                _characterRegions[character].Add(regionView);
             }
             else
             {
-                _characterRegions[character] = new() {regionPresenter};
+                _characterRegions[character] = new() {regionView};
             }
 
-            regionPresenter.OnOwnerChange += MoveRegionToCharacter;
+            regionView.OnOwnerChange += MoveRegionToCharacter;
         }
 
         public List<RegionView> GetRegionsByCharacter(Character character)
@@ -34,14 +34,20 @@ namespace Level
 
         private void MoveRegionToCharacter(RegionView region, Character oldOwner, Character newOwner)
         {
-            _characterRegions[oldOwner].Remove(region);
+            if (_characterRegions[oldOwner].Count != 0 || _characterRegions.ContainsKey(oldOwner))
+            {
+                _characterRegions[oldOwner].Remove(region);
+            }
 
             if (_characterRegions[oldOwner].Count == 0)
             {
                 OnCharacterLost?.Invoke(oldOwner);
             }
-                
-            _characterRegions[newOwner].Add(region);
+
+            if (_characterRegions.ContainsKey(newOwner))
+            {
+                _characterRegions[newOwner].Add(region);
+            }
         }
 
         private void OnDisable()
