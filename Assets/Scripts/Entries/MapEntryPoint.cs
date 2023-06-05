@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Characters.Base;
+using Characters.Model;
 using Characters.SO;
 using DI;
 using Map;
@@ -38,7 +38,7 @@ namespace Entries
         {
             foreach (RegionModel newModel in _regionCharacterSODefault
                          .Select(regionCharacterSO 
-                             => new Character(regionCharacterSO.Value))
+                             => new CharacterModel(regionCharacterSO.Value))
                          .Select(owner 
                              => new RegionModel(owner)))
             {

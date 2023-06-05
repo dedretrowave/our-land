@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Characters.Base;
+using Characters.Model;
 using DI;
 using Level.Models;
 using Region.Views;
@@ -12,7 +12,7 @@ namespace Level.Enemy
 {
     public class EnemyAI
     {
-        private Character _character;
+        private CharacterModel _character;
         private CharacterRegionContainer _characterRegionContainer;
         private LevelModel _levelModel;
 
@@ -22,7 +22,7 @@ namespace Level.Enemy
         private GarrisonView _targetRegion;
         private GarrisonView _attackStartRegion;
 
-        public EnemyAI(Character character, LevelModel model)
+        public EnemyAI(CharacterModel character, LevelModel model)
         {
             _levelModel = model;
             _character = character;
@@ -47,7 +47,7 @@ namespace Level.Enemy
 
         private void PickTargetRegion()
         {
-            Character enemy = PickRandomEnemy();
+            CharacterModel enemy = PickRandomEnemy();
 
             _targetRegion = PickRandomRegion(enemy);
         }
@@ -57,7 +57,7 @@ namespace Level.Enemy
             _attackStartRegion = PickRandomRegion(_character);
         }
 
-        private GarrisonView PickRandomRegion(Character character)
+        private GarrisonView PickRandomRegion(CharacterModel character)
         {
             List<RegionView> regions = _characterRegionContainer.GetRegionsByCharacter(character);
 
@@ -75,9 +75,9 @@ namespace Level.Enemy
             return region;
         }
 
-        private Character PickRandomEnemy()
+        private CharacterModel PickRandomEnemy()
         {
-            Character randomEnemy =
+            CharacterModel randomEnemy =
                 _levelModel.CharactersOnLevel[Random.Range(0, _levelModel.CharactersOnLevel.Count - 1)];
 
             if (randomEnemy.Equals(_character))

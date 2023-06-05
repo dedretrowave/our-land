@@ -1,18 +1,22 @@
 using System.Collections.Generic;
-using Characters.Base;
+using Characters.Model;
+using UnityEngine;
 
 namespace Level.Models
 {
     public class LevelModel
     {
-        private int _numberOfPlayerEnemies;
-        private List<Character> _charactersOnLevel;
+        private int _reward;
+        private int _numberOfPlayerEnemies = 0;
+        private List<CharacterModel> _charactersOnLevel;
 
+        public int Reward => _reward;
         public int NumberOfPlayerEnemies => _numberOfPlayerEnemies;
-        public List<Character> CharactersOnLevel => new(_charactersOnLevel);
+        public List<CharacterModel> CharactersOnLevel => new(_charactersOnLevel);
 
-        public LevelModel(List<Character> characters)
+        public LevelModel(List<CharacterModel> characters, int reward)
         {
+            _reward = reward;
             _charactersOnLevel = new(characters);
             
             _charactersOnLevel.ForEach(character =>

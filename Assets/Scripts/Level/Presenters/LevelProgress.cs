@@ -1,6 +1,7 @@
 using System;
-using Characters.Base;
+using Characters.Model;
 using Level.Models;
+using UnityEngine;
 
 namespace Level.Presenters
 {
@@ -11,18 +12,19 @@ namespace Level.Presenters
         private int _numberOfEnemies;
 
         public event Action<LevelStatus> OnStatusChange;
+        public event Action<LevelStatus> OnEndWithStatus; 
 
         public LevelProgress(LevelModel model)
         {
             _numberOfEnemies = model.NumberOfPlayerEnemies;
         }
 
-        public void ChangeStatusAfterCharacterLost(Character character)
+        public void ChangeStatusAfterCharacterLost(CharacterModel character)
         {
             switch (character.Fraction)
             {
                 case Fraction.Fraction.Player:
-                    SetStatus(LevelStatus.Lose);
+                    SetLose();
                     break;
                 case Fraction.Fraction.Enemy:
                     ProceedToSuccess();
@@ -37,11 +39,23 @@ namespace Level.Presenters
         private void ProceedToSuccess()
         {
             _numberOfEnemies--;
-
+            
             if (_numberOfEnemies == 0)
             {
-                SetStatus(LevelStatus.Win);
+                SetWin();
             }
+        }
+
+        private void SetLose()
+        {
+            SetStatus(LevelStatus.Lose);
+            OnEndWithStatus?.Invoke(_status);
+        }
+
+        private void SetWin()
+        {
+            SetStatus(LevelStatus.Win);
+            OnEndWithStatus?.Invoke(_status);
         }
 
         private void SetStatus(LevelStatus newStatus)

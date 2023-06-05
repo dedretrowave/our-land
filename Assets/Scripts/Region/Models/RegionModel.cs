@@ -1,23 +1,23 @@
-using Characters.Base;
+using Characters.Model;
 
 namespace Region.Models
 {
     public class RegionModel
     {
         private int _id;
-        private Character _currentOwner;
+        private CharacterModel _currentOwner;
         
-        public Character CurrentOwner => _currentOwner;
+        public CharacterModel CurrentOwner => _currentOwner;
         public int Id => _id;
 
-        public void SetOwner(Character newOwner)
+        public void SetOwner(CharacterModel newOwner)
         {
             _currentOwner = newOwner;
         }
 
         public RegionModel() { }
 
-        public RegionModel(Character owner, int id = -1)
+        public RegionModel(CharacterModel owner, int id = -1)
         {
             _id = id;
             _currentOwner = owner;

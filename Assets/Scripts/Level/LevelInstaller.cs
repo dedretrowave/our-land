@@ -1,25 +1,18 @@
 using System;
 using System.Collections.Generic;
-using Characters;
-using Characters.Base;
-using Characters.SO;
+using Characters.Model;
 using DI;
 using Level.Enemy;
 using Level.Models;
 using Level.Presenters;
-using Region;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Level
 {
     public class LevelInstaller : MonoBehaviour
     {
-        [SerializeField] private FractionRegionDictionary _fractionRegions;
+        [SerializeField] private LevelConfig _levelConfig;
 
-        private LevelModel _levelModel;
-        
         private CharacterRegionContainer _characterRegionContainer;
         
         private LevelProgress _levelProgress;
@@ -27,73 +20,39 @@ namespace Level
 
         private List<Coroutine> _enemyAIsCoroutines = new();
 
-        // TODO: Check if can refactor
-        public void Construct(Character enemy)
+        public event Action<LevelStatus> OnEnd;
+        
+        public void Construct(LevelConfig config, LevelModel levelModel)
         {
-            List<Character> characters = new();
-            
+            _levelConfig = config;
             _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
-            CharacterFactory characterFactory = DependencyContext.Dependencies.Get<CharacterFactory>();
-
-            foreach (var fractionRegion in _fractionRegions)
-            {
-                fractionRegion.Value.List.ForEach(region =>
-                {
-                    Character regionOwner;
-                    
-                    if (fractionRegion.Key == Fraction.Fraction.Enemy)
-                    {
-                        regionOwner = enemy;
-                    }
-                    else
-                    {
-                        regionOwner = characterFactory.Get(fractionRegion.Key);
-                    }
-                    
-                    region.Construct(regionOwner);
-                    
-                    _characterRegionContainer.Add(enemy, region.View);
-                });
-            }
             
-            _levelModel = new LevelModel(characters);
-            
-            _levelModel.CharactersOnLevel.ForEach(character =>
+            levelModel.CharactersOnLevel.ForEach(character =>
             {
                 if (character.Fraction != Fraction.Fraction.Enemy) return;
                 
-                _enemyAis.Add(new (character, _levelModel));
+                _enemyAis.Add(new (character, levelModel));
             });
             
-            _enemyAis.ForEach(ai => _enemyAIsCoroutines.Add(StartCoroutine(ai.StartAttacking())));
+            _enemyAis.ForEach(ai => _enemyAIsCoroutines.Add(
+                StartCoroutine(ai.StartAttacking())));
 
-            _levelProgress = new(_levelModel);
+            _levelProgress = new(levelModel);
 
             _characterRegionContainer.OnCharacterLost += _levelProgress.ChangeStatusAfterCharacterLost;
-            _levelProgress.OnStatusChange += TryFinishWithStatus;
+            _levelProgress.OnEndWithStatus += InvokeLevelEndAndUnsubscribe;
         }
 
-        private void TryFinishWithStatus(LevelStatus status)
+        private void InvokeLevelEndAndUnsubscribe(LevelStatus status)
         {
-            if (status == LevelStatus.InProgress) return;
-
-            switch (status)
-            {
-                case LevelStatus.Win:
-                    Debug.Log("WIN!!!!");
-                    break;
-                case LevelStatus.Lose:
-                    Debug.Log("LOSE((((");
-                    break;
-                default:
-                    return;
-            }
+            OnEnd?.Invoke(status);
+            Destroy(gameObject);
         }
 
         private void OnDisable()
         {
             _characterRegionContainer.OnCharacterLost -= _levelProgress.ChangeStatusAfterCharacterLost;
-            _levelProgress.OnStatusChange -= TryFinishWithStatus;
+            _levelProgress.OnStatusChange -= InvokeLevelEndAndUnsubscribe;
             
             _enemyAIsCoroutines.ForEach(ai => StopCoroutine(ai));
         }
@@ -103,17 +62,4 @@ namespace Level
             DependencyContext.Dependencies.Add(new(typeof(LevelInstaller), () => this));
         }
     }
-
-    [Serializable]
-    internal class Regions
-    { 
-        public List<RegionInstaller> List;
-    }
-    
-    [Serializable]
-    internal class FractionRegionDictionary : SerializableDictionary<Fraction.Fraction, Regions> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(FractionRegionDictionary))]
-    internal class FractionRegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
 }

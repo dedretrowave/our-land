@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Characters.Base;
+using Characters.Model;
 using DI;
 using Region.Views;
 using UnityEngine;
@@ -9,11 +9,11 @@ namespace Level
 {
     public class CharacterRegionContainer : MonoBehaviour
     {
-        private Dictionary<Character, List<RegionView>> _characterRegions = new();
+        private Dictionary<CharacterModel, List<RegionView>> _characterRegions = new();
 
-        public event Action<Character> OnCharacterLost;
+        public event Action<CharacterModel> OnCharacterLost;
 
-        public void Add(Character character, RegionView regionView)
+        public void Add(CharacterModel character, RegionView regionView)
         {
             if (_characterRegions.ContainsKey(character))
             {
@@ -27,27 +27,21 @@ namespace Level
             regionView.OnOwnerChange += MoveRegionToCharacter;
         }
 
-        public List<RegionView> GetRegionsByCharacter(Character character)
+        public List<RegionView> GetRegionsByCharacter(CharacterModel character)
         {
             return _characterRegions[character];
         }
 
-        private void MoveRegionToCharacter(RegionView region, Character oldOwner, Character newOwner)
+        private void MoveRegionToCharacter(RegionView region, CharacterModel oldOwner, CharacterModel newOwner)
         {
-            if (_characterRegions[oldOwner].Count != 0 || _characterRegions.ContainsKey(oldOwner))
-            {
-                _characterRegions[oldOwner].Remove(region);
-            }
+            _characterRegions[oldOwner].Remove(region);
 
             if (_characterRegions[oldOwner].Count == 0)
             {
                 OnCharacterLost?.Invoke(oldOwner);
             }
-
-            if (_characterRegions.ContainsKey(newOwner))
-            {
-                _characterRegions[newOwner].Add(region);
-            }
+            
+            _characterRegions[newOwner].Add(region);
         }
 
         private void OnDisable()

@@ -26,5 +26,10 @@ namespace Animations
         {
             _animator.SetTrigger(AnimationNames.Jump);
         }
+
+        public void PlayLose()
+        {
+            _animator.SetTrigger(AnimationNames.Lose);
+        }
     }
 }

@@ -2,9 +2,9 @@ using Characters.Skins;
 using Characters.SO;
 using UnityEngine;
 
-namespace Characters.Base
+namespace Characters.Model
 {
-    public class Character
+    public class CharacterModel
     {
         private int _id;
 
@@ -23,7 +23,7 @@ namespace Characters.Base
         public bool AllowsDivisionGeneration => _allowsDivisionGeneration;
         public bool IsPlayerControlled => _isPlayerControlled;
 
-        public Character(CharacterSO so)
+        public CharacterModel(CharacterSO so)
         {
             _id = so.Id;
             _fraction = so.Fraction;

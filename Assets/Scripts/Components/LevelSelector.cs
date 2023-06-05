@@ -9,7 +9,7 @@ namespace Components
 {
     public class LevelSelector : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private LevelInstaller _prefab;
+        [SerializeField] private LevelConfig _prefab;
         
         private RegionModel _model;
         

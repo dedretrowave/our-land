@@ -1,4 +1,4 @@
-using Characters.Base;
+using Characters.Model;
 using Characters.Skins;
 using Components.Division.UI;
 using Region.Views;
@@ -15,13 +15,13 @@ namespace Components.Division
         [SerializeField] private float _speed;
         [SerializeField] private float _stopDistance = 0.1f;
         
-        private Character _character;
+        private CharacterModel _character;
         private GarrisonView _target;
 
-        public Character Owner => _character;
+        public CharacterModel Owner => _character;
         public GarrisonView Target => _target;
 
-        public void Construct(Character owner, GarrisonView target)
+        public void Construct(CharacterModel owner, GarrisonView target)
         {
             _view = GetComponent<DivisionView>();
             _character = owner;

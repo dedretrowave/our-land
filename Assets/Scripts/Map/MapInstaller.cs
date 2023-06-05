@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
-using Characters.Base;
-using Characters.SO;
+using Characters.Model;
+using Characters.View;
 using Components;
 using DI;
 using Level;
 using Region.Models;
 using Region.Views;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace Map
@@ -24,7 +21,14 @@ namespace Map
             for (int i = 0; i < models.Count; i++)
             {
                 RegionView region = _regions[i];
-                Character regionOwner = models[i].CurrentOwner;
+                CharacterModel regionOwner = models[i].CurrentOwner;
+
+                CharacterView owner = region.GetComponentInChildren<CharacterView>();
+
+                if (owner != null)
+                {
+                    owner.SetSkin(regionOwner.Skin);
+                }
 
                 if (regionOwner.Fraction == Fraction.Fraction.Enemy)
                 {

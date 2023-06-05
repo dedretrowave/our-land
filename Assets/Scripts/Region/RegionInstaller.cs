@@ -1,5 +1,6 @@
 using System;
-using Characters.Base;
+using Characters.Model;
+using Characters.View;
 using Region.Models;
 using Region.Presenters;
 using Region.Views;
@@ -13,18 +14,21 @@ namespace Region
     {
         private GarrisonView _garrisonView;
         private RegionView _regionView;
+        private CharacterView _characterView;
 
         private RegionPresenter _regionPresenter;
+        private GarrisonPresenter _garrisonPresenter;
 
         private RegionModel _regionModel;
         private GarrisonModel _garrisonModel;
 
         public RegionView View => _regionView;
 
-        public void Construct(Character character)
+        public void Construct(CharacterModel character)
         {
             _garrisonView = GetComponentInChildren<GarrisonView>();
             _regionView = GetComponentInChildren<RegionView>();
+            _characterView = GetComponentInChildren<CharacterView>();
 
             _garrisonModel = new(
                 _garrisonView.GarrisonInitialCount,
@@ -32,26 +36,47 @@ namespace Region
                 _garrisonView.DivisionSpawnRate);
             _regionModel = new();
 
-            _regionPresenter = new(character, _regionView, _garrisonView, _regionModel, _garrisonModel);
+            _regionPresenter = new(
+                character,
+                _regionView,
+                _regionModel,
+                _characterView);
+            _garrisonPresenter = new(
+                _garrisonView,
+                _garrisonModel,
+                _regionModel
+            );
 
             if (_regionModel.CurrentOwner.AllowsDivisionGeneration)
             {
-                StartCoroutine(_regionPresenter.IncreaseContinuously());
+                StartCoroutine(_garrisonPresenter.IncreaseContinuously());
             }
 
-            _garrisonView.OnDamageTaken += _regionPresenter.TakeDamage;
-            _garrisonView.OnGarrisonRelease += _regionPresenter.TryTargetRegion;
-            _regionPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
+            _garrisonView.OnDamageTaken += _garrisonPresenter.TakeDamage; 
+            _garrisonView.OnGarrisonRelease += _garrisonPresenter.TryTargetRegion;
+
+            _garrisonPresenter.OnDamageTaken += _regionPresenter.TakeDamage;
+            _garrisonPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
+            _garrisonPresenter.OnOwnerChangePossible += _regionPresenter.ChangeOwner;
+            
             _regionPresenter.OnOwnerChange += ChangeOwner;
             
             ChangeOwner(_regionModel.CurrentOwner, _regionModel.CurrentOwner);
         }
+        
+        private void OnDisable()
+        {
+            _garrisonView.OnDamageTaken -= _garrisonPresenter.TakeDamage; 
+            _garrisonView.OnGarrisonRelease -= _garrisonPresenter.TryTargetRegion;
 
-        private void ChangeOwner(Character oldOwner, Character newOwner)
+            _garrisonPresenter.OnDamageTaken -= _regionPresenter.TakeDamage;
+        }
+
+        private void ChangeOwner(CharacterModel oldOwner, CharacterModel newOwner)
         {
             if (newOwner.AllowsDivisionGeneration)
             {
-                StartCoroutine(_regionPresenter.IncreaseContinuously());
+                StartCoroutine(_garrisonPresenter.IncreaseContinuously());
             }
             
             if (newOwner.Fraction == Fraction.Fraction.Player)
@@ -68,14 +93,7 @@ namespace Region
 
         private void ReleaseGarrison(GarrisonView targetPoint)
         {
-            StartCoroutine(_regionPresenter.ReleaseGarrison(targetPoint));
-        }
-
-        private void OnDisable()
-        {
-            _garrisonView.OnDamageTaken -= _regionPresenter.TakeDamage;
-            _garrisonView.OnGarrisonRelease -= _regionPresenter.TryTargetRegion;
-            _regionPresenter.OnSuccessfulRegionTarget -= ReleaseGarrison;
+            StartCoroutine(_garrisonPresenter.ReleaseGarrison(targetPoint));
         }
     }
 }

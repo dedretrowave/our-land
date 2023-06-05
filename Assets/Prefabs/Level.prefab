@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8864377050859232694}
   - component: {fileID: 8864377050859232695}
   - component: {fileID: 9005245549221386580}
+  - component: {fileID: 312497151827226961}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -188,19 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f040e60c941045d1be372acd4e753624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fractionRegions:
-    m_keys: 000000000100000002000000
-    m_values:
-    - List:
-      - {fileID: 4917840513762811437}
-      - {fileID: 4917840514417354903}
-      - {fileID: 4917840514510572446}
-      - {fileID: 4917840513511552203}
-    - List:
-      - {fileID: 4917840514781971082}
-    - List:
-      - {fileID: 5801056996964494250}
-      - {fileID: 4917840514990806197}
+  _levelConfig: {fileID: 312497151827226961}
 --- !u!114 &9005245549221386580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +202,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1c9bd9426b4d008ae54cb82f45c3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &312497151827226961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864377050859232693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125345e66fa24693955f634514d36fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reward: 2000
+  _fractionRegions:
+    m_keys: 000000000200000001000000
+    m_values:
+    - List:
+      - {fileID: 4917840513762811437}
+      - {fileID: 4917840514417354903}
+      - {fileID: 4917840514510572446}
+      - {fileID: 4917840513511552203}
+    - List:
+      - {fileID: 5801056996964494250}
+      - {fileID: 4917840514990806197}
+    - List:
+      - {fileID: 4917840514781971082}
 --- !u!1001 &5489891230032149044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,6 +759,14 @@ PrefabInstance:
     - target: {fileID: 580875397096851803, guid: d6b19144ba458cf4fa0db3a50c4abee1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783952403519481566, guid: d6b19144ba458cf4fa0db3a50c4abee1, type: 3}
+      propertyPath: _garrisonIncreaseRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783952403519481566, guid: d6b19144ba458cf4fa0db3a50c4abee1, type: 3}
+      propertyPath: _garrisonInitialCount
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2691288676079614666, guid: d6b19144ba458cf4fa0db3a50c4abee1, type: 3}
       propertyPath: m_Sprite

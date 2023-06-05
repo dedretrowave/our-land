@@ -1,5 +1,5 @@
 using System;
-using Characters.Base;
+using Characters.Model;
 using Components.Division;
 using TMPro;
 using UnityEngine;
@@ -37,7 +37,7 @@ namespace Region.Views
             OnGarrisonRelease?.Invoke(point);
         }
 
-        public void SendDivision(GarrisonView target, Character owner)
+        public void SendDivision(GarrisonView target, CharacterModel owner)
         {
             Division division = Instantiate(_division, transform);
             division.Construct(owner, target);
