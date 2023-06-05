@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Characters.Model;
 using DI;
 using Level.Enemy;
 using Level.Models;

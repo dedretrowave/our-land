@@ -12,7 +12,7 @@ namespace Characters
         [SerializeField] private List<CharacterSO> _characterSOs;
         private List<CharacterModel> _characters = new();
 
-        public void AddCharacter(CharacterModel character)
+        public void Add(CharacterModel character)
         {
             if (!_characters.Contains(character))
             {
@@ -20,14 +20,14 @@ namespace Characters
             }
         }
 
-        public CharacterModel Get(Fraction.Fraction fraction)
+        public CharacterModel GetByFraction(Fraction.Fraction fraction)
         {
             return _characters.Find(character => character.Fraction == fraction);
         }
 
         private void Awake()
         {
-            _characterSOs.ForEach(characterSO => _characters.Add(new(characterSO)));
+            _characterSOs.ForEach(characterSO => Add(new(characterSO)));
             
             DependencyContext.Dependencies.Add(new(typeof(CharacterContainer), () => this));
             DontDestroyOnLoad(gameObject);

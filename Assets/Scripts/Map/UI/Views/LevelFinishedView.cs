@@ -1,5 +1,8 @@
 using System;
 using Animations;
+using Characters;
+using Characters.Model;
+using Characters.View;
 using DI;
 using TMPro;
 using UnityEngine;
@@ -17,7 +20,9 @@ namespace Map.UI.Views
         [SerializeField] private Sprite _winSprite;
         [SerializeField] private Sprite _loseSprite;
 
+        [Header("Character")]
         [SerializeField] private CharacterAnimations _animations;
+        [SerializeField] private CharacterView _characterView;
         
         [Header("Banner")]
         [SerializeField] private Image _banner;
@@ -76,6 +81,14 @@ namespace Map.UI.Views
             _doubleRewardButton.onClick.AddListener(ApplyDoubleReward);
             
             DependencyContext.Dependencies.Add(new Dependency(typeof(LevelFinishedView), () => this));
+        }
+
+        private void Start()
+        {
+            CharacterContainer characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
+            CharacterModel player = characterContainer.GetByFraction(Fraction.Fraction.Player);
+            
+            _characterView.SetSkin(player.Skin);
         }
     }
 }

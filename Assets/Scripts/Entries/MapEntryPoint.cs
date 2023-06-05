@@ -15,40 +15,24 @@ namespace Entries
     public class MapEntryPoint : MonoBehaviour
     {
         [SerializeField] private RegionCharacterSODictionary _regionCharacterSODefault;
-        
-        private List<RegionModel> _regionModels = new();
 
-        private MapInstaller _mapInstaller;
-        
         private void Start()
         {
-            // TODO: Load RegionModels from Save
-            
-            if (_regionModels.Count == 0)
-            {
-                CreateDefaultModels();
-            }
-            
-            _mapInstaller = DependencyContext.Dependencies.Get<MapInstaller>();
-            
-            _mapInstaller.Construct(_regionModels);
-        }
+            //TODO: Load models from Save?
 
-        private void CreateDefaultModels()
-        {
-            foreach (RegionModel newModel in _regionCharacterSODefault
-                         .Select(regionCharacterSO 
-                             => new CharacterModel(regionCharacterSO.Value))
-                         .Select(owner 
-                             => new RegionModel(owner)))
+            foreach (var regionCharacterSO in _regionCharacterSODefault)
             {
-                _regionModels.Add(newModel);
+                MapRegionInstaller region = regionCharacterSO.Key;
+                CharacterModel character = new(regionCharacterSO.Value);
+                RegionModel regionModel = new(character);
+
+                region.Construct(regionModel);
             }
         }
     }
     
     [Serializable]
-    internal class RegionCharacterSODictionary : SerializableDictionary<RegionView, CharacterSO> {}
+    internal class RegionCharacterSODictionary : SerializableDictionary<MapRegionInstaller, CharacterSO> {}
 #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(RegionCharacterSODictionary))]
     internal class RegionCharacterSODictionaryUI : SerializableDictionaryPropertyDrawer {}

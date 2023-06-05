@@ -1,10 +1,8 @@
 using System;
 using Characters.Model;
 using Characters.View;
-using Components.Division;
 using Region.Models;
 using Region.Views;
-using Object = UnityEngine.Object;
 
 namespace Region.Presenters
 {

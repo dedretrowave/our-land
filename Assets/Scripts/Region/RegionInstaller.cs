@@ -70,6 +70,10 @@ namespace Region
             _garrisonView.OnGarrisonRelease -= _garrisonPresenter.TryTargetRegion;
 
             _garrisonPresenter.OnDamageTaken -= _regionPresenter.TakeDamage;
+            _garrisonPresenter.OnSuccessfulRegionTarget -= ReleaseGarrison;
+            _garrisonPresenter.OnOwnerChangePossible -= _regionPresenter.ChangeOwner;
+            
+            _regionPresenter.OnOwnerChange -= ChangeOwner;
         }
 
         private void ChangeOwner(CharacterModel oldOwner, CharacterModel newOwner)
