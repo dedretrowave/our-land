@@ -21,7 +21,7 @@ namespace Map.Presenters
             _regionModel = model;
             _regionView = view;
             
-            SetOwner(_regionModel.CurrentOwner);
+            _regionView.SetVFXByCharacter(_regionModel.CurrentOwner);
         }
 
         public void SetOwner(CharacterModel newOwner)

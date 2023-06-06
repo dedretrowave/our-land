@@ -27,7 +27,7 @@ namespace Entries
             _levelInstaller = levelConfig.GetComponent<LevelInstaller>();
             _mapRegionInstaller = mapRegion;
 
-            levelConfig.Init(mapRegion.CurrentOwner);
+            levelConfig.Init(_mapRegionInstaller.CurrentOwner);
 
             LevelModel levelModel = new(levelConfig.Characters, levelConfig.Reward);
 

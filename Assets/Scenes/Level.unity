@@ -610,9 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46b29c6a9ce40069d78fe4bfe47400f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _regionCharacterSODefault:
-    m_keys: []
-    m_values: []
+  _regionCharacterSODefault: []
 --- !u!1 &509648298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,10 +2841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _regionCharacterSODefault:
-    m_keys:
-    - {fileID: 8891632735479537200}
-    m_values:
-    - {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
+  - Region: {fileID: 8891632735479537200}
+    CharacterSO: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}
 --- !u!4 &8891632735479537178
 Transform:
   m_ObjectHideFlags: 0

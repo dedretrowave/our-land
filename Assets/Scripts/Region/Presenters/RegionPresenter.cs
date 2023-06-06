@@ -3,6 +3,7 @@ using Characters.Model;
 using Characters.View;
 using Region.Models;
 using Region.Views;
+using UnityEngine;
 
 namespace Region.Presenters
 {
@@ -24,8 +25,7 @@ namespace Region.Presenters
             _regionView = regionView;
             _regionModel = regionModel;
             _characterView = characterView;
-            ChangeOwner(defaultOwner);
-            _characterView.SetSkin(_regionModel.CurrentOwner.Skin);
+            SetOwner(defaultOwner);
         }
 
         public void TakeDamage()
@@ -33,7 +33,7 @@ namespace Region.Presenters
             _characterView.PlayHurt();
         }
 
-        public void ChangeOwner(CharacterModel newOwner)
+        public void SetOwner(CharacterModel newOwner)
         {
             CharacterModel oldOwner = _regionModel.CurrentOwner;
             _regionModel.SetOwner(newOwner);

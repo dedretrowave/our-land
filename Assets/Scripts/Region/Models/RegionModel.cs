@@ -1,3 +1,4 @@
+using System;
 using Characters.Model;
 
 namespace Region.Models

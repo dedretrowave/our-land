@@ -1,40 +1,60 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Characters.Model;
 using Characters.SO;
-using DI;
 using Map;
 using Region.Models;
-using Region.Views;
-using UnityEditor;
+using Save;
 using UnityEngine;
 
 namespace Entries
 {
     public class MapEntryPoint : MonoBehaviour
     {
-        [SerializeField] private RegionCharacterSODictionary _regionCharacterSODefault;
+        [SerializeField] private List<RegionCharacterSO> _regionCharacterSODefault;
+
+        private RegionModelLoader _regionModelLoader;
 
         private void Start()
         {
-            //TODO: Load models from Save?
+            _regionModelLoader = new();
 
-            foreach (var regionCharacterSO in _regionCharacterSODefault)
+            List<RegionModel> regionModels = _regionModelLoader.GetRegions();
+
+            if (regionModels.Count == 0)
             {
-                MapRegionInstaller region = regionCharacterSO.Key;
-                CharacterModel character = new(regionCharacterSO.Value);
-                RegionModel regionModel = new(character);
+                CreateDefaultModels();
+                return;
+            }
+            
+            for (int i = 0; i < _regionCharacterSODefault.Count; i++)
+            {
+                MapRegionInstaller region = _regionCharacterSODefault[i].Region;
+                RegionModel regionModel = regionModels[i];
 
+                _regionModelLoader.SaveRegion(regionModel);
+                region.Construct(regionModel);
+            }
+        }
+
+        private void CreateDefaultModels()
+        {
+            for (int i = 0; i < _regionCharacterSODefault.Count; i++)
+            {
+                MapRegionInstaller region = _regionCharacterSODefault[i].Region;
+                CharacterModel character = new(_regionCharacterSODefault[i].CharacterSO);
+                RegionModel regionModel = new(character, i);
+
+                _regionModelLoader.SaveRegion(regionModel);
                 region.Construct(regionModel);
             }
         }
     }
-    
+
     [Serializable]
-    internal class RegionCharacterSODictionary : SerializableDictionary<MapRegionInstaller, CharacterSO> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(RegionCharacterSODictionary))]
-    internal class RegionCharacterSODictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
+    internal class RegionCharacterSO
+    {
+        public MapRegionInstaller Region;
+        public CharacterSO CharacterSO;
+    }
 }

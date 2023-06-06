@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using UnityEngine;
 using Application = UnityEngine.Application;
 
-namespace Src.Saves
+namespace Save
 {
-    public class SaveFileHandler : MonoBehaviour
+    public class SaveFileHandler
     {
         private string _serializedData;
 
@@ -22,10 +22,13 @@ namespace Src.Saves
 
         public void Save(string path, object data)
         {
-            string json = JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            });
+            string json = JsonConvert.SerializeObject(
+                data, 
+                Formatting.Indented,
+                new JsonSerializerSettings 
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                });
 
 #if UNITY_EDITOR
             SaveInternal(path, json);
@@ -34,7 +37,7 @@ namespace Src.Saves
 #endif
         }
 
-        public void GetSerializedData(string data)
+        private void GetSerializedData(string data)
         {
             _serializedData = data;
         }
@@ -64,10 +67,5 @@ namespace Src.Saves
 
         [DllImport("__Internal")]
         private static extern void GetSerializedExternal(string fieldName);
-
-        private void Start()
-        {
-            DontDestroyOnLoad(this);
-        }
     }
 }

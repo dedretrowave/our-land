@@ -36,7 +36,7 @@ namespace Level
                     
                     regionOwner = fractionRegion.Key == Fraction.Fraction.Enemy ? 
                         enemy : characterFactory.GetByFraction(fractionRegion.Key);
-                    
+
                     if (!_characters.Contains(regionOwner)) 
                         _characters.Add(regionOwner);
                     

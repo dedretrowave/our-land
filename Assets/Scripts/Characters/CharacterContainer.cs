@@ -20,6 +20,11 @@ namespace Characters
             }
         }
 
+        public CharacterModel GetById(int id)
+        {
+            return _characters.Find(character => character.Id == id);
+        }
+
         public CharacterModel GetByFraction(Fraction.Fraction fraction)
         {
             return _characters.Find(character => character.Fraction == fraction);

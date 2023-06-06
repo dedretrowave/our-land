@@ -57,7 +57,7 @@ namespace Region
 
             _garrisonPresenter.OnDamageTaken += _regionPresenter.TakeDamage;
             _garrisonPresenter.OnSuccessfulRegionTarget += ReleaseGarrison;
-            _garrisonPresenter.OnOwnerChangePossible += _regionPresenter.ChangeOwner;
+            _garrisonPresenter.OnOwnerChangePossible += _regionPresenter.SetOwner;
             
             _regionPresenter.OnOwnerChange += ChangeOwner;
             
@@ -71,7 +71,7 @@ namespace Region
 
             _garrisonPresenter.OnDamageTaken -= _regionPresenter.TakeDamage;
             _garrisonPresenter.OnSuccessfulRegionTarget -= ReleaseGarrison;
-            _garrisonPresenter.OnOwnerChangePossible -= _regionPresenter.ChangeOwner;
+            _garrisonPresenter.OnOwnerChangePossible -= _regionPresenter.SetOwner;
             
             _regionPresenter.OnOwnerChange -= ChangeOwner;
         }
