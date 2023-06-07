@@ -1,3 +1,4 @@
+using System;
 using Characters;
 using Characters.Model;
 using Characters.Presenter;
@@ -28,6 +29,8 @@ namespace Map
 
         public CharacterModel CurrentOwner => _regionModel.CurrentOwner;
 
+        public event Action<RegionModel> OnModelUpdated; 
+
         public void Construct(RegionModel model)
         {
             _characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
@@ -42,6 +45,7 @@ namespace Map
             _characterPresenter = new(_characterView, _characterModel);
 
             _mapRegionPresenter.OnOwnerChange += _characterPresenter.SetSkinByCharacter;
+            _mapRegionPresenter.OnOwnerChange += ChangeOwner;
             
             if (TryGetComponent(out LevelSelector selector))
             {
@@ -49,6 +53,17 @@ namespace Map
                 _selector.Construct(this);
                 _selector.enabled = _characterModel.Fraction == Fraction.Fraction.Enemy;
             }
+        }
+        
+        private void OnDisable()
+        {
+            _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
+            _mapRegionPresenter.OnOwnerChange -= ChangeOwner;
+        }
+
+        public void ChangeOwner(CharacterModel _)
+        {
+            OnModelUpdated?.Invoke(_regionModel);
         }
 
         public void SetRegionOwnerByLevelStatus(LevelStatus status)
@@ -63,11 +78,6 @@ namespace Map
         {
             _mapRegionPresenter.SetOwner(newOwner);
             _selector.enabled = newOwner.Fraction == Fraction.Fraction.Enemy;
-        }
-
-        private void OnDisable()
-        {
-            _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
         }
 
         private void Awake()

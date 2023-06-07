@@ -44,9 +44,21 @@ namespace Save
 
         public void SaveRegion(RegionModel regionModel)
         {
-            _regions.Add(regionModel);
-            _regionDataSet.Clear();
-            _regions.ForEach(region => _regionDataSet.Add(new(region)));
+            RegionModel existingRegion = _regions.Find(model => model.Id == regionModel.Id);
+            
+            if (existingRegion == null)
+            {
+                _regions.Add(regionModel);
+                _regionDataSet.Add(new(regionModel));
+            }
+            else
+            {
+                _regions.Remove(existingRegion);
+                _regions.Add(regionModel);
+                _regionDataSet.Clear();
+                _regions.ForEach(region => _regionDataSet.Add(new(region)));
+            }
+
             _saveFileHandler.Save(LocalPath, _regionDataSet);
         }
     }

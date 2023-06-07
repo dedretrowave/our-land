@@ -2,8 +2,6 @@ using DI;
 using Entries;
 using Level;
 using Map;
-using Region.Models;
-using Region.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

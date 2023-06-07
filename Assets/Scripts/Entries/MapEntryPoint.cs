@@ -32,9 +32,19 @@ namespace Entries
                 MapRegionInstaller region = _regionCharacterSODefault[i].Region;
                 RegionModel regionModel = regionModels[i];
 
-                _regionModelLoader.SaveRegion(regionModel);
-                region.Construct(regionModel);
+                CreateModel(regionModel, region);
             }
+        }
+
+        private void OnDisable()
+        {
+            _regionCharacterSODefault.ForEach(
+                region => region.Region.OnModelUpdated -= SaveModel);
+        }
+
+        private void SaveModel(RegionModel model)
+        {
+            _regionModelLoader.SaveRegion(model);
         }
 
         private void CreateDefaultModels()
@@ -43,11 +53,16 @@ namespace Entries
             {
                 MapRegionInstaller region = _regionCharacterSODefault[i].Region;
                 CharacterModel character = new(_regionCharacterSODefault[i].CharacterSO);
-                RegionModel regionModel = new(character, i);
 
-                _regionModelLoader.SaveRegion(regionModel);
-                region.Construct(regionModel);
+                CreateModel(new(character, i), region);
             }
+        }
+
+        private void CreateModel(RegionModel model, MapRegionInstaller region)
+        {
+            _regionModelLoader.SaveRegion(model);
+            region.Construct(model);
+            region.OnModelUpdated += SaveModel;
         }
     }
 

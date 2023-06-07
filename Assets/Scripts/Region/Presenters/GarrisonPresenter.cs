@@ -51,7 +51,16 @@ namespace Region.Presenters
             while (i < initialCount)
             {
                 _garrisonView.SendDivision(target, _regionModel.CurrentOwner);
-                DecreaseCount();
+
+                try
+                {
+                    DecreaseCount();
+                }
+                catch (Exception e)
+                {
+                    //ignored
+                }
+                
                 i++;
                 yield return new WaitForSeconds(_garrisonModel.DivisionSpawnRate);
             }
