@@ -1,11 +1,11 @@
-using System;
 using DI;
 using Level;
 using Level.Models;
+using Level.Presenters;
 using Map;
 using Map.UI.Presenters;
 using Map.UI.Views;
-using Region.Models;
+using Player.Wallet;
 using Region.Presenters;
 using UnityEngine;
 
@@ -15,6 +15,7 @@ namespace Entries
     {
         private LevelInstaller _levelInstaller;
         private MapRegionInstaller _mapRegionInstaller;
+        private WalletInstaller _walletInstaller;
         
         private LevelFinishedView _levelFinishedView;
 
@@ -25,24 +26,47 @@ namespace Entries
         {
             LevelConfig levelConfig = Instantiate(levelPrefab, transform);
             _levelInstaller = levelConfig.GetComponent<LevelInstaller>();
+            _walletInstaller = DependencyContext.Dependencies.Get<WalletInstaller>();
             _mapRegionInstaller = mapRegion;
 
             levelConfig.Init(_mapRegionInstaller.CurrentOwner);
 
             LevelModel levelModel = new(levelConfig.Characters, levelConfig.Reward);
 
-            _levelFinishedPresenter = new(_levelFinishedView, levelModel);
+            _levelFinishedPresenter = new(_levelFinishedView);
+            
+            _walletInstaller.Construct();
+            
+            _levelInstaller.OnStarted += _walletInstaller.Hide;
 
             _levelInstaller.Construct(levelConfig, levelModel);
+
+            _levelInstaller.OnWinWithReward += _levelFinishedPresenter.DisplayReward;
+            _levelInstaller.OnWinWithReward += _walletInstaller.DisplayReward;
             
-            _levelInstaller.OnEnd += _levelFinishedPresenter.TriggerByLevelEnd;
-            _levelInstaller.OnEnd += _mapRegionInstaller.SetRegionOwnerByLevelStatus;
+            _levelInstaller.OnWin += _mapRegionInstaller.SetPlayerOwner;
+
+            _levelInstaller.OnLose += _levelFinishedPresenter.TriggerLose;
+            
+            _levelInstaller.OnEnd += Unsubscribe;
+            _levelInstaller.OnEnd += _walletInstaller.Show;
         }
 
-        private void OnDisable()
+        private void Unsubscribe()
         {
-            _levelInstaller.OnEnd -= _levelFinishedPresenter.TriggerByLevelEnd;
-            _levelInstaller.OnEnd -= _mapRegionInstaller.SetRegionOwnerByLevelStatus;
+            if (_levelInstaller == null) return;
+            
+            _levelInstaller.OnStarted -= _walletInstaller.Hide;
+            
+            _levelInstaller.OnWinWithReward -= _levelFinishedPresenter.DisplayReward;
+            _levelInstaller.OnWinWithReward -= _walletInstaller.DisplayReward;
+            
+            _levelInstaller.OnWin -= _mapRegionInstaller.SetPlayerOwner;
+
+            _levelInstaller.OnLose -= _levelFinishedPresenter.TriggerLose;
+            
+            _levelInstaller.OnEnd -= Unsubscribe;
+            _levelInstaller.OnEnd -= _walletInstaller.Show;
         }
 
         private void Start()

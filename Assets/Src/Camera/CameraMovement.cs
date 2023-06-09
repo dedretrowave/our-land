@@ -48,9 +48,9 @@ namespace Src.Camera
             
             Vector3 direction = _touchStart - GetWorldPosition(_groundZ);
             Vector3 newCameraPosition = _cam.transform.position + direction;
-            
+
             if (Mathf.Abs(newCameraPosition.x) >= _xBorderValue ||
-                Mathf.Abs(newCameraPosition.z) >= _yBorderValue) return;
+                Mathf.Abs(newCameraPosition.y) >= _yBorderValue) return;
             
             _cam.transform.position = newCameraPosition;
         }

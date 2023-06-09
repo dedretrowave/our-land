@@ -56,7 +56,7 @@ namespace Region.Presenters
                 {
                     DecreaseCount();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //ignored
                 }

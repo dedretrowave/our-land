@@ -1,6 +1,4 @@
-using System;
 using Level.Models;
-using Level.Presenters;
 using Map.UI.Views;
 
 namespace Map.UI.Presenters
@@ -11,35 +9,18 @@ namespace Map.UI.Presenters
         
         private LevelFinishedView _view;
 
-        public LevelFinishedPresenter(LevelFinishedView view, LevelModel levelModel)
+        public LevelFinishedPresenter(LevelFinishedView view)
         {
-            _levelModel = levelModel;
             _view = view;
         }
 
-        public void TriggerByLevelEnd(LevelStatus status)
-        {
-            switch (status)
-            {
-                case LevelStatus.Win:
-                    TriggerWin();
-                    break;
-                case LevelStatus.Lose:
-                    TriggerLose();
-                    break;
-                case LevelStatus.InProgress:
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
-            }
-        }
-
-        private void TriggerWin()
+        public void DisplayReward(int reward)
         {
             _view.ShowWin();
-            _view.DisplayReward(_levelModel.Reward);
+            _view.DisplayReward(reward);
         }
-
-        private void TriggerLose()
+        
+        public void TriggerLose()
         {
             _view.ShowLose();
         }

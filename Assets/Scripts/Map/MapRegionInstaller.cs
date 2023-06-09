@@ -66,12 +66,9 @@ namespace Map
             OnModelUpdated?.Invoke(_regionModel);
         }
 
-        public void SetRegionOwnerByLevelStatus(LevelStatus status)
+        public void SetPlayerOwner()
         {
-            if (status == LevelStatus.Win)
-            {
-                SetRegionOwner(_characterContainer.GetByFraction(Fraction.Fraction.Player));
-            }
+            SetRegionOwner(_characterContainer.GetByFraction(Fraction.Fraction.Player));
         }
 
         private void SetRegionOwner(CharacterModel newOwner)

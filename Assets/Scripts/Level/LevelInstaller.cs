@@ -12,6 +12,8 @@ namespace Level
     {
         [SerializeField] private LevelConfig _levelConfig;
 
+        private LevelModel _levelModel;
+
         private CharacterRegionContainer _characterRegionContainer;
         
         private LevelProgress _levelProgress;
@@ -19,10 +21,15 @@ namespace Level
 
         private List<Coroutine> _enemyAIsCoroutines = new();
 
-        public event Action<LevelStatus> OnEnd;
+        public event Action OnStarted;
+        public event Action OnWin;
+        public event Action<int> OnWinWithReward; 
+        public event Action OnLose;
+        public event Action OnEnd;
         
         public void Construct(LevelConfig config, LevelModel levelModel)
         {
+            _levelModel = levelModel;
             _levelConfig = config;
             _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
             
@@ -40,11 +47,28 @@ namespace Level
 
             _characterRegionContainer.OnCharacterLost += _levelProgress.ChangeStatusAfterCharacterLost;
             _levelProgress.OnEndWithStatus += InvokeLevelEndAndUnsubscribe;
+            
+            OnStarted?.Invoke();
         }
 
         private void InvokeLevelEndAndUnsubscribe(LevelStatus status)
         {
-            OnEnd?.Invoke(status);
+            switch (status)
+            {
+                case LevelStatus.Win:
+                    OnWinWithReward?.Invoke(_levelModel.Reward);
+                    OnWin?.Invoke();
+                    OnEnd?.Invoke();
+                    break;
+                case LevelStatus.Lose:
+                    OnLose?.Invoke();
+                    OnEnd?.Invoke();
+                    break;
+                case LevelStatus.InProgress:
+                default:
+                    return;
+            }
+
             Destroy(gameObject);
         }
 
