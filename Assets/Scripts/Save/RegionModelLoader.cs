@@ -64,24 +64,6 @@ namespace Save
     }
 
     [Serializable]
-    internal class RegionDataSet
-    {
-        private List<RegionData> _data;
-
-        public List<RegionData> Data => _data;
-
-        public RegionDataSet()
-        {
-            _data = new();
-        }
-
-        public void Add(RegionData region)
-        {
-            
-        }
-    }
-
-    [Serializable]
     internal class RegionData
     {
         public int Id { get; set; }
@@ -104,39 +86,5 @@ namespace Save
             Id = regionModel.Id;
             OwnerId = regionModel.CurrentOwner.Id;
         }
-        
-
-        // public List<RegionModel> Regions => _regions;
-        //
-        // public RegionData()
-        // {
-        //     _regions = new List<RegionModel>();
-        // }
-        //
-        // public RegionModel GetById(int id)
-        // {
-        //     return _regions.Find(region => region.Id == id);
-        // }
-        //
-        // public void SetRegion(RegionModel regionModel)
-        // {
-        //
-        //     // if (!_regions.Contains(regionModel))
-        //     // {
-        //     //     _regions.Add(regionModel);
-        //     //     return;
-        //     // }
-        //
-        //     RegionModel existingRegionModel = _regions.Find(region => region.Id == regionModel.Id);
-        //     int existingRegionModesIndex = _regions.IndexOf(existingRegionModel);
-        //
-        //     if (existingRegionModesIndex == -1)
-        //     {
-        //         _regions.Add(regionModel);
-        //         return;
-        //     }
-        //     
-        //     _regions[existingRegionModesIndex] = regionModel;
-        // }
     }
 }
