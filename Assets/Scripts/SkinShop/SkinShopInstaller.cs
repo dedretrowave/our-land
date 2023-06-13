@@ -1,6 +1,7 @@
 using System;
 using Characters.Skins;
 using Characters.Skins.SO;
+using EventBus;
 using SkinShop.Models;
 using SkinShop.Presenters;
 using SkinShop.Views;
@@ -36,6 +37,8 @@ namespace SkinShop
 
         private void OnDisable()
         {
+            if (_presenter == null || _view == null) return;
+            
             _view.OnSelectedNext -= _presenter.SelectNext;
             _view.OnSelectedPrev -= _presenter.SelectPrev;
             _view.OnPurchased -= _presenter.Purchase;

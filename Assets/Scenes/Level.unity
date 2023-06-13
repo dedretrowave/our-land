@@ -1201,6 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46b29c6a9ce40069d78fe4bfe47400f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testInstaller: {fileID: 0}
   _regionCharacterSODefault: []
 --- !u!1 &500211167
 GameObject:
@@ -5702,6 +5703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46b29c6a9ce40069d78fe4bfe47400f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testInstaller: {fileID: 1104928757}
   _regionCharacterSODefault:
   - Region: {fileID: 8891632735479537200}
     CharacterSO: {fileID: 11400000, guid: 481f000eaed22f54abafecab62a11d4f, type: 2}

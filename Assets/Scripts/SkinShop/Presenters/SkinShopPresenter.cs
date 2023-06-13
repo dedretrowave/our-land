@@ -4,6 +4,7 @@ using Characters.Skins;
 using Characters.Skins.SO;
 using SkinShop.Models;
 using SkinShop.Views;
+using UnityEngine;
 
 namespace SkinShop.Presenters
 {
@@ -27,6 +28,11 @@ namespace SkinShop.Presenters
             _skinItems = new(items);
             
             _view.SetSkin(_model.Skin);
+        }
+
+        public void ReactOnBus(Skin skin)
+        {
+            Debug.Log($"BUS RETURNED SKIN WITH PRICE {skin.GetTotalCost()}");
         }
 
         public void SelectNext(SkinItemType type)

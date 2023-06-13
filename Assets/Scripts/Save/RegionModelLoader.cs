@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Model;
+using Characters.Skins;
 using DI;
 using Region.Models;
 using UnityEngine;
