@@ -32,5 +32,10 @@ namespace Characters.Model
             _allowsDivisionGeneration = so.AllowsDivisionGeneration;
             _isPlayerControlled = so.IsPlayerControlled;
         }
+
+        public void SetSkin(Skin skin)
+        {
+            _skin = skin;
+        }
     }
 }

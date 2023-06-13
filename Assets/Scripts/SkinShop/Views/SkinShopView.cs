@@ -3,6 +3,7 @@ using Characters.Skins;
 using Characters.Skins.SO;
 using Characters.View;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SkinShop.Views
 {
@@ -21,12 +22,32 @@ namespace SkinShop.Views
             _characterView.SetSkin(skin);
         }
 
-        public void SelectNext(SkinItemType type)
+        public void SelectNextEyes()
+        {
+            SelectNext(SkinItemType.Eyes);
+        }
+
+        public void SelectPrevEyes()
+        {
+            SelectPrev(SkinItemType.Eyes);
+        }
+
+        public void SelectNextFlag()
+        {
+            SelectNext(SkinItemType.Flag);
+        }
+
+        public void SelectPrevFlag()
+        {
+            SelectPrev(SkinItemType.Flag);
+        }
+
+        private void SelectNext(SkinItemType type)
         {
             OnSelectedNext?.Invoke(type);
         }
         
-        public void SelectPrev(SkinItemType type)
+        private void SelectPrev(SkinItemType type)
         {
             OnSelectedPrev?.Invoke(type);
         }

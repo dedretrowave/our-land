@@ -2,9 +2,11 @@ using System;
 using Characters;
 using Characters.Model;
 using Characters.Presenter;
+using Characters.Skins;
 using Characters.View;
 using Components;
 using DI;
+using EventBus;
 using Map.Presenters;
 using Region.Models;
 using Region.Views;
@@ -14,15 +16,16 @@ namespace Map
 {
     public class MapRegionInstaller : MonoBehaviour
     {
-        private RegionView _regionView;
         private CharacterView _characterView;
+        private RegionView _regionView;
 
         private CharacterModel _characterModel;
         private RegionModel _regionModel;
 
-        private MapRegionPresenter _mapRegionPresenter;
         private CharacterPresenter _characterPresenter;
+        private MapRegionPresenter _mapRegionPresenter;
 
+        private EventBus.EventBus _eventBus;
         private LevelSelector _selector;
         private CharacterContainer _characterContainer;
 
@@ -32,6 +35,7 @@ namespace Map
 
         public void Construct(RegionModel model)
         {
+            _eventBus = EventBus.EventBus.Instance;
             _characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
 
             _regionView = GetComponentInChildren<RegionView>();
@@ -45,7 +49,12 @@ namespace Map
 
             _mapRegionPresenter.OnOwnerChange += _characterPresenter.SetSkinByCharacter;
             _mapRegionPresenter.OnOwnerChange += ChangeOwner;
-            
+
+            if (_characterPresenter.IsPlayer)
+            {
+                _eventBus.AddListener<Skin>(EventName.ON_SKIN_IN_SHOP_SELECTED, _characterPresenter.SetSkin);
+            }
+
             if (TryGetComponent(out LevelSelector selector))
             {
                 _selector = selector;
@@ -56,6 +65,11 @@ namespace Map
         
         private void OnDisable()
         {
+            if (_characterPresenter.IsPlayer)
+            {
+                _eventBus.RemoveListener<Skin>(EventName.ON_SKIN_IN_SHOP_SELECTED, _characterPresenter.SetSkin);
+            }
+            
             _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
             _mapRegionPresenter.OnOwnerChange -= ChangeOwner;
         }

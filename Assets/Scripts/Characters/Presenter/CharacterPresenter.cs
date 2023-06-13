@@ -11,6 +11,8 @@ namespace Characters.Presenter
 
         private CharacterModel _model;
 
+        public bool IsPlayer => _model.Fraction == Fraction.Fraction.Player;
+
         public CharacterPresenter(
             CharacterView view,
             CharacterModel model)
@@ -23,7 +25,13 @@ namespace Characters.Presenter
 
         public void SetSkinByCharacter(CharacterModel character)
         {
-            _view.SetSkin(character.Skin);
+            SetSkin(character.Skin);
+        }
+        
+        public void SetSkin(Skin skin)
+        {
+            _model.SetSkin(skin);
+            _view.SetSkin(_model.Skin);
         }
     }
 }

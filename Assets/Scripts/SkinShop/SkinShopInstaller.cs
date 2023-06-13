@@ -1,6 +1,8 @@
 using System;
+using Characters;
 using Characters.Skins;
 using Characters.Skins.SO;
+using DI;
 using EventBus;
 using SkinShop.Models;
 using SkinShop.Presenters;
@@ -14,12 +16,20 @@ namespace SkinShop
     {
         [SerializeField] private SkinItemTypeCollectionDictionary _skinItems;
 
+        private EventBus.EventBus _eventBus;
+
         private SkinShopPresenter _presenter;
 
         private SkinShopView _view;
 
-        public void Construct(Skin playerInitialSkin)
+        private void Awake()
         {
+            CharacterContainer characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
+
+            Skin playerInitialSkin = characterContainer.GetByFraction(Fraction.Fraction.Player).Skin;
+
+            _eventBus = EventBus.EventBus.Instance;
+            
             foreach ((SkinItemType type, SkinItemCollection collection) in _skinItems)
             {
                 collection.Construct(playerInitialSkin.GetItemByType(type));
@@ -33,6 +43,8 @@ namespace SkinShop
             _view.OnSelectedPrev += _presenter.SelectPrev;
             _view.OnPurchased += _presenter.Purchase;
             _view.OnSelected += _presenter.Select;
+
+            _presenter.OnSkinSelected += OnSkinSelect;
         }
 
         private void OnDisable()
@@ -43,6 +55,13 @@ namespace SkinShop
             _view.OnSelectedPrev -= _presenter.SelectPrev;
             _view.OnPurchased -= _presenter.Purchase;
             _view.OnSelected -= _presenter.Select;
+            
+            _presenter.OnSkinSelected -= OnSkinSelect;
+        }
+
+        private void OnSkinSelect(Skin selectedSkin)
+        {
+            _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_SELECTED, selectedSkin);
         }
     }
     

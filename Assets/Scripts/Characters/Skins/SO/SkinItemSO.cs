@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Characters.Skins.SO
@@ -16,6 +17,7 @@ namespace Characters.Skins.SO
         public int Id => _id;
     }
 
+    [Serializable]
     public enum SkinItemType
     {
         Flag,

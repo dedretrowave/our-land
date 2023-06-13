@@ -17,7 +17,7 @@ namespace SkinShop.Presenters
         private SkinShopView _view;
 
         public event Action<int> OnItemsPurchased;
-        public event Action<Skin> OnSkinSelected; 
+        public event Action<Skin> OnSkinSelected;
 
         public SkinShopPresenter(SkinShopView view, Skin initialSkin, Dictionary<SkinItemType, SkinItemCollection> items)
         {
@@ -30,14 +30,12 @@ namespace SkinShop.Presenters
             _view.SetSkin(_model.Skin);
         }
 
-        public void ReactOnBus(Skin skin)
-        {
-            Debug.Log($"BUS RETURNED SKIN WITH PRICE {skin.GetTotalCost()}");
-        }
-
         public void SelectNext(SkinItemType type)
         {
+            Debug.Log($"{type} SELECTED NEXT");
             SkinItem item = _skinItems[type].GetNextAndMove();
+            
+            Debug.Log($"{item.Id} SELECTED");
             
             SetItem(item);
         }
@@ -66,6 +64,7 @@ namespace SkinShop.Presenters
         private void SetItem(SkinItem item)
         {
             _model.SetSkinItem(item);
+            _view.SetSkin(_model.Skin);
         }
     }
 }

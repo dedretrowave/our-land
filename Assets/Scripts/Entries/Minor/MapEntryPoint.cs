@@ -2,16 +2,18 @@ using System;
 using System.Collections.Generic;
 using Characters.Model;
 using Characters.SO;
+using DI;
 using Map;
 using Region.Models;
 using Save;
+using SkinShop;
 using UnityEngine;
 
 namespace Entries
 {
     public class MapEntryPoint : MonoBehaviour
     {
-        [SerializeField] private List<RegionCharacterSO> _regionCharacterSODefault;
+        [SerializeField] private List<CharacterSORegion> _regionCharacterSODefault;
 
         private RegionModelLoader _regionModelLoader;
 
@@ -67,7 +69,7 @@ namespace Entries
     }
 
     [Serializable]
-    internal class RegionCharacterSO
+    internal class CharacterSORegion
     {
         public MapRegionInstaller Region;
         public CharacterSO CharacterSO;
