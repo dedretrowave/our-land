@@ -1,4 +1,3 @@
-using System;
 using Player.Wallet.Models;
 
 namespace Save

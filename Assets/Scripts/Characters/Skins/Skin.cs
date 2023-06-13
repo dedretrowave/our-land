@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Characters.Skins.SO;
 using UnityEngine;
 
 namespace Characters.Skins
@@ -8,15 +9,15 @@ namespace Characters.Skins
     public class Skin
     {
         private List<SkinItem> _items = new();
+        
+        public Skin(SkinData data)
+        {
+            data.ItemsCopy.ForEach(item => _items.Add(new(item)));
+        }
 
         public SkinItem GetItemByType(SkinItemType type)
         {
             return _items.Find(item => item.Type == type);
-        }
-
-        public void MarkItemsAsPurchased()
-        {
-            //
         }
 
         public void SetItem(SkinItem item)
@@ -34,6 +35,11 @@ namespace Characters.Skins
             }
         }
 
+        public void MarkItemsAsPurchased()
+        {
+            //
+        }
+        
         public int GetTotalCost()
         {
             int totalCost = 0;
@@ -47,11 +53,6 @@ namespace Characters.Skins
             });
 
             return totalCost;
-        }
-
-        public Skin(SkinData data)
-        {
-            data.ItemsCopy.ForEach(item => _items.Add(new(item)));
         }
     }
 }

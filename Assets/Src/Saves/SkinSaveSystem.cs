@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Characters.Skins;
+using Characters.Skins.SO;
 using DI;
 using Save;
 using UnityEngine;

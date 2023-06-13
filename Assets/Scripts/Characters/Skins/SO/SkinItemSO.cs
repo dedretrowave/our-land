@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Characters.Skins
+namespace Characters.Skins.SO
 {
-    [CreateAssetMenu(fileName = "SkinShopItem", menuName = "Skin Shop Item", order = 0)]
+    [CreateAssetMenu(fileName = "SkinShopItem", menuName = "Skins/Skin Shop Item", order = 0)]
     public class SkinItemSO : ScriptableObject
     {
         [SerializeField] private SkinItemType _type;

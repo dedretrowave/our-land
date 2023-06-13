@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Characters.Skins.SO;
 using UnityEngine;
 
 namespace Characters.Skins

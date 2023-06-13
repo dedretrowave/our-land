@@ -1,4 +1,5 @@
 using Characters.Skins;
+using Characters.Skins.SO;
 using UnityEngine;
 using UnityEngine.UI;
 

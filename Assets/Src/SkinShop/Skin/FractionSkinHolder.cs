@@ -1,5 +1,6 @@
 using System;
 using Characters.Skins;
+using Characters.Skins.SO;
 using Src.Map.Fraction;
 using UnityEditor;
 using UnityEngine;
