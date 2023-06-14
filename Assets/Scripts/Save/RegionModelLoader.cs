@@ -67,25 +67,22 @@ namespace Save
     [Serializable]
     internal class RegionData
     {
-        public int Id { get; set; }
-        public int OwnerId { get; set; }
+        private int _id;
+        private int _ownerId;
 
-        public RegionData()
-        {
-            Id = -1;
-            OwnerId = -1;
-        }
+        public int Id => _id;
+        public int OwnerId => _ownerId;
 
         public RegionData(int id, int ownerId)
         {
-            Id = id;
-            OwnerId = ownerId;
+            _id = id;
+            _ownerId = ownerId;
         }
 
         public RegionData(RegionModel regionModel)
         {
-            Id = regionModel.Id;
-            OwnerId = regionModel.CurrentOwner.Id;
+            _id = regionModel.Id;
+            _ownerId = regionModel.CurrentOwner.Id;
         }
     }
 }

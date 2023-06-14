@@ -62,10 +62,10 @@ namespace Map
                 _selector.enabled = _characterModel.Fraction == Fraction.Fraction.Enemy;
             }
         }
-        
-        private void OnDisable()
+
+        public void Disable()
         {
-            if (_characterPresenter.IsPlayer)
+            if (_characterPresenter != null && _characterPresenter.IsPlayer)
             {
                 _eventBus.RemoveListener<Skin>(EventName.ON_SKIN_IN_SHOP_SELECTED, _characterPresenter.SetSkin);
             }

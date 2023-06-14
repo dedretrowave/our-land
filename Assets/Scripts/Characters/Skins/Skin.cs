@@ -9,11 +9,14 @@ namespace Characters.Skins
     public class Skin
     {
         private List<SkinItem> _items = new();
-        
+
+        //TODO: LEGACY, REMOVE
         public Skin(SkinData data)
         {
             data.ItemsCopy.ForEach(item => _items.Add(new(item)));
         }
+
+        public Skin() { }
 
         public SkinItem GetItemByType(SkinItemType type)
         {
@@ -53,6 +56,11 @@ namespace Characters.Skins
             });
 
             return totalCost;
+        }
+
+        public void IterateThroughItems(Action<SkinItem> callback)
+        {
+            _items.ForEach(callback);
         }
     }
 }

@@ -2,22 +2,19 @@ using System;
 using System.Collections.Generic;
 using Characters.Model;
 using Characters.SO;
-using DI;
-using Map;
 using Region.Models;
 using Save;
-using SkinShop;
 using UnityEngine;
 
-namespace Entries
+namespace Map
 {
-    public class MapEntryPoint : MonoBehaviour
+    public class MapInitializer : MonoBehaviour
     {
         [SerializeField] private List<CharacterSORegion> _regionCharacterSODefault;
 
         private RegionModelLoader _regionModelLoader;
 
-        private void Start()
+        public void Construct()
         {
             _regionModelLoader = new();
 
@@ -38,7 +35,7 @@ namespace Entries
             }
         }
 
-        private void OnDisable()
+        public void Disable()
         {
             _regionCharacterSODefault.ForEach(
                 region => region.Region.OnModelUpdated -= SaveModel);

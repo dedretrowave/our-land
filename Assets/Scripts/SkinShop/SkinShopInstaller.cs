@@ -24,6 +24,7 @@ namespace SkinShop
 
         private void Awake()
         {
+            // TODO: REFACTOR TO Construct() METHOD WITH playerInitialSkin PARAMETER
             CharacterContainer characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
 
             Skin playerInitialSkin = characterContainer.GetByFraction(Fraction.Fraction.Player).Skin;
