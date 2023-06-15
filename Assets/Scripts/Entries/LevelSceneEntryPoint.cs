@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using Characters;
 using DI;
 using Map;
+using Player;
 using Save;
+using SkinShop;
 using UnityEngine;
 
 namespace Entries
@@ -10,35 +12,23 @@ namespace Entries
     public class LevelSceneEntryPoint : MonoBehaviour
     {
         [SerializeField] private MapInitializer _mapInitializer;
-        
-        [Header("Containers")]
-        private CharacterContainer _characterContainer;
-        
-        [Header("Loaders")]
-        private RegionModelLoader _regionModelLoader;
-        private CharactersModelLoader _charactersModelLoader;
+
+        [SerializeField] private SkinShopInstaller _skinShop;
+
+        [SerializeField] private PlayerInstaller _player;
 
         private void Start()
         {
-            _characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
-            _characterContainer.Construct();
-            
-            _regionModelLoader = new();
-            _charactersModelLoader = new();
-
-            List<CharacterData> characterData = _charactersModelLoader.GetData();
-
-            if (characterData.Count > 0)
-            {
-                _characterContainer.CreateModelsFromData(characterData);
-            }
-
-            _mapInitializer.Construct();
+            _player.Construct();
+            // _mapInitializer.Construct();
+            _skinShop.Construct(_player.GetSkin());
         }
 
         private void OnDisable()
         {
-            _mapInitializer.Disable();
+            _player.Disable();
+            // _mapInitializer.Disable();
+            _skinShop.Disable();
         }
     }
 }

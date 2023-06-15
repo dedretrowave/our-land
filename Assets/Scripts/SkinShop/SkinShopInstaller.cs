@@ -22,13 +22,8 @@ namespace SkinShop
 
         private SkinShopView _view;
 
-        private void Awake()
+        public void Construct(Skin playerInitialSkin)
         {
-            // TODO: REFACTOR TO Construct() METHOD WITH playerInitialSkin PARAMETER
-            CharacterContainer characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
-
-            Skin playerInitialSkin = characterContainer.GetByFraction(Fraction.Fraction.Player).Skin;
-
             _eventBus = EventBus.EventBus.Instance;
             
             foreach ((SkinItemType type, SkinItemCollection collection) in _skinItems)
@@ -48,10 +43,8 @@ namespace SkinShop
             _presenter.OnSkinSelected += OnSkinSelect;
         }
 
-        private void OnDisable()
+        public void Disable()
         {
-            if (_presenter == null || _view == null) return;
-            
             _view.OnSelectedNext -= _presenter.SelectNext;
             _view.OnSelectedPrev -= _presenter.SelectPrev;
             _view.OnPurchased -= _presenter.Purchase;

@@ -4,50 +4,92 @@ using Characters;
 using Characters.Model;
 using Characters.Skins;
 using Characters.Skins.SO;
+using Characters.View;
 using DI;
+using EventBus;
 using Newtonsoft.Json;
+using Save;
 
-namespace Save
+namespace Player.Presenter
 {
-    public class CharactersModelLoader
+    public class PlayerPresenter
     {
-        private const string LocalPath = "characters";
+        private const string DataSavePath = "player";
+        
+        private CharacterModel _model;
+        private CharacterModel _defaultModelFromSO;
+        
+        private CharacterView _view;
 
         private SaveFileHandler _saveFileHandler;
-        private CharacterContainer _characterContainer;
 
-        private List<CharacterData> _characters = new();
+        public event Action<Skin> OnSkinChange; 
 
-        public CharactersModelLoader()
+        public PlayerPresenter(CharacterView view)
         {
-            _saveFileHandler = new SaveFileHandler();
+            CharacterContainer characterContainer = DependencyContext
+                .Dependencies.Get<CharacterContainer>();
 
-            _characters = _saveFileHandler.Load<List<CharacterData>>(LocalPath)
-                ?? new();
-        }
-
-        public List<CharacterData> GetData()
-        {
-            return _characters;
-        }
-
-        public void SaveCharacter(CharacterModel characterModel)
-        {
-            CharacterData existingRegion = _characters.Find(
-                model => model.Id == characterModel.Id);
-            CharacterData characterData = new(characterModel);
+            _defaultModelFromSO = characterContainer
+                .GetByFraction(Fraction.Fraction.Player);
             
-            if (existingRegion == null)
+            _saveFileHandler = new();
+            
+            _view = view;
+            
+            LoadData();
+
+            _view.SetSkin(_model.Skin);
+        }
+
+        public void SetSkin(Skin skin)
+        {
+            _model.SetSkin(skin);
+            _view.SetSkin(_model.Skin);
+            SaveData(_model);
+            OnSkinChange?.Invoke(_model.Skin);
+        }
+
+        public Skin GetCurrentSkin()
+        {
+            return _model.Skin;
+        }
+
+        private void SaveData(CharacterModel model)
+        {
+            CharacterData data = new(_model);
+            
+            _saveFileHandler.Save(DataSavePath, data);
+        }
+
+        private void LoadData()
+        {
+            SkinItemsContainer skinItemsContainer = DependencyContext.Dependencies.Get<SkinItemsContainer>();
+            
+            CharacterData data = _saveFileHandler.Load<CharacterData>(DataSavePath)
+                                 ?? new();
+
+            if (data.Id == -1)
             {
-                _characters.Add(characterData);
-            }
-            else
-            {
-                _characters.Remove(existingRegion);
-                _characters.Add(characterData);
+                _model = _defaultModelFromSO;
+                return;
             }
 
-            _saveFileHandler.Save(LocalPath, _characters);
+            Skin playerSkin = new();
+            
+            data.Skin.ForEach(item 
+                => playerSkin.SetItem(
+                    skinItemsContainer.GetByIdAndType(item.Type, item.Id)));
+
+            _model = new(
+                data.Id,
+                data.ControlledRegions,
+                _defaultModelFromSO.Fraction,
+                playerSkin,
+                _defaultModelFromSO.Color,
+                _defaultModelFromSO.AllowsDivisionGeneration,
+                _defaultModelFromSO.IsPlayerControlled
+                );
         }
     }
     

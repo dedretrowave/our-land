@@ -32,10 +32,7 @@ namespace SkinShop.Presenters
 
         public void SelectNext(SkinItemType type)
         {
-            Debug.Log($"{type} SELECTED NEXT");
             SkinItem item = _skinItems[type].GetNextAndMove();
-            
-            Debug.Log($"{item.Id} SELECTED");
             
             SetItem(item);
         }

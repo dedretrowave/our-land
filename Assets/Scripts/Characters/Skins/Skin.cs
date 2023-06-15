@@ -9,11 +9,15 @@ namespace Characters.Skins
     public class Skin
     {
         private List<SkinItem> _items = new();
-
-        //TODO: LEGACY, REMOVE
-        public Skin(SkinData data)
+        
+        public Skin(List<SkinItemSO> data)
         {
-            data.ItemsCopy.ForEach(item => _items.Add(new(item)));
+            data.ForEach(item => _items.Add(new(item)));
+        }
+
+        public Skin(List<SkinItem> items)
+        {
+            items.ForEach(item => _items.Add(item));
         }
 
         public Skin() { }

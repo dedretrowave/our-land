@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Characters.Skins;
+using Characters.Skins.SO;
 using UnityEngine;
 
 namespace Characters.SO
@@ -14,7 +16,7 @@ namespace Characters.SO
         [SerializeField] private Fraction.Fraction _fraction;
         
         [Header("Components")]
-        [SerializeField] private SkinData _skin;
+        [SerializeField] private List<SkinItemSO> _skin;
         [SerializeField] private Color _color;
 
         [Header("Parameters")]
