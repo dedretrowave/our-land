@@ -10,6 +10,7 @@ namespace SkinShop.Views
 {
     public class SkinShopView : MonoBehaviour
     {
+        [SerializeField] private Button _openButton;
         [SerializeField] private CharacterView _characterView;
 
         [Header("Purchase/Select Buttons")]
@@ -22,6 +23,16 @@ namespace SkinShop.Views
 
         public event Action OnSelected;
         public event Action OnPurchased;
+
+        public void HideButton()
+        {
+            _openButton.gameObject.SetActive(false);
+        }
+
+        public void ShowButton()
+        {
+            _openButton.gameObject.SetActive(true);
+        }
 
         public void SetSkin(Skin skin)
         {

@@ -41,6 +41,9 @@ namespace SkinShop
             _view.OnSelected += _presenter.Select;
 
             _presenter.OnSkinSelected += OnSkinSelect;
+            
+            _eventBus.AddListener(EventName.ON_LEVEL_STARTED, _presenter.HideButton);
+            _eventBus.AddListener(EventName.ON_LEVEL_ENDED, _presenter.ShowButton);
         }
 
         public void Disable()
@@ -51,6 +54,9 @@ namespace SkinShop
             _view.OnSelected -= _presenter.Select;
             
             _presenter.OnSkinSelected -= OnSkinSelect;
+            
+            _eventBus.RemoveListener(EventName.ON_LEVEL_STARTED, _presenter.HideButton);
+            _eventBus.RemoveListener(EventName.ON_LEVEL_ENDED, _presenter.ShowButton);
         }
 
         private void OnSkinSelect(Skin selectedSkin)

@@ -23,9 +23,7 @@ namespace Characters.Skins
                     SkinItemSO so = _itemsSO.Find(so => so.Id == item.Id);
 
                     if (so == null) return;
-                    
-                    Debug.Log(item.IsPurchased);
-                    
+
                     _items.Add(new(
                         so.Type,
                         so.Id,

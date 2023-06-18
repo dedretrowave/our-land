@@ -47,6 +47,16 @@ namespace Player.Presenter
             _view.SetSkin(_model.Skin);
         }
 
+        public void Hide()
+        {
+            _view.Hide();
+        }
+
+        public void Show()
+        {
+            _view.Show();
+        }
+
         public void SetSkin(Skin skin)
         {
             _model.SetSkin(skin);

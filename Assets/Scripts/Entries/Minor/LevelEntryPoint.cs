@@ -1,7 +1,6 @@
 using DI;
 using Level;
 using Level.Models;
-using Level.Presenters;
 using Map;
 using Map.UI.Presenters;
 using Map.UI.Views;
@@ -35,8 +34,6 @@ namespace Entries
 
             _levelFinishedPresenter = new(_levelFinishedView);
 
-            _levelInstaller.OnStarted += _walletInstaller.Hide;
-
             _levelInstaller.Construct(levelConfig, levelModel);
 
             _levelInstaller.OnWinWithReward += _levelFinishedPresenter.DisplayReward;
@@ -47,15 +44,12 @@ namespace Entries
             _levelInstaller.OnLose += _levelFinishedPresenter.TriggerLose;
             
             _levelInstaller.OnEnd += Unsubscribe;
-            _levelInstaller.OnEnd += _walletInstaller.Show;
         }
 
         private void Unsubscribe()
         {
             if (_levelInstaller == null) return;
-            
-            _levelInstaller.OnStarted -= _walletInstaller.Hide;
-            
+
             _levelInstaller.OnWinWithReward -= _levelFinishedPresenter.DisplayReward;
             _levelInstaller.OnWinWithReward -= _walletInstaller.DisplayReward;
             
@@ -64,7 +58,6 @@ namespace Entries
             _levelInstaller.OnLose -= _levelFinishedPresenter.TriggerLose;
             
             _levelInstaller.OnEnd -= Unsubscribe;
-            _levelInstaller.OnEnd -= _walletInstaller.Show;
         }
 
         private void Start()

@@ -71,6 +71,16 @@ namespace SkinShop.Presenters
             OnSkinSelected?.Invoke(selectedSkin);
         }
 
+        public void ShowButton()
+        {
+            _view.ShowButton();
+        }
+
+        public void HideButton()
+        {
+            _view.HideButton();
+        }
+
         private void SetItem(SkinItem item)
         {
             _model.SetSkinItem(item);

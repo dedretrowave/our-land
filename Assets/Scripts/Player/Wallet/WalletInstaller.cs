@@ -23,21 +23,13 @@ namespace Player.Wallet
             _presenter = new(_view);
             
             _eventBus.AddListener<int>(EventName.ON_SKIN_IN_SHOP_PURCHASED, _presenter.ReduceMoney);
+            _eventBus.AddListener(EventName.ON_LEVEL_STARTED, _presenter.Hide);
+            _eventBus.AddListener(EventName.ON_LEVEL_ENDED, _presenter.Show);
         }
 
         public void DisplayReward(int amount)
         {
             _presenter.AddMoney(amount);
-        }
-
-        public void Hide()
-        {
-            _presenter.Hide();
-        }
-
-        public void Show()
-        {
-            _presenter.Show();
         }
 
         private void Awake()

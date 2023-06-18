@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DI;
+using EventBus;
 using Level.Enemy;
 using Level.Models;
 using Level.Presenters;
@@ -11,6 +12,8 @@ namespace Level
     public class LevelInstaller : MonoBehaviour
     {
         [SerializeField] private LevelConfig _levelConfig;
+        
+        private EventBus.EventBus _eventBus;
 
         private LevelModel _levelModel;
 
@@ -29,6 +32,8 @@ namespace Level
         
         public void Construct(LevelConfig config, LevelModel levelModel)
         {
+            _eventBus = EventBus.EventBus.Instance;
+
             _levelModel = levelModel;
             _levelConfig = config;
             _characterRegionContainer = DependencyContext.Dependencies.Get<CharacterRegionContainer>();
@@ -49,10 +54,13 @@ namespace Level
             _levelProgress.OnEndWithStatus += InvokeLevelEndAndUnsubscribe;
             
             OnStarted?.Invoke();
+            _eventBus.TriggerEvent(EventName.ON_LEVEL_STARTED);
         }
 
         private void InvokeLevelEndAndUnsubscribe(LevelStatus status)
         {
+            _eventBus.TriggerEvent(EventName.ON_LEVEL_ENDED);
+            
             switch (status)
             {
                 case LevelStatus.Win:

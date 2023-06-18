@@ -30,6 +30,14 @@ namespace Player
                 .AddListener<Skin>(
                     EventName.ON_SKIN_IN_SHOP_SELECTED,
                     _presenter.SetSkin);
+            _eventBus
+                .AddListener(
+                    EventName.ON_LEVEL_STARTED,
+                    _presenter.Hide);
+            _eventBus
+                .AddListener(
+                    EventName.ON_LEVEL_ENDED,
+                    _presenter.Show);
         }
 
         public void Disable()
@@ -41,6 +49,14 @@ namespace Player
                 .RemoveListener<Skin>(
                     EventName.ON_SKIN_IN_SHOP_SELECTED,
                     _presenter.SetSkin);
+            _eventBus
+                .RemoveListener(
+                    EventName.ON_LEVEL_STARTED,
+                    _presenter.Hide);
+            _eventBus
+                .RemoveListener(
+                    EventName.ON_LEVEL_ENDED,
+                    _presenter.Show);
         }
 
         public Skin GetSkin()

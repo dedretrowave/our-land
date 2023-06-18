@@ -7,6 +7,7 @@ using Characters.SO;
 using DI;
 using EventBus;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters
 {
@@ -62,6 +63,18 @@ namespace Characters
         public CharacterModel GetByFraction(Fraction.Fraction fraction)
         {
             return Get(character => character.Fraction == fraction);
+        }
+
+        public CharacterModel GetRandomEnemy()
+        {
+            CharacterModel selectedEnemy = _characters[Random.Range(0, _characters.Count)];
+
+            if (selectedEnemy.Fraction != Fraction.Fraction.Enemy)
+            {
+                GetRandomEnemy();
+            }
+
+            return selectedEnemy;
         }
 
         private CharacterModel Get(Predicate<CharacterModel> callback)

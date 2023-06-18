@@ -12,6 +12,16 @@ namespace Characters.View
         
         [SerializeField] private Image _flag;
         [SerializeField] private Image _eyes;
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
         
         public void SetSkin(Skin skin)
         {

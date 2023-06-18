@@ -92,6 +92,13 @@ namespace Map
             _selector.enabled = newOwner.Fraction == Fraction.Fraction.Enemy;
         }
 
+        public void SetRandomEnemyOwner()
+        {
+            CharacterModel enemy = _characterContainer.GetRandomEnemy();
+            
+            SetRegionOwner(enemy);
+        }
+
         private void Awake()
         {
             DependencyContext.Dependencies.Add(new(typeof(MapRegionInstaller), () => this));

@@ -37,11 +37,13 @@ namespace Save
                 
                 _regions.Add(regionModel);
             });
+            
+            _regions.Sort((a, b) => a.Id - b.Id);
         }
 
         public List<RegionModel> GetRegions()
         {
-            return _regions;
+            return new(_regions);
         }
 
         public void SaveRegion(RegionModel regionModel)
