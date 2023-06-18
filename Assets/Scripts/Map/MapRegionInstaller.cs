@@ -52,7 +52,7 @@ namespace Map
 
             if (_characterPresenter.IsPlayer)
             {
-                _eventBus.AddListener<Skin>(EventName.ON_SKIN_IN_SHOP_SELECTED, _characterPresenter.SetSkin);
+                _eventBus.AddListener<Skin>(EventName.ON_CHARACTER_SKIN_CHANGE, _characterPresenter.SetSkin);
             }
 
             if (TryGetComponent(out LevelSelector selector))
@@ -82,6 +82,8 @@ namespace Map
         public void SetPlayerOwner()
         {
             SetRegionOwner(_characterContainer.GetByFraction(Fraction.Fraction.Player));
+            
+            _eventBus.AddListener<Skin>(EventName.ON_CHARACTER_SKIN_CHANGE, _characterPresenter.SetSkin);
         }
 
         private void SetRegionOwner(CharacterModel newOwner)

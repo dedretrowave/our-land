@@ -1,3 +1,4 @@
+using Characters.Model;
 using Characters.Skins;
 using Characters.View;
 using EventBus;
@@ -21,6 +22,9 @@ namespace Player
             _presenter = new PlayerPresenter(_playerView);
 
             _presenter.OnSkinChange += TriggerSkinChange;
+            _presenter.OnModelCreated += TriggerModelCreated;
+            
+            _presenter.Init();
             
             _eventBus
                 .AddListener<Skin>(
@@ -31,6 +35,8 @@ namespace Player
         public void Disable()
         {
             _presenter.OnSkinChange -= TriggerSkinChange;
+            _presenter.OnModelCreated -= TriggerModelCreated;
+            
             _eventBus
                 .RemoveListener<Skin>(
                     EventName.ON_SKIN_IN_SHOP_SELECTED,
@@ -45,6 +51,11 @@ namespace Player
         private void TriggerSkinChange(Skin skin)
         {
             _eventBus.TriggerEvent(EventName.ON_CHARACTER_SKIN_CHANGE, skin);
+        }
+
+        private void TriggerModelCreated(CharacterModel model)
+        {
+            _eventBus.TriggerEvent(EventName.ON_PLAYER_MODEL_CREATED, model);
         }
     }
 }

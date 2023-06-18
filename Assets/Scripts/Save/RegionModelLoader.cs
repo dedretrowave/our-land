@@ -4,6 +4,7 @@ using Characters;
 using Characters.Model;
 using Characters.Skins;
 using DI;
+using Newtonsoft.Json;
 using Region.Models;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ namespace Save
         public int Id => _id;
         public int OwnerId => _ownerId;
 
+        [JsonConstructor]
         public RegionData(int id, int ownerId)
         {
             _id = id;

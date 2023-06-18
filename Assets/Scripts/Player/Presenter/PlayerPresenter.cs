@@ -9,6 +9,7 @@ using DI;
 using EventBus;
 using Newtonsoft.Json;
 using Save;
+using UnityEngine;
 
 namespace Player.Presenter
 {
@@ -23,7 +24,8 @@ namespace Player.Presenter
 
         private SaveFileHandler _saveFileHandler;
 
-        public event Action<Skin> OnSkinChange; 
+        public event Action<Skin> OnSkinChange;
+        public event Action<CharacterModel> OnModelCreated; 
 
         public PlayerPresenter(CharacterView view)
         {
@@ -36,7 +38,10 @@ namespace Player.Presenter
             _saveFileHandler = new();
             
             _view = view;
-            
+        }
+
+        public void Init()
+        {
             LoadData();
 
             _view.SetSkin(_model.Skin);
@@ -46,7 +51,7 @@ namespace Player.Presenter
         {
             _model.SetSkin(skin);
             _view.SetSkin(_model.Skin);
-            SaveData(_model);
+            SaveData();
             OnSkinChange?.Invoke(_model.Skin);
         }
 
@@ -55,7 +60,7 @@ namespace Player.Presenter
             return _model.Skin;
         }
 
-        private void SaveData(CharacterModel model)
+        private void SaveData()
         {
             CharacterData data = new(_model);
             
@@ -90,6 +95,8 @@ namespace Player.Presenter
                 _defaultModelFromSO.AllowsDivisionGeneration,
                 _defaultModelFromSO.IsPlayerControlled
                 );
+            
+            OnModelCreated?.Invoke(_model);
         }
     }
     

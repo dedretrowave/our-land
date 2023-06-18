@@ -2,6 +2,7 @@ using System;
 using Animations;
 using Characters;
 using Characters.Model;
+using Characters.Skins;
 using Characters.View;
 using DI;
 using TMPro;
@@ -33,6 +34,11 @@ namespace Map.UI.Views
         [SerializeField] private Button _doubleRewardButton;
 
         public Action OnDoubleRewardApplied;
+
+        public void SetSkin(Skin skin)
+        {
+            _characterView.SetSkin(skin);
+        }
 
         public void ShowWin()
         {
@@ -81,14 +87,6 @@ namespace Map.UI.Views
             _doubleRewardButton.onClick.AddListener(ApplyDoubleReward);
             
             DependencyContext.Dependencies.Add(new Dependency(typeof(LevelFinishedView), () => this));
-        }
-
-        private void Start()
-        {
-            CharacterContainer characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
-            CharacterModel player = characterContainer.GetByFraction(Fraction.Fraction.Player);
-            
-            _characterView.SetSkin(player.Skin);
         }
     }
 }

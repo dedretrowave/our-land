@@ -34,9 +34,7 @@ namespace Entries
             LevelModel levelModel = new(levelConfig.Characters, levelConfig.Reward);
 
             _levelFinishedPresenter = new(_levelFinishedView);
-            
-            _walletInstaller.Construct();
-            
+
             _levelInstaller.OnStarted += _walletInstaller.Hide;
 
             _levelInstaller.Construct(levelConfig, levelModel);
