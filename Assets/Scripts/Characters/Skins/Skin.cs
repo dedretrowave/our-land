@@ -42,11 +42,6 @@ namespace Characters.Skins
             }
         }
 
-        public void MarkItemsAsPurchased()
-        {
-            //
-        }
-        
         public int GetTotalCost()
         {
             int totalCost = 0;

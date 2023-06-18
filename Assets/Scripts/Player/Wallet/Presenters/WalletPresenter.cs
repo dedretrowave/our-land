@@ -19,6 +19,7 @@ namespace Player.Wallet.Presenters
             
             _model = new(savedMoney);
             _view = view;
+            _view.SetMoney(_model.Money);
         }
 
         public void AddMoney(int amount)

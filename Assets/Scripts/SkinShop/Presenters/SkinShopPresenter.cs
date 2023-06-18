@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Characters.Skins;
 using Characters.Skins.SO;
+using EventBus;
 using SkinShop.Models;
 using SkinShop.Views;
 using UnityEngine;
@@ -16,11 +17,14 @@ namespace SkinShop.Presenters
         
         private SkinShopView _view;
 
-        public event Action<int> OnItemsPurchased;
+        private EventBus.EventBus _eventBus;
+        
         public event Action<Skin> OnSkinSelected;
 
         public SkinShopPresenter(SkinShopView view, Skin initialSkin, Dictionary<SkinItemType, SkinItemCollection> items)
         {
+            _eventBus = EventBus.EventBus.Instance;
+
             _model = new();
             _view = view;
             
@@ -48,7 +52,14 @@ namespace SkinShop.Presenters
         {
             int cost = _model.Skin.GetTotalCost();
             
-            OnItemsPurchased?.Invoke(cost);
+            foreach ((SkinItemType type, SkinItemCollection collection) in _skinItems)
+            {
+                SkinItem item = collection.GetById(_model.Skin.GetItemByType(type).Id);
+                item.SetPurchased();
+            }
+
+            _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, cost);
+            _view.SetPrice(0);
         }
 
         public void Select()
@@ -62,6 +73,7 @@ namespace SkinShop.Presenters
         {
             _model.SetSkinItem(item);
             _view.SetSkin(_model.Skin);
+            _view.SetPrice(_model.Skin.GetTotalCost());
         }
     }
 }

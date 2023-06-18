@@ -26,5 +26,10 @@ namespace Characters.Skins
             _sprite = so.Sprite;
             _price = so.Price;
         }
+
+        public void SetPurchased()
+        {
+            _isPurchased = true;
+        }
     }
 }

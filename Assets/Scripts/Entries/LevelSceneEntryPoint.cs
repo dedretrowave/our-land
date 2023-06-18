@@ -19,6 +19,7 @@ namespace Entries
         private void Start()
         {
             _characterContainer.Construct();
+            
             _player.Construct();
             _walletInstaller.Construct();
             _mapInitializer.Construct();

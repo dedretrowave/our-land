@@ -2,6 +2,7 @@ using System;
 using Characters.Skins;
 using Characters.Skins.SO;
 using Characters.View;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,11 @@ namespace SkinShop.Views
     public class SkinShopView : MonoBehaviour
     {
         [SerializeField] private CharacterView _characterView;
+
+        [Header("Purchase/Select Buttons")]
+        [SerializeField] private Button _selectButton;
+        [SerializeField] private Button _purchaseButton;
+        [SerializeField] private TextMeshProUGUI _priceLabel;
 
         public event Action<SkinItemType> OnSelectedNext;
         public event Action<SkinItemType> OnSelectedPrev;
@@ -20,6 +26,20 @@ namespace SkinShop.Views
         public void SetSkin(Skin skin)
         {
             _characterView.SetSkin(skin);
+        }
+
+        public void SetPrice(int price)
+        {
+            _priceLabel.text = price.ToString();
+
+            if (price > 0)
+            {
+                SwitchButtons(ButtonsState.Purchase);
+            }
+            else
+            {
+                SwitchButtons(ButtonsState.Select);
+            }
         }
 
         public void SelectNextEyes()
@@ -61,5 +81,28 @@ namespace SkinShop.Views
         {
             OnPurchased?.Invoke();
         }
+
+        private void SwitchButtons(ButtonsState state)
+        {
+            switch (state)
+            {
+                case ButtonsState.Purchase:
+                    _purchaseButton.gameObject.SetActive(true);
+                    _selectButton.gameObject.SetActive(false);
+                    break;
+                case ButtonsState.Select:
+                    _purchaseButton.gameObject.SetActive(false);
+                    _selectButton.gameObject.SetActive(true);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+        }
+    }
+
+    internal enum ButtonsState
+    {
+        Purchase,
+        Select,
     }
 }

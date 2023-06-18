@@ -15,6 +15,11 @@ namespace Characters.Skins
         private void Awake()
         {
             DependencyContext.Dependencies.Add(new(typeof(SkinItemsContainer), () => this));
+
+            foreach ((SkinItemType _, SkinItemCollection collection) in _items)
+            {
+                collection.Construct();
+            }
         }
         
         public SkinItem GetByIdAndType(SkinItemType type, int id)
