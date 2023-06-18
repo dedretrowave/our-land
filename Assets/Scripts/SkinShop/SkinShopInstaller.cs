@@ -14,7 +14,7 @@ namespace SkinShop
 {
     public class SkinShopInstaller : MonoBehaviour
     {
-        [SerializeField] private SkinItemTypeCollectionDictionary _skinItems;
+        [SerializeField] private SkinItemTypeShopCollectionDictionary _skinItems;
 
         private EventBus.EventBus _eventBus;
 
@@ -26,7 +26,7 @@ namespace SkinShop
         {
             _eventBus = EventBus.EventBus.Instance;
             
-            foreach ((SkinItemType type, SkinItemCollection collection) in _skinItems)
+            foreach ((SkinItemType type, SkinShopItemCollection collection) in _skinItems)
             {
                 collection.Construct(playerInitialSkin.GetItemByType(type));
             }
@@ -60,9 +60,9 @@ namespace SkinShop
     }
     
     [Serializable]
-    internal class SkinItemTypeCollectionDictionary : SerializableDictionary<SkinItemType, SkinItemCollection> {}
+    internal class SkinItemTypeShopCollectionDictionary : SerializableDictionary<SkinItemType, SkinShopItemCollection> {}
 #if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(SkinItemTypeCollectionDictionary))]
+    [CustomPropertyDrawer(typeof(SkinItemTypeShopCollectionDictionary))]
     internal class SkinItemTypeCollectionDictionaryUI : SerializableDictionaryPropertyDrawer {}
 #endif
 }

@@ -1,4 +1,5 @@
 using Characters;
+using Characters.Skins;
 using Map;
 using Player;
 using Player.Wallet;
@@ -11,6 +12,7 @@ namespace Entries
     {
         [SerializeField] private MapInitializer _mapInitializer;
         [SerializeField] private CharacterContainer _characterContainer;
+        [SerializeField] private SkinItemsContainer _skinItemsContainer;
 
         [SerializeField] private SkinShopInstaller _skinShop;
         [SerializeField] private PlayerInstaller _player;
@@ -19,7 +21,8 @@ namespace Entries
         private void Start()
         {
             _characterContainer.Construct();
-            
+            _skinItemsContainer.Construct();
+
             _player.Construct();
             _walletInstaller.Construct();
             _mapInitializer.Construct();
@@ -29,6 +32,7 @@ namespace Entries
         private void OnDisable()
         {
             _characterContainer.Disable();
+            _skinItemsContainer.Disable();
             _player.Disable();
             _mapInitializer.Disable();
             _skinShop.Disable();

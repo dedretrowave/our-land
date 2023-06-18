@@ -2073,6 +2073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapInitializer: {fileID: 8891632735345801252}
   _characterContainer: {fileID: 337250915}
+  _skinItemsContainer: {fileID: 1989291334}
   _skinShop: {fileID: 1104928757}
   _player: {fileID: 323034587}
   _walletInstaller: {fileID: 1315881947}

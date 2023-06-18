@@ -11,7 +11,7 @@ namespace SkinShop.Presenters
 {
     public class SkinShopPresenter
     {
-        private Dictionary<SkinItemType, SkinItemCollection> _skinItems;
+        private Dictionary<SkinItemType, SkinShopItemCollection> _skinItems;
 
         private SkinShopModel _model;
         
@@ -21,7 +21,8 @@ namespace SkinShop.Presenters
         
         public event Action<Skin> OnSkinSelected;
 
-        public SkinShopPresenter(SkinShopView view, Skin initialSkin, Dictionary<SkinItemType, SkinItemCollection> items)
+        public SkinShopPresenter(SkinShopView view, Skin initialSkin, Dictionary
+            <SkinItemType, SkinShopItemCollection> items)
         {
             _eventBus = EventBus.EventBus.Instance;
 
@@ -37,7 +38,7 @@ namespace SkinShop.Presenters
         public void SelectNext(SkinItemType type)
         {
             SkinItem item = _skinItems[type].GetNextAndMove();
-            
+
             SetItem(item);
         }
 
@@ -52,10 +53,11 @@ namespace SkinShop.Presenters
         {
             int cost = _model.Skin.GetTotalCost();
             
-            foreach ((SkinItemType type, SkinItemCollection collection) in _skinItems)
+            foreach ((SkinItemType type, SkinShopItemCollection collection) in _skinItems)
             {
                 SkinItem item = collection.GetById(_model.Skin.GetItemByType(type).Id);
                 item.SetPurchased();
+                _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, item);
             }
 
             _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, cost);

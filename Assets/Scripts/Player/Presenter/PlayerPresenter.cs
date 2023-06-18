@@ -142,38 +142,4 @@ namespace Player.Presenter
             }
         }
     }
-
-    [Serializable]
-    public class SkinItemData
-    {
-        private int _id;
-        private SkinItemType _type;
-        private bool _isPurchased;
-
-        public int Id => _id;
-        public SkinItemType Type => _type;
-        public bool IsPurchased => _isPurchased;
-
-        [JsonConstructor]
-        public SkinItemData(int id, int type, bool isPurchased)
-        {
-            _id = id;
-            _type = (SkinItemType) type;
-            _isPurchased = isPurchased;
-        }
-
-        public SkinItemData(int id, SkinItemType type, bool isPurchased)
-        {
-            _id = id;
-            _type = type;
-            _isPurchased = isPurchased;
-        }
-
-        public SkinItemData(SkinItem skinItem)
-        {
-            _id = skinItem.Id;
-            _type = skinItem.Type;
-            _isPurchased = skinItem.IsPurchased;
-        }
-    }
 }

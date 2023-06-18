@@ -2,56 +2,57 @@ using System;
 using System.Collections.Generic;
 using Characters.Skins;
 using Characters.Skins.SO;
+using DI;
 using UnityEngine;
 
 namespace SkinShop
 {
     [Serializable]
-    public class SkinItemCollection
+    public class SkinShopItemCollection
     {
         [SerializeField] private List<SkinItemSO> _itemsSO = new();
 
-        private List<SkinItem> _items = new();
+        private SkinItemsContainer _skinItemsContainer;
+
+        private List<int> _items = new();
 
         private int _selectedItemIndex;
 
         public void Construct(SkinItem selectedSkinItem = null)
         {
-            _itemsSO.ForEach(item => _items.Add(new(item)));
-            
+            _skinItemsContainer = DependencyContext.Dependencies.Get<SkinItemsContainer>();
+
+            _itemsSO.ForEach(so => _items.Add(so.Id));
+
             if (selectedSkinItem == null)
             {
                 _selectedItemIndex = 0;
                 return;
             }
 
-            SkinItem currentItem = _items.Find(item => item.Id == selectedSkinItem.Id);
+            SkinItem currentItem = _skinItemsContainer
+                .GetByIdAndType(selectedSkinItem.Type, selectedSkinItem.Id);
 
-            _selectedItemIndex = _items.IndexOf(currentItem);
-        }
-
-        public void SetItemPurchased(SkinItem item)
-        {
-            _items.Find(skinItem => skinItem.Id == item.Id).SetPurchased();
+            _selectedItemIndex = _items.IndexOf(currentItem.Id);
         }
 
         public SkinItem GetById(int id)
         {
-            return _items.Find(item => item.Id == id);
+            return GetFromContainer(so => so.Id == id);
         }
-
+        
         public SkinItem GetNextAndMove()
         {
             int nextIndex = _selectedItemIndex + 1;
 
-            if (nextIndex >= _itemsSO.Count)
+            if (nextIndex >= _items.Count)
             {
                 nextIndex = 0;
             }
 
             _selectedItemIndex = nextIndex;
 
-            return new(_itemsSO[_selectedItemIndex]);
+            return GetFromContainer(so => so.Id == _items[_selectedItemIndex]);
         }
 
         public SkinItem GetPrevAndMove()
@@ -65,17 +66,15 @@ namespace SkinShop
 
             _selectedItemIndex = nextIndex;
 
-            return new(_itemsSO[_selectedItemIndex]);
+            return GetFromContainer(so => so.Id == _items[_selectedItemIndex]);
         }
 
-        private void LoadData()
+        private SkinItem GetFromContainer(Predicate<SkinItemSO> findFunc)
         {
-            
-        }
+            SkinItemSO selectedSO = _itemsSO.Find(findFunc);
+            SkinItem selectedItem = _skinItemsContainer.GetByIdAndType(selectedSO.Type, selectedSO.Id);
 
-        private void SaveData()
-        {
-            
+            return selectedItem;
         }
     }
 }

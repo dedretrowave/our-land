@@ -18,6 +18,15 @@ namespace Characters.Skins
         public Sprite Sprite => _sprite;
         public int Price => _price;
         public bool IsPurchased => _isPurchased;
+        
+        public SkinItem(SkinItemType type, int id, Sprite sprite, int price, bool isPurchased)
+        {
+            _type = type;
+            _id = id;
+            _sprite = sprite;
+            _price = price;
+            _isPurchased = isPurchased;
+        }
 
         public SkinItem(SkinItemSO so)
         {
