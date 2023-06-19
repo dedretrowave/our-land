@@ -27,23 +27,13 @@ namespace Src.Controls
             _input = new PlayerInput();
             _input.Enable();
 
-
-            _input.Pointer.Tap.started += Tap;
-
             Touch.onFingerUp += OnFingerUp.Invoke;
             Touch.onFingerMove += OnFingerMove.Invoke;
             Touch.onFingerDown += OnFingerDown.Invoke;
         }
 
-        private void Tap(InputAction.CallbackContext context)
-        {
-            OnTap.Invoke(context.ReadValue<Touch>());
-        }
-
         ~PlayerControls()
         {
-            _input.Pointer.Tap.started -= Tap;
-            
             Touch.onFingerUp -= OnFingerUp.Invoke;
             Touch.onFingerMove -= OnFingerMove.Invoke;
             Touch.onFingerDown -= OnFingerDown.Invoke;

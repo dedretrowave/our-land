@@ -64,7 +64,7 @@ namespace Region
             ChangeOwner(_regionModel.CurrentOwner, _regionModel.CurrentOwner);
         }
         
-        private void OnDisable()
+        public void Disable()
         {
             _garrisonView.OnDamageTaken -= _garrisonPresenter.TakeDamage; 
             _garrisonView.OnGarrisonRelease -= _garrisonPresenter.TryTargetRegion;

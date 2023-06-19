@@ -45,6 +45,14 @@ namespace Level
                 });
             }
         }
+
+        public void Disable()
+        {
+            foreach ((Fraction.Fraction _, Regions regions) in _fractionRegions)
+            {
+                regions.List.ForEach(region => region.Disable());
+            }
+        }
     }
     
     

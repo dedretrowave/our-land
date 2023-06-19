@@ -24,23 +24,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     ""name"": ""PlayerInput"",
     ""maps"": [
         {
-            ""name"": ""Pointer"",
+            ""name"": ""Gameplay"",
             ""id"": ""ceb63b19-10f6-4fd4-8bea-c99cdacf131a"",
             ""actions"": [
                 {
-                    ""name"": ""PositionChange"",
-                    ""type"": ""Value"",
-                    ""id"": ""13633fe4-8429-42f8-bc12-f4a920f63657"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Tap"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""2ffb8c21-5a2b-4206-bfa5-239700b72d07"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -49,19 +40,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""341f1346-35a7-4019-8bff-af6c534dec04"",
+                    ""id"": ""99d54ffa-1996-4457-a1af-ba86661a325f"",
                     ""path"": ""<Touchscreen>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PositionChange"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3e34b9fc-ca0e-4250-8b17-e7cbb27b0275"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -74,10 +54,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Pointer
-        m_Pointer = asset.FindActionMap("Pointer", throwIfNotFound: true);
-        m_Pointer_PositionChange = m_Pointer.FindAction("PositionChange", throwIfNotFound: true);
-        m_Pointer_Tap = m_Pointer.FindAction("Tap", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Tap = m_Gameplay.FindAction("Tap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -136,62 +115,53 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Pointer
-    private readonly InputActionMap m_Pointer;
-    private List<IPointerActions> m_PointerActionsCallbackInterfaces = new List<IPointerActions>();
-    private readonly InputAction m_Pointer_PositionChange;
-    private readonly InputAction m_Pointer_Tap;
-    public struct PointerActions
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+    private readonly InputAction m_Gameplay_Tap;
+    public struct GameplayActions
     {
         private @PlayerInput m_Wrapper;
-        public PointerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PositionChange => m_Wrapper.m_Pointer_PositionChange;
-        public InputAction @Tap => m_Wrapper.m_Pointer_Tap;
-        public InputActionMap Get() { return m_Wrapper.m_Pointer; }
+        public GameplayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Tap => m_Wrapper.m_Gameplay_Tap;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PointerActions set) { return set.Get(); }
-        public void AddCallbacks(IPointerActions instance)
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayActions instance)
         {
-            if (instance == null || m_Wrapper.m_PointerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PointerActionsCallbackInterfaces.Add(instance);
-            @PositionChange.started += instance.OnPositionChange;
-            @PositionChange.performed += instance.OnPositionChange;
-            @PositionChange.canceled += instance.OnPositionChange;
+            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
             @Tap.started += instance.OnTap;
             @Tap.performed += instance.OnTap;
             @Tap.canceled += instance.OnTap;
         }
 
-        private void UnregisterCallbacks(IPointerActions instance)
+        private void UnregisterCallbacks(IGameplayActions instance)
         {
-            @PositionChange.started -= instance.OnPositionChange;
-            @PositionChange.performed -= instance.OnPositionChange;
-            @PositionChange.canceled -= instance.OnPositionChange;
             @Tap.started -= instance.OnTap;
             @Tap.performed -= instance.OnTap;
             @Tap.canceled -= instance.OnTap;
         }
 
-        public void RemoveCallbacks(IPointerActions instance)
+        public void RemoveCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_PointerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPointerActions instance)
+        public void SetCallbacks(IGameplayActions instance)
         {
-            foreach (var item in m_Wrapper.m_PointerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PointerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PointerActions @Pointer => new PointerActions(this);
-    public interface IPointerActions
+    public GameplayActions @Gameplay => new GameplayActions(this);
+    public interface IGameplayActions
     {
-        void OnPositionChange(InputAction.CallbackContext context);
         void OnTap(InputAction.CallbackContext context);
     }
 }
