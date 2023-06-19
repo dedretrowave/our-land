@@ -33,7 +33,7 @@ namespace Map.UI.Views
         [SerializeField] private GameObject _rewardBody;
         [SerializeField] private Button _doubleRewardButton;
 
-        public Action OnDoubleRewardApplied;
+        public event Action OnDoubleRewardCalled;
 
         public void SetSkin(Skin skin)
         {
@@ -65,7 +65,7 @@ namespace Map.UI.Views
 
         public void ApplyDoubleReward()
         {
-            OnDoubleRewardApplied?.Invoke();
+            OnDoubleRewardCalled?.Invoke();
         }
 
         public void Open()

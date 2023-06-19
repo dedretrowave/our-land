@@ -21,7 +21,7 @@ namespace Src.Levels.Level.UI
 
         private void Start()
         {
-            _ads.OnRewardedAdWatched.AddListener(Apply);
+            // _ads.OnRewardedAdWatched.AddListener(Apply);
         }
 
         private void WrapUp()

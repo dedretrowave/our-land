@@ -13,6 +13,13 @@ namespace Player.Wallet.Models
             _money = money;
         }
 
+        public void Set(int amount)
+        {
+            if (amount < 0) return;
+
+            _money = amount;
+        }
+
         public void Add(int amount)
         {
             _money += amount;

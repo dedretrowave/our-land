@@ -1,4 +1,5 @@
 using DI;
+using EventBus;
 using Level;
 using Level.Models;
 using Map;
@@ -12,6 +13,8 @@ namespace Entries
 {
     public class LevelEntryPoint : MonoBehaviour
     {
+        private EventBus.EventBus _eventBus;
+        
         private LevelInstaller _levelInstaller;
         private MapRegionInstaller _mapRegionInstaller;
         private WalletInstaller _walletInstaller;
@@ -20,6 +23,19 @@ namespace Entries
 
         private LevelFinishedPresenter _levelFinishedPresenter;
         private RegionPresenter _regionPresenter;
+
+        private int _reward = 0;
+        
+        private void Start()
+        {
+            _levelFinishedView = DependencyContext.Dependencies.Get<LevelFinishedView>();
+        }
+
+        private void Awake()
+        {
+            _eventBus = EventBus.EventBus.Instance;
+            DependencyContext.Dependencies.Add(new(typeof(LevelEntryPoint), () => this));
+        }
         
         public void Init(LevelConfig levelPrefab, MapRegionInstaller mapRegion)
         {
@@ -36,9 +52,10 @@ namespace Entries
 
             _levelInstaller.Construct(levelConfig, levelModel);
 
-            _levelInstaller.OnWinWithReward += _levelFinishedPresenter.DisplayReward;
-            _levelInstaller.OnWinWithReward += _walletInstaller.DisplayReward;
-            
+            _levelFinishedView.OnDoubleRewardCalled += OnDoubleReward;
+
+            _levelInstaller.OnWinWithReward += OnReward;
+
             _levelInstaller.OnWin += _mapRegionInstaller.SetPlayerOwner;
 
             _levelInstaller.OnLose += _levelFinishedPresenter.TriggerLose;
@@ -50,24 +67,38 @@ namespace Entries
         {
             if (_levelInstaller == null) return;
 
-            _levelInstaller.OnWinWithReward -= _levelFinishedPresenter.DisplayReward;
-            _levelInstaller.OnWinWithReward -= _walletInstaller.DisplayReward;
-            
+            _levelFinishedView.OnDoubleRewardCalled -= OnDoubleReward;
+
+            _levelInstaller.OnWinWithReward -= OnReward;
+
             _levelInstaller.OnWin -= _mapRegionInstaller.SetPlayerOwner;
 
             _levelInstaller.OnLose -= _levelFinishedPresenter.TriggerLose;
             
             _levelInstaller.OnEnd -= Unsubscribe;
+            
+            _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, ApplyDoubleReward);
         }
 
-        private void Start()
+        private void OnReward(int reward)
         {
-            _levelFinishedView = DependencyContext.Dependencies.Get<LevelFinishedView>();
+            _reward = reward;
+            
+            _levelFinishedPresenter.DisplayReward(reward);
+            _walletInstaller.ApplyReward(reward);
+
+            _eventBus.AddListener(EventName.ON_REWARDED_WATCHED, ApplyDoubleReward);
         }
 
-        private void Awake()
+        private void ApplyDoubleReward()
         {
-            DependencyContext.Dependencies.Add(new(typeof(LevelEntryPoint), () => this));
+            _levelFinishedPresenter.DisplayReward(_reward * 2);
+            _walletInstaller.ApplyReward(_reward);
+        }
+
+        private void OnDoubleReward()
+        {
+            _eventBus.TriggerEvent(EventName.ON_REWARDED_OPENED);
         }
     }
 }

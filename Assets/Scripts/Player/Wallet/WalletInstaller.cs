@@ -27,7 +27,7 @@ namespace Player.Wallet
             _eventBus.AddListener(EventName.ON_LEVEL_ENDED, _presenter.Show);
         }
 
-        public void DisplayReward(int amount)
+        public void ApplyReward(int amount)
         {
             _presenter.AddMoney(amount);
         }

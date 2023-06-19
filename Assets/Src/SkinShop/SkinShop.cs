@@ -70,7 +70,7 @@ namespace Src.SkinShop
 
         private void Start()
         {
-            _ads.OnRewardedAdWatched.AddListener(PurchaseItems);
+            // _ads.OnRewardedAdWatched.AddListener(PurchaseItems);
         }
 
         private void OnEnable()

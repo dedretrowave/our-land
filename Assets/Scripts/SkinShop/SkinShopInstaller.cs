@@ -39,9 +39,11 @@ namespace SkinShop
             _view.OnSelectedPrev += _presenter.SelectPrev;
             _view.OnPurchased += _presenter.Purchase;
             _view.OnSelected += _presenter.Select;
+            _view.OnGetForFree += OnGetForFree;
 
             _presenter.OnSkinSelected += OnSkinSelect;
             
+            _eventBus.AddListener(EventName.ON_REWARDED_WATCHED, _presenter.GetForFree);
             _eventBus.AddListener(EventName.ON_LEVEL_STARTED, _presenter.HideButton);
             _eventBus.AddListener(EventName.ON_LEVEL_ENDED, _presenter.ShowButton);
         }
@@ -52,11 +54,18 @@ namespace SkinShop
             _view.OnSelectedPrev -= _presenter.SelectPrev;
             _view.OnPurchased -= _presenter.Purchase;
             _view.OnSelected -= _presenter.Select;
+            _view.OnGetForFree -= OnGetForFree;
             
             _presenter.OnSkinSelected -= OnSkinSelect;
             
+            _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, _presenter.GetForFree);
             _eventBus.RemoveListener(EventName.ON_LEVEL_STARTED, _presenter.HideButton);
             _eventBus.RemoveListener(EventName.ON_LEVEL_ENDED, _presenter.ShowButton);
+        }
+
+        private void OnGetForFree()
+        {
+            _eventBus.TriggerEvent(EventName.ON_REWARDED_OPENED);
         }
 
         private void OnSkinSelect(Skin selectedSkin)

@@ -17,12 +17,14 @@ namespace SkinShop.Views
         [SerializeField] private Button _selectButton;
         [SerializeField] private Button _purchaseButton;
         [SerializeField] private TextMeshProUGUI _priceLabel;
+        [SerializeField] private Button _adButton;
 
         public event Action<SkinItemType> OnSelectedNext;
         public event Action<SkinItemType> OnSelectedPrev;
 
         public event Action OnSelected;
         public event Action OnPurchased;
+        public event Action OnGetForFree;
 
         public void HideButton()
         {
@@ -91,6 +93,11 @@ namespace SkinShop.Views
         public void Purchase()
         {
             OnPurchased?.Invoke();
+        }
+
+        public void GetForFree()
+        {
+            OnGetForFree?.Invoke();
         }
 
         private void SwitchButtons(ButtonsState state)

@@ -53,15 +53,14 @@ namespace SkinShop.Presenters
         {
             int cost = _model.Skin.GetTotalCost();
             
-            foreach ((SkinItemType type, SkinShopItemCollection collection) in _skinItems)
-            {
-                SkinItem item = collection.GetById(_model.Skin.GetItemByType(type).Id);
-                item.SetPurchased();
-                _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, item);
-            }
+            SetSkinItemsPurchased();
 
             _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, cost);
-            _view.SetPrice(0);
+        }
+
+        public void GetForFree()
+        {
+            SetSkinItemsPurchased();
         }
 
         public void Select()
@@ -69,6 +68,18 @@ namespace SkinShop.Presenters
             Skin selectedSkin = _model.Skin;
             
             OnSkinSelected?.Invoke(selectedSkin);
+        }
+
+        private void SetSkinItemsPurchased()
+        {
+            foreach ((SkinItemType type, SkinShopItemCollection collection) in _skinItems)
+            {
+                SkinItem item = collection.GetById(_model.Skin.GetItemByType(type).Id);
+                item.SetPurchased();
+                _eventBus.TriggerEvent(EventName.ON_SKIN_IN_SHOP_PURCHASED, item);
+            }
+            
+            _view.SetPrice(0);
         }
 
         public void ShowButton()
