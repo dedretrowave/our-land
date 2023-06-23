@@ -1,4 +1,5 @@
 using System.Linq;
+using EventBus;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -12,18 +13,35 @@ namespace Camera
         [SerializeField] private float _xBorderValue = 350f;
         [SerializeField] private float _yBorderValue = 370f;
 
+        private EventBus.EventBus _eventBus;
+
+        private bool _isFrozen;
+
         private void Start()
         {
+            _eventBus = EventBus.EventBus.Instance;
+
             EnhancedTouchSupport.Enable();
+            
+            _eventBus.AddListener(EventName.ON_LEVEL_STARTED, Freeze);
+            _eventBus.AddListener(EventName.ON_LEVEL_ENDED, UnFreeze);
         }
 
         private void OnDisable()
         {
             EnhancedTouchSupport.Disable();
+            
+            _eventBus.RemoveListener(EventName.ON_LEVEL_STARTED, Freeze);
+            _eventBus.RemoveListener(EventName.ON_LEVEL_ENDED, UnFreeze);
         }
+
+        private void Freeze() => _isFrozen = true;
+        private void UnFreeze() => _isFrozen = false;
 
         private void Update()
         {
+            if (_isFrozen) return;
+            
             if (Touch.activeFingers.Count == 1)
             {
                 MoveCamera(Touch.activeTouches[0]);
