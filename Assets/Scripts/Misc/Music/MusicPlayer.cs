@@ -1,52 +1,39 @@
 using System;
 using DI;
+using Misc.Music.Data;
 using Src.Saves;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Src.Audio
+namespace Misc.Music
 {
     public class MusicPlayer : MonoBehaviour
     {
-        [SerializeField] private TrackToType _tracks;
-        [SerializeField] private TrackType _trackTypeByDefault;
-
-        [SerializeField] private UnityEvent<bool> OnIsMusicPlayingChanged;
+        // [SerializeField] private TrackTypeDictionary _tracks;
+        // [SerializeField] private TrackType _trackTypeByDefault;
 
         private AudioSource _currentlyPlaying;
 
         private SettingsSaveSystem _saves;
         private SoundData _data;
         
-        public void EnableLevelTrack()
+        private void EnableLevelTrack()
         {
             SetTrackByType(TrackType.Level);
         }
 
-        public void EnableMapTrack()
+        private void EnableMapTrack()
         {
             SetTrackByType(TrackType.Map);
         }
 
-        // public void EnableLevelFinishedTrack(Level level)
-        // {
-        //     if (level.IsControlledByPlayer)
-        //     {
-        //         EnableSuccessTrack();
-        //     }
-        //     else
-        //     {
-        //         EnableFailureTrack();
-        //     }
-        // }
-
-        private void EnableSuccessTrack()
+        private void EnableWinTrack()
         {
             SetTrackByType(TrackType.Success);
         }
 
-        private void EnableFailureTrack()
+        private void EnableLoseTrack()
         {
             SetTrackByType(TrackType.Failure);
         }
@@ -54,12 +41,11 @@ namespace Src.Audio
         public void SetMusicPlaying(bool isPlaying)
         {
             _data.IsMusicEnabled = isPlaying;
-            foreach (var track in _tracks)
-            {
-                track.Value.mute = !isPlaying;
-            }
+            // foreach (var track in _tracks)
+            // {
+            //     track.Value.mute = !isPlaying;
+            // }
             _saves.SaveSoundsSettings(_data);
-            OnIsMusicPlayingChanged.Invoke(isPlaying);
 
             if (_data.IsMusicEnabled)
             {
@@ -70,7 +56,7 @@ namespace Src.Audio
         private void SetTrackByType(TrackType type)
         {
             _currentlyPlaying.mute = true;
-            _currentlyPlaying = _tracks[type];
+            // _currentlyPlaying = _tracks[type];
             _currentlyPlaying.mute = false;
             _currentlyPlaying.Play();
         }
@@ -80,7 +66,7 @@ namespace Src.Audio
             _saves = DependencyContext.Dependencies.Get<SettingsSaveSystem>();
             _data = _saves.GetSoundsSettings() ?? new SoundData();
             
-            _currentlyPlaying = _tracks[_trackTypeByDefault];
+            // _currentlyPlaying = _tracks[_trackTypeByDefault];
 
             if (_data.IsMusicEnabled)
             {
@@ -90,21 +76,4 @@ namespace Src.Audio
             SetMusicPlaying(_data.IsMusicEnabled);
         }
     }
-
-    public enum TrackType
-    {
-        MainMenu,
-        Map,
-        Level,
-        Success,
-        Failure,
-    }
-    
-    [Serializable]
-    internal class TrackToType : SerializableDictionary<TrackType, AudioSource> {}
-    
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(TrackToType))]
-    internal class TrackToTypeUI : SerializableDictionaryPropertyDrawer {}
-#endif
 }

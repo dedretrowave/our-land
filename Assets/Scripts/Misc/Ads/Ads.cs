@@ -1,9 +1,7 @@
-using DI;
 using EventBus;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Ads
+namespace Misc.Ads
 {
     public class Ads : MonoBehaviour
     {

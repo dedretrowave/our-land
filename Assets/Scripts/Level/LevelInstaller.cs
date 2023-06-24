@@ -67,10 +67,12 @@ namespace Level
                     OnWinWithReward?.Invoke(_levelModel.Reward);
                     OnWin?.Invoke();
                     OnEnd?.Invoke();
+                    _eventBus.TriggerEvent(EventName.ON_LEVEL_WON);
                     break;
                 case LevelStatus.Lose:
                     OnLose?.Invoke();
                     OnEnd?.Invoke();
+                    _eventBus.TriggerEvent(EventName.ON_LEVEL_LOST);
                     break;
                 case LevelStatus.InProgress:
                 default:

@@ -1,3 +1,4 @@
+using Misc.Ads;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ namespace Src.Levels.Level.UI
 {
     public class DoubleRewardButton : MonoBehaviour
     {
-        [SerializeField] private Ads.Ads _ads;
+        [SerializeField] private Ads _ads;
         [SerializeField] private Button _button;
         [SerializeField] private TextMeshProUGUI _rewardText;
 

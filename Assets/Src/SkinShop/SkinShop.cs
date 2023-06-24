@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Characters.Skins;
 using Characters.Skins.SO;
 using DI;
+using Misc.Ads;
 using Src.Saves;
 using Src.SkinShop.Skin;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Src.SkinShop
         [Header("Components")]
         [SerializeField] private Wallet.Wallet _wallet; 
         [SerializeField] private PlayerSkinHolder _playerSkin;
-        [SerializeField] private Ads.Ads _ads;
+        [SerializeField] private Ads _ads;
 
         [Header("Events")]
         [SerializeField] private UnityEvent<int> _onTotalPriceChange; 

@@ -7,7 +7,7 @@ namespace Src.MainMenu
     {
         public void StartGame()
         {
-            SceneManager.LoadScene("Map");
+            SceneManager.LoadScene("Level");
         }
     }
 }
