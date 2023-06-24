@@ -31,7 +31,6 @@ namespace Misc.Music
             }
 
             _eventBus.AddListener(EventName.ON_LEVEL_STARTED, _presenter.SetLevelTrack);
-            _eventBus.AddListener(EventName.ON_LEVEL_ENDED, _presenter.SetMapTrack);
             _eventBus.AddListener(EventName.ON_LEVEL_WON, _presenter.SetWinTrack);
             _eventBus.AddListener(EventName.ON_LEVEL_LOST, _presenter.SetLoseTrack);
             _eventBus.AddListener(EventName.ON_MAP_OPENED, _presenter.SetMapTrack);
@@ -45,7 +44,6 @@ namespace Misc.Music
             }
 
             _eventBus.RemoveListener(EventName.ON_LEVEL_STARTED, _presenter.SetLevelTrack);
-            _eventBus.RemoveListener(EventName.ON_LEVEL_ENDED, _presenter.SetMapTrack);
             _eventBus.RemoveListener(EventName.ON_LEVEL_WON, _presenter.SetWinTrack);
             _eventBus.RemoveListener(EventName.ON_LEVEL_LOST, _presenter.SetLoseTrack);
             _eventBus.RemoveListener(EventName.ON_MAP_OPENED, _presenter.SetMapTrack);

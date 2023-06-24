@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 0.75
@@ -453,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ef259372af4c5a644a993b3938c7eb0d, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 2
@@ -586,6 +594,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 15c821ca699982e4eac88eb9da0246d4, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 2
@@ -727,6 +739,14 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
       value: 
@@ -856,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 549dd5b204ea6934192ebcf295e115d3, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.3499985
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 2
@@ -992,6 +1016,10 @@ PrefabInstance:
     - target: {fileID: 2713263776628152811, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _garrisonInitialCount
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
@@ -1134,6 +1162,10 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _generationRate
       value: 3
@@ -1271,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e9bb04eff9799c442b22dba58bce117d, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
       value: 
@@ -1540,6 +1576,10 @@ PrefabInstance:
     - target: {fileID: 2713263776628152811, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _garrisonInitialCount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds

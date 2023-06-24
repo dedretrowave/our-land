@@ -306,6 +306,14 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _generationRate
       value: 1
@@ -447,6 +455,14 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5862864086481589945, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _fraction
       value: 
@@ -576,6 +592,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6551a83da03386c4e97d68106f97c7e5, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _generationRate
       value: 3
@@ -721,6 +745,10 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 2
@@ -853,6 +881,10 @@ PrefabInstance:
     - target: {fileID: 2713263776628152811, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _garrisonInitialCount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
@@ -1112,6 +1144,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4756749a251acc840ad3ea1574a0d2e6, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 2.5

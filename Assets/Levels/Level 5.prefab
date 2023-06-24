@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a03f1417bf93d144bb5bd87fedc647d7, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 0.75
@@ -441,6 +445,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 57779f27db27e35429f4d8f06266c313, type: 3}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _generationRate
       value: 3
@@ -586,6 +594,10 @@ PrefabInstance:
       propertyPath: _garrisonInitialCount
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds
       value: 0.5
@@ -718,6 +730,10 @@ PrefabInstance:
     - target: {fileID: 2713263776628152811, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _garrisonInitialCount
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782320209847443584, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6500015
       objectReference: {fileID: 0}
     - target: {fileID: 3589885983166200468, guid: 6a32c1719af28814ebdcc4c4cfa91ea5, type: 3}
       propertyPath: _pauseBetweenSpawnsInSeconds

@@ -67,7 +67,7 @@ namespace Level.Enemy
             {
                 region = regions[Random.Range(0, regions.Count - 1)].GetComponent<GarrisonView>();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 PickRandomRegion(PickRandomEnemy());
             }

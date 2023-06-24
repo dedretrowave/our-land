@@ -8,6 +8,7 @@ namespace Misc.Music.View
 
         public void SetTrack(AudioClip track)
         {
+            _source.Stop();
             _source.clip = track;
             _source.Play();
         }

@@ -1,5 +1,8 @@
+using System;
+
 namespace EventBus
 {
+    [Serializable]
     public enum EventName
     {
         //CHARACTER SKIN CHANGE
