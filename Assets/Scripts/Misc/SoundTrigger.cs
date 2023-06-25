@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Src.Map.Garrisons.FX
+namespace Misc
 {
     public class SoundTrigger : MonoBehaviour
     {

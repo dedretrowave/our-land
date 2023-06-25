@@ -1,6 +1,8 @@
 using System;
 using Characters.Model;
 using Components.Division;
+using Misc;
+using Src.Map.Garrisons.FX;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +13,7 @@ namespace Region.Views
         [Header("Components")]
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI _countText;
+        [SerializeField] private SoundTrigger _soundTrigger;
         
         [Header("Prefabs")]
         [SerializeField] private Division _division;
@@ -41,6 +44,11 @@ namespace Region.Views
         {
             Division division = Instantiate(_division, transform);
             division.Construct(owner, target);
+        }
+
+        public void PlayHurtSound()
+        {
+            _soundTrigger.TriggerHurt();
         }
 
         private void OnTriggerEnter(Collider other)

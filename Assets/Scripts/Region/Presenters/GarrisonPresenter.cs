@@ -88,6 +88,7 @@ namespace Region.Presenters
                 try 
                 {
                     DecreaseCount();
+                    _garrisonView.PlayHurtSound();
                     OnDamageTaken?.Invoke();
                 }
                 catch (GarrisonIsZeroException) 
