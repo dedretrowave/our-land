@@ -75,9 +75,5 @@ namespace SkinShop
     }
     
     [Serializable]
-    internal class SkinItemTypeShopCollectionDictionary : SerializableDictionary<SkinItemType, SkinShopItemCollection> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(SkinItemTypeShopCollectionDictionary))]
-    internal class SkinItemTypeCollectionDictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
+    public class SkinItemTypeShopCollectionDictionary : SerializableDictionary<SkinItemType, SkinShopItemCollection> {}
 }

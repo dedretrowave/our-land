@@ -155,9 +155,5 @@ namespace Characters.Skins
     }
     
     [Serializable]
-    internal class SkinItemTypeCollectionDictionary : SerializableDictionary<SkinItemType, SkinItemCollection> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(SkinItemTypeCollectionDictionary))]
-    internal class SkinItemTypeCollectionDictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
+    public class SkinItemTypeCollectionDictionary : SerializableDictionary<SkinItemType, SkinItemCollection> {}
 }

@@ -34,6 +34,9 @@ namespace Components.Music
             _eventBus.AddListener(EventName.ON_LEVEL_WON, _presenter.SetWinTrack);
             _eventBus.AddListener(EventName.ON_LEVEL_LOST, _presenter.SetLoseTrack);
             _eventBus.AddListener(EventName.ON_MAP_OPENED, _presenter.SetMapTrack);
+            _eventBus.AddListener(EventName.ON_REWARDED_OPENED, _presenter.Mute);
+            _eventBus.AddListener(EventName.ON_REWARDED_WATCHED, _presenter.Unmute);
+            _eventBus.AddListener(EventName.ON_REWARDED_SKIPPED, _presenter.Unmute);
         }
 
         public void Disable()
@@ -47,6 +50,9 @@ namespace Components.Music
             _eventBus.RemoveListener(EventName.ON_LEVEL_WON, _presenter.SetWinTrack);
             _eventBus.RemoveListener(EventName.ON_LEVEL_LOST, _presenter.SetLoseTrack);
             _eventBus.RemoveListener(EventName.ON_MAP_OPENED, _presenter.SetMapTrack);
+            _eventBus.RemoveListener(EventName.ON_REWARDED_OPENED, _presenter.Mute);
+            _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, _presenter.Unmute);
+            _eventBus.RemoveListener(EventName.ON_REWARDED_SKIPPED, _presenter.Unmute);
         }
     }
 }

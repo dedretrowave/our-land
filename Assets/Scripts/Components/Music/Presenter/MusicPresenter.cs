@@ -33,6 +33,16 @@ namespace Components.Music.Presenter
             _view.SetTrack(_settings.GetDefault());
         }
 
+        public void Mute()
+        {
+            _view.SetEnabled(false);
+        }
+
+        public void Unmute()
+        {
+            _view.SetEnabled(true);
+        }
+
         public void SetEnabled(bool value)
         {
             _model.SetEnabled(value);

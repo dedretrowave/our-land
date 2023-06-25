@@ -64,8 +64,4 @@ namespace Level
     
     [Serializable]
     public class FractionRegionDictionary : SerializableDictionary<Fraction.Fraction, Regions> {}
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(FractionRegionDictionary))]
-    internal class FractionRegionDictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
 }

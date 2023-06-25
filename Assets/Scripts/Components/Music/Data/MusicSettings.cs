@@ -1,5 +1,7 @@
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Components.Music.Data
@@ -31,10 +33,5 @@ namespace Components.Music.Data
     }
     
     [Serializable]
-    internal class TrackTypeDictionary : SerializableDictionary<TrackType, AudioClip> {}
-    
-#if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(TrackTypeDictionary))]
-    internal class TrackTypeDictionaryUI : SerializableDictionaryPropertyDrawer {}
-#endif
+    public class TrackTypeDictionary : SerializableDictionary<TrackType, AudioClip> {}
 }
