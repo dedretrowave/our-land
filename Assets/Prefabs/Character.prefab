@@ -86,9 +86,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3032718204059663578}
   - component: {fileID: 751978103885273016}
-  - component: {fileID: 9120347986084011056}
-  - component: {fileID: 5026288819424503437}
-  - component: {fileID: 3874796796762969288}
+  - component: {fileID: 5559058809139947109}
+  - component: {fileID: 1241681683885543456}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -111,7 +110,7 @@ RectTransform:
   - {fileID: 3606393181299326701}
   - {fileID: 640423461995826369}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -138,7 +137,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &9120347986084011056
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5559058809139947109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,13 +147,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 515500693451912146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ad8ca30c4d488cb3ba784bea7861d5, type: 3}
+  m_Script: {fileID: 11500000, guid: ca283a12cd054b6284b78d0b3dd8c98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 751978103885273016}
-  _minTimeout: 5
-  _maxTimeout: 10
---- !u!114 &5026288819424503437
+--- !u!114 &1241681683885543456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,27 +159,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 515500693451912146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e956785f66854b5ea8ce151d147f35ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 3246d197e3954d1198730f0c70cc2924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skinUI: {fileID: 3874796796762969288}
---- !u!114 &3874796796762969288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515500693451912146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b8ad0aa3cdb46028b345087c6f8569f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _items:
-    m_keys: 0000000001000000
-    m_values:
-    - {fileID: 3033112395713332796}
-    - {fileID: 2291258392253433720}
+  _flag: {fileID: 3033112395713332796}
+  _eyes: {fileID: 2291258392253433720}
 --- !u!1 &2068920807653433906
 GameObject:
   m_ObjectHideFlags: 0

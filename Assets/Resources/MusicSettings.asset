@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892b7d34abc4432ab20feb58f0884984, type: 3}
+  m_Name: MusicSettings
+  m_EditorClassIdentifier: 
+  _tracks:
+    m_keys: 0000000001000000020000000300000004000000
+    m_values:
+    - {fileID: 8300000, guid: 366bcbf3ce7130540b7e94cba8430d06, type: 3}
+    - {fileID: 8300000, guid: ca743b36a7927ff4d83c182d016f91ca, type: 3}
+    - {fileID: 8300000, guid: e343f1d1de56514489e0d9c9c132abb8, type: 3}
+    - {fileID: 8300000, guid: 3fe6a0e2ef508a249b80d357bc29443d, type: 3}
+    - {fileID: 8300000, guid: 5cbee2d9a9c99724588c76e93f737f5a, type: 3}
+  _trackByDefault: 0
