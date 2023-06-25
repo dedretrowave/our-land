@@ -1,10 +1,10 @@
 using System;
 using Characters.Model;
 using Characters.View;
+using Components.Division;
 using Region.Models;
 using Region.Presenters;
 using Region.Views;
-using Src.Controls;
 using UnityEngine;
 
 namespace Region

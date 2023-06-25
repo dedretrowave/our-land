@@ -1,8 +1,7 @@
 using System;
 using Characters.Model;
+using Components;
 using Components.Division;
-using Misc;
-using Src.Map.Garrisons.FX;
 using TMPro;
 using UnityEngine;
 

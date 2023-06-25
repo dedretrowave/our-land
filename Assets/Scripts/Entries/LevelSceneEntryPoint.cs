@@ -1,8 +1,8 @@
 using Characters;
 using Characters.Skins;
+using Components.Music;
 using EventBus;
 using Map;
-using Misc.Music;
 using Player;
 using Player.Wallet;
 using SkinShop;
