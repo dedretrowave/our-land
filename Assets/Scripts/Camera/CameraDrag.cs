@@ -1,6 +1,6 @@
-using System.Linq;
 using EventBus;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
@@ -14,13 +14,14 @@ namespace Camera
         [SerializeField] private float _yBorderValue = 370f;
 
         private EventBus.EventBus _eventBus;
+        private PlayerInput _playerInput;
 
         private bool _isFrozen;
 
         private void Start()
         {
-            _eventBus = EventBus.EventBus.Instance;
-
+            _eventBus = EventBus.EventBus.Instance; 
+            
             EnhancedTouchSupport.Enable();
             
             _eventBus.AddListener(EventName.ON_LEVEL_STARTED, Freeze);
@@ -28,7 +29,7 @@ namespace Camera
         }
 
         private void OnDisable()
-        {
+        { 
             EnhancedTouchSupport.Disable();
             
             _eventBus.RemoveListener(EventName.ON_LEVEL_STARTED, Freeze);
@@ -44,11 +45,16 @@ namespace Camera
             
             if (Touch.activeFingers.Count == 1)
             {
-                MoveCamera(Touch.activeTouches[0]);
+                TouchMove(Touch.activeTouches[0]);
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                PointerMove(Mouse.current.delta.ReadValue());
             }
         }
 
-        private void MoveCamera(Touch touch)
+        private void TouchMove(Touch touch)
         {
             if (touch.phase != TouchPhase.Moved) return;
 
@@ -57,7 +63,22 @@ namespace Camera
                 -touch.delta.normalized.y,
                 0) * (Time.deltaTime * _speed);
 
-            Vector3 newPosition = transform.position + deltaPosition * _speed;
+            Move(deltaPosition);
+        }
+
+        private void PointerMove(Vector3 newPosition)
+        {
+            Vector3 deltaPosition = new Vector3(
+                -newPosition.normalized.x,
+                -newPosition.normalized.y,
+                0) * (Time.deltaTime * _speed);
+
+            Move(deltaPosition);
+        }
+
+        private void Move(Vector3 position)
+        {
+            Vector3 newPosition = transform.position + position * _speed;
 
             if (Mathf.Abs(newPosition.x) >= _xBorderValue
                 || Mathf.Abs(newPosition.y) >= _yBorderValue) return;

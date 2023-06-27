@@ -6,10 +6,10 @@
             "id": "ceb63b19-10f6-4fd4-8bea-c99cdacf131a",
             "actions": [
                 {
-                    "name": "Tap",
-                    "type": "Value",
+                    "name": "Click",
+                    "type": "Button",
                     "id": "2ffb8c21-5a2b-4206-bfa5-239700b72d07",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -19,16 +19,33 @@
                 {
                     "name": "",
                     "id": "99d54ffa-1996-4457-a1af-ba86661a325f",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Tap",
+                    "groups": "Default",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Default",
+            "bindingGroup": "Default",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
