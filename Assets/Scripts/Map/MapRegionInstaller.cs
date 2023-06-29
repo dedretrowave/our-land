@@ -63,15 +63,22 @@ namespace Map
             }
         }
 
-        public void Disable()
+        public void OnDisable()
         {
             if (_characterPresenter != null && _characterPresenter.IsPlayer)
             {
-                _eventBus.RemoveListener<Skin>(EventName.ON_SKIN_IN_SHOP_SELECTED, _characterPresenter.SetSkin);
+                _eventBus.RemoveListener<Skin>(EventName.ON_CHARACTER_SKIN_CHANGE, _characterPresenter.SetSkin);
             }
-            
-            _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
-            _mapRegionPresenter.OnOwnerChange -= ChangeOwner;
+
+            try
+            {
+                _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
+                _mapRegionPresenter.OnOwnerChange -= ChangeOwner;
+            }
+            catch (Exception e)
+            {
+                //
+            }
         }
 
         public void ChangeOwner(CharacterModel _)
@@ -90,6 +97,8 @@ namespace Map
         {
             _mapRegionPresenter.SetOwner(newOwner);
             _selector.enabled = newOwner.Fraction == Fraction.Fraction.Enemy;
+            
+            _eventBus.RemoveListener<Skin>(EventName.ON_CHARACTER_SKIN_CHANGE, _characterPresenter.SetSkin);
         }
 
         public void SetRandomEnemyOwner()

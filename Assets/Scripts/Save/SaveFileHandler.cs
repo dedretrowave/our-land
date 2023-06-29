@@ -50,8 +50,15 @@ namespace Save
             {
                 File.Create(filePath);
             }
-                
-            File.WriteAllText(filePath, json);
+
+            try
+            {
+                File.WriteAllText(filePath, json);
+            }
+            catch (IOException e)
+            {
+                // ignore;
+            }
         }
 
         [DllImport("__Internal")]

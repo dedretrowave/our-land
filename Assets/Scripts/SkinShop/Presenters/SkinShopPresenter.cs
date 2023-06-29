@@ -66,7 +66,6 @@ namespace SkinShop.Presenters
         public void Select()
         {
             Skin selectedSkin = _model.Skin;
-            
             OnSkinSelected?.Invoke(selectedSkin);
         }
 
