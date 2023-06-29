@@ -45,7 +45,9 @@ namespace Components.Ads
 
         private void ShowAd()
         {
-            ShowAdExternal();
+#if  !UNITY_EDITOR
+        ShowAdExternal();      
+#endif
         }
 
         public void InvokeRewardedWatched()
