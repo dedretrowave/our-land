@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Characters.Skins;
 using Characters.Skins.SO;
 using DI;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace SkinShop

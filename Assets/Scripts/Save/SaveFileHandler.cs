@@ -45,7 +45,12 @@ namespace Save
         private void SaveInternal(string path, string json)
         {
             string filePath = $"{Application.persistentDataPath}/{path}.dat";
-            
+
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+                
             File.WriteAllText(filePath, json);
         }
 
