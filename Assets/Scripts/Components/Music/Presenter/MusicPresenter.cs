@@ -1,6 +1,7 @@
 using Components.Music.Data;
 using Components.Music.Model;
 using Components.Music.View;
+using DI;
 using Save;
 
 namespace Components.Music.Presenter
@@ -19,7 +20,7 @@ namespace Components.Music.Presenter
 
         public MusicPresenter(MusicView view, MusicSettings settings)
         {
-            _saveFileHandler = new();
+            _saveFileHandler = DependencyContext.Dependencies.Get<SaveFileHandler>();
 
             MusicModel model = _saveFileHandler.Load<MusicModel>(LoadPath) 
                                ?? new(true);

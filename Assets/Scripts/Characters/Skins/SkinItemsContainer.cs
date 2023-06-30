@@ -24,7 +24,7 @@ namespace Characters.Skins
         public void Construct()
         {
             _eventBus = EventBus.EventBus.Instance;
-            _saveFileHandler = new();
+            _saveFileHandler = DependencyContext.Dependencies.Get<SaveFileHandler>();
             
             DependencyContext.Dependencies.Add(new(typeof(SkinItemsContainer), () => this));
             

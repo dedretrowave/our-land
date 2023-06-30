@@ -23,7 +23,7 @@ namespace Save
         public RegionModelLoader()
         {
             _characterContainer = DependencyContext.Dependencies.Get<CharacterContainer>();
-            _saveFileHandler = new SaveFileHandler();
+            _saveFileHandler = DependencyContext.Dependencies.Get<SaveFileHandler>();
 
             _regionDataSet = _saveFileHandler.Load<List<RegionData>>(LocalPath) 
                              ?? new();

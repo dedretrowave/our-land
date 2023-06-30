@@ -35,7 +35,7 @@ namespace Player.Presenter
             _defaultModelFromSO = characterContainer
                 .GetByFraction(Fraction.Fraction.Player);
             
-            _saveFileHandler = new();
+            _saveFileHandler = DependencyContext.Dependencies.Get<SaveFileHandler>();
             
             _view = view;
         }

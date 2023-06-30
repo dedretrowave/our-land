@@ -1,3 +1,4 @@
+using DI;
 using Player.Wallet.Models;
 
 namespace Save
@@ -12,7 +13,7 @@ namespace Save
 
         public WalletModelLoader()
         {
-            _saveFileHandler = new();
+            _saveFileHandler = DependencyContext.Dependencies.Get<SaveFileHandler>();
 
             _wallet = _saveFileHandler.Load<WalletModel>(LocalPath) ?? new();
         }

@@ -1,14 +1,21 @@
 using System.IO;
 using System.Runtime.InteropServices;
+using DI;
 using Newtonsoft.Json;
 using UnityEngine;
 using Application = UnityEngine.Application;
 
 namespace Save
 {
-    public class SaveFileHandler
+    public class SaveFileHandler : MonoBehaviour
     {
         private string _serializedData;
+        
+        [DllImport("__Internal")]
+        private static extern void SaveExternal(string fieldName, string data);
+        
+        [DllImport("__Internal")]
+        private static extern void GetSerializedExternal(string fieldName);
 
         public T Load<T>(string path)
         {
@@ -37,7 +44,7 @@ namespace Save
 #endif
         }
 
-        private void GetSerializedData(string data)
+        public void GetSerializedData(string data)
         {
             _serializedData = data;
         }
@@ -61,9 +68,6 @@ namespace Save
             }
         }
 
-        [DllImport("__Internal")]
-        private static extern void SaveExternal(string fieldName, string data);
-
         private string GetSerializedInternal(string path)
         {
             string filePath = $"{Application.persistentDataPath}/{path}.dat";
@@ -76,8 +80,5 @@ namespace Save
             
             return File.ReadAllText(filePath);
         }
-
-        [DllImport("__Internal")]
-        private static extern void GetSerializedExternal(string fieldName);
     }
 }
