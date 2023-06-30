@@ -32,7 +32,9 @@ namespace Components.Ads
 
         public void ShowRewarded()
         {
-            ShowRewardedExternal();
+#if  !UNITY_EDITOR
+            ShowRewardedExternal();      
+#endif
         }
 
         private void ShowAdWithChance()
