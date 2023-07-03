@@ -75,7 +75,7 @@ namespace Map
                 _mapRegionPresenter.OnOwnerChange -= _characterPresenter.SetSkinByCharacter;
                 _mapRegionPresenter.OnOwnerChange -= ChangeOwner;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //
             }

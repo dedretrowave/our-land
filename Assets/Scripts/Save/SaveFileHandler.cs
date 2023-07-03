@@ -62,7 +62,7 @@ namespace Save
             {
                 File.WriteAllText(filePath, json);
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 // ignore;
             }

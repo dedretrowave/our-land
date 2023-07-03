@@ -45,6 +45,7 @@ namespace Player.Presenter
             LoadData();
 
             _view.SetSkin(_model.Skin);
+            OnSkinChange?.Invoke(_model.Skin);
         }
 
         public void Hide()

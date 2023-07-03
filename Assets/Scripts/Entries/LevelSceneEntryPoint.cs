@@ -37,9 +37,9 @@ namespace Entries
             _characterContainer.Construct();
             _skinItemsContainer.Construct();
 
+            _mapInitializer.Construct();
             _player.Construct();
             _walletInstaller.Construct();
-            _mapInitializer.Construct();
             _skinShop.Construct(_player.GetSkin());
             
             _eventBus.TriggerEvent(EventName.ON_MAP_OPENED);

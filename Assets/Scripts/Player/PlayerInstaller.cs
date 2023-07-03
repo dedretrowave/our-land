@@ -1,5 +1,6 @@
 using Characters.Model;
 using Characters.Skins;
+using Characters.Skins.SO;
 using Characters.View;
 using EventBus;
 using Player.Presenter;
