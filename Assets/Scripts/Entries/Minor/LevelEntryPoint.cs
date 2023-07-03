@@ -27,6 +27,7 @@ namespace Entries
         private LevelConfig _levelConfig;
 
         private int _reward = 0;
+        private bool _levelIsStarted;
         
         private void Start()
         {
@@ -41,6 +42,9 @@ namespace Entries
         
         public void Init(LevelConfig levelPrefab, MapRegionInstaller mapRegion)
         {
+            if (_levelIsStarted) return;
+            
+            _levelIsStarted = true;
             _levelConfig = Instantiate(levelPrefab, transform);
             _levelInstaller = _levelConfig.GetComponent<LevelInstaller>();
             _walletInstaller = DependencyContext.Dependencies.Get<WalletInstaller>();
@@ -69,7 +73,7 @@ namespace Entries
         {
             if (_levelInstaller == null) return;
 
-            _levelFinishedView.OnDoubleRewardCalled -= OnDoubleReward;
+            _levelIsStarted = false;
 
             _levelInstaller.OnWinWithReward -= OnReward;
 
@@ -80,7 +84,7 @@ namespace Entries
             _levelInstaller.OnEnd -= Unsubscribe;
             
             _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, ApplyDoubleReward);
-            
+
             _levelConfig.Disable();
         }
 
@@ -97,12 +101,14 @@ namespace Entries
         private void ApplyDoubleReward()
         {
             _levelFinishedPresenter.DisplayReward(_reward * 2);
+            _levelFinishedPresenter.HideDoubleRewardButton();
             _walletInstaller.ApplyReward(_reward);
         }
 
         private void OnDoubleReward()
         {
             _eventBus.TriggerEvent(EventName.ON_REWARDED_OPENED);
+            _levelFinishedView.OnDoubleRewardCalled -= OnDoubleReward;
         }
     }
 }

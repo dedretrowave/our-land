@@ -3,6 +3,7 @@ using Characters.Skins;
 using DI;
 using Level.Models;
 using Map.UI.Views;
+using UnityEngine;
 
 namespace Map.UI.Presenters
 {
@@ -29,6 +30,11 @@ namespace Map.UI.Presenters
         {
             _view.ShowWin();
             _view.DisplayReward(reward);
+        }
+
+        public void HideDoubleRewardButton()
+        {
+            _view.HideDoubleRewardButton();
         }
         
         public void TriggerLose()

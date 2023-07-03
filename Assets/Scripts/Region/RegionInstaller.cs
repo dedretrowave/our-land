@@ -78,7 +78,7 @@ namespace Region
 
         private void ChangeOwner(CharacterModel oldOwner, CharacterModel newOwner)
         {
-            if (newOwner.AllowsDivisionGeneration)
+            if (!oldOwner.AllowsDivisionGeneration && newOwner.AllowsDivisionGeneration)
             {
                 StartCoroutine(_garrisonPresenter.IncreaseContinuously());
             }

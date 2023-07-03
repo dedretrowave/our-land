@@ -292,7 +292,7 @@ MonoBehaviour:
   _soundTrigger: {fileID: 2360722157272209549}
   _division: {fileID: 8762790705502886650, guid: 45888e9e3d8cfc643802bf604603cf4f, type: 3}
   _garrisonIncreaseRate: 1
-  _garrisonInitialCount: 30
+  _garrisonInitialCount: 15
   _divisionSpawnRate: 0.1
 --- !u!114 &4878489046030063341
 MonoBehaviour:

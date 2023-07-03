@@ -68,10 +68,15 @@ namespace Map.UI.Views
             OnDoubleRewardCalled?.Invoke();
         }
 
+        public void HideDoubleRewardButton()
+        {
+            _doubleRewardButton.gameObject.SetActive(false);
+        }
+
         public void Open()
         {
             _rewardBody.SetActive(false);
-            
+            _doubleRewardButton.gameObject.SetActive(true);
             _body.SetActive(true);
         }
 

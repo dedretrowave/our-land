@@ -107,10 +107,12 @@ namespace SkinShop.Views
                 case ButtonsState.Purchase:
                     _purchaseButton.gameObject.SetActive(true);
                     _selectButton.gameObject.SetActive(false);
+                    _adButton.gameObject.SetActive(true);
                     break;
                 case ButtonsState.Select:
                     _purchaseButton.gameObject.SetActive(false);
                     _selectButton.gameObject.SetActive(true);
+                    _adButton.gameObject.SetActive(false);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);

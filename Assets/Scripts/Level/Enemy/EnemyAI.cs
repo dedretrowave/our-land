@@ -16,8 +16,8 @@ namespace Level.Enemy
         private CharacterRegionContainer _characterRegionContainer;
         private LevelModel _levelModel;
 
-        private float _minAttackDelay = 6f;
-        private float _maxAttackDelay = 12f;
+        private float _minAttackDelay = 4f;
+        private float _maxAttackDelay = 8f;
 
         private GarrisonView _targetRegion;
         private GarrisonView _attackStartRegion;
@@ -34,15 +34,37 @@ namespace Level.Enemy
         public IEnumerator StartAttacking()
         {
             float waitTime = Random.Range(_minAttackDelay, _maxAttackDelay);
+            Debug.Log("=================");
+            Debug.Log("Waiting for next attack for " + waitTime);
 
             yield return new WaitForSeconds(waitTime);
-            
+
+            yield return Attack();
+
+            yield return StartAttacking();
+        }
+
+        private IEnumerator Attack()
+        {
+            Debug.Log("Preparing for Attack");
             PickTargetRegion();
             PickAttackStartRegion();
             
-            _attackStartRegion.Release(_targetRegion.transform);
+            while (_attackStartRegion == null 
+                   || _targetRegion == null 
+                   || _attackStartRegion.Equals(_targetRegion))
+            {
+                Debug.Log("Preparing for Attack");
+                PickTargetRegion();
+                PickAttackStartRegion();
+            }
 
-            yield return StartAttacking();
+            Debug.Log("Attack!");
+            Debug.Log(_attackStartRegion.transform.parent.name);
+            Debug.Log(_targetRegion.transform.parent.name);
+
+            _attackStartRegion.Release(_targetRegion.transform);
+            yield return null;
         }
 
         private void PickTargetRegion()
@@ -78,7 +100,7 @@ namespace Level.Enemy
         private CharacterModel PickRandomEnemy()
         {
             CharacterModel randomEnemy =
-                _levelModel.CharactersOnLevel[Random.Range(0, _levelModel.CharactersOnLevel.Count - 1)];
+                _levelModel.CharactersOnLevel[Random.Range(0, _levelModel.CharactersOnLevel.Count)];
 
             if (randomEnemy.Equals(_character))
                 PickRandomEnemy();
