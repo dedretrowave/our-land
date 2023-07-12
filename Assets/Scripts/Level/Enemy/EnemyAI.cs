@@ -34,8 +34,6 @@ namespace Level.Enemy
         public IEnumerator StartAttacking()
         {
             float waitTime = Random.Range(_minAttackDelay, _maxAttackDelay);
-            Debug.Log("=================");
-            Debug.Log("Waiting for next attack for " + waitTime);
 
             yield return new WaitForSeconds(waitTime);
 
@@ -46,7 +44,6 @@ namespace Level.Enemy
 
         private IEnumerator Attack()
         {
-            Debug.Log("Preparing for Attack");
             PickTargetRegion();
             PickAttackStartRegion();
             
@@ -54,14 +51,9 @@ namespace Level.Enemy
                    || _targetRegion == null 
                    || _attackStartRegion.Equals(_targetRegion))
             {
-                Debug.Log("Preparing for Attack");
                 PickTargetRegion();
                 PickAttackStartRegion();
             }
-
-            Debug.Log("Attack!");
-            Debug.Log(_attackStartRegion.transform.parent.name);
-            Debug.Log(_targetRegion.transform.parent.name);
 
             _attackStartRegion.Release(_targetRegion.transform);
             yield return null;

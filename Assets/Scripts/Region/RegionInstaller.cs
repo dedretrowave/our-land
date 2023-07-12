@@ -41,6 +41,7 @@ namespace Region
                 _regionView,
                 _regionModel,
                 _characterView);
+            
             _garrisonPresenter = new(
                 _garrisonView,
                 _garrisonModel,

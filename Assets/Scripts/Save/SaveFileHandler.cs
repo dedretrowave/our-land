@@ -21,7 +21,7 @@ namespace Save
         {
 #if UNITY_EDITOR
             _serializedData = GetSerializedInternal(path);
-#else
+#elif UNITY_WEBGL
             GetSerializedExternal(path);
 #endif
             return JsonConvert.DeserializeObject<T>(_serializedData ?? "");
@@ -39,7 +39,7 @@ namespace Save
 
 #if UNITY_EDITOR
             SaveInternal(path, json);
-#else
+#elif UNITY_WEBGL
             SaveExternal(path, json);
 #endif
         }
