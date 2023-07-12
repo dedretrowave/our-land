@@ -36,12 +36,18 @@ namespace Components.Music.Presenter
 
         public void Mute()
         {
-            _view.SetEnabled(false);
+            if (_model.IsEnabled)
+            {
+                _view.SetEnabled(false);
+            }
         }
 
         public void Unmute()
         {
-            _view.SetEnabled(true);
+            if (_model.IsEnabled)
+            {
+                _view.SetEnabled(true);
+            }
         }
 
         public void SetEnabled(bool value)

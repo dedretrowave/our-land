@@ -82,8 +82,6 @@ namespace Entries
             _levelInstaller.OnLose -= _levelFinishedPresenter.TriggerLose;
             
             _levelInstaller.OnEnd -= Unsubscribe;
-            
-            _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, ApplyDoubleReward);
 
             _levelConfig.Disable();
         }
@@ -103,11 +101,13 @@ namespace Entries
             _levelFinishedPresenter.DisplayReward(_reward * 2);
             _levelFinishedPresenter.HideDoubleRewardButton();
             _walletInstaller.ApplyReward(_reward);
+            _eventBus.RemoveListener(EventName.ON_REWARDED_WATCHED, ApplyDoubleReward);
         }
 
         private void OnDoubleReward()
         {
             _eventBus.TriggerEvent(EventName.ON_REWARDED_OPENED);
+            _eventBus.TriggerEvent(EventName.ON_REWARDED_WATCHED);
             _levelFinishedView.OnDoubleRewardCalled -= OnDoubleReward;
         }
     }
